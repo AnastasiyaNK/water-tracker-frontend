@@ -11,7 +11,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       {/* TODO: fix basename */}
-      <BrowserRouter basename="/react-homework-template">
+      <BrowserRouter basename="/water-tracker-frontend">
         <App />
       </BrowserRouter>
     </Provider>

@@ -2,7 +2,7 @@
   "name": "water-tracker",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://goitacademy.github.io/react-homework-template/",
+  "homepage": "https://AnastasiyaNK.github.io/water-tracker-frontend/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
     "@testing-library/jest-dom": "^5.17.0",
