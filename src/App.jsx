@@ -1,12 +1,12 @@
 import { Home, Main } from "pages";
+import { StyledMainContainer } from "styled";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">123123</header>
+    <StyledMainContainer>
       <Home />
       <Main />
-    </div>
+    </StyledMainContainer>
   );
 }
 
