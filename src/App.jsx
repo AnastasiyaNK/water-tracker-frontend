@@ -1,4 +1,4 @@
-import { Home, Main } from "pages";
+import { Home, Main, HomePage } from "pages";
 import { StyledMainContainer } from "styled";
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
     <StyledMainContainer>
       <Home />
       <Main />
+      <HomePage/>
     </StyledMainContainer>
   );
 }
