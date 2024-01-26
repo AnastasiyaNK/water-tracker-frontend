@@ -1,12 +1,13 @@
+import { Header } from "components";
 import { Home, Main } from "pages";
-import { StyledMainContainer } from "styled";
 
 function App() {
   return (
-    <StyledMainContainer>
+    <div>
+      <Header />
       <Home />
       <Main />
-    </StyledMainContainer>
+    </div>
   );
 }
 
