@@ -1,11 +1,12 @@
 import React from "react";
-import { LoginForm, RegisterForm } from "components";
+import { LoginForm, RegisterForm, SettingsModal } from "components";
 
 const Home = () => {
   return (
     <div>
       <LoginForm />
       <RegisterForm />
+      <SettingsModal></SettingsModal>
     </div>
   );
 };
