@@ -9,7 +9,7 @@ const Header = ({ props }) => {
   return (
     <StyledMainContainer>
       <Wrapper>
-        <WrapperLogo>
+        <WrapperLogo to="/welcome">
           <img src={Logo} alt="logo of App" />
         </WrapperLogo>
 
