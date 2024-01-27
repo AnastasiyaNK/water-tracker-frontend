@@ -2,6 +2,9 @@ import { StyledSettingsModalBackdrop } from "./SettingsModule.styled";
 import { RotatingLines } from "react-loader-spinner";
 import { ReactComponent as IconClose } from "../../assets/icons/close.svg";
 import { ReactComponent as IconUpload } from "../../assets/icons/arrow-up-tray.svg";
+import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
+import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
+import { useState } from "react";
 
 // ! DELETE test COMMENT
 const testLoadingUploadPhoto = true;
@@ -9,6 +12,19 @@ const url = "123";
 //! DELETE test COMMENT
 
 const SettingsModal = ({ toggleModal }) => {
+  const [privatPassword, setPrivatPassword] = useState({
+    outdated: false,
+    newPassword: false,
+    repeatedPassword: false,
+  });
+
+  const onPasswordPrivacySetting = (value) => {
+    setPrivatPassword((prevPassword) => ({
+      ...prevPassword,
+      [value]: !prevPassword[value],
+    }));
+  };
+
   return (
     <StyledSettingsModalBackdrop>
       <div className="settings-modal">
@@ -81,29 +97,66 @@ const SettingsModal = ({ toggleModal }) => {
             <div className="rigthside-wrapper">
               <p className="secondary-title password-title">Password</p>
               <p className="password-subtitle">Outdated password:</p>
-              <label>
-                <input
-                  className="main-input"
-                  type="email"
-                  placeholder="Password"
-                />
-              </label>
+              <div className="password-wrapper">
+                <div
+                  className="eye-btn"
+                  onClick={() => onPasswordPrivacySetting("outdated")}
+                >
+                  {privatPassword.outdated ? (
+                    <IconClosedEye className="eye-icon" />
+                  ) : (
+                    <IconOpenedEye className="eye-icon" />
+                  )}
+                </div>
+
+                <label>
+                  <input
+                    className="main-input"
+                    type={privatPassword.outdated ? "password" : "text"}
+                    placeholder="Password"
+                  />
+                </label>
+              </div>
               <p className="password-subtitle">New Password:</p>
-              <label>
-                <input
-                  className="main-input"
-                  type="password"
-                  placeholder="Password"
-                />
-              </label>
+              <div className="password-wrapper">
+                <div
+                  className="eye-btn"
+                  onClick={() => onPasswordPrivacySetting("newPassword")}
+                >
+                  {privatPassword.newPassword ? (
+                    <IconClosedEye className="eye-icon" />
+                  ) : (
+                    <IconOpenedEye className="eye-icon" />
+                  )}
+                </div>
+                <label>
+                  <input
+                    className="main-input"
+                    type={privatPassword.newPassword ? "password" : "text"}
+                    placeholder="Password"
+                  />
+                </label>
+              </div>
               <p className="password-subtitle">Repeat new password:</p>
-              <label>
-                <input
-                  className="main-input"
-                  type="password"
-                  placeholder="Password"
-                />
-              </label>
+              <div className="password-wrapper">
+                <div
+                  className="eye-btn"
+                  onClick={() => onPasswordPrivacySetting("repeatedPassword")}
+                >
+                  {privatPassword.repeatedPassword ? (
+                    <IconClosedEye className="eye-icon" />
+                  ) : (
+                    <IconOpenedEye className="eye-icon" />
+                  )}
+                </div>
+                <label>
+                  <input
+                    className="main-input"
+                    type={privatPassword.repeatedPassword ? "password" : "text"}
+                    placeholder="Password"
+                  />
+                </label>
+              </div>
             </div>
           </div>
         </form>

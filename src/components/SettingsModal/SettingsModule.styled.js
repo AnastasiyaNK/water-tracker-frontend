@@ -203,8 +203,8 @@ export const StyledSettingsModalBackdrop = styled.div`
           position: absolute;
           top: 1px;
           left: 0px;
-          width: 13px;
-          height: 13px;
+          width: 14px;
+          height: 14px;
 
           border-radius: 50%;
           border: 1px solid #407bff;
@@ -270,6 +270,25 @@ export const StyledSettingsModalBackdrop = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
+  }
+
+  .password-wrapper {
+    position: relative;
+  }
+
+  .eye-icon {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+
+    path {
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      stroke: #407bff;
+    }
   }
 
   .settings-submit-btn {
