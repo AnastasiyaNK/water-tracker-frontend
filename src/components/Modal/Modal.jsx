@@ -1,18 +1,39 @@
-import React from "react";
-import "./Modal.css";
-const Modal = ({ active, SetActive, children }) => {
+import { useEffect } from "react";
+import { ReactComponent as IconClose } from "../../assets/icons/close.svg";
+import { StyledModalBackdrop } from "./ModalStyled";
+
+const Modal = ({ toggleModal, children, title }) => {
+  const handleOverlayClick = (event) => {
+    if (event.target === event.currentTarget) {
+      toggleModal(false);
+    }
+  };
+  useEffect(() => {
+    const handleEscapeClick = (event) => {
+      if (event.code === "Escape") {
+        toggleModal(false);
+      }
+    };
+    window.addEventListener("keydown", handleEscapeClick);
+    return () => window.removeEventListener("keydown", handleEscapeClick);
+  }, []);
   return (
-    <div
-      className={active ? "modal active" : "modal"}
-      onClick={() => SetActive(false)}
-    >
-      <div
-        className={active ? "modal__content active" : "modal__content"}
-        onClick={(e) => e.stopPropagation()}
-      >
+    <StyledModalBackdrop onClick={handleOverlayClick}>
+      <div className="settings-modal">
+        <h2 className="title">{title}</h2>
+        <button
+          className="close-btn"
+          type="button"
+          onClick={() => toggleModal(false)}
+        >
+          <IconClose className="close-btn-svg" />
+        </button>
         {children}
+        {/* <button className="settings-submit-btn" type="submit">
+          Save
+        </button> */}
       </div>
-    </div>
+    </StyledModalBackdrop>
   );
 };
 
