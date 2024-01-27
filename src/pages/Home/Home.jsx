@@ -1,9 +1,10 @@
 import React from "react";
-import { LoginForm, RegisterForm } from "components";
+import { LoginForm, Modal, RegisterForm } from "components";
 
 const Home = () => {
   return (
     <div>
+      <Modal />
       <LoginForm />
       <RegisterForm />
     </div>
