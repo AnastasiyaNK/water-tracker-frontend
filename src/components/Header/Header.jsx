@@ -5,7 +5,7 @@ import { Wrapper, WrapperLogo } from "./Header.styled";
 import { StyledMainContainer } from "styled";
 import { UserAuth } from "./UserAuth/UserAuth";
 
-export const Header = (props) => {
+const Header = ({ props }) => {
   return (
     <StyledMainContainer>
       <Wrapper>
