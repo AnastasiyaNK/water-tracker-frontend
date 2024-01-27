@@ -1,3 +1,14 @@
+:root {
+  --whitePrimari: #fff;
+  --blackPrimari: #2f2f2f;
+  --accentPrimari: #407bff;
+  --lightGreySecondary: #ecf2ff;
+  --redSecondary: #ef5050;
+  --blueSecondary: #9ebbff;
+  --yelowSecondary: #ff9d43;
+  --lightBlueSecondary: #d7e3ff;
+}
+
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
