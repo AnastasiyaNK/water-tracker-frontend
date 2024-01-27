@@ -7,11 +7,7 @@ const LoginForm = () => {
     <div className="App">
       <form >
         <p>Enter your email</p>
-        <input
-          type="email"
-          name="email"
-          placeholder="email"
-          
+        <input  type="email"  name="email" placeholder="email"
         />
         <p>Enter your password</p>
         <input type="password" name="password" placeholder="Password"
