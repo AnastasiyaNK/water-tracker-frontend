@@ -1,5 +1,5 @@
 import React from 'react';
-import { MonthBox, Title } from './Month.style';
+import { MonthBox, Title } from './Month.styled';
 import { DaysList } from 'components';
 
 const Month = () => {
