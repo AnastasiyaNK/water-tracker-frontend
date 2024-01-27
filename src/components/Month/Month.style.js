@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
-export const TodayBox = styled.div`
-  display: flex;
-  gap: 24px;
-  flex-direction: column;
-  width: 534px;
-  height: 260px;
-  /* border: 1px solid black; */
+export const MonthBox = styled.div`
+  width: 544px;
+  height: 332px;
+  border: 1px solid black;
+`;
+export const Title = styled.p`
   color: var(--Primery-Color-Black, #2f2f2f);
   font-family: Roboto;
   font-size: 26px;

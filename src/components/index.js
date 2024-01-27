@@ -4,3 +4,5 @@ export { default as WaterTracker } from './WaterTracker/WaterTracker';
 export { default as Today } from './Today/Today';
 export { default as Month } from './Month/Month';
 export { default as DailyNorma } from './DailyNorma/DailyNorma';
+export { default as WaterPortionsList } from './WaterPortionList/WaterPortionList';
+export { default as DaysList } from './DaysList/DaysList.js';
