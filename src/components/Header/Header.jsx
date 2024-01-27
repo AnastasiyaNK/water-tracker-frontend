@@ -12,6 +12,7 @@ const Header = ({ props }) => {
         <WrapperLogo>
           <img src={Logo} alt="logo of App" />
         </WrapperLogo>
+
         <UserAuth />
       </Wrapper>
     </StyledMainContainer>
