@@ -8,7 +8,7 @@ export const RangBar = styled.div`
 export const Title = styled.div`
   margin-bottom: 16px;
   color: var(--Primery-Color-Blue, #407bff);
-  text-align: center;
+  text-align: left;
   font-family: Roboto;
   font-size: 18px;
   font-style: normal;

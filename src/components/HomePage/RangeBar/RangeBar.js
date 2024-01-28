@@ -51,17 +51,18 @@ const RangeBar = () => {
                 ...props.style,
                 height: '16px',
                 width: '16px',
-                backgroundColor: '#999',
+                backgroundColor: '#D1E3FF',
                 borderRadius: '50%',
+                borderColor: 'red',
               }}
             >
               <div
                 style={{
                   position: 'absolute',
-                  top: '-28px',
+                  top: '10px',
                   left: '-10px',
-                  backgroundColor: '#999',
-                  color: '#fff',
+                  // backgroundColor: '#999',
+                  color: '#407bff',
                   padding: '4px',
                   borderRadius: '4px',
                 }}
