@@ -1,5 +1,6 @@
 import SharedLayout from "components/SharedLayout/SharedLayout";
 import { HomePage, Main, SigninPage, SignupPage } from "pages";
+
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div>
       <SharedLayout>
         <Routes>
+          <Route path="/" element={<Main />} />
           <Route path="/welcome" element={<Main />} />
           <Route path="/signin" element={<SigninPage />} />
           <Route path="/signup" element={<SignupPage />} />

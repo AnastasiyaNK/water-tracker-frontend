@@ -1,22 +1,22 @@
-import Moment from 'react-moment';
-import React, { useState } from 'react';
-import ReactPaginate from 'react-paginate';
+import Moment from "react-moment";
+import React, { useState } from "react";
+import ReactPaginate from "react-paginate";
 
 function Paginate() {
   const [currentPage, setCurrentPage] = useState(0);
   const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
   const year = 2023;
   const monthPerPage = 1;
@@ -40,8 +40,8 @@ function Paginate() {
     <div>
       {renderMonths()}
       <ReactPaginate
-        previousLabel={'<'}
-        nextLabel={'>'}
+        previousLabel={"<"}
+        nextLabel={">"}
         pageCount={pageCount}
         onPageChange={handlePageClick}
         // containerClassName={''}

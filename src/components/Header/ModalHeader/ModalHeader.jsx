@@ -22,34 +22,32 @@ export const ModalHeader = ({
     };
   }, [onClose]);
 
+  if (!isOpen) return;
+
   return (
     <>
-      {isOpen && (
-        <>
-          <ModalOverlay onClick={onClose} />
-          <ModalWrapper onClick={(e) => e.stopPropagation()}>
-            <Button
-              type="button"
-              onClick={() => {
-                onClose();
-              }}
-            >
-              <img src={Icons} alt="Setting" />
-              <p>Setting</p>
-            </Button>
-            <Button
-              type="button"
-              onClick={() => {
-                onClose();
-                onOpenLogoutModal();
-              }}
-            >
-              <img src={Icon} alt="Setting" />
-              <p>Log out</p>
-            </Button>
-          </ModalWrapper>
-        </>
-      )}
+      <ModalOverlay onClick={onClose} />
+      <ModalWrapper onClick={(e) => e.stopPropagation()}>
+        <Button
+          type="button"
+          onClick={() => {
+            onClose();
+          }}
+        >
+          <img src={Icons} alt="Setting" />
+          <p>Setting</p>
+        </Button>
+        <Button
+          type="button"
+          onClick={() => {
+            onClose();
+            onOpenLogoutModal();
+          }}
+        >
+          <img src={Icon} alt="Setting" />
+          <p>Log out</p>
+        </Button>
+      </ModalWrapper>
     </>
   );
 };
