@@ -1,81 +1,176 @@
-import React from "react";
-import { StyledMyDailyNormaModal } from "./MyDailyNormaModal.styled";
+import React, { useState, useEffect } from "react";
+import {
+  StyledMyDailyNormaModal,
+  SettingsModal,
+  Title,
+  CloseBtn,
+  Form,
+  TitleGender,
+  TitleGenderList,
+  CalculatorWater,
+  TitleContent,
+  TitleContentWater,
+  TitleText,
+  SecondaryTitle,
+  ListGender,
+  GenderName,
+  StatisticsCalculete,
+  StatisticsWatarDay,
+  MainInput,
+  SecondarySubtitle,
+  MainInputBtn,
+  SettingsSubmitBtn,
+} from "./MyDailyNormaModal.styled";
+
+import { ReactComponent as IconClose } from "../../assets/icons/close.svg";
 
 const MyDailyNormaModal = ({ toggleModal }) => {
+  const [gender, setGender] = useState("female");
+  const [weight, setWeight] = useState("");
+  const [hours, setHours] = useState("");
+  const [yourAmountWater, setYourAmountWater] = useState("");
+  const [dailyNorma, setDailyNorma] = useState(2);
+
+  useEffect(() => {
+    if (weight > 0) {
+      const dailyNorma =
+        gender === "female"
+          ? weight * 0.03 + hours * 0.4
+          : weight * 0.04 + hours * 0.6;
+
+      setDailyNorma(dailyNorma);
+    } else {
+      setDailyNorma(2);
+    }
+  }, [gender, weight, hours]);
+
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
+  };
+
+  const handleWeightChange = (e) => {
+    setWeight(parseFloat(e.target.value));
+  };
+
+  const handleHoursChange = (e) => {
+    setHours(parseFloat(e.target.value));
+  };
+
+  const handleAmountWaterChange = (e) => {
+    setYourAmountWater(parseFloat(e.target.value));
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+
+    const data = {
+      gender,
+      weight,
+      hours,
+      dailyNorma: yourAmountWater > 0 ? yourAmountWater : dailyNorma,
+    };
+
+    console.log("SavedData", data);
+    toggleModal(false);
+  };
+
   return (
     <StyledMyDailyNormaModal>
-      <div className="settings-modal">
-        <h2 className="title">My daily norma</h2>
-        <button
-          className="close-btn"
-          type="button"
-          onClick={() => toggleModal(false)}
-        >
-          X
-        </button>
-        <form>
-          <div className="title-gender">
-            <p className="title-gender-list">For girl:</p>
-            <span className="calculator-water">V=(M*0,03) + (T*0,4)</span>
-            <p className="title-gender-list">For man:</p>
-            <span className="calculator-water">V=(M*0,04) + (T*0,6)</span>
-          </div>
-          <div className="title-content">
-            <p className="title-content-water">
-              <span className="title-text">*</span> V is the volume of the water
-              norm in liters per day, M is your body weight, T is the time of
-              active sports, or another type of activity commensurate in terms
-              of loads (in the absence of these, you must set 0)
-            </p>
-          </div>
+      <SettingsModal>
+        <Title>My daily norma</Title>
+        <CloseBtn onClick={() => toggleModal(false)}>
+          <IconClose />
+        </CloseBtn>
+        <Form onSubmit={handleSave}>
+          <TitleGender>
+            <TitleGenderList>For girl:</TitleGenderList>
+            <CalculatorWater>V=(M*0,03) + (T*0,4)</CalculatorWater>
+            <TitleGenderList>For man:</TitleGenderList>
+            <CalculatorWater>V=(M*0,04) + (T*0,6)</CalculatorWater>
+          </TitleGender>
+          <TitleContent>
+            <TitleContentWater>
+              <TitleText>*</TitleText> V is the volume of the water norm in
+              liters per day, M is your body weight, T is the time of active
+              sports, or another type of activity commensurate in terms of loads
+              (in the absence of these, you must set 0)
+            </TitleContentWater>
+          </TitleContent>
 
           <div>
-            <h3 className="secondary-title">Calculate your rate:</h3>
-            <div className="list-gender">
+            <SecondaryTitle>Calculate your rate:</SecondaryTitle>
+            <ListGender>
               <label>
-                <input type="radio" name="gender" value="female" />
-                <span className="gender-name">For woman</span>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  checked={gender === "female"}
+                  onChange={handleGenderChange}
+                />
+                <GenderName>For woman</GenderName>
               </label>
               <label>
-                <input type="radio" name="gender" value="male" />
-                <span className="gender-name">For man</span>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  checked={gender === "male"}
+                  onChange={handleGenderChange}
+                />
+                <GenderName>For man</GenderName>
+              </label>
+            </ListGender>
+            <div>
+              <StatisticsCalculete>
+                Your weight in kilograms:
+              </StatisticsCalculete>
+              <label>
+                <MainInput
+                  type="number"
+                  placeholder="0"
+                  value={weight}
+                  onChange={handleWeightChange}
+                />
               </label>
             </div>
             <div>
-              <p className="statistics-calculete">Your weight in kilograms:</p>
-              <label>
-                <input className="main-input" type="text" placeholder="0" />
-              </label>
-            </div>
-            <div>
-              <p className="statistics-calculete">
+              <StatisticsCalculete>
                 The time of active participation in sports or other activities
                 with a high physical. load in hours:
-              </p>
+              </StatisticsCalculete>
               <label>
-                <input className="main-input" type="text" placeholder="0" />
+                <MainInput
+                  type="number"
+                  placeholder="0"
+                  value={hours}
+                  onChange={handleHoursChange}
+                />
               </label>
             </div>
             <div>
-              <p className="statistics-calculete">
+              <StatisticsCalculete>
                 The required amount of water in liters per day:{" "}
-                <span className="statistics-watar-day">1.8 L</span>
-              </p>
+                <StatisticsWatarDay>{dailyNorma} L</StatisticsWatarDay>
+              </StatisticsCalculete>
             </div>
           </div>
           <div>
-            <h3 className="secondary-subtitle">
+            <SecondarySubtitle>
               Write down how much water you will drink:
-            </h3>
+            </SecondarySubtitle>
             <label>
-              <input className="main-input-btn" type="text" placeholder="0" />
+              <MainInputBtn
+                type="number"
+                placeholder="0"
+                value={yourAmountWater}
+                onChange={handleAmountWaterChange}
+              />
             </label>
           </div>
-          <button className="settings-submit-btn" type="submit">
-            Save
-          </button>
-        </form>
-      </div>
+          <SettingsSubmitBtn type="submit">Save</SettingsSubmitBtn>
+        </Form>
+      </SettingsModal>
     </StyledMyDailyNormaModal>
   );
 };

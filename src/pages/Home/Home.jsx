@@ -7,6 +7,8 @@ const Home = () => {
   const [isOpenSettingsModal, setIsOpenSettingsModal] = useState(true);
   //!ТИМЧАСОВО ДЛЯ ЗАКРИТТЯ МОДАЛКИ- ПРИБРАТИ!
 
+  const [isOpenDailyNorma, setIsOpenDailyNorma] = useState(false);
+
   return (
     <div>
       <LoginForm />
@@ -14,8 +16,11 @@ const Home = () => {
       {/* {isOpenSettingsModal && (
         <SettingsModal toggleModal={setIsOpenSettingsModal} />
       )} */}
-      {isOpenSettingsModal && (
-        <MyDailyNormaModal toggleModal={setIsOpenSettingsModal} />
+      <button onClick={() => setIsOpenDailyNorma(true)}>
+        Edit Daily Norma
+      </button>
+      {isOpenDailyNorma && (
+        <MyDailyNormaModal toggleModal={setIsOpenDailyNorma} />
       )}
     </div>
   );

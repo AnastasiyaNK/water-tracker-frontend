@@ -11,42 +11,42 @@ export const StyledMyDailyNormaModal = styled.div`
   left: 0;
   background-color: rgba(0, 0, 0, 0.8);
   overflow: hidden;
+`
 
-  .settings-modal {
-    position: relative;
-    height: auto;
-    max-height: 90vh;
-    overflow-y: auto;
-    background-color: #ffffff;
+export const SettingsModal = styled.div`
+position: relative;
+  height: auto;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: #ffffff;
+  padding: 32px 24px;
+  border-radius: 10px;
+  font-size: 18px;
+  line-height: 1.1;
+
+  @media (min-width: 1440px) {
+    width: 592px;
     padding: 32px 24px;
-    border-radius: 10px;
-    font-size: 18px;
-    line-height: 1.1;
-
-    @media (min-width: 1440px) {
-      width: 592px;
-      padding: 32px 24px;
-    }
-
-    @media (min-width: 768px) and (max-width: 1439px) {
-      width: 704px;
-      padding: 32px 24px;
-    }
-    @media (min-width: 320px) and (max-width: 767px) {
-      width: 280px;
-      padding: 24px 12px;
-    }
   }
 
-  .title {
-    font-size: 26px;
+  @media (min-width: 768px) and (max-width: 1439px) {
+    width: 704px;
+    padding: 32px 24px;
+  }
+  @media (min-width: 320px) and (max-width: 767px) {
+    width: 280px;
+    padding: 24px 12px;
+  }
+`
+export const Title = styled.h2`
+  font-size: 26px;
     line-height: 1.25;
     margin-bottom: 24px;
     color: #2f2f2f;
-  }
+`
 
-  .close-btn {
-    position: absolute;
+export const CloseBtn = styled.button`
+  position: absolute;
     top: 36px;
     right: 12px;
     display: flex;
@@ -69,77 +69,76 @@ export const StyledMyDailyNormaModal = styled.div`
         stroke: #407bff;
       }
     }
-  }
+`
 
-  form {
-    margin-bottom: 24px;
-  }
+export const Form = styled.form`
+  margin-bottom: 24px;
+`
 
-  .title-gender {
-    display: flex;
+export const TitleGender = styled.div`
+  display: flex;
     flex-wrap: nowrap;
     margin-bottom: 12px;
-  }
+`
 
-  .title-gender-list {
-    margin-right: 4px;
-  }
+export const TitleGenderList = styled.p`
+  margin-right: 4px;
+`
 
-  .calculator-water {
-    margin-right: 24px;
+export const CalculatorWater  = styled.span`
+  margin-right: 24px;
     color: #407bff;
-  }
+`
 
-  .title-content {
-    margin-bottom: 24px;
+export const TitleContent = styled.div`
+  margin-bottom: 24px;
     border-style: solid;
     border-radius: 10px;
     border-color: #d7e3ff;
-  }
+`
 
-  .title-content-water {
-    margin: 10px;
+export const TitleContentWater = styled.p`
+   margin: 10px;
     font-size: 12px;
     color: #8f8f8f;
-  }
+`
+export const TitleText = styled.span`
+   color: #407bff;
+`
 
-  .title-text {
-    color: #407bff;
-  }
-
-  .secondary-title {
-    font-size: 18px;
+export const SecondaryTitle = styled.h3`
+  font-size: 18px;
     line-height: 20px;
     color: #2f2f2f;
     margin-bottom: 16px;
-  }
+`
 
-  .list-gender {
-    display: flex;
+export const ListGender = styled.div`
+  display: flex;
     gap: 24px;
     margin-bottom: 16px;
-  }
+`
 
-  .gender-name {
-    margin-left: 8px;
+export const GenderName = styled.span`
+  margin-left: 8px;
     font-size: 16px;
-  }
+`
 
-  .statistics-calculete {
-    font-size: 16px;
+export const StatisticsCalculete = styled.p`
+  font-size: 16px;
     line-height: 20px;
     color: #2f2f2f;
     margin-bottom: 8px;
+`
 
-    .statistics-watar-day {
-      font-size: 18px;
+export const StatisticsWatarDay = styled.span`
+  font-size: 18px;
       line-height: 24px;
       color: #407bff;
-    }
-  }
+`
 
-  .main-input {
-    font-size: 16px;
+export const MainInput = styled.input`
+  font-size: 16px;
     line-height: 1.25;
     width: 544px;
     height: 44px;
@@ -148,18 +147,18 @@ export const StyledMyDailyNormaModal = styled.div`
     border: 1px solid #d7e3ff;
     color: #407bff;
     margin-bottom: 16px;
-  }
+`
 
-  .secondary-subtitle {
-    font-size: 18px;
+export const SecondarySubtitle = styled.h3`
+  font-size: 18px;
     line-height: 20px;
     color: #2f2f2f;
     margin-top: 24px;
     margin-bottom: 16px;
-  }
+`
 
-  .main-input-btn {
-    font-size: 16px;
+export const MainInputBtn = styled.input`
+  font-size: 16px;
     line-height: 1.25;
     width: 544px;
     height: 44px;
@@ -168,10 +167,10 @@ export const StyledMyDailyNormaModal = styled.div`
     border: 1px solid #d7e3ff;
     color: #407bff;
     margin-bottom: 24px;
-  }
+`
 
-  .settings-submit-btn {
-    display: block;
+export const SettingsSubmitBtn = styled.button`
+  display: block;
     width: 100%;
     min-height: 20px;
     padding: 8px 30px;
@@ -204,5 +203,4 @@ export const StyledMyDailyNormaModal = styled.div`
     @media screen and (min-width: 1440px) {
       float: right;
     }
-  }
-`;
+`
