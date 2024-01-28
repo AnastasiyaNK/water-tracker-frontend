@@ -14,12 +14,12 @@ const AddWaterModal = ({ toggleModal }) => {
           <div className="water-controls-container">
             <button className="water-control-btn">
               {" "}
-              <IconMinus />{" "}
+              <IconMinus className="svg-btn" />{" "}
             </button>
             <span className="water-amount-value">50ml</span>
             <button className="water-control-btn">
               {" "}
-              <IconPlus />{" "}
+              <IconPlus className="svg-btn" />{" "}
             </button>
           </div>
           <label className="input-group">
