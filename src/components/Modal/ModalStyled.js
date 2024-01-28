@@ -84,7 +84,7 @@ export const StyledModalBackdrop = styled.div`
   }
 
   form {
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
   }
 
   .secondary-title {

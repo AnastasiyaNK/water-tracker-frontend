@@ -27,9 +27,16 @@ export const StyledWaterForm = styled.form`
   .water-control-btn {
     width: 44px;
     height: 44px;
+
+    border: 1px solid blue;
+    background-color: transparent;
     border-radius: 40px;
     border-color: #9ebbff;
-    stroke: #407bff;
+    fill: #407bff;
+  }
+  .svg-btn {
+    display: block;
+    margin: 0 auto;
   }
   .water-amount-value {
     font-size: 18px;
@@ -38,7 +45,7 @@ export const StyledWaterForm = styled.form`
     color: #407bff;
     border-radius: 40px;
     background: #d7e3ff;
-    padding: 8px 24px;
+    padding: 8px 26px;
   }
   .input-group {
     display: flex;
@@ -52,6 +59,8 @@ export const StyledWaterForm = styled.form`
   }
   .input-group-input {
     border-color: #d7e3ff;
+    border: 1px solid #d7e3ff;
+
     border-radius: 10px;
     box-shadow: none;
     height: 44px;
