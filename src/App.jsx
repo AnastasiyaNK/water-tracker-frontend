@@ -7,6 +7,7 @@ function App() {
     <div>
       <SharedLayout>
         <Routes>
+          <Route path="/" element={<Main />} />
           <Route path="/welcome" element={<Main />} />
           <Route path="/signin" element={<SigninPage />} />
           <Route path="/signup" element={<SignupPage />} />
