@@ -16,7 +16,7 @@ const Modal = ({ toggleModal, children, title }) => {
     };
     window.addEventListener("keydown", handleEscapeClick);
     return () => window.removeEventListener("keydown", handleEscapeClick);
-  }, []);
+  }, [toggleModal]);
   return (
     <StyledModalBackdrop onClick={handleOverlayClick}>
       <div className="settings-modal">

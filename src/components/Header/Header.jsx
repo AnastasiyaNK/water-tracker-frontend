@@ -4,6 +4,7 @@ import { Wrapper, WrapperLogo } from "./Header.styled";
 
 import { StyledMainContainer } from "styled";
 import { UserAuth } from "./UserAuth/UserAuth";
+import { ModalHead } from "./UserLogoutModal/UserLogoutModal.styled";
 
 const Header = ({ props }) => {
   return (
@@ -12,7 +13,7 @@ const Header = ({ props }) => {
         <WrapperLogo to="/welcome">
           <img src={Logo} alt="logo of App" />
         </WrapperLogo>
-
+        <ModalHead />
         <UserAuth />
       </Wrapper>
     </StyledMainContainer>
