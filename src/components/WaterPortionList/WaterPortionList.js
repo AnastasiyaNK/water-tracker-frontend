@@ -48,7 +48,7 @@ const WaterPortionsList = () => {
             </Button> */}
           </div>
         ))}
-        <Addwater>+ Addwater</Addwater>
+        <Addwater>+ Add water</Addwater>
       </PortionsList>
     </div>
   );
