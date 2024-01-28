@@ -1,13 +1,19 @@
-import { Header } from "components";
-import { Home, Main } from "pages";
-import { useState } from "react";
+
+import SharedLayout from "components/SharedLayout/SharedLayout";
+import { Home, Main, SigninPage, SignupPage } from "pages";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <Header />
-      <Home />
-      <Main />
+      <SharedLayout>
+        <Routes>
+          <Route path="/welcome" element={<Main />} />
+          <Route path="/signin" element={<SigninPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </SharedLayout>
     </div>
   );
 }

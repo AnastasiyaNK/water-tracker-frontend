@@ -1,7 +1,12 @@
 import { StyledSettingsModalBackdrop } from "./SettingsModule.styled";
 import { RotatingLines } from "react-loader-spinner";
+import { useState } from "react";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import { ReactComponent as IconClose } from "../../assets/icons/close.svg";
 import { ReactComponent as IconUpload } from "../../assets/icons/arrow-up-tray.svg";
+import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
+import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
 
 // ! DELETE test COMMENT
 const testLoadingUploadPhoto = true;
@@ -9,6 +14,76 @@ const url = "123";
 //! DELETE test COMMENT
 
 const SettingsModal = ({ toggleModal }) => {
+  const [privatPassword, setPrivatPassword] = useState({
+    outdatedPassword: true,
+    newPassword: true,
+    repeatedPassword: true,
+  });
+
+  const validationSchema = yup.object().shape(
+    {
+      name: yup.string().max(32, "That's a very long name"),
+      email: yup
+        .string()
+        .required("Here must be your e-mail")
+        .email("Invalid email"),
+      outdatedPassword: yup
+        .string()
+        .min(8, "Invalid password (8-64 characters)")
+        .max(64, "Invalid password (8-64 characters)")
+        .when(["newPassword", "repeatedPassword"], {
+          is: (newPassword, repeatedPassword) =>
+            newPassword || repeatedPassword,
+          then: (schema) => schema.required("You must enter your old password"),
+        }),
+      newPassword: yup
+        .string()
+        .min(8, "Invalid password (8-64 characters)")
+        .max(64, "Invalid password (8-64 characters)")
+        .when(["outdatedPassword", "repeatedPassword"], {
+          is: (outdatedPassword, repeatedPassword) =>
+            outdatedPassword || repeatedPassword,
+          then: (schema) => schema.required("Enter a new password"),
+        }),
+      repeatedPassword: yup.string().when(["outdatedPassword", "newPassword"], {
+        is: (outdatedPassword, newPassword) => outdatedPassword || newPassword,
+        then: (schema) => schema.required("Confirm new password"),
+      }),
+    },
+    [
+      ["newPassword", "repeatedPassword"],
+      ["outdatedPassword", "repeatedPassword"],
+      ["outdatedPassword", "newPassword"],
+    ]
+  );
+
+  const handleSubmit = async (values) => {
+    try {
+      console.log(formik.values);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      name: "Ivan",
+      email: "Ivan@rasha.parasha",
+      outdatedPassword: "",
+      newPassword: "",
+      repeatedPassword: "",
+    },
+    validationSchema,
+    onSubmit: handleSubmit,
+  });
+
+  const onPasswordPrivacySetting = (value) => {
+    setPrivatPassword((prevPassword) => ({
+      ...prevPassword,
+      [value]: !prevPassword[value],
+    }));
+  };
+
   return (
     <StyledSettingsModalBackdrop>
       <div className="settings-modal">
@@ -20,7 +95,7 @@ const SettingsModal = ({ toggleModal }) => {
         >
           <IconClose className="close-btn-svg" />
         </button>
-        <form>
+        <form onSubmit={formik.handleSubmit}>
           <p className="secondary-title upload-title">Your photo</p>
           <div className="upload-wrapper">
             <div className="img-box">
@@ -66,50 +141,137 @@ const SettingsModal = ({ toggleModal }) => {
 
               <p className="secondary-title">Your name</p>
               <label>
-                <input className="main-input" type="text" placeholder="name" />
+                <input
+                  className={`main-input ${
+                    formik.errors.name ? "error-input" : ""
+                  } `}
+                  type="text"
+                  name="name"
+                  value={formik.values.name}
+                  onChange={formik.handleChange}
+                  placeholder="name"
+                />
               </label>
+              {formik.touched.name && formik.errors.name && (
+                <div className="error">{formik.errors.name}</div>
+              )}
               <p className="secondary-title email-title">E-mail</p>
               <label>
                 <input
-                  className="main-input"
+                  className={`main-input ${
+                    formik.errors.email ? "error-input" : ""
+                  } `}
                   type="email"
+                  name="email"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
                   placeholder="e-mail"
                 />
               </label>
+              {formik.touched.email && formik.errors.email && (
+                <div className="error">{formik.errors.email}</div>
+              )}
             </div>
 
             <div className="rigthside-wrapper">
               <p className="secondary-title password-title">Password</p>
               <p className="password-subtitle">Outdated password:</p>
-              <label>
-                <input
-                  className="main-input"
-                  type="email"
-                  placeholder="Password"
-                />
-              </label>
+              <div className="password-wrapper">
+                <div
+                  className="eye-btn"
+                  onClick={() => onPasswordPrivacySetting("outdatedPassword")}
+                >
+                  {privatPassword.outdatedPassword ? (
+                    <IconClosedEye className="eye-icon" />
+                  ) : (
+                    <IconOpenedEye className="eye-icon" />
+                  )}
+                </div>
+
+                <label>
+                  <input
+                    className={`main-input ${
+                      formik.errors.outdatedPassword ? "error-input" : ""
+                    } `}
+                    type={privatPassword.outdatedPassword ? "password" : "text"}
+                    name="outdatedPassword"
+                    value={formik.values.outdatedPassword}
+                    onChange={formik.handleChange}
+                    placeholder="Password"
+                  />
+                </label>
+                {formik.touched.outdatedPassword &&
+                  formik.errors.outdatedPassword && (
+                    <div className="error">
+                      {formik.errors.outdatedPassword}
+                    </div>
+                  )}
+              </div>
               <p className="password-subtitle">New Password:</p>
-              <label>
-                <input
-                  className="main-input"
-                  type="password"
-                  placeholder="Password"
-                />
-              </label>
+              <div className="password-wrapper">
+                <div
+                  className="eye-btn"
+                  onClick={() => onPasswordPrivacySetting("newPassword")}
+                >
+                  {privatPassword.newPassword ? (
+                    <IconClosedEye className="eye-icon" />
+                  ) : (
+                    <IconOpenedEye className="eye-icon" />
+                  )}
+                </div>
+                <label>
+                  <input
+                    className={`main-input ${
+                      formik.errors.newPassword ? "error-input" : ""
+                    } `}
+                    type={privatPassword.newPassword ? "password" : "text"}
+                    name="newPassword"
+                    value={formik.values.newPassword}
+                    onChange={formik.handleChange}
+                    placeholder="Password"
+                  />
+                </label>
+                {formik.touched.newPassword && formik.errors.newPassword && (
+                  <div className="error">{formik.errors.newPassword}</div>
+                )}
+              </div>
               <p className="password-subtitle">Repeat new password:</p>
-              <label>
-                <input
-                  className="main-input"
-                  type="password"
-                  placeholder="Password"
-                />
-              </label>
+              <div className="password-wrapper">
+                <div
+                  className="eye-btn"
+                  onClick={() => onPasswordPrivacySetting("repeatedPassword")}
+                >
+                  {privatPassword.repeatedPassword ? (
+                    <IconClosedEye className="eye-icon" />
+                  ) : (
+                    <IconOpenedEye className="eye-icon" />
+                  )}
+                </div>
+                <label>
+                  <input
+                    className={`main-input ${
+                      formik.errors.repeatedPassword ? "error-input" : ""
+                    } `}
+                    type={privatPassword.repeatedPassword ? "password" : "text"}
+                    name="repeatedPassword"
+                    value={formik.values.repeatedPassword}
+                    onChange={formik.handleChange}
+                    placeholder="Password"
+                  />
+                </label>
+                {formik.touched.repeatedPassword &&
+                  formik.errors.repeatedPassword && (
+                    <div className="error">
+                      {formik.errors.repeatedPassword}
+                    </div>
+                  )}
+              </div>
             </div>
           </div>
+          <button className="settings-submit-btn" type="submit">
+            Save
+          </button>
         </form>
-        <button className="settings-submit-btn" type="submit">
-          Save
-        </button>
       </div>
     </StyledSettingsModalBackdrop>
   );
