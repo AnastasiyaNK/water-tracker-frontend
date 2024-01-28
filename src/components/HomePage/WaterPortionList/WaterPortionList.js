@@ -11,9 +11,9 @@ import {
   PortionsList,
   Addwater,
 } from './WaterPortionsList.styled';
-import { ReactComponent as Glass } from '../../assets/icons/glass1.svg';
-import { ReactComponent as Pencil } from '../../assets/icons/pencil-square.svg';
-import { ReactComponent as Bucket } from '../../assets/icons/bucket.svg';
+import { ReactComponent as Glass } from '../../../assets/icons/glass1.svg';
+import { ReactComponent as Pencil } from '../../../assets/icons/pencil-square.svg';
+import { ReactComponent as Bucket } from '../../../assets/icons/bucket.svg';
 
 const waterportions = [
   { id: 'id-1', ml: '250', time: '7.00' },
