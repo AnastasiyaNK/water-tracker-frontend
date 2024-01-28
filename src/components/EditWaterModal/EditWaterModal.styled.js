@@ -1,6 +1,26 @@
 import { styled } from "styled-components";
 
 export const StyledWaterForm = styled.form`
+  .water-amount-value-padding {
+    padding: 8px 22px;
+  }
+  .water-amount-time-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 254px;
+    border-radius: 10px;
+    background: #ecf2ff;
+    padding: 12px 24px;
+    margin-bottom: 24px;
+  }
+  .water-glass {
+  }
+  .time-value {
+    font-size: 12px;
+    line-height: 2;
+    margin-left: 8px;
+  }
   .add-water-container {
   }
   .choose-water-value-container {
@@ -46,7 +66,7 @@ export const StyledWaterForm = styled.form`
     color: #407bff;
     border-radius: 40px;
     background: #d7e3ff;
-    padding: 8px 26px;
+    padding: 8px 20px;
   }
   .input-group {
     display: flex;
@@ -88,6 +108,10 @@ export const StyledWaterForm = styled.form`
 
     color: #407bff;
   }
+  .glass-value-bold {
+    font-weight: 400;
+  }
+
   .form-save-btn {
     margin-left: 24px;
 

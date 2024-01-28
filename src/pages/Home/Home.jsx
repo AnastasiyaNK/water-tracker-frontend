@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { LoginForm, RegisterForm, SettingsModal } from "components";
 import ModalButton from "components/ModalButton/ModalButton";
+import ModalButton2 from "components/ModalButton2/ModalButton2";
 
 const Home = () => {
   //TODO:ТИМЧАСОВО ДЛЯ ЗАКРИТТЯ МОДАЛКИ- ПРИБРАТИ!
@@ -16,6 +17,7 @@ const Home = () => {
       </button>
       {isOpenModal && <AddWaterModal toggleModal={setIsOpenModal} />} */}
       <ModalButton />
+      <ModalButton2 />
       <LoginForm />
       <RegisterForm />
       {isOpenSettingsModal && (

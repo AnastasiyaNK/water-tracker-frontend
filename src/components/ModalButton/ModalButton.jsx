@@ -1,6 +1,6 @@
 import { AddWaterModal } from "components";
-import React, { useState } from "react";
 import { StyledModalButton } from "./ModalButton.styled";
+import React, { useState } from "react";
 
 const ModalButton = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
