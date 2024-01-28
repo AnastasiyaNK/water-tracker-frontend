@@ -1,6 +1,8 @@
 import { Modal } from "components";
 import React from "react";
 import { StyledWaterForm } from "./AddWaterModal.styled";
+import LogoMinus from "components/Logo/LogoMinus";
+import LogoPlus from "components/Logo/LogoPlus";
 
 const AddWaterModal = ({ toggleModal }) => {
   return (
@@ -9,10 +11,16 @@ const AddWaterModal = ({ toggleModal }) => {
         <div className="choose-water-value-container">
           <p className="choose-title">Choose a value:</p>
           <p className="water-amount">Amount of water:</p>
-          <div className="water-controls">
-            <button className="water-control-btn">-</button>
+          <div className="water-controls-container">
+            <button className="water-control-btn">
+              {" "}
+              <LogoMinus />{" "}
+            </button>
             <span className="water-amount-value">50ml</span>
-            <button className="water-control-btn">+</button>
+            <button className="water-control-btn">
+              {" "}
+              <LogoPlus />{" "}
+            </button>
           </div>
           <label className="input-group">
             <span className="input-group-text">Recording time:</span>
