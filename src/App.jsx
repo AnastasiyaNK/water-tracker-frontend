@@ -1,6 +1,6 @@
 import SharedLayout from "components/SharedLayout/SharedLayout";
-import { Main, SigninPage, SignupPage } from "pages";
-import HomePage from "pages/HomePage/HomePage";
+import { HomePage, Main, SigninPage, SignupPage } from "pages";
+
 import { Route, Routes } from "react-router-dom";
 
 function App() {
