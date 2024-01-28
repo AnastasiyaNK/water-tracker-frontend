@@ -83,10 +83,6 @@ export const StyledSettingsModalBackdrop = styled.div`
     }
   }
 
-  form {
-    margin-bottom: 24px;
-  }
-
   .secondary-title {
     font-size: 18px;
     font-weight: 500;
@@ -166,6 +162,7 @@ export const StyledSettingsModalBackdrop = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
+    margin-bottom: 24px;
 
     @media (min-width: 1440px) {
       flex-direction: row;
@@ -274,6 +271,7 @@ export const StyledSettingsModalBackdrop = styled.div`
 
   .password-wrapper {
     position: relative;
+    max-width: 392px;
   }
 
   .eye-icon {
