@@ -27,18 +27,27 @@ const SettingsModal = ({ toggleModal }) => {
         .string()
         .required("Here must be your e-mail")
         .email("Invalid email"),
-      outdatedPassword: yup.string().when(["newPassword", "repeatedPassword"], {
-        is: (newPassword, repeatedPassword) => newPassword || repeatedPassword,
-        then: (schema) => schema.required("You must enter your old password"),
-      }),
-      newPassword: yup.string().when(["outdatedPassword", "repeatedPassword"], {
-        is: (outdatedPassword, repeatedPassword) =>
-          outdatedPassword || repeatedPassword,
-        then: (schema) => schema.required("Enter a new password"),
-      }),
+      outdatedPassword: yup
+        .string()
+        .min(8, "Invalid password (8-64 characters)")
+        .max(64, "Invalid password (8-64 characters)")
+        .when(["newPassword", "repeatedPassword"], {
+          is: (newPassword, repeatedPassword) =>
+            newPassword || repeatedPassword,
+          then: (schema) => schema.required("You must enter your old password"),
+        }),
+      newPassword: yup
+        .string()
+        .min(8, "Invalid password (8-64 characters)")
+        .max(64, "Invalid password (8-64 characters)")
+        .when(["outdatedPassword", "repeatedPassword"], {
+          is: (outdatedPassword, repeatedPassword) =>
+            outdatedPassword || repeatedPassword,
+          then: (schema) => schema.required("Enter a new password"),
+        }),
       repeatedPassword: yup.string().when(["outdatedPassword", "newPassword"], {
         is: (outdatedPassword, newPassword) => outdatedPassword || newPassword,
-        then: (schema) => schema.required("Re-enter the new password"),
+        then: (schema) => schema.required("Confirm new password"),
       }),
     },
     [
@@ -133,7 +142,9 @@ const SettingsModal = ({ toggleModal }) => {
               <p className="secondary-title">Your name</p>
               <label>
                 <input
-                  className="main-input"
+                  className={`main-input ${
+                    formik.errors.name ? "error-input" : ""
+                  } `}
                   type="text"
                   name="name"
                   value={formik.values.name}
@@ -147,7 +158,9 @@ const SettingsModal = ({ toggleModal }) => {
               <p className="secondary-title email-title">E-mail</p>
               <label>
                 <input
-                  className="main-input"
+                  className={`main-input ${
+                    formik.errors.email ? "error-input" : ""
+                  } `}
                   type="email"
                   name="email"
                   value={formik.values.email}
@@ -177,7 +190,9 @@ const SettingsModal = ({ toggleModal }) => {
 
                 <label>
                   <input
-                    className="main-input"
+                    className={`main-input ${
+                      formik.errors.outdatedPassword ? "error-input" : ""
+                    } `}
                     type={privatPassword.outdatedPassword ? "password" : "text"}
                     name="outdatedPassword"
                     value={formik.values.outdatedPassword}
@@ -206,7 +221,9 @@ const SettingsModal = ({ toggleModal }) => {
                 </div>
                 <label>
                   <input
-                    className="main-input"
+                    className={`main-input ${
+                      formik.errors.newPassword ? "error-input" : ""
+                    } `}
                     type={privatPassword.newPassword ? "password" : "text"}
                     name="newPassword"
                     value={formik.values.newPassword}
@@ -232,7 +249,9 @@ const SettingsModal = ({ toggleModal }) => {
                 </div>
                 <label>
                   <input
-                    className="main-input"
+                    className={`main-input ${
+                      formik.errors.repeatedPassword ? "error-input" : ""
+                    } `}
                     type={privatPassword.repeatedPassword ? "password" : "text"}
                     name="repeatedPassword"
                     value={formik.values.repeatedPassword}

@@ -230,13 +230,10 @@ export const StyledSettingsModalBackdrop = styled.div`
     }
   }
 
-  /* .input-title {
-    margin-bottom: 8px;
-  } */
-
   .email-title {
     margin-top: 24px;
   }
+
   .main-input {
     font-size: 16px;
     line-height: 1.25;
@@ -258,6 +255,26 @@ export const StyledSettingsModalBackdrop = styled.div`
     @media screen and (min-width: 768px) {
       width: 392px;
     }
+  }
+
+  .error-input {
+    border: 1px solid #ef5050;
+    color: #ef5050;
+    outline: 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #ef5050;
+    }
+  }
+
+  .error {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #ef5050;
   }
 
   .password-subtitle {
