@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const LoginForm = () => {
-  // Отримання даних з локального сховища при першому завантаженні
+  
   useEffect(() => {
     const savedFormData = localStorage.getItem("loginFormData");
     if (savedFormData) {
@@ -9,25 +9,22 @@ const LoginForm = () => {
     }
   }, []);
 
-  // Створюємо стан для зберігання даних форми
+  
   const [formData, setFormData] = useState({
     email: "",
     password: ""
   });
 
-  // Обробник події зміни значення полів вводу
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value
     });
-    // Зберігаємо дані у локальне сховище після зміни
+
     localStorage.setItem("loginFormData", JSON.stringify({ ...formData, [name]: value }));
   };
-
-  // Обробник події відправлення форми
-  
 
 
   return (
