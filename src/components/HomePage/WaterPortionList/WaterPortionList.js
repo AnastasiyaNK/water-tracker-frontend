@@ -10,6 +10,7 @@ import {
   Edit,
   PortionsList,
   Addwater,
+  ScrollableDiv,
 } from './WaterPortionsList.styled';
 import { ReactComponent as Glass } from '../../../assets/icons/glass-desc.svg';
 import { ReactComponent as Pencil } from '../../../assets/icons/pencil-square.svg';
@@ -19,8 +20,8 @@ const waterportions = [
   { id: 'id-1', ml: '250', time: '7.00' },
   { id: 'id-2', ml: '200', time: '8.00' },
   { id: 'id-3', ml: '200', time: '10.00' },
-  // { id: 'id-4', ml: '175', time: '11.30' },
-  // { id: 'id-5', ml: '250', time: '12.00' },
+  { id: 'id-4', ml: '175', time: '11.30' },
+  { id: 'id-5', ml: '250', time: '12.00' },
 ];
 
 const WaterPortionsList = () => {
@@ -28,29 +29,25 @@ const WaterPortionsList = () => {
   //   const filteredcontacts = useSelector(selectVisibleContacts);
 
   return (
-    <div>
-      <PortionsList>
+    <PortionsList>
+      <ScrollableDiv>
         {waterportions.map(item => (
-          <div key={item.id}>
-            <Portions>
-              <div>
-                <Glass />
-              </div>
-              <Portion>{item.ml}ml</Portion>
-              <Time>{item.time}AM</Time>
-              <Edit>
-                <Pencil />
-                <Bucket />
-              </Edit>
-            </Portions>
+          <Portions key={item.id}>
+            <Glass />
+            <Portion>{item.ml}ml</Portion>
+            <Time>{item.time}AM</Time>
+            <Edit>
+              <Pencil />
+              <Bucket />
+            </Edit>
             {/* <Button onClick={() => dispatch(deleteContact(item.id))}>
               Delete
             </Button> */}
-          </div>
+          </Portions>
         ))}
-        <Addwater>+ Add water</Addwater>
-      </PortionsList>
-    </div>
+      </ScrollableDiv>
+      <Addwater>+ Add water</Addwater>
+    </PortionsList>
   );
 };
 export default WaterPortionsList;

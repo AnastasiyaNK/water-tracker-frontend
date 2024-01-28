@@ -6,7 +6,6 @@ export const TodayBox = styled.div`
   flex-direction: column;
   width: 534px;
   height: 260px;
-  /* border: 1px solid black; */
   color: var(--Primery-Color-Black, #2f2f2f);
   font-family: Roboto;
   font-size: 26px;
