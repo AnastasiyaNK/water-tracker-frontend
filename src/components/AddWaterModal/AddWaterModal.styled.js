@@ -29,7 +29,7 @@ export const StyledWaterForm = styled.form`
     height: 44px;
     border-radius: 40px;
     border-color: #9ebbff;
-    stroke: #407bff;
+    fill: #407bff;
   }
   .water-amount-value {
     font-size: 18px;
