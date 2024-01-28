@@ -4,7 +4,7 @@ export const WaterStatistic = styled.div`
   width: 592px;
   height: 680px;
   position: relative;
-  top: 70px;
+  top: 100px;
   left: 700px;
   display: inline-flex;
   padding: 32px 24px;

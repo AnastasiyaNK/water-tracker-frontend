@@ -11,7 +11,7 @@ import {
   PortionsList,
   Addwater,
 } from './WaterPortionsList.styled';
-import { ReactComponent as Glass } from '../../../assets/icons/glass1.svg';
+import { ReactComponent as Glass } from '../../../assets/icons/glass-desc.svg';
 import { ReactComponent as Pencil } from '../../../assets/icons/pencil-square.svg';
 import { ReactComponent as Bucket } from '../../../assets/icons/bucket.svg';
 
