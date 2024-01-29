@@ -4,6 +4,8 @@ export { default as Month } from './HomePage/Month/Month';
 export { default as DailyNorma } from './HomePage/DailyNorma/DailyNorma';
 export { default as WaterPortionsList } from './HomePage/WaterPortionList/WaterPortionList';
 export { default as DaysList } from './HomePage/DaysList/DaysList.js';
+export { default as Day } from './HomePage/Day/Day';
+export { default as DayGeneralStats } from './HomePage/DayGeneralStats/DayGeneralStats';
 export { default as Paginate } from './HomePage/Paginate/Paginate';
 export { default as RangeBar } from './HomePage/RangeBar/RangeBar';
 export { default as Header } from './Header/Header';
