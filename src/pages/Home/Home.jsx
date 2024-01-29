@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { LoginForm, RegisterForm, SettingsModal } from "components";
+import { LoginForm, RegisterForm } from "components";
 import ModalButton from "components/ModalButton/ModalButton";
 import MyDailyNormaModal from "components/MyDailyNormaModal/MyDailyNormaModal";
 
