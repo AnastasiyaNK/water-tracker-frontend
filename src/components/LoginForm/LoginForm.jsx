@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { StyledLoginForm } from "./styled";
+
 const LoginForm = () => {
-  
   useEffect(() => {
     const savedFormData = localStorage.getItem("loginFormData");
     if (savedFormData) {
@@ -8,42 +9,47 @@ const LoginForm = () => {
     }
   }, []);
 
-  
   const [formData, setFormData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
-  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
 
-    localStorage.setItem("loginFormData", JSON.stringify({ ...formData, [name]: value }));
+    localStorage.setItem(
+      "loginFormData",
+      JSON.stringify({ ...formData, [name]: value })
+    );
   };
-
 
   return (
     <div className="App">
-      <form >
+      <StyledLoginForm>
         <p>Enter your email</p>
-        <input type="email" name="email" placeholder="email" value={formData.email} onChange={handleInputChange} />
+        <input
+          type="email"
+          name="email"
+          placeholder="email"
+          value={formData.email}
+          onChange={handleInputChange}
+        />
         <p>Enter your password</p>
-        <input  type="password" name="password" placeholder="Password" value={formData.password}
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
           onChange={handleInputChange}
         />
         <button type="submit">Sign in</button>
-      </form>
+      </StyledLoginForm>
     </div>
   );
 };
 
 export default LoginForm;
-
-
- 
-
-
