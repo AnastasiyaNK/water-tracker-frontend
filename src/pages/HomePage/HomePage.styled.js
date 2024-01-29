@@ -9,5 +9,4 @@ export const Fon = styled.div`
 
   background-repeat: no-repeat;
   background-position: center, 83px 118px;
-  /* 113px 540px, 180px 420px; */
 `;
