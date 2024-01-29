@@ -1,14 +1,8 @@
-import React, { useState } from "react";
-import { LoginForm, RegisterForm, SettingsModal } from "components";
+import React from "react";
+import { LoginForm, RegisterForm } from "components";
 import ModalButton from "components/ModalButton/ModalButton";
 
 const Home = () => {
-  //TODO:ТИМЧАСОВО ДЛЯ ЗАКРИТТЯ МОДАЛКИ- ПРИБРАТИ!
-  //!ТИМЧАСОВО ДЛЯ ЗАКРИТТЯ МОДАЛКИ- ПРИБРАТИ!
-  const [isOpenSettingsModal, setIsOpenSettingsModal] = useState(false);
-
-  //!ТИМЧАСОВО ДЛЯ ЗАКРИТТЯ МОДАЛКИ- ПРИБРАТИ!
-
   return (
     <div>
       {/* <button className="open-modal-btn" onClick={() => setIsOpenModal(true)}>
@@ -18,9 +12,6 @@ const Home = () => {
       <ModalButton />
       <LoginForm />
       <RegisterForm />
-      {isOpenSettingsModal && (
-        <SettingsModal toggleModal={setIsOpenSettingsModal} />
-      )}
     </div>
   );
 };

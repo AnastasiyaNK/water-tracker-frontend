@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { ReactComponent as IconClose } from "../../assets/icons/close.svg";
 import { StyledModalBackdrop } from "./ModalStyled";
 
-const Modal = ({ toggleModal, children, title }) => {
+const Modal = ({ toggleModal, children, title, styledClass }) => {
   const handleOverlayClick = (event) => {
     if (event.target === event.currentTarget) {
       toggleModal(false);
@@ -19,7 +19,7 @@ const Modal = ({ toggleModal, children, title }) => {
   }, [toggleModal]);
   return (
     <StyledModalBackdrop onClick={handleOverlayClick}>
-      <div className="settings-modal">
+      <div className={styledClass}>
         <h2 className="title">{title}</h2>
         <button
           className="close-btn"
@@ -29,9 +29,6 @@ const Modal = ({ toggleModal, children, title }) => {
           <IconClose className="close-btn-svg" />
         </button>
         {children}
-        {/* <button className="settings-submit-btn" type="submit">
-          Save
-        </button> */}
       </div>
     </StyledModalBackdrop>
   );

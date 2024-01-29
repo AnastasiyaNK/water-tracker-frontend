@@ -7,6 +7,7 @@ export const ModalHeader = ({
   isOpen,
 
   onOpenLogoutModal,
+  onOpenSettingsModal,
   onClose,
 }) => {
   useEffect(() => {
@@ -31,6 +32,7 @@ export const ModalHeader = ({
         <Button
           type="button"
           onClick={() => {
+            onOpenSettingsModal(true);
             onClose();
           }}
         >
