@@ -83,10 +83,6 @@ export const StyledSettingsModalBackdrop = styled.div`
     }
   }
 
-  form {
-    margin-bottom: 24px;
-  }
-
   .secondary-title {
     font-size: 18px;
     font-weight: 500;
@@ -166,6 +162,7 @@ export const StyledSettingsModalBackdrop = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
+    margin-bottom: 24px;
 
     @media (min-width: 1440px) {
       flex-direction: row;
@@ -203,8 +200,8 @@ export const StyledSettingsModalBackdrop = styled.div`
           position: absolute;
           top: 1px;
           left: 0px;
-          width: 13px;
-          height: 13px;
+          width: 14px;
+          height: 14px;
 
           border-radius: 50%;
           border: 1px solid #407bff;
@@ -233,13 +230,10 @@ export const StyledSettingsModalBackdrop = styled.div`
     }
   }
 
-  /* .input-title {
-    margin-bottom: 8px;
-  } */
-
   .email-title {
     margin-top: 24px;
   }
+
   .main-input {
     font-size: 16px;
     line-height: 1.25;
@@ -263,6 +257,26 @@ export const StyledSettingsModalBackdrop = styled.div`
     }
   }
 
+  .error-input {
+    border: 1px solid #ef5050;
+    color: #ef5050;
+    outline: 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #ef5050;
+    }
+  }
+
+  .error {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #ef5050;
+  }
+
   .password-subtitle {
     margin: 12px 0 8px 0;
     color: #2f2f2f;
@@ -270,6 +284,26 @@ export const StyledSettingsModalBackdrop = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
+  }
+
+  .password-wrapper {
+    position: relative;
+    max-width: 392px;
+  }
+
+  .eye-icon {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+
+    path {
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      stroke: #407bff;
+    }
   }
 
   .settings-submit-btn {
