@@ -40,4 +40,5 @@ export const Edit = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 20px; /* 125% */
+  cursor: pointer;
 `;
