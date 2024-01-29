@@ -6,6 +6,7 @@ export const StyledModalButton = styled.div`
     width: 160px;
     min-height: 44px;
     padding: 8px 30px;
+    margin-bottom: 8px;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
