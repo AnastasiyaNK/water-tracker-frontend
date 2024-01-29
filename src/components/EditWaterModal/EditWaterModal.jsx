@@ -14,7 +14,7 @@ const EditWaterModal = ({ toggleModal }) => {
           <span className="form-action-water-value glass-value-bold">
             250ml
           </span>
-          <span className="time-value"> 7:00 AM</span>
+          <span className="time-value"> 7:10 AM</span>
         </div>
         <div className="choose-water-value-container">
           <p className="choose-title">Correct entered data:</p>
