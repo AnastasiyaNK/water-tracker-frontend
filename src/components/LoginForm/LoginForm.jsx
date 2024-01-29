@@ -29,7 +29,7 @@ const LoginForm = () => {
 
   return (
     <div className="App">
-      <StyledLoginForm>
+
         <p>Enter your email</p>
         <input
           type="email"
@@ -47,7 +47,7 @@ const LoginForm = () => {
           onChange={handleInputChange}
         />
         <button type="submit">Sign in</button>
-      </StyledLoginForm>
+
     </div>
   );
 };
