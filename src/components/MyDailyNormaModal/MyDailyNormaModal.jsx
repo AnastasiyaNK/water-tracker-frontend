@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  StyledMyDailyNormaModal,
-  SettingsModal,
-  Title,
-  CloseBtn,
   Form,
   TitleGender,
   TitleGenderList,
@@ -22,7 +18,7 @@ import {
   SettingsSubmitBtn,
 } from "./MyDailyNormaModal.styled";
 
-import { ReactComponent as IconClose } from "../../assets/icons/close.svg";
+import Modal from "../Modal/Modal";
 
 const MyDailyNormaModal = ({ toggleModal }) => {
   const [gender, setGender] = useState("female");
@@ -75,103 +71,95 @@ const MyDailyNormaModal = ({ toggleModal }) => {
   };
 
   return (
-    <StyledMyDailyNormaModal>
-      <SettingsModal>
-        <Title>My daily norma</Title>
-        <CloseBtn onClick={() => toggleModal(false)}>
-          <IconClose />
-        </CloseBtn>
-        <Form onSubmit={handleSave}>
-          <TitleGender>
-            <TitleGenderList>For girl:</TitleGenderList>
-            <CalculatorWater>V=(M*0,03) + (T*0,4)</CalculatorWater>
-            <TitleGenderList>For man:</TitleGenderList>
-            <CalculatorWater>V=(M*0,04) + (T*0,6)</CalculatorWater>
-          </TitleGender>
-          <TitleContent>
-            <TitleContentWater>
-              <TitleText>*</TitleText> V is the volume of the water norm in
-              liters per day, M is your body weight, T is the time of active
-              sports, or another type of activity commensurate in terms of loads
-              (in the absence of these, you must set 0)
-            </TitleContentWater>
-          </TitleContent>
+    <Modal toggleModal={toggleModal} title="My daily norma">
+      <Form onSubmit={handleSave}>
+        <TitleGender>
+          <TitleGenderList>For girl:</TitleGenderList>
+          <CalculatorWater>V=(M*0,03) + (T*0,4)</CalculatorWater>
+          <TitleGenderList>For man:</TitleGenderList>
+          <CalculatorWater>V=(M*0,04) + (T*0,6)</CalculatorWater>
+        </TitleGender>
+        <TitleContent>
+          <TitleContentWater>
+            <TitleText>*</TitleText> V is the volume of the water norm in liters
+            per day, M is your body weight, T is the time of active sports, or
+            another type of activity commensurate in terms of loads (in the
+            absence of these, you must set 0)
+          </TitleContentWater>
+        </TitleContent>
 
-          <div>
-            <SecondaryTitle>Calculate your rate:</SecondaryTitle>
-            <ListGender>
-              <label>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="female"
-                  checked={gender === "female"}
-                  onChange={handleGenderChange}
-                />
-                <GenderName>For woman</GenderName>
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="male"
-                  checked={gender === "male"}
-                  onChange={handleGenderChange}
-                />
-                <GenderName>For man</GenderName>
-              </label>
-            </ListGender>
-            <div>
-              <StatisticsCalculete>
-                Your weight in kilograms:
-              </StatisticsCalculete>
-              <label>
-                <MainInput
-                  type="number"
-                  placeholder="0"
-                  value={weight}
-                  onChange={handleWeightChange}
-                />
-              </label>
-            </div>
-            <div>
-              <StatisticsCalculete>
-                The time of active participation in sports or other activities
-                with a high physical. load in hours:
-              </StatisticsCalculete>
-              <label>
-                <MainInput
-                  type="number"
-                  placeholder="0"
-                  value={hours}
-                  onChange={handleHoursChange}
-                />
-              </label>
-            </div>
-            <div>
-              <StatisticsCalculete>
-                The required amount of water in liters per day:{" "}
-                <StatisticsWatarDay>{dailyNorma} L</StatisticsWatarDay>
-              </StatisticsCalculete>
-            </div>
-          </div>
-          <div>
-            <SecondarySubtitle>
-              Write down how much water you will drink:
-            </SecondarySubtitle>
+        <div>
+          <SecondaryTitle>Calculate your rate:</SecondaryTitle>
+          <ListGender>
             <label>
-              <MainInputBtn
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                checked={gender === "female"}
+                onChange={handleGenderChange}
+              />
+              <GenderName>For woman</GenderName>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                checked={gender === "male"}
+                onChange={handleGenderChange}
+              />
+              <GenderName>For man</GenderName>
+            </label>
+          </ListGender>
+          <div>
+            <StatisticsCalculete>Your weight in kilograms:</StatisticsCalculete>
+            <label>
+              <MainInput
                 type="number"
                 placeholder="0"
-                value={yourAmountWater}
-                onChange={handleAmountWaterChange}
+                value={weight}
+                onChange={handleWeightChange}
               />
             </label>
           </div>
-          <SettingsSubmitBtn type="submit">Save</SettingsSubmitBtn>
-        </Form>
-      </SettingsModal>
-    </StyledMyDailyNormaModal>
+          <div>
+            <StatisticsCalculete>
+              The time of active participation in sports or other activities
+              with a high physical. load in hours:
+            </StatisticsCalculete>
+            <label>
+              <MainInput
+                type="number"
+                placeholder="0"
+                value={hours}
+                onChange={handleHoursChange}
+              />
+            </label>
+          </div>
+          <div>
+            <StatisticsCalculete>
+              The required amount of water in liters per day:{" "}
+              <StatisticsWatarDay>{dailyNorma} L</StatisticsWatarDay>
+            </StatisticsCalculete>
+          </div>
+        </div>
+        <div>
+          <SecondarySubtitle>
+            Write down how much water you will drink:
+          </SecondarySubtitle>
+          <label>
+            <MainInputBtn
+              type="number"
+              placeholder="0"
+              value={yourAmountWater}
+              onChange={handleAmountWaterChange}
+            />
+          </label>
+        </div>
+        <SettingsSubmitBtn type="submit">Save</SettingsSubmitBtn>
+      </Form>
+    </Modal>
   );
 };
 
