@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { LoginForm, RegisterForm, SettingsModal } from "components";
 import ModalButton from "components/ModalButton/ModalButton";
+import MyDailyNormaModal from "components/MyDailyNormaModal/MyDailyNormaModal";
 
 const Home = () => {
   //TODO:ТИМЧАСОВО ДЛЯ ЗАКРИТТЯ МОДАЛКИ- ПРИБРАТИ!
@@ -8,6 +9,8 @@ const Home = () => {
   const [isOpenSettingsModal, setIsOpenSettingsModal] = useState(false);
 
   //!ТИМЧАСОВО ДЛЯ ЗАКРИТТЯ МОДАЛКИ- ПРИБРАТИ!
+
+  const [isOpenDailyNorma, setIsOpenDailyNorma] = useState(false);
 
   return (
     <div>
@@ -18,8 +21,14 @@ const Home = () => {
       <ModalButton />
       <LoginForm />
       <RegisterForm />
-      {isOpenSettingsModal && (
+      {/* {isOpenSettingsModal && (
         <SettingsModal toggleModal={setIsOpenSettingsModal} />
+      )} */}
+      <button onClick={() => setIsOpenDailyNorma(true)}>
+        Edit Daily Norma
+      </button>
+      {isOpenDailyNorma && (
+        <MyDailyNormaModal toggleModal={setIsOpenDailyNorma} />
       )}
     </div>
   );
