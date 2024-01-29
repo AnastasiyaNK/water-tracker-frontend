@@ -45,10 +45,14 @@ const SettingsModal = ({ toggleModal }) => {
             outdatedPassword || repeatedPassword,
           then: (schema) => schema.required("Enter a new password"),
         }),
-      repeatedPassword: yup.string().when(["outdatedPassword", "newPassword"], {
-        is: (outdatedPassword, newPassword) => outdatedPassword || newPassword,
-        then: (schema) => schema.required("Confirm new password"),
-      }),
+      repeatedPassword: yup
+        .string()
+        .oneOf([yup.ref("newPassword")], "Passwords don't match")
+        .when(["outdatedPassword", "newPassword"], {
+          is: (outdatedPassword, newPassword) =>
+            outdatedPassword || newPassword,
+          then: (schema) => schema.required("Confirm new password"),
+        }),
     },
     [
       ["newPassword", "repeatedPassword"],
@@ -152,7 +156,7 @@ const SettingsModal = ({ toggleModal }) => {
                   placeholder="name"
                 />
               </label>
-              {formik.touched.name && formik.errors.name && (
+              {formik.errors.name && (
                 <div className="error">{formik.errors.name}</div>
               )}
               <p className="secondary-title email-title">E-mail</p>
@@ -168,7 +172,7 @@ const SettingsModal = ({ toggleModal }) => {
                   placeholder="e-mail"
                 />
               </label>
-              {formik.touched.email && formik.errors.email && (
+              {formik.errors.email && (
                 <div className="error">{formik.errors.email}</div>
               )}
             </div>
@@ -200,12 +204,9 @@ const SettingsModal = ({ toggleModal }) => {
                     placeholder="Password"
                   />
                 </label>
-                {formik.touched.outdatedPassword &&
-                  formik.errors.outdatedPassword && (
-                    <div className="error">
-                      {formik.errors.outdatedPassword}
-                    </div>
-                  )}
+                {formik.errors.outdatedPassword && (
+                  <div className="error">{formik.errors.outdatedPassword}</div>
+                )}
               </div>
               <p className="password-subtitle">New Password:</p>
               <div className="password-wrapper">
@@ -231,7 +232,7 @@ const SettingsModal = ({ toggleModal }) => {
                     placeholder="Password"
                   />
                 </label>
-                {formik.touched.newPassword && formik.errors.newPassword && (
+                {formik.errors.newPassword && (
                   <div className="error">{formik.errors.newPassword}</div>
                 )}
               </div>
@@ -259,12 +260,9 @@ const SettingsModal = ({ toggleModal }) => {
                     placeholder="Password"
                   />
                 </label>
-                {formik.touched.repeatedPassword &&
-                  formik.errors.repeatedPassword && (
-                    <div className="error">
-                      {formik.errors.repeatedPassword}
-                    </div>
-                  )}
+                {formik.errors.repeatedPassword && (
+                  <div className="error">{formik.errors.repeatedPassword}</div>
+                )}
               </div>
             </div>
           </div>
