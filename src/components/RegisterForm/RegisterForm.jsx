@@ -3,21 +3,18 @@ import { StyledLoginForm } from './styled';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { apiUserRegister } from 'redux/userSlice';
-import { userSlice } from 'redux';
-
-//import { userSlice } from 'redux';
-//import { persistData } from 'redux/actions'; // Припустимо, це ваша дія для збереження даних на бекенді
+import { registerUser } from './api'; 
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const { email, password, repeatPassword } = useSelector(state => state.user); // Припустимо, що такі дані зберігаються в стані Redux
+  const { email, password, repeatPassword } = useSelector(state => state.user);
   const [error, setError] = useState('');
 
   useEffect(() => {
     const savedData = localStorage.getItem('userFormData');
     if (savedData) {
-      //const parsedData = JSON.parse(savedData);
-     // dispatch(persistData(parsedData)); // Дія для збереження даних у Redux сторі
+      // const parsedData = JSON.parse(savedData);
+      // dispatch(persistData(parsedData));
     }
   }, [dispatch]);
 
@@ -31,22 +28,9 @@ const LoginForm = () => {
       if (values.password === values.repeatPassword) {
         try {
           const formData = { email: values.email, password: values.password };
-          const response = await fetch('your_backend_login_endpoint', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
-
-          if (!response.ok) {
-            throw new Error('Failed to register user');
-          }
-
-          const data = await response.json();
-          dispatch(apiUserRegister(data.user));
+          await registerUser(formData); 
+          dispatch(apiUserRegister(values.user));
           localStorage.removeItem('userFormData');
-
         } catch (error) {
           setError(error.message);
         }
@@ -97,7 +81,7 @@ const LoginForm = () => {
       />
 
       {error && <div>{error}</div>}
-      <button className="butten" type="submit">
+      <button className="button" type="submit"> {/* Corrected typo 'butten' to 'button' */}
         Sign Up
       </button>
     </StyledLoginForm>
