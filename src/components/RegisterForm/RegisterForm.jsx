@@ -1,23 +1,37 @@
-//import React, { useState } from "react";
-import { StyledRegisterForm } from "./styled";
+import React, { useState, useEffect } from 'react';
 
-const RegisterForm = () => {
-  
+const RegistrationForm = () => {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  useEffect(() => {
+    const savedFormData = localStorage.getItem('formData');
+    if (savedFormData) {
+      setFormData(JSON.parse(savedFormData));
+    }
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Зберігаємо дані в локальне сховище
+    localStorage.setItem('formData', JSON.stringify(formData));
+    // Додаткова логіка для відправки даних на сервер
+  };
+
   return (
-    <StyledRegisterForm>
-      <form>
-        <p>Sign Up</p>
-        <p>Enter your email</p>
-        <input type="email" name="email"  placeholder="E-mail"  />
-        <p>Enter your password  </p>
-        <input type="password" name="password" placeholder="password"   />
-        <p>Repeat Password</p>
-        <input type="password" name="confirmPassword" placeholder="Repeat your password" />
-        <button type="submit">Sign Up</button>
-        <p> Sign in</p>
-      </form>
-    </StyledRegisterForm>
+    <form onSubmit={handleSubmit}>
+     <label> Sign In </label>
+
+      <label for="email">Enter your email</label>
+      <input type="email" id="email" name="email" required></input>
+       <label for="password">Enter your password</label>
+      <input type="password" id="password" name="password" required></input>
+      <button type="submit" value="Зареєструватися"> Sing Up</button>
+    </form>
   );
 };
 
-export default RegisterForm;
+export default RegistrationForm;

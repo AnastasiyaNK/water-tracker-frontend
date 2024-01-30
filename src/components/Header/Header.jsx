@@ -8,7 +8,7 @@ import { ModalHead } from "./UserLogoutModal/UserLogoutModal.styled";
 import { ModalHeader } from "./ModalHeader/ModalHeader";
 import { useState } from "react";
 
-const Header = ({ props }) => {
+const Header = () => {
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
   const authenticated = true;
 
