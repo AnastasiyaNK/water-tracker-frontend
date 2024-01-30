@@ -1,19 +1,22 @@
 import EditWaterModal from "components/EditWaterModal/EditWaterModal";
-import { StyledModalButton } from "components/ModalButton/ModalButton.styled";
+import { StyledModalButton2 } from "components/ModalButton2/ModalButton2.styled";
 import React, { useState } from "react";
 
 const ModalButton2 = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
-    <StyledModalButton>
+    <StyledModalButton2>
       <div>
-        <button className="open-modal-btn" onClick={() => setIsOpenModal(true)}>
-          Open modal 2
+        <button
+          className="hidden open-modal-btn "
+          onClick={() => setIsOpenModal(true)}
+        >
+          Edit Water
         </button>
         {isOpenModal && <EditWaterModal toggleModal={setIsOpenModal} />}
       </div>
-    </StyledModalButton>
+    </StyledModalButton2>
   );
 };
 

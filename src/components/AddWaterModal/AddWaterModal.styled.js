@@ -46,7 +46,7 @@ export const StyledWaterForm = styled.form`
     color: #407bff;
     border-radius: 40px;
     background: #d7e3ff;
-    padding: 8px 26px;
+    padding: 8px 20px;
   }
   .input-group {
     display: flex;

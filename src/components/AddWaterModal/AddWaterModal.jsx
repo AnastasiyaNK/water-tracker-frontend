@@ -1,12 +1,12 @@
 import { Modal } from "components";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { StyledWaterForm } from "./AddWaterModal.styled";
 import { ReactComponent as IconMinus } from "../../assets/icons/minus-small.svg";
 import { ReactComponent as IconPlus } from "../../assets/icons/plus-small.svg";
 
-const WATER_AMMOUNT_DIFFERENCE = 20;
+const WATER_AMOUNT_DIFFERENCE = 20;
 
 const addWaterValidationSchema = Yup.object({
   waterAmount: Yup.string()
@@ -22,7 +22,7 @@ const addWaterValidationSchema = Yup.object({
 
 const AddWaterModal = ({ toggleModal }) => {
   const currentDate = new Date();
-  const [localWaterAmmount, setLocalWaterAmmount] = useState(250);
+  const [localWaterAmount, setLocalWaterAmount] = useState(250);
   const {
     handleChange,
     handleSubmit,
@@ -41,16 +41,16 @@ const AddWaterModal = ({ toggleModal }) => {
   });
 
   const handleBlur = () => {
-    setFieldValue("waterAmount", localWaterAmmount.toString());
+    setFieldValue("waterAmount", localWaterAmount.toString());
   };
 
-  const handleAddWaterAmmount = () => {
-    const number = Number.parseInt(waterAmount) + WATER_AMMOUNT_DIFFERENCE;
+  const handleAddWaterAmount = () => {
+    const number = Number.parseInt(waterAmount) + WATER_AMOUNT_DIFFERENCE;
     console.log(waterAmount, number);
     setFieldValue("waterAmount", number.toString());
   };
-  const handleReduceWaterAmmount = () => {
-    const number = Number.parseInt(waterAmount) - WATER_AMMOUNT_DIFFERENCE;
+  const handleReduceWaterAmount = () => {
+    const number = Number.parseInt(waterAmount) - WATER_AMOUNT_DIFFERENCE;
     setFieldValue("waterAmount", number <= 0 ? "0" : number.toString());
   };
   return (
@@ -61,7 +61,7 @@ const AddWaterModal = ({ toggleModal }) => {
           <p className="water-amount">Amount of water:</p>
           <div className="water-controls-container">
             <button
-              onClick={handleReduceWaterAmmount}
+              onClick={handleReduceWaterAmount}
               className="water-control-btn"
               type="button"
             >
@@ -69,7 +69,7 @@ const AddWaterModal = ({ toggleModal }) => {
             </button>
             <span className="water-amount-value">{waterAmount}ml</span>
             <button
-              onClick={handleAddWaterAmmount}
+              onClick={handleAddWaterAmount}
               className="water-control-btn"
               type="button"
             >
@@ -93,9 +93,9 @@ const AddWaterModal = ({ toggleModal }) => {
             </h3>{" "}
             <input
               onBlur={handleBlur}
-              value={localWaterAmmount}
+              value={localWaterAmount}
               onChange={({ target: { value } }) =>
-                setLocalWaterAmmount(Number.parseInt(value))
+                setLocalWaterAmount(Number.parseInt(value))
               }
               type="text"
               className="input-group-input"

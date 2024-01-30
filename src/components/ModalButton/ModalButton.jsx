@@ -9,7 +9,7 @@ const ModalButton = () => {
     <StyledModalButton>
       <div>
         <button className="open-modal-btn" onClick={() => setIsOpenModal(true)}>
-          Open modal
+          Add Water
         </button>
         {isOpenModal && <AddWaterModal toggleModal={setIsOpenModal} />}
       </div>

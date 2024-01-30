@@ -16,9 +16,6 @@ const HomePage = () => {
 
   return (
     <Fon>
-      <button className="open-modal-btn" onClick={() => setIsOpenModal(true)}>
-        Open modal
-      </button>
       {isOpenModal && <AddWaterModal toggleModal={setIsOpenModal} />}
       <ModalButton />
       <ModalButton2 />
