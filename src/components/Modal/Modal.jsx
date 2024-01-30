@@ -1,22 +1,49 @@
 import { useEffect } from "react";
 import { ReactComponent as IconClose } from "../../assets/icons/close.svg";
 import { StyledModalBackdrop } from "./ModalStyled";
+import { useDispatch } from "react-redux";
+import {
+  setSettingsModal,
+  setDailyNormaModal,
+  setAddWaterModal,
+  setEditModal,
+} from "../../redux/modalsReduser";
 
-const Modal = ({ toggleModal, children, title, styledClass }) => {
+const Modal = ({ children, title, styledClass }) => {
+  const dispatch = useDispatch();
+
   const handleOverlayClick = (event) => {
     if (event.target === event.currentTarget) {
-      toggleModal(false);
+      dispatch(
+        setSettingsModal(false),
+        setDailyNormaModal(false),
+        setAddWaterModal(false),
+        setEditModal(false)
+      );
     }
   };
+
   useEffect(() => {
     const handleEscapeClick = (event) => {
       if (event.code === "Escape") {
-        toggleModal(false);
+        dispatch(
+          setSettingsModal(false),
+          setDailyNormaModal(false),
+          setAddWaterModal(false),
+          setEditModal(false)
+        );
       }
     };
+
+    document.body.style.overflowY = "hidden";
     window.addEventListener("keydown", handleEscapeClick);
-    return () => window.removeEventListener("keydown", handleEscapeClick);
-  }, [toggleModal]);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscapeClick);
+      document.body.style.overflowY = "visible";
+    };
+  }, [dispatch]);
+
   return (
     <StyledModalBackdrop onClick={handleOverlayClick}>
       <div className={styledClass}>
@@ -24,7 +51,14 @@ const Modal = ({ toggleModal, children, title, styledClass }) => {
         <button
           className="close-btn"
           type="button"
-          onClick={() => toggleModal(false)}
+          onClick={() =>
+            dispatch(
+              setSettingsModal(false),
+              setDailyNormaModal(false),
+              setAddWaterModal(false),
+              setEditModal(false)
+            )
+          }
         >
           <IconClose className="close-btn-svg" />
         </button>

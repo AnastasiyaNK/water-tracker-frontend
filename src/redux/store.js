@@ -36,6 +36,7 @@
 
 // export const persistor = persistStore(store);
 
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
+import { modalsReducer } from "./modalsReduser";
 
-export const store = configureStore({ reducer: {} });
+export const store = configureStore({ reducer: { modals: modalsReducer } });
