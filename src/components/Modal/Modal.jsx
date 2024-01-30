@@ -9,7 +9,7 @@ import {
   setEditModal,
 } from "../../redux/modalsReduser";
 
-const Modal = ({ children, title, styledClass }) => {
+const Modal = ({ children, title }) => {
   const dispatch = useDispatch();
 
   const handleOverlayClick = (event) => {
@@ -46,7 +46,7 @@ const Modal = ({ children, title, styledClass }) => {
 
   return (
     <StyledModalBackdrop onClick={handleOverlayClick}>
-      <div className={styledClass}>
+      <div className="modal-wrapper">
         <h2 className="title">{title}</h2>
         <button
           className="close-btn"

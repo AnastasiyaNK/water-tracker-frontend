@@ -113,5 +113,9 @@ export const StyledWaterForm = styled.form`
     &:active {
       box-shadow: none;
     }
+    &:disabled {
+      background-color: grey;
+      cursor: not-allowed;
+    }
   }
 `;
