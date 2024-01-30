@@ -1,49 +1,49 @@
 import styled from "styled-components";
 
-export const StyledMyDailyNormaModal = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  overflow: hidden;
-`
+// export const StyledMyDailyNormaModal = styled.div`
+//   width: 100vw;
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   background-color: rgba(0, 0, 0, 0.8);
+//   overflow: hidden;
+// `
 
-export const SettingsModal = styled.div`
-position: relative;
-  height: auto;
-  max-height: 90vh;
-  overflow-y: auto;
-  background-color: #ffffff;
-  padding: 32px 24px;
-  border-radius: 10px;
-  font-size: 18px;
-  line-height: 1.1;
+// export const SettingsModal = styled.div`
+// position: relative;
+//   height: auto;
+//   max-height: 90vh;
+//   overflow-y: auto;
+//   background-color: #ffffff;
+//   padding: 32px 24px;
+//   border-radius: 10px;
+//   font-size: 18px;
+//   line-height: 1.1;
 
-  @media (min-width: 1440px) {
-    width: 592px;
-    padding: 32px 24px;
-  }
+//   @media (min-width: 1440px) {
+//     width: 592px;
+//     padding: 32px 24px;
+//   }
 
-  @media (min-width: 768px) and (max-width: 1439px) {
-    width: 704px;
-    padding: 32px 24px;
-  }
-  @media (min-width: 320px) and (max-width: 767px) {
-    width: 280px;
-    padding: 24px 12px;
-  }
-`
-export const Title = styled.h2`
-  font-size: 26px;
-    line-height: 1.25;
-    margin-bottom: 24px;
-    color: #2f2f2f;
-`
+//   @media (min-width: 768px) and (max-width: 1439px) {
+//     width: 704px;
+//     padding: 32px 24px;
+//   }
+//   @media (min-width: 320px) and (max-width: 767px) {
+//     width: 280px;
+//     padding: 24px 12px;
+//   }
+// `
+// export const Title = styled.h2`
+//   font-size: 26px;
+//     line-height: 1.25;
+//     margin-bottom: 24px;
+//     color: #2f2f2f;
+// `
 
 export const CloseBtn = styled.button`
   position: absolute;

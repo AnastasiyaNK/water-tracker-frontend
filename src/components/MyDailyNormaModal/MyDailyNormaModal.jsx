@@ -15,8 +15,10 @@ import {
   MainInput,
   SecondarySubtitle,
   MainInputBtn,
-  SettingsSubmitBtn,
+  SettingsSubmitBtn
 } from "./MyDailyNormaModal.styled";
+
+
 
 import Modal from "../Modal/Modal";
 
@@ -71,7 +73,7 @@ const MyDailyNormaModal = ({ toggleModal }) => {
   };
 
   return (
-    <Modal toggleModal={toggleModal} title="My daily norma">
+    <Modal toggleModal={toggleModal} title="My daily norma" styledClass="settings-modal">
       <Form onSubmit={handleSave}>
         <TitleGender>
           <TitleGenderList>For girl:</TitleGenderList>
