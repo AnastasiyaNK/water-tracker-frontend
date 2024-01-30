@@ -20,7 +20,7 @@ import {
 
 import Modal from "../Modal/Modal";
 
-const MyDailyNormaModal = ({ toggleModal }) => {
+const MyDailyNormaModal = () => {
   const [gender, setGender] = useState("female");
   const [weight, setWeight] = useState("");
   const [hours, setHours] = useState("");
@@ -67,11 +67,10 @@ const MyDailyNormaModal = ({ toggleModal }) => {
     };
 
     console.log("SavedData", data);
-    toggleModal(false);
   };
 
   return (
-    <Modal toggleModal={toggleModal} title="My daily norma">
+    <Modal title="My daily norma" styledClass="daily-norma">
       <Form onSubmit={handleSave}>
         <TitleGender>
           <TitleGenderList>For girl:</TitleGenderList>
