@@ -310,12 +310,11 @@ export const StyledModalBackdrop = styled.div`
 
   ///Styled for modal - MyDailyNormaModal
   .settings-modal {
-    background-color: tomato;
     position: relative;
     height: auto;
     max-height: 90vh;
     overflow-y: auto;
-    /* background-color: #ffffff; */
+    background-color: #ffffff;
     padding: 32px 24px;
     border-radius: 10px;
     font-size: 18px;
@@ -329,12 +328,10 @@ export const StyledModalBackdrop = styled.div`
     @media (min-width: 768px) and (max-width: 1439px) {
       width: 704px;
       padding: 32px 24px;
-      background-color: green;
     }
     @media (min-width: 320px) and (max-width: 767px) {
       width: 280px;
       padding: 24px 12px;
-      background-color: yellow;
     }
   }
 `;
