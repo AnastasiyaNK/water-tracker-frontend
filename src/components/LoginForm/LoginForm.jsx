@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 import { StyledRegisterContainer, StyledRegisterForm } from './RegisterForm.styled';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { apiUserLogin, saveUserData } from 'redux/userSlice'; // Assuming you have actions for saving user data
+import { apiUserLogin, saveUserData } from 'redux/userSlice'; 
 import { Link } from 'react-router-dom';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
-  const { email, password } = useSelector(state => state.userData); // Assuming you have a reducer called userData to store user data
+  const { email, password } = useSelector(state => state.userData); 
 
   const formik = useFormik({
     initialValues: {
-      email: email || '', // Load from redux state or localStorage if available
-      password: password || '', // Load from redux state or localStorage if available
+      email: email || '', 
+      password: password || '', 
     },
     onSubmit: values => {
       const formData = { email: values.email, password: values.password };
@@ -20,15 +20,15 @@ const RegisterForm = () => {
     },
   });
 
-  // Load data from localStorage when component mounts
+  
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem('userData'));
     if (storedData) {
-      dispatch(saveUserData(storedData)); // Dispatch action to save data to Redux state
+      dispatch(saveUserData(storedData)); 
     }
   }, [dispatch]);
 
-  // Save form data to localStorage whenever it changes
+  
   useEffect(() => {
     localStorage.setItem('userData', JSON.stringify(formik.values));
   }, [formik.values]);
