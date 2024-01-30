@@ -35,7 +35,7 @@ export const Time = styled.div`
 export const Edit = styled.div`
   display: flex;
   gap: 18px;
-  margin-left: 340px;
+  margin-left: 325px;
 `;
 
 export const PortionsList = styled.div`
@@ -74,4 +74,10 @@ export const Addwater = styled.div`
 export const ScrollableDiv = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
+`;
+export const Button = styled.button`
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: none;
 `;

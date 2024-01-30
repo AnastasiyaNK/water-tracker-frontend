@@ -8,7 +8,7 @@ export const DataStyle = styled.span`
   font-weight: 500;
   line-height: 24px;
 `;
-export const Data = styled.p`
+export const Data = styled.div`
   color: var(--Primery-Color-Black, #2f2f2f);
   font-family: Roboto;
   font-size: 16px;
@@ -22,8 +22,8 @@ export const Box = styled.div`
   /* align-items: flex-start; */
   gap: 16px;
 `;
-export const XmarkStyle = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
+// export const XmarkStyle = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+// `;

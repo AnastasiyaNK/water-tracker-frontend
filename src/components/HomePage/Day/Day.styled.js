@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
 export const DayNumber = styled.div`
-  /* width: 34px;
-  height: 34px;
-  border-radius: 20px; */
-  /* border: 1px solid var(--Secondary-color-5, #ff9d43); */
-  /* background: var(--Primery-Color-White, #fff); */
   color: var(--Primery-Color-Black, #2f2f2f);
   text-align: center;
   font-family: Roboto;
@@ -23,4 +18,10 @@ export const Percent = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
+`;
+export const ButtonXmark = styled.button`
+  display: flex;
+  margin-left: auto;
+  border: none;
+  background: white;
 `;

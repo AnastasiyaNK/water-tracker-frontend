@@ -1,9 +1,11 @@
-import { DayNumber, Percent } from './Day.styled';
+import { DayNumber, Percent, ButtonXmark } from './Day.styled';
 import React, { useState } from 'react';
 import Popover from '@mui/material/Popover';
 import Box from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import DayGeneralStats from '../DayGeneralStats/DayGeneralStats';
+
+import { ReactComponent as Xmark } from '../../../assets/icons/outline-desc.svg';
 
 /**
  * @typedef {import('@mui/material/Popover').PopoverProps} PopoverProps
@@ -76,6 +78,9 @@ const Day = ({ buttonProps, popoverProps, item }) => {
             boxShadow: '0px 4px 4px 0px rgba(64, 123, 255, 0.3)',
           }}
         >
+          <ButtonXmark onClick={handleClose}>
+            <Xmark />
+          </ButtonXmark>
           <DayGeneralStats item={item} />
         </Box>
       </Popover>

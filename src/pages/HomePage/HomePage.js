@@ -1,5 +1,5 @@
 import React from 'react';
-import { RangeBar, WaterTracker } from 'components';
+import { AddWaterButton, RangeBar, WaterTracker } from 'components';
 import { DailyNorma } from 'components';
 import { Fon } from './HomePage.styled.js';
 
@@ -9,6 +9,7 @@ const HomePage = () => {
       <DailyNorma />
       <WaterTracker />
       <RangeBar />
+      <AddWaterButton />
     </Fon>
   );
 };

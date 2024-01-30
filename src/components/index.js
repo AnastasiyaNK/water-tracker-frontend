@@ -8,6 +8,7 @@ export { default as Day } from './HomePage/Day/Day';
 export { default as DayGeneralStats } from './HomePage/DayGeneralStats/DayGeneralStats';
 export { default as Paginate } from './HomePage/Paginate/Paginate';
 export { default as RangeBar } from './HomePage/RangeBar/RangeBar';
+export { default as AddWaterButton } from './HomePage/AddWatterButton/AddWatterButton';
 export { default as Header } from './Header/Header';
 export { default as LoginForm } from './LoginForm/LoginForm';
 export { default as RegisterForm } from './RegisterForm/RegisterForm';

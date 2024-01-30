@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 
 import { Range } from 'react-range';
-import {
-  RangBar,
-  Title,
-  Percent,
-  Percents,
-  RangeAdd,
-  Button,
-} from './RangeBar.styled';
+import { RangBar, Title, Percent, Percents, RangeAdd } from './RangeBar.styled';
 
 const RangeBar = () => {
   const [values, setValues] = useState([75]);
@@ -77,7 +70,6 @@ const RangeBar = () => {
           <Percent>100%</Percent>
         </Percents>
       </RangBar>
-      <Button type="button">+ Add Water</Button>
     </RangeAdd>
   );
 };

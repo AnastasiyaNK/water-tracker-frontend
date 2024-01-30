@@ -11,6 +11,7 @@ import {
   PortionsList,
   Addwater,
   ScrollableDiv,
+  Button,
 } from './WaterPortionsList.styled';
 import { ReactComponent as Glass } from '../../../assets/icons/glass-desc.svg';
 import { ReactComponent as Pencil } from '../../../assets/icons/pencil-square.svg';
@@ -37,8 +38,12 @@ const WaterPortionsList = () => {
             <Portion>{item.ml}ml</Portion>
             <Time>{item.time}AM</Time>
             <Edit>
-              <Pencil />
-              <Bucket />
+              <Button>
+                <Pencil />
+              </Button>
+              <Button>
+                <Bucket />
+              </Button>
             </Edit>
             {/* <Button onClick={() => dispatch(deleteContact(item.id))}>
               Delete
