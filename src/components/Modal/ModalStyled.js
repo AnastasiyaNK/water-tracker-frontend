@@ -41,6 +41,34 @@ export const StyledModalBackdrop = styled.div`
   }
   //--- settings modal window styles for tel tab and desk---\\
 
+  //--- daily norma modal window styles for tel tab and desk---\\
+  .daily-norma {
+    position: relative;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: #ffffff;
+    padding: 32px 24px;
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 1.1;
+
+    @media (min-width: 1440px) {
+      width: 592px;
+      padding: 32px 24px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1439px) {
+      width: 704px;
+      padding: 32px 24px;
+    }
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 280px;
+      padding: 24px 12px;
+    }
+  }
+  //--- daily norma modal window styles for tel tab and desk---\\
+
   .title {
     font-size: 26px;
     line-height: 1.25;
