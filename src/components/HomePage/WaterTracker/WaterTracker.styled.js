@@ -3,10 +3,8 @@ import styled from 'styled-components';
 export const WaterStatistic = styled.div`
   width: 592px;
   height: 680px;
-  position: relative;
-  top: 100px;
-  left: 700px;
   display: inline-flex;
+  margin-right: 0px;
   padding: 32px 24px;
   flex-direction: column;
   align-items: flex-start;

@@ -62,6 +62,9 @@ export const PortionsList = styled.div`
 `;
 
 export const Addwater = styled.div`
+  top: 25px;
+  width: 82px;
+  height: 24px;
   margin-top: 12px;
   color: var(--Primery-Color-Blue, #407bff);
   font-family: Roboto;

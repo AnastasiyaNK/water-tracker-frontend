@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
-import { SettingsModal } from 'components';
-import { Button } from './AddWatterButton.styled';
+import { AddWaterModal } from 'components';
+// import { SettingsModal } from 'components';
 
-const AddWaterButton = () => {
+const AddWaterButton = props => {
   const [showComponent, setShowComponent] = useState(false);
 
+  const toggleModal = boolean => {
+    return boolean === true ? setShowComponent(true) : setShowComponent(false);
+  };
   const handleClick = () => {
     setShowComponent(true);
   };
 
   return (
     <div>
-      <Button type="button" onClick={handleClick}>
-        + Add Water
-      </Button>
-      {showComponent && <SettingsModal />}
+      <button type="button" onClick={handleClick} style={props.style}>
+        <p>+ Add Water</p>
+      </button>
+
+      {showComponent && <AddWaterModal toggleModal={toggleModal} />}
     </div>
   );
 };

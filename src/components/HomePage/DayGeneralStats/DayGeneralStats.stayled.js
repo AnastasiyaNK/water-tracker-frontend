@@ -19,11 +19,5 @@ export const Data = styled.div`
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: flex-start; */
   gap: 16px;
 `;
-// export const XmarkStyle = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-// `;

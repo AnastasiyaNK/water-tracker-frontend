@@ -1,15 +1,16 @@
 import React from 'react';
-import { AddWaterButton, RangeBar, WaterTracker } from 'components';
+import { RangeBar, WaterTracker } from 'components';
 import { DailyNorma } from 'components';
-import { Fon } from './HomePage.styled.js';
+import { Fon, DailyRangeStyle } from './HomePage.styled.js';
 
 const HomePage = () => {
   return (
     <Fon>
-      <DailyNorma />
+      <DailyRangeStyle>
+        <DailyNorma />
+        <RangeBar />
+      </DailyRangeStyle>
       <WaterTracker />
-      <RangeBar />
-      <AddWaterButton />
     </Fon>
   );
 };

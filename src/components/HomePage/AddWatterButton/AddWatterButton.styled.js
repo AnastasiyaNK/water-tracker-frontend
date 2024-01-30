@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Button = styled.div`
-  position: absolute;
   top: 825px;
   width: 178px;
   height: 44px;

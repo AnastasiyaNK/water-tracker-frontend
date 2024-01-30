@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 export const DailyNormaBox = styled.div`
   width: 164px;
-  height: 76px;
-  position: relative;
+  height: 74px;
   left: 74px;
   top: 100px;
   display: inline-flex;

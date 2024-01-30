@@ -2,6 +2,7 @@
 // import { useDispatch } from 'react-redux';
 // import { deleteWaterPortion } from '../../redux/waterportions/operations';
 // import { selectVisibleContacts } from 'redux/contacts/selectors';
+import AddWaterButton from '../AddWatterButton/AddWatterButton';
 
 import {
   Portions,
@@ -9,7 +10,6 @@ import {
   Time,
   Edit,
   PortionsList,
-  Addwater,
   ScrollableDiv,
   Button,
 } from './WaterPortionsList.styled';
@@ -28,6 +28,21 @@ const waterportions = [
 const WaterPortionsList = () => {
   //   const dispatch = useDispatch();
   //   const filteredcontacts = useSelector(selectVisibleContacts);
+
+  const buttonStyle = {
+    display: 'inline-flex',
+    top: '25px',
+    width: '114px',
+    height: '24px',
+    marginTop: '12px',
+    color: 'var(--Primery-Color-Blue, #407bff)',
+    fontFamily: 'Roboto',
+    fontSize: '18px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '24px',
+    border: 'none',
+  };
 
   return (
     <PortionsList>
@@ -51,7 +66,10 @@ const WaterPortionsList = () => {
           </Portions>
         ))}
       </ScrollableDiv>
-      <Addwater>+ Add water</Addwater>
+
+      <>
+        <AddWaterButton style={buttonStyle} />
+      </>
     </PortionsList>
   );
 };
