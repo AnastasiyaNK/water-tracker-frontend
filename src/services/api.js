@@ -5,7 +5,7 @@ export const authInstance = axios.create({
 });
 
 export const setToken = token => {
-  authInstance.defaults.headers.common.Authorization = Bearer ${ token };
+  authInstance.defaults.headers.common.Authorization =`Bearer ${ token }`;
 };  
 
 export const requestRegister = async formData => {
