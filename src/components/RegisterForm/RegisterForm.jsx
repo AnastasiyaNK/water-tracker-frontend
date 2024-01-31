@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { RegisterForm } from "../../redux/userSlice";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    email: "",
+    password: "",
   });
 
   useEffect(() => {
-    const savedFormData = localStorage.getItem('formData');
+    const savedFormData = localStorage.getItem("formData");
     if (savedFormData) {
       setFormData(JSON.parse(savedFormData));
     }
@@ -17,19 +18,22 @@ const RegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Зберігаємо дані в локальне сховище
-    localStorage.setItem('formData', JSON.stringify(formData));
+    localStorage.setItem("formData", JSON.stringify(formData));
     // Додаткова логіка для відправки даних на сервер
   };
 
   return (
     <form onSubmit={handleSubmit}>
-     <label> Sign In </label>
+      <label> Sign In </label>
 
       <label for="email">Enter your email</label>
       <input type="email" id="email" name="email" required></input>
-       <label for="password">Enter your password</label>
+      <label for="password">Enter your password</label>
       <input type="password" id="password" name="password" required></input>
-      <button type="submit" value="Зареєструватися"> Sing Up</button>
+      <button type="submit" value="Зареєструватися">
+        {" "}
+        Sing Up
+      </button>
     </form>
   );
 };
