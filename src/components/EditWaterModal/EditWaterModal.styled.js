@@ -38,11 +38,10 @@ export const StyledWaterForm = styled.form`
     margin-bottom: 12px;
   }
   .water-controls-container {
-    width: 194px;
     display: flex;
     gap: 7px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 24px;
   }
   .water-control-btn {

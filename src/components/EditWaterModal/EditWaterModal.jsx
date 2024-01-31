@@ -43,7 +43,10 @@ const EditWaterModal = ({ toggleModal }) => {
   });
 
   const handleBlur = () => {
-    setFieldValue("waterAmount", localWaterAmount.toString());
+    setFieldValue(
+      "waterAmount",
+      localWaterAmount ? localWaterAmount.toString() : "0"
+    );
   };
 
   const handleEditWaterAmount = () => {
@@ -110,7 +113,7 @@ const EditWaterModal = ({ toggleModal }) => {
               onChange={({ target: { value } }) =>
                 setLocalWaterAmount(Number.parseInt(value))
               }
-              type="text"
+              type="number"
               className="input-group-input"
             />
             {errors.waterAmount ? <div>{errors.waterAmount}</div> : null}
