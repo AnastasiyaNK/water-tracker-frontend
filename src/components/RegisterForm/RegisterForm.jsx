@@ -1,59 +1,40 @@
-import React from 'react';
-import {
-  StyledRegisterContainer,
-  StyledRegisterForm,
-} from './RegisterForm.styled';
-import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { apiUserLogin } from '../../redux/userSlice';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { RegisterForm } from "../../redux/userSlice";
 
-const RegisterForm = () => {
-  const dispatch = useDispatch();
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    onSubmit: values => {
-      const formData = { email: values.email, password: values.password };
-      dispatch(apiUserLogin(formData));
-    },
+const RegistrationForm = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
   });
+
+  useEffect(() => {
+    const savedFormData = localStorage.getItem("formData");
+    if (savedFormData) {
+      setFormData(JSON.parse(savedFormData));
+    }
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Зберігаємо дані в локальне сховище
+    localStorage.setItem("formData", JSON.stringify(formData));
+    // Додаткова логіка для відправки даних на сервер
+  };
+
   return (
-    <StyledRegisterContainer>
-      <StyledRegisterForm onSubmit={formik.handleSubmit}>
-        <h2 className="title">Sign In</h2>
-        <label className="label">
-          <span className="label-text">Enter your email</span>
-        </label>
-        <input
-          className="input"
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        />
-        <label className="label">
-          <span className="label-text">Enter your password</span>
-        </label>
-        <input
-          className="input"
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
-        <button className="button" type="submit">
-          Sign In
-        </button>
-        <Link to="/signup" className="link">
-          Sign Up
-        </Link>
-      </StyledRegisterForm>
-    </StyledRegisterContainer>
+    <form onSubmit={handleSubmit}>
+      <label> Sign In </label>
+
+      <label for="email">Enter your email</label>
+      <input type="email" id="email" name="email" required></input>
+      <label for="password">Enter your password</label>
+      <input type="password" id="password" name="password" required></input>
+      <button type="submit" value="Зареєструватися">
+        {" "}
+        Sing Up
+      </button>
+    </form>
   );
 };
 

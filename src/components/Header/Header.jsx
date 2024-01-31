@@ -1,19 +1,35 @@
-import React from "react";
-import { StyledHeader } from "./styled";
-import { StyledMainContainer } from "styled";
-import { Link } from "react-router-dom";
+import { ReactComponent as MainLogo } from "assets/icons/logo-water.svg";
+import { ReactComponent as UserLogo } from "assets/icons/user.svg";
+import { Link, NavLink } from "react-router-dom";
+import { StyledHeader } from "./Header.styled";
+import { StyledMainContainer } from "../../styled";
+// import UserAuth from "./UserAuth/UserAuth";
+// import { useSelector } from "react-redux";
+// import { selectUserIsSignedIn } from "redux/selectors";
 
 const Header = () => {
+  // const isSignedIn = useSelector(selectUserIsSignedIn);
   return (
-    <StyledHeader>
-      <StyledMainContainer>
-        <Link className="logo">Logo</Link>
-        <div className="sign-in-wrapper">
-          <Link className="sign-in-link">Sign in</Link>
-          <img src="" alt="" />
-        </div>
-      </StyledMainContainer>
-    </StyledHeader>
+    <StyledMainContainer>
+      <StyledHeader>
+        <NavLink to="/welcome" className="link-logo">
+          <MainLogo className="main-logo" />
+        </NavLink>
+        <Link to="/signin" className="user-wrapper">
+          <p className="user-name">Sign in</p>
+          <UserLogo className="user-logo" />
+        </Link>
+
+        {/* {isSignedIn ? (
+          <UserAuth />
+        ) : (
+          <Link to="/signin" className="user-wrapper">
+            <p className="user-name">Sign in</p>
+            <UserLogo className="user-logo" />
+          </Link>
+        )} */}
+      </StyledHeader>
+    </StyledMainContainer>
   );
 };
 
