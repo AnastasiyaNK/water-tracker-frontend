@@ -3,9 +3,9 @@ import { styled } from "styled-components";
 export const StyledModalButton2 = styled.div`
   //TODO: TEMPORARY HIDING !!!
 
-  /* .hidden {
+  .hidden {
     visibility: hidden;
-  } */
+  }
 
   //TODO: TEMPORARY HIDING !!!
 

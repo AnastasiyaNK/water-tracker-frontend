@@ -2,9 +2,9 @@ import { styled } from "styled-components";
 
 export const StyledModalButton = styled.div`
   //TODO: TEMPORARY HIDING !!!
-  /* .open-modal-btn {
+  .open-modal-btn {
     visibility: hidden;
-  } */
+  }
   //TODO: TEMPORARY HIDING !!!
 
   .open-modal-btn {
