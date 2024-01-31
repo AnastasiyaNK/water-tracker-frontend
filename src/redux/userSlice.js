@@ -7,7 +7,7 @@ export const apiUserRegister = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const userData = await requestRegister(formData);
-      console.log(userData);
+      // alert('User successfully created, please sign in!');
       return userData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -51,6 +51,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.user = action.payload.user;
         state.token = action.payload.token;
+        state.isSignedIn = true;
       })
 
       .addMatcher(

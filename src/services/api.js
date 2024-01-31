@@ -1,19 +1,20 @@
-export const registerUser = async (formData) => {
-  try {
-    const response = await fetch('your_backend_login_endpoint', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+import axios from 'axios';
 
-    if (!response.ok) {
-      throw new Error('Failed to register user');
-    }
+export const authInstance = axios.create({
+  baseURL: 'https://water-tracker-backend-0wax.onrender.com/api',
+});
 
-    return await response.json();
-  } catch (error) {
-    throw new Error(error.message);
-  }
+export const setToken = token => {
+  authInstance.defaults.headers.common.Authorization = Bearer ${ token };
+};  
+
+export const requestRegister = async formData => {
+  const { data } = await authInstance.post('user/register', formData);
+  setToken(data.token);
+  return data;
+};
+export const requestLogin = async formData => {  
+  const { data } = await authInstance.post('user/login', formData);
+  setToken(data.token);
+  return data;
 };

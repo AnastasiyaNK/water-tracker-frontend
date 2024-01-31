@@ -1,73 +1,81 @@
-import React, { useEffect } from 'react';
-import { StyledRegisterContainer, StyledRegisterForm } from './RegisterForm.styled';
+import React from 'react';
+import { StyledLoginForm } from './LoginForm.styled';
 import { useFormik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import { apiUserLogin, saveUserData } from 'redux/userSlice'; 
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-const RegisterForm = () => {
+import { apiUserRegister } from 'redux/userSlice';
+import { Link, useNavigate } from 'react-router-dom';
+
+const LoginForm = () => {
   const dispatch = useDispatch();
-  const { email, password } = useSelector(state => state.userData); 
-
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      email: email || '', 
-      password: password || '', 
+      email: '',
+      password: '',
+      repeatPassword: '',
     },
     onSubmit: values => {
-      const formData = { email: values.email, password: values.password };
-      dispatch(apiUserLogin(formData));
+      if (values.password === values.repeatPassword) {
+        const formData = { email: values.email, password: values.password };
+        dispatch(apiUserRegister(formData))
+          .unwrap()
+          .then(() => {
+            navigate('/signin');
+          });
+      }
     },
   });
 
-  
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('userData'));
-    if (storedData) {
-      dispatch(saveUserData(storedData)); 
-    }
-  }, [dispatch]);
-
-  
-  useEffect(() => {
-    localStorage.setItem('userData', JSON.stringify(formik.values));
-  }, [formik.values]);
-
   return (
-    <StyledRegisterContainer>
-      <StyledRegisterForm onSubmit={formik.handleSubmit}>
-        <h2 className="title">Sign In</h2>
-        <label className="label">
-          <span className="label-text">Enter your email</span>
-        </label>
-        <input
-          className="input"
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        />
-        <label className="label">
-          <span className="label-text">Enter your password</span>
-        </label>
-        <input
-          className="input"
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
-        <button className="button" type="submit">
-          Sign In
-        </button>
-        <Link to="/signup" className="link">
-          Sign Up
-        </Link>
-      </StyledRegisterForm>
-    </StyledRegisterContainer>
+    <StyledLoginForm onSubmit={formik.handleSubmit}>
+      <h2 className="title">Sign Up</h2>
+      <label className="label">
+        <span className="label-text">Enter your email</span>
+      </label>
+      <input
+        className="input"
+        name="email"
+        type="email"
+        placeholder="Email"
+        onChange={formik.handleChange}
+        value={formik.values.email}
+      />
+      <label className="label">
+        <span className="label-text">Enter your password</span>
+      </label>
+      <input
+        className="input"
+        name="password"
+        type="password"
+        placeholder="Password"
+        onChange={formik.handleChange}
+        value={formik.values.password}
+      />
+      <label className="label">
+        <span className="label-text">Repeat password</span>
+      </label>
+      <input
+        className="input"
+        name="repeatPassword"
+        type="password"
+        placeholder="Repeat password"
+        onChange={formik.handleChange}
+        value={formik.values.repeatPassword}
+      />
+
+      {formik.values.password !== formik.values.repeatPassword && (
+        <div>Your Passwords must match</div>
+      )}
+      <button className="butten" type="submit">
+        Sign Up
+      </button>
+
+      <Link to="/signin" className="link">
+        Sign In
+      </Link>
+    </StyledLoginForm>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
