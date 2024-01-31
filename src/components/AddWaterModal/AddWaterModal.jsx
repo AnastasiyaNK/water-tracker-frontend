@@ -20,7 +20,7 @@ const addWaterValidationSchema = Yup.object({
     .required("Required"),
 });
 
-const AddWaterModal = ({ toggleModal }) => {
+const AddWaterModal = () => {
   const currentDate = new Date();
   const [localWaterAmount, setLocalWaterAmount] = useState(250);
   const {
@@ -57,7 +57,7 @@ const AddWaterModal = ({ toggleModal }) => {
     setFieldValue("waterAmount", number <= 0 ? "0" : number.toString());
   };
   return (
-    <Modal title="Add water" toggleModal={toggleModal}>
+    <Modal title="Add water">
       <StyledWaterForm onSubmit={handleSubmit} className="add-water-container">
         <div className="choose-water-value-container">
           <p className="choose-title">Choose a value:</p>

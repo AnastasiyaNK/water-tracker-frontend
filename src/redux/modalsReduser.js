@@ -28,10 +28,10 @@ const modalsSlice = createSlice({
       state.modals.isEditModalOpen = action.payload;
     },
     closeAllModals(state, action) {
-      state.modals.isSettingsModalOpen = action.payload;
-      state.modals.isDailyNormaModalOpen = action.payload;
-      state.modals.isAddWaterModalOpen = action.payload;
-      state.modals.isEditModalOpen = action.payload;
+      state.modals.isSettingsModalOpen = false;
+      state.modals.isDailyNormaModalOpen = false;
+      state.modals.isAddWaterModalOpen = false;
+      state.modals.isEditModalOpen = false;
     },
   },
 });

@@ -9,14 +9,14 @@ const Modal = ({ children, title }) => {
 
   const handleOverlayClick = (event) => {
     if (event.target === event.currentTarget) {
-      dispatch(closeAllModals(false));
+      dispatch(closeAllModals());
     }
   };
 
   useEffect(() => {
     const handleEscapeClick = (event) => {
       if (event.code === "Escape") {
-        dispatch(closeAllModals(false));
+        dispatch(closeAllModals());
       }
     };
 

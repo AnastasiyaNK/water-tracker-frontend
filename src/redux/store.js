@@ -38,5 +38,8 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { modalsReducer } from "./modalsReduser";
+import { waterReducer } from "./water/waterSlice";
 
-export const store = configureStore({ reducer: { modals: modalsReducer } });
+export const store = configureStore({
+  reducer: { modals: modalsReducer, water: waterReducer },
+});
