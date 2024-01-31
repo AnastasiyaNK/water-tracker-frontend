@@ -85,23 +85,72 @@ export const RangeAdd = styled.div`
 
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     gap: 16px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
+    justify-content: center;
     flex-direction: row;
+    display: flex;
     gap: 12px;
   }
 
   @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 768px) and (min-resolution: 192dpi) {
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+    gap: 12px;
   }
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
+    display: flex;
     gap: 23px;
   }
 
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 1440px) and (min-resolution: 192dpi);
+    (min-width: 1440px) and (min-resolution: 192dpi) {
+    flex-direction: row;
+    display: flex;
+    gap: 23px;
+  }
+`;
+
+export const RangeStyle = styled.div`
+  height: 8px;
+  width: 256px;
+  background-color: #ddd;
+  border-radius: 4px;
+
+  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
+    (max-width: 767px) and (min-resolution: 192dpi) {
+    width: 256px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    height: 8px;
+    width: 325px;
+  }
+
+  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+    (min-width: 768px) and (min-resolution: 192dpi) {
+    height: 8px;
+    width: 325px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    height: 8px;
+    width: 360px;
+  }
+
+  @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
+    (min-width: 1440px) and (min-resolution: 192dpi) {
+    height: 8px;
+    width: 360px;
+  }
 `;

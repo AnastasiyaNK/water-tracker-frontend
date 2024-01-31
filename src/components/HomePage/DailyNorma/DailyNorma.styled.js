@@ -18,18 +18,44 @@ export const DailyNormaBox = styled.div`
 
 export const EditWater = styled.div`
   display: flex;
-  width: 54px;
-  height: 24px;
   gap: 12px;
 `;
 
 export const Water = styled.div`
+  width: 50px;
+  height: 22px;
   color: var(--Primery-Color-Blue, #407bff);
   font-family: Roboto;
-  font-size: 24px;
+  font-size: 22px;
   font-style: normal;
   font-weight: 700;
-  line-height: 24px; /* 100% */
+  line-height: 22px;
+
+  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
+    (max-width: 767px) and (min-resolution: 192dpi) {
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    width: 54px;
+    height: 24px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+    (min-width: 768px) and (min-resolution: 192dpi) {
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 54px;
+    height: 24px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
+    (min-width: 1440px) and (min-resolution: 192dpi) {
+  }
 `;
 
 export const Edit = styled.div`
@@ -38,5 +64,5 @@ export const Edit = styled.div`
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 20px; /* 125% */
+  line-height: 20px; 
 `;

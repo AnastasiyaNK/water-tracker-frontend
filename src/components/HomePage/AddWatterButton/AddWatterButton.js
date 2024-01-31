@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { AddWaterModal } from 'components';
-// import { SettingsModal } from 'components';
 
 const AddWaterButton = props => {
   const [showComponent, setShowComponent] = useState(false);

@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 
 import { Range } from 'react-range';
 import { AddWaterButton } from 'components';
-import { RangBar, Title, Percent, Percents, RangeAdd } from './RangeBar.styled';
+import {
+  RangBar,
+  Title,
+  Percent,
+  Percents,
+  RangeAdd,
+  RangeStyle,
+} from './RangeBar.styled';
 
 const RangeBar = () => {
   const [values, setValues] = useState([50]);
@@ -11,7 +18,6 @@ const RangeBar = () => {
     setValues(newValues);
   };
   const buttonStyle = {
-    // position: 'absolute',
     width: '280px',
     height: '36px',
     left: '526px',
@@ -38,21 +44,16 @@ const RangeBar = () => {
           max={100}
           onChange={handleChange}
           renderTrack={({ props, children }) => (
-            <div
+            <RangeStyle
               {...props}
               style={{
                 ...props.style,
-
-                height: '8px',
-                width: '280px',
-                backgroundColor: '#ddd',
-                borderRadius: '4px',
                 background:
                   'linear-gradient( to right, #9EBBFF 50%, #D7E3FF 25%)',
               }}
             >
               {children}
-            </div>
+            </RangeStyle>
           )}
           renderThumb={({ props }) => (
             <div
@@ -71,7 +72,6 @@ const RangeBar = () => {
                   position: 'static',
                   marginTop: '10px',
                   marginLeft: '-10px',
-                  // backgroundColor: '#999',
                   color: '#407bff',
                   padding: '4px',
                   borderRadius: '4px',

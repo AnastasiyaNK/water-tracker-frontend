@@ -19,29 +19,41 @@ export const Fon = styled.div`
     (max-width: 767px) and (min-resolution: 192dpi) {
     background-image: url(${imgFonMobile}), url(${imgBotleMobile});
     background-position: top, 35px 65px;
+    display: flex;
+    flex-direction: column;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     background-image: url(${imgFonTab}), url(${imgBotleTab});
     background-position: top, 120px 0px;
+    display: flex;
+    flex-direction: column;
   }
 
   @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 768px) and (min-resolution: 192dpi) {
     background-image: url(${imgFonTab}), url(${imgBotleTab});
-
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
     margin-top: 22px;
     gap: 32px;
   }
 
   @media screen and (min-width: 1440px) {
     background-image: url(${imgFon}), url(${imgBotle});
+    display: flex;
+    flex-direction: row;
+    margin-top: 22px;
+    gap: 32px;
   }
 
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
     background-image: url(${imgFon}), url(${imgBotle});
+    display: flex;
+    flex-direction: row;
+    margin-top: 22px;
+    gap: 32px;
   }
 `;
 

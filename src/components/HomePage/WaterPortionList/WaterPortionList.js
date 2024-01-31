@@ -5,13 +5,14 @@
 import AddWaterButton from '../AddWatterButton/AddWatterButton';
 
 import {
-  Portions,
+  Ml,
   Portion,
   Time,
   Edit,
   PortionsList,
   ScrollableDiv,
   Button,
+  Portions,
 } from './WaterPortionsList.styled';
 import { ReactComponent as Glass } from '../../../assets/icons/glass-desc.svg';
 import { ReactComponent as Pencil } from '../../../assets/icons/pencil-square.svg';
@@ -41,30 +42,33 @@ const WaterPortionsList = () => {
     fontStyle: 'normal',
     fontWeight: '500',
     lineHeight: '24px',
+    background: 'none',
     border: 'none',
   };
 
   return (
     <PortionsList>
       <ScrollableDiv>
-        {waterportions.map(item => (
-          <Portions key={item.id}>
-            <Glass />
-            <Portion>{item.ml}ml</Portion>
-            <Time>{item.time}AM</Time>
-            <Edit>
-              <Button>
-                <Pencil />
-              </Button>
-              <Button>
-                <Bucket />
-              </Button>
-            </Edit>
-            {/* <Button onClick={() => dispatch(deleteContact(item.id))}>
+        <Portions>
+          {waterportions.map(item => (
+            <Portion key={item.id}>
+              <Glass />
+              <Ml>{item.ml}ml</Ml>
+              <Time>{item.time}AM</Time>
+              <Edit>
+                <Button>
+                  <Pencil />
+                </Button>
+                <Button>
+                  <Bucket />
+                </Button>
+              </Edit>
+              {/* <Button onClick={() => dispatch(deleteContact(item.id))}>
               Delete
             </Button> */}
-          </Portions>
-        ))}
+            </Portion>
+          ))}
+        </Portions>
       </ScrollableDiv>
 
       <>

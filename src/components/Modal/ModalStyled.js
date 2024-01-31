@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledModalBackdrop = styled.div`
   width: 100vw;
@@ -11,6 +11,7 @@ export const StyledModalBackdrop = styled.div`
   left: 0;
   background-color: rgba(0, 0, 0, 0.8);
   overflow: hidden;
+  z-index: 10;
 
   .settings-modal {
     position: relative;
@@ -198,7 +199,7 @@ export const StyledModalBackdrop = styled.div`
         cursor: pointer;
 
         &:before {
-          content: "";
+          content: '';
           display: block;
           position: absolute;
           top: 1px;
@@ -212,7 +213,7 @@ export const StyledModalBackdrop = styled.div`
         }
 
         &:after {
-          content: "";
+          content: '';
           display: block;
           position: absolute;
           top: 5px;

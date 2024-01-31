@@ -8,8 +8,6 @@ const DayGeneralStats = ({ item }) => {
       <Data>
         <DataStyle>{number}, Month</DataStyle>
       </Data>
-      {/* <Xmark /> */}
-
       <Data>
         Daily norma: <DataStyle>1.5L</DataStyle>
       </Data>
