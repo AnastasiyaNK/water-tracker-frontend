@@ -27,6 +27,12 @@ const modalsSlice = createSlice({
     setEditModal(state, action) {
       state.modals.isEditModalOpen = action.payload;
     },
+    closeAllModals(state, action) {
+      state.modals.isSettingsModalOpen = action.payload;
+      state.modals.isDailyNormaModalOpen = action.payload;
+      state.modals.isAddWaterModalOpen = action.payload;
+      state.modals.isEditModalOpen = action.payload;
+    },
   },
 });
 
@@ -36,6 +42,7 @@ export const {
   setDailyNormaModal,
   setAddWaterModal,
   setEditModal,
+  closeAllModals,
 } = modalsSlice.actions;
 // Редюсер слайсу
 export const modalsReducer = modalsSlice.reducer;

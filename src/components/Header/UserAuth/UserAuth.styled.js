@@ -1,28 +1,36 @@
 import styled from "styled-components";
 
-import { Link } from "react-router-dom";
-
-export const WrapperSignin = styled(Link)`
+export const StyledUserAuth = styled.button`
+  position: relative;
   display: flex;
   align-items: center;
+  margin-left: auto;
   gap: 8px;
-  text-decoration: none;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: inherit;
   cursor: pointer;
 
-  & p {
+  .auth-wrapper {
+  }
+  .name-user {
+    color: #2f2f2f;
+    text-align: right;
     font-size: 18px;
-    color: #407bff;
     font-weight: 400;
-    line-height: 24px;
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-
-    &:hover,
-    &:focus {
-      color: #ff9d43;
-    }
-
-    @media screen and (max-width: 767px) {
-      font-size: 16px;
-    }
+    line-height: 1.33;
+    margin-right: 8px;
+  }
+  .avatar-user {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+  .auth-btn {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
   }
 `;

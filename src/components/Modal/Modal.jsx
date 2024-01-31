@@ -2,36 +2,21 @@ import { useEffect } from "react";
 import { ReactComponent as IconClose } from "../../assets/icons/close.svg";
 import { StyledModalBackdrop } from "./ModalStyled";
 import { useDispatch } from "react-redux";
-import {
-  setSettingsModal,
-  setDailyNormaModal,
-  setAddWaterModal,
-  setEditModal,
-} from "../../redux/modalsReduser";
+import { closeAllModals } from "../../redux/modalsReduser";
 
 const Modal = ({ children, title }) => {
   const dispatch = useDispatch();
 
   const handleOverlayClick = (event) => {
     if (event.target === event.currentTarget) {
-      dispatch(
-        setSettingsModal(false),
-        setDailyNormaModal(false),
-        setAddWaterModal(false),
-        setEditModal(false)
-      );
+      dispatch(closeAllModals(false));
     }
   };
 
   useEffect(() => {
     const handleEscapeClick = (event) => {
       if (event.code === "Escape") {
-        dispatch(
-          setSettingsModal(false),
-          setDailyNormaModal(false),
-          setAddWaterModal(false),
-          setEditModal(false)
-        );
+        dispatch(closeAllModals(false));
       }
     };
 
@@ -51,14 +36,9 @@ const Modal = ({ children, title }) => {
         <button
           className="close-btn"
           type="button"
-          onClick={() =>
-            dispatch(
-              setSettingsModal(false),
-              setDailyNormaModal(false),
-              setAddWaterModal(false),
-              setEditModal(false)
-            )
-          }
+          onClick={() => {
+            dispatch(closeAllModals(false));
+          }}
         >
           <IconClose className="close-btn-svg" />
         </button>
