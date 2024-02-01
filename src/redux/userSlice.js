@@ -1,9 +1,9 @@
-import { requestLogin, requestRegister } from 'services/api';
+import { requestLogin, requestRegister } from "services/api";
 
-const { createSlice, createAsyncThunk } = require('@reduxjs/toolkit');
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const apiUserRegister = createAsyncThunk(
-  'user/register',
+  "user/register",
   async (formData, thunkApi) => {
     try {
       const userData = await requestRegister(formData);
@@ -15,7 +15,7 @@ export const apiUserRegister = createAsyncThunk(
   }
 );
 export const apiUserLogin = createAsyncThunk(
-  'user/login',
+  "user/login",
   async (formData, thunkApi) => {
     try {
       const userData = await requestLogin(formData);
@@ -36,10 +36,10 @@ const INITIAL_STATE = {
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: INITIAL_STATE,
 
-  extraReducers: builder =>
+  extraReducers: (builder) =>
     builder
       // ------------ Register User ----------------------
       .addCase(apiUserRegister.fulfilled, (state, action) => {
@@ -55,14 +55,14 @@ const userSlice = createSlice({
       })
 
       .addMatcher(
-        action => action.type.endsWith('/pending'),
+        (action) => action.type.endsWith("/pending"),
         (state, action) => {
           state.isLoading = true;
           state.error = null;
         }
       )
       .addMatcher(
-        action => action.type.endsWith('/rejected'),
+        (action) => action.type.endsWith("/rejected"),
         (state, action) => {
           state.isLoading = false;
           state.error = action.payload;

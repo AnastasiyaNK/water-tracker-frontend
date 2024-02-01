@@ -1,12 +1,18 @@
-import { LoginForm } from "components";
 import React from "react";
+import { StyledMainContainer } from "styled";
+import { StyledLoginPage } from "./SignInPage.styled";
+import { LoginForm } from "components";
 
-const SigninPage = () => {
+const SignInPage = () => {
   return (
-    <div>
-      <LoginForm />
-    </div>
+    <StyledMainContainer>
+      <StyledLoginPage>
+        <div className="block-right">
+          <LoginForm />
+        </div>
+      </StyledLoginPage>
+    </StyledMainContainer>
   );
 };
 
-export default SigninPage;
+export default SignInPage;
