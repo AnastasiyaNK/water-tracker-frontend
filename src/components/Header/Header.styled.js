@@ -1,29 +1,41 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
-export const Wrapper = styled.div`
+export const StyledHeader = styled.header`
   display: flex;
-  justify-content: space-between;
+  width: 100%;
+  padding: 8px 0;
   align-items: center;
-  margin-top: 8px;
-  margin-bottom: 24px;
 
-  @media screen and (min-width: 768px) {
-    margin-top: 16px;
+  .link-logo {
+  }
+  .main-logo {
+  }
+  .user-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 8px;
+    text-decoration: none;
+  }
+  .user-name {
+    color: #407bff;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1/25;
+  }
+  .user-logo {
   }
 
-  @media screen and (min-width: 1440px) {
-    margin-top: 12px;
-    margin-bottom: 20px;
+  @media (min-width: 320px) and (max-width: 767px) {
+    min-width: 280px;
   }
-`;
 
-export const WrapperLogo = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4px;
-  width: 108px;
-  height: 48px;
-  text-decoration: none;
+  @media (min-width: 768px) and (max-width: 1439px) {
+    padding: 16px 32px 0px 32px;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 12px 0;
+  }
 `;

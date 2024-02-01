@@ -18,10 +18,10 @@ export const StyledWaterForm = styled.form`
     margin-bottom: 12px;
   }
   .water-controls-container {
-    width: 194px;
     display: flex;
+    gap: 7px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 24px;
   }
   .water-control-btn {
@@ -45,7 +45,7 @@ export const StyledWaterForm = styled.form`
     color: #407bff;
     border-radius: 40px;
     background: #d7e3ff;
-    padding: 8px 26px;
+    padding: 8px 20px;
   }
   .input-group {
     display: flex;
@@ -60,10 +60,11 @@ export const StyledWaterForm = styled.form`
   .input-group-input {
     border-color: #d7e3ff;
     border: 1px solid #d7e3ff;
-
+    color: #407bff;
     border-radius: 10px;
     box-shadow: none;
     height: 44px;
+    padding: 12px 10px;
   }
   .bold {
     font-size: 18px;
@@ -110,6 +111,10 @@ export const StyledWaterForm = styled.form`
 
     &:active {
       box-shadow: none;
+    }
+    &:disabled {
+      background-color: grey;
+      cursor: not-allowed;
     }
   }
 `;

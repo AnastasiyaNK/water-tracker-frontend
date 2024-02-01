@@ -1,37 +1,48 @@
 import { useEffect } from "react";
 import { ReactComponent as IconClose } from "../../assets/icons/close.svg";
 import { StyledModalBackdrop } from "./ModalStyled";
+import { useDispatch } from "react-redux";
+import { closeAllModals } from "../../redux/modalsReduser";
 
-const Modal = ({ toggleModal, children, title }) => {
+const Modal = ({ children, title }) => {
+  const dispatch = useDispatch();
+
   const handleOverlayClick = (event) => {
     if (event.target === event.currentTarget) {
-      toggleModal(false);
+      dispatch(closeAllModals());
     }
   };
+
   useEffect(() => {
     const handleEscapeClick = (event) => {
       if (event.code === "Escape") {
-        toggleModal(false);
+        dispatch(closeAllModals());
       }
     };
+
+    document.body.style.overflowY = "hidden";
     window.addEventListener("keydown", handleEscapeClick);
-    return () => window.removeEventListener("keydown", handleEscapeClick);
-  }, [toggleModal]);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscapeClick);
+      document.body.style.overflowY = "visible";
+    };
+  }, [dispatch]);
+
   return (
     <StyledModalBackdrop onClick={handleOverlayClick}>
-      <div className="settings-modal">
+      <div className="modal-wrapper">
         <h2 className="title">{title}</h2>
         <button
           className="close-btn"
           type="button"
-          onClick={() => toggleModal(false)}
+          onClick={() => {
+            dispatch(closeAllModals(false));
+          }}
         >
           <IconClose className="close-btn-svg" />
         </button>
         {children}
-        {/* <button className="settings-submit-btn" type="submit">
-          Save
-        </button> */}
       </div>
     </StyledModalBackdrop>
   );

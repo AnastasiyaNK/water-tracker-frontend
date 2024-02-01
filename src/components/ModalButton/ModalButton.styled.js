@@ -1,11 +1,18 @@
 import { styled } from "styled-components";
 
 export const StyledModalButton = styled.div`
+  //TODO: TEMPORARY HIDING !!!
+  .open-modal-btn {
+    visibility: hidden;
+  }
+  //TODO: TEMPORARY HIDING !!!
+
   .open-modal-btn {
     display: block;
     width: 160px;
     min-height: 44px;
     padding: 8px 30px;
+    margin-bottom: 8px;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
