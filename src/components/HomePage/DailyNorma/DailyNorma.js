@@ -6,6 +6,7 @@ import { setDailyNormaModal } from "../../../redux/modalsReduser";
 const DailyNorma = ({ toggleModal }) => {
   const dispatch = useDispatch(setDailyNormaModal);
   return (
+
     <DailyNormaBox>
       <p> My daily norma</p>
       <EditWater>
@@ -13,6 +14,7 @@ const DailyNorma = ({ toggleModal }) => {
         <Edit onClick={() => dispatch(setDailyNormaModal(true))}>Edit</Edit>
       </EditWater>
     </DailyNormaBox>
+
   );
 };
 
