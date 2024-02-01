@@ -58,7 +58,6 @@ import { userReducer } from "./userSlice";
 import { modalsReducer } from "./modalsReduser";
 import { waterReducer } from "./water/waterSlice";
 
-
 const persistConfig = {
   key: "user",
   whitelist: ["token"],
@@ -70,6 +69,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, userReducer),
     modals: modalsReducer,
+    water: waterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -80,4 +80,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-

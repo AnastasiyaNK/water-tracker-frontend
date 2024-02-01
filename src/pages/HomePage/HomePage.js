@@ -1,6 +1,11 @@
 import React from "react";
 
-import { AddWaterModal, SettingsModal, WaterTracker } from "components";
+import {
+  AddWaterModal,
+  RangeBar,
+  SettingsModal,
+  WaterTracker,
+} from "components";
 
 import { DailyNorma } from "components";
 import { Fon, DailyRangeStyle } from "./HomePage.styled.js";
@@ -24,10 +29,8 @@ const HomePage = () => {
 
   return (
     <Fon>
-
       <ModalButton />
       <ModalButton2 />
-    
 
       <DailyRangeStyle>
         <DailyNorma />
