@@ -15,7 +15,7 @@ import {
   selectDailyNormaModal,
   selectAddWaterModal,
   selectEditWaterModal,
-} from "../../redux/modalsSelectors.js";
+} from "../../redux/selectors.js";
 import { useSelector } from "react-redux";
 import ModalButton from "components/ModalButton/ModalButton.jsx";
 import ModalButton2 from "components/ModalButton2/ModalButton2.jsx";

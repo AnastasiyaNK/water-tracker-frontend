@@ -10,7 +10,6 @@ import UserAuth from "./UserAuth/UserAuth";
 
 const Header = () => {
   const isSignedIn = useSelector(selectUserIsSignedIn);
-  console.log(isSignedIn);
   return (
     <StyledMainContainer>
       <StyledHeader>

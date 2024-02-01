@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { Button, ModalWrapper, ModalOverlay } from "./UserDropdown.styled";
 import Icons from "assets/icons/cog-6-tooth.svg";
 import Icon from "assets/icons/arrow-right-on-rectangle.svg";
-// import { useDispatch } from 'react-redux';
-// import { setSettingsModal } from '../../../redux/modalsReduser';
+import { useDispatch } from "react-redux";
+import { setSettingsModal } from "../../../redux/modalsReduser";
 
 export const UserDropdown = ({ isOpen, onOpenLogoutModal, onClose }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const close = (e) => {
@@ -30,7 +30,7 @@ export const UserDropdown = ({ isOpen, onOpenLogoutModal, onClose }) => {
         <Button
           type="button"
           onClick={() => {
-            // dispatch(setSettingsModal(true));
+            dispatch(setSettingsModal(true));
             onClose();
           }}
         >
