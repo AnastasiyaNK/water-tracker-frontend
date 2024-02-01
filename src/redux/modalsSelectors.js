@@ -3,3 +3,9 @@ export const selectSettingsModal = (state) =>
 
 export const selectDailyNormaModal = (state) =>
   state.modals.modals.isDailyNormaModalOpen;
+
+export const selectAddWaterModal = (state) =>
+  state.modals.modals.isAddWaterModalOpen;
+
+export const selectEditWaterModal = (state) =>
+  state.modals.modals.isEditModalOpen;

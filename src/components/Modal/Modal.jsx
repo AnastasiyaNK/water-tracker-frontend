@@ -4,19 +4,19 @@ import { StyledModalBackdrop } from "./ModalStyled";
 import { useDispatch } from "react-redux";
 import { closeAllModals } from "../../redux/modalsReduser";
 
-const Modal = ({ children, title, styledClass }) => {
+const Modal = ({ children, title }) => {
   const dispatch = useDispatch();
 
   const handleOverlayClick = (event) => {
     if (event.target === event.currentTarget) {
-      dispatch(closeAllModals(false));
+      dispatch(closeAllModals());
     }
   };
 
   useEffect(() => {
     const handleEscapeClick = (event) => {
       if (event.code === "Escape") {
-        dispatch(closeAllModals(false));
+        dispatch(closeAllModals());
       }
     };
 
@@ -31,7 +31,7 @@ const Modal = ({ children, title, styledClass }) => {
 
   return (
     <StyledModalBackdrop onClick={handleOverlayClick}>
-      <div className={styledClass}>
+      <div className="modal-wrapper">
         <h2 className="title">{title}</h2>
         <button
           className="close-btn"

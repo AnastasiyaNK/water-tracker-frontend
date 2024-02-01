@@ -1,17 +1,19 @@
-import { AddWaterModal } from "components";
-import React, { useState } from "react";
 import { StyledModalButton } from "./ModalButton.styled";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { setAddWaterModal } from "../../redux/modalsReduser";
 
 const ModalButton = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
+  const dispatch = useDispatch();
   return (
     <StyledModalButton>
       <div>
-        <button className="open-modal-btn" onClick={() => setIsOpenModal(true)}>
-          Open modal
+        <button
+          className="open-modal-btn"
+          onClick={() => dispatch(setAddWaterModal(true))}
+        >
+          Add Water
         </button>
-        {isOpenModal && <AddWaterModal toggleModal={setIsOpenModal} />}
       </div>
     </StyledModalButton>
   );

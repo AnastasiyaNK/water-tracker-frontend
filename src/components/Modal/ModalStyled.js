@@ -42,6 +42,14 @@ export const StyledModalBackdrop = styled.div`
   }
   //--- settings modal window styles for tel tab and desk---\\
 
+  .modal-wrapper {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 32px 24px;
+    position: relative;
+    max-width: 704px;
+    width: 100%;
+  }
   //--- daily norma modal window styles for tel tab and desk---\\
   .daily-norma {
     position: relative;

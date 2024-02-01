@@ -1,10 +1,12 @@
 import { styled } from "styled-components";
 
-export const StyledModalButton = styled.div`
+export const StyledModalButton2 = styled.div`
   //TODO: TEMPORARY HIDING !!!
-  .open-modal-btn {
+
+  .hidden {
     visibility: hidden;
   }
+
   //TODO: TEMPORARY HIDING !!!
 
   .open-modal-btn {
