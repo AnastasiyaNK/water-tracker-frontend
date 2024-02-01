@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledModalBackdrop = styled.div`
   width: 100vw;
@@ -12,6 +12,7 @@ export const StyledModalBackdrop = styled.div`
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.8);
   overflow: hidden;
+  z-index: 10;
 
   //--- settings modal window styles for tel tab and desk--\\
   .settings-modal {
@@ -121,4 +122,8 @@ export const StyledModalBackdrop = styled.div`
       stroke: #ff9d43;
     }
   }
+
+
+  
+
 `;

@@ -1,7 +1,9 @@
 import React from "react";
+
 import { AddWaterModal, SettingsModal, WaterTracker } from "components";
+
 import { DailyNorma } from "components";
-import { Fon } from "./HomePage.styled.js";
+import { Fon, DailyRangeStyle } from "./HomePage.styled.js";
 import { MyDailyNormaModal } from "components";
 import {
   selectSettingsModal,
@@ -22,9 +24,16 @@ const HomePage = () => {
 
   return (
     <Fon>
+
       <ModalButton />
       <ModalButton2 />
-      <DailyNorma />
+    
+
+      <DailyRangeStyle>
+        <DailyNorma />
+        <RangeBar />
+      </DailyRangeStyle>
+
       <WaterTracker />
       {isAddWaterModalOpen && <AddWaterModal />}
       {isEditWaterModalOpen && <EditWaterModal />}

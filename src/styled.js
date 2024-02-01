@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledMainContainer = styled.div`
   width: 100%;
   padding: 0 12px;
   margin: 0 auto;
+
   height: 100%;
 
   @media (min-width: 320px) and (max-width: 767px) {
@@ -16,5 +17,6 @@ export const StyledMainContainer = styled.div`
   }
   @media (min-width: 1216px) {
     max-width: 1216px;
+
   }
 `;

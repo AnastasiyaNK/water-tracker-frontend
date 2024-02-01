@@ -4,19 +4,25 @@
   "private": true,
   "homepage": "https://AnastasiyaNK.github.io/water-tracker-frontend/",
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.6",
     "@reduxjs/toolkit": "^2.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.7",
     "formik": "^2.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^6.1.6",
     "react-moment": "^1.1.3",
     "react-paginate": "^8.2.0",
+    "react-range": "^1.8.14",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.3",
     "react-scripts": "^5.0.1",
+    "redux-persist": "^6.0.0",
     "styled-components": "^6.1.8",
     "web-vitals": "^2.1.4",
     "yup": "^1.3.3"
@@ -47,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.23.9",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }

@@ -1,12 +1,12 @@
 import React from 'react';
-import { TodayBox } from './Today.styled';
+import { TodayBox, TodayStile } from './Today.styled';
 import { WaterPortionsList } from 'components';
 
 const Today = () => {
   return (
     <>
       <TodayBox>
-        Today
+        <TodayStile>Today</TodayStile>
         <WaterPortionsList />
       </TodayBox>
     </>
