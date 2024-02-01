@@ -1,22 +1,79 @@
-//import React, { useState } from "react";
-import { StyledRegisterForm } from "./styled";
+import { useFormik } from "formik";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { apiUserRegister } from "../../redux/userSlice";
+import { StyledLoginForm } from "./RegisterForm.styled";
 
 const RegisterForm = () => {
-  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      repeatPassword: "",
+    },
+    onSubmit: (values) => {
+      if (values.password === values.repeatPassword) {
+        const formData = { email: values.email, password: values.password };
+        dispatch(apiUserRegister(formData))
+          .unwrap()
+          .then(() => {
+            navigate("/signin");
+          });
+      }
+    },
+  });
+
   return (
-    <StyledRegisterForm>
-      <form>
-        <p>Sign Up</p>
-        <p>Enter your email</p>
-        <input type="email" name="email"  placeholder="E-mail"  />
-        <p>Enter your password  </p>
-        <input type="password" name="password" placeholder="password"   />
-        <p>Repeat Password</p>
-        <input type="password" name="confirmPassword" placeholder="Repeat your password" />
-        <button type="submit">Sign Up</button>
-        <p> Sign in</p>
-      </form>
-    </StyledRegisterForm>
+    <StyledLoginForm onSubmit={formik.handleSubmit}>
+      <h2 className="title">Sign Up</h2>
+      <label className="label">
+        <span className="label-text">Enter your email</span>
+      </label>
+      <input
+        className="input"
+        name="email"
+        type="email"
+        placeholder="Email"
+        onChange={formik.handleChange}
+        value={formik.values.email}
+      />
+      <label className="label">
+        <span className="label-text">Enter your password</span>
+      </label>
+      <input
+        className="input"
+        name="password"
+        type="password"
+        placeholder="Password"
+        onChange={formik.handleChange}
+        value={formik.values.password}
+      />
+      <label className="label">
+        <span className="label-text">Repeat password</span>
+      </label>
+      <input
+        className="input"
+        name="repeatPassword"
+        type="password"
+        placeholder="Repeat password"
+        onChange={formik.handleChange}
+        value={formik.values.repeatPassword}
+      />
+
+      {formik.values.password !== formik.values.repeatPassword && (
+        <div>Your Passwords must match</div>
+      )}
+      <button className="butten" type="submit">
+        Sign Up
+      </button>
+
+      <Link to="/signin" className="link">
+        Sign In
+      </Link>
+    </StyledLoginForm>
   );
 };
 

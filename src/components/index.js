@@ -17,5 +17,9 @@ export { default as SettingsModal } from './SettingsModal/SettingsModal';
 
 export { default as WelcomePage } from './WelcomePage/WelcomePage';
 
-export { default as Modal } from './Modal/Modal';
-export { default as AddWaterModal } from './AddWaterModal/AddWaterModal';
+
+export { default as Modal } from "./Modal/Modal";
+export { default as AddWaterModal } from "./AddWaterModal/AddWaterModal";
+
+export { default as MyDailyNormaModal } from "./MyDailyNormaModal/MyDailyNormaModal";
+export { default as RestrictedRoute } from "./RestrictedRoute/RestrictedRoute";

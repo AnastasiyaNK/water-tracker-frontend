@@ -1,9 +1,21 @@
+
 import React from 'react';
 import { RangeBar, WaterTracker } from 'components';
 import { DailyNorma } from 'components';
 import { Fon, DailyRangeStyle } from './HomePage.styled.js';
+import { SettingsModal, WaterTracker } from "components";
+import { MyDailyNormaModal } from "components";
+import {
+  selectSettingsModal,
+  selectDailyNormaModal,
+} from "../../redux/modalsSelectors.js";
+import { useSelector } from "react-redux";
+
 
 const HomePage = () => {
+  const isSettingsModalOpen = useSelector(selectSettingsModal);
+  const isDailyNormaModalOpen = useSelector(selectDailyNormaModal);
+
   return (
     <Fon>
       <DailyRangeStyle>
@@ -11,6 +23,8 @@ const HomePage = () => {
         <RangeBar />
       </DailyRangeStyle>
       <WaterTracker />
+      {isSettingsModalOpen && <SettingsModal />}
+      {isDailyNormaModalOpen && <MyDailyNormaModal />}
     </Fon>
   );
 };

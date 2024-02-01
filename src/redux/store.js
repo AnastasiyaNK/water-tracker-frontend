@@ -36,6 +36,45 @@
 
 // export const persistor = persistStore(store);
 
-import { configureStore } from '@reduxjs/toolkit';
+// import { configureStore } from "@reduxjs/toolkit";
+// import { modalsReducer } from "./modalsReduser";
 
-export const store = configureStore({ reducer: {} });
+// export const store = configureStore({ reducer: { modals: modalsReducer } });
+
+import { configureStore } from "@reduxjs/toolkit";
+
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { userReducer } from "./userSlice";
+import { modalsReducer } from "./modalsReduser";
+
+const persistConfig = {
+  key: "user",
+  whitelist: ["token"],
+
+  storage,
+};
+
+export const store = configureStore({
+  reducer: {
+    auth: persistReducer(persistConfig, userReducer),
+    modals: modalsReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+
+export const persistor = persistStore(store);

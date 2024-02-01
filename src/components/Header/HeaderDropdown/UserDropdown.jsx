@@ -1,14 +1,13 @@
 import { useEffect } from "react";
-import { Button, ModalWrapper, ModalOverlay } from "./ModalHeader.styled";
-import Icons from "../../../assets/icons/cog-6-tooth.svg";
-import Icon from "../../../assets/icons/arrow-right-on-rectangle.svg";
+import { Button, ModalWrapper, ModalOverlay } from "./UserDropdown.styled";
+import Icons from "assets/icons/cog-6-tooth.svg";
+import Icon from "assets/icons/arrow-right-on-rectangle.svg";
+// import { useDispatch } from 'react-redux';
+// import { setSettingsModal } from '../../../redux/modalsReduser';
 
-export const ModalHeader = ({
-  isOpen,
+export const UserDropdown = ({ isOpen, onOpenLogoutModal, onClose }) => {
+  // const dispatch = useDispatch();
 
-  onOpenLogoutModal,
-  onClose,
-}) => {
   useEffect(() => {
     const close = (e) => {
       if (e.code === "Escape") {
@@ -31,6 +30,7 @@ export const ModalHeader = ({
         <Button
           type="button"
           onClick={() => {
+            // dispatch(setSettingsModal(true));
             onClose();
           }}
         >

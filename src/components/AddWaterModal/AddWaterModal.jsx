@@ -1,8 +1,8 @@
 import { Modal } from "components";
 import React from "react";
 import { StyledWaterForm } from "./AddWaterModal.styled";
-import LogoMinus from "components/Logo/LogoMinus";
-import LogoPlus from "components/Logo/LogoPlus";
+import { ReactComponent as IconMinus } from "../../assets/icons/minus-small.svg";
+import { ReactComponent as IconPlus } from "../../assets/icons/plus-small.svg";
 
 const AddWaterModal = ({ toggleModal }) => {
   return (
@@ -14,12 +14,12 @@ const AddWaterModal = ({ toggleModal }) => {
           <div className="water-controls-container">
             <button className="water-control-btn">
               {" "}
-              <LogoMinus />{" "}
+              <IconMinus className="svg-btn" />{" "}
             </button>
             <span className="water-amount-value">50ml</span>
             <button className="water-control-btn">
               {" "}
-              <LogoPlus />{" "}
+              <IconPlus className="svg-btn" />{" "}
             </button>
           </div>
           <label className="input-group">

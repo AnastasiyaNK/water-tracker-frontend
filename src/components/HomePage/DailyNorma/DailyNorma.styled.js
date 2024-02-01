@@ -64,5 +64,7 @@ export const Edit = styled.div`
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
+
   line-height: 20px; 
+
 `;

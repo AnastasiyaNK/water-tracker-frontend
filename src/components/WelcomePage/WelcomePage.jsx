@@ -38,9 +38,7 @@ const WelcomePage = () => {
         </button>
       </div>
       <div className="containerDrinkInfo">
-        <h2 className="drinkInfoTitle" DrinkInfoTitle>
-          Why drink water
-        </h2>
+        <p className="drinkInfoTitle">Why drink water</p>
         <ul className="drinkInfoList">
           <li className="drinkInfoItems">Supply of nutrients to all organs</li>
           <li className="drinkInfoItems">Providing oxygen to the lungs</li>
