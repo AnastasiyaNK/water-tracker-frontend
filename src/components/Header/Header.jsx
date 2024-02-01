@@ -3,12 +3,13 @@ import { ReactComponent as UserLogo } from "assets/icons/user.svg";
 import { Link, NavLink } from "react-router-dom";
 import { StyledHeader } from "./Header.styled";
 import { StyledMainContainer } from "../../styled";
-// import UserAuth from "./UserAuth/UserAuth";
-// import { useSelector } from "react-redux";
-// import { selectUserIsSignedIn } from "redux/selectors";
+
+import { useSelector } from "react-redux";
+import { selectUserIsSignedIn } from "../../redux/selectors";
+import UserAuth from "./UserAuth/UserAuth";
 
 const Header = () => {
-  // const isSignedIn = useSelector(selectUserIsSignedIn);
+  const isSignedIn = useSelector(selectUserIsSignedIn);
   return (
     <StyledMainContainer>
       <StyledHeader>
@@ -19,7 +20,15 @@ const Header = () => {
           <p className="user-name">Sign in</p>
           <UserLogo className="user-logo" />
         </Link>
-
+        {isSignedIn ? (
+          <UserAuth />
+        ) : (
+          <Link to="/signin" className="user-wrapper">
+            <p className="user-name">Sign in</p>
+            <UserLogo className="user-logo" />
+          </Link>
+        )}
+        ;
         {/* {isSignedIn ? (
           <UserAuth />
         ) : (

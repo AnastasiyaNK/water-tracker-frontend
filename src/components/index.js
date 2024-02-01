@@ -17,3 +17,4 @@ export { default as Modal } from "./Modal/Modal";
 export { default as AddWaterModal } from "./AddWaterModal/AddWaterModal";
 
 export { default as MyDailyNormaModal } from "./MyDailyNormaModal/MyDailyNormaModal";
+export { default as RestrictedRoute } from "./RestrictedRoute/RestrictedRoute";

@@ -1,7 +1,7 @@
 import { ReactComponent as DropUp } from "assets/icons/chevron-double-up.svg";
 import { StyledUserAuth } from "./UserAuth.styled";
 import { useSelector } from "react-redux";
-import { selectUserData } from "redux/selectors";
+import { selectUserData } from "../../../redux/selectors";
 import { UserDropdown } from "../HeaderDropdown/UserDropdown";
 import { useState } from "react";
 
