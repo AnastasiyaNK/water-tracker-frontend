@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledMainContainer } from "styled";
-import { StyledLoginPage } from "./SignInPage.styled";
 import { LoginForm } from "components";
+import { StyledLoginPage } from "./SigninPage.styled";
 
 const SignInPage = () => {
   return (

@@ -1,6 +1,5 @@
 import SharedLayout from "components/SharedLayout/SharedLayout";
-import { HomePage, Main, SignInPage } from "pages";
-import SignUpPage from "pages/SignUnPage/SignUnPage";
+import { HomePage, Main, SignInPage, SignUpPage } from "pages";
 
 import { Route, Routes } from "react-router-dom";
 
