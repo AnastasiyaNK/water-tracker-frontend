@@ -10,16 +10,14 @@ import UserAuth from "./UserAuth/UserAuth";
 
 const Header = () => {
   const isSignedIn = useSelector(selectUserIsSignedIn);
+  console.log(isSignedIn);
   return (
     <StyledMainContainer>
       <StyledHeader>
         <NavLink to="/welcome" className="link-logo">
           <MainLogo className="main-logo" />
         </NavLink>
-        <Link to="/signin" className="user-wrapper">
-          <p className="user-name">Sign in</p>
-          <UserLogo className="user-logo" />
-        </Link>
+
         {isSignedIn ? (
           <UserAuth />
         ) : (
@@ -28,7 +26,7 @@ const Header = () => {
             <UserLogo className="user-logo" />
           </Link>
         )}
-        ;
+
         {/* {isSignedIn ? (
           <UserAuth />
         ) : (
