@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledSettingsModalForm = styled.div`
+export const StyledSettingsModalForm = styled.form`
   .secondary-title {
     font-size: 18px;
     font-weight: 500;
