@@ -19,12 +19,14 @@ const UserAuth = () => {
   };
 
   return (
-    <StyledUserAuth onClick={onOpen}>
-      <span className="name-user">{userName}</span>
-      <img className="avatar-user" src={userAvatar} alt={userName} />
-      <span className="auth-btn">
-        <DropUp className="auth-icon" />
-      </span>
+    <StyledUserAuth>
+      <button className="dropdown-open-btn" onClick={onOpen}>
+        <span className="name-user">{userName}</span>
+        <img className="avatar-user" src={userAvatar} alt={userName} />
+        <span className="auth-btn">
+          <DropUp className="auth-icon" />
+        </span>
+      </button>
       <UserDropdown onClose={onClose} isOpen={isDropdownOpen} />
     </StyledUserAuth>
   );
