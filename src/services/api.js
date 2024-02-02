@@ -13,8 +13,23 @@ export const requestRegister = async formData => {
   setToken(data.token);
   return data;
 };
+
 export const requestLogin = async formData => {
   const { data } = await authInstance.post('user/login', formData);
   setToken(data.token);
+  return data;
+};
+
+export const updateAvatar = async formData => {
+  const { data } = await authInstance.patch('user/avatar', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+  return data;
+};
+
+export const updateUser = async formData => {
+  const { data } = await authInstance.patch('user/update', formData);
   return data;
 };
