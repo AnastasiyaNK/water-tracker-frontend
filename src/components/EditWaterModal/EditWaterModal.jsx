@@ -2,11 +2,17 @@ import { Modal } from "components";
 import { StyledWaterForm } from "components/EditWaterModal/EditWaterModal.styled";
 import React, { useState } from "react";
 import { useFormik } from "formik";
+import { format } from "date-fns";
 import * as Yup from "yup";
 
 import { ReactComponent as IconMinus } from "../../assets/icons/minus-small.svg";
 import { ReactComponent as IconPlus } from "../../assets/icons/plus-small.svg";
 import { ReactComponent as WaterGlass } from "../../assets/icons/glass-desc 4.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { selectSelectedWaterPortionId } from "../../redux/modalsSelectors";
+import { selectTodayWaterData } from "../../redux/water/waterSlice.selectors";
+import { apiEditWaterPortion } from "../../redux/water/waterSlice";
+import { closeAllModals } from "../../redux/modalsReduser";
 
 const WATER_AMOUNT_DIFFERENCE = 20;
 
@@ -23,7 +29,12 @@ const editWaterValidationSchema = Yup.object({
 });
 
 const EditWaterModal = ({ toggleModal }) => {
-  const currentDate = new Date();
+  const dispatch = useDispatch();
+  const selectedWaterPortionId = useSelector(selectSelectedWaterPortionId);
+  const waterData = useSelector(selectTodayWaterData);
+  const waterPortion = waterData?.waterVolumes.find(
+    (portion) => portion._id === selectedWaterPortionId
+  );
   const [localWaterAmount, setLocalWaterAmount] = useState(250);
   const {
     handleChange,
@@ -34,11 +45,23 @@ const EditWaterModal = ({ toggleModal }) => {
   } = useFormik({
     initialValues: {
       waterAmount: "250",
-      date: `${currentDate.getHours()}:${currentDate.getMinutes()}`,
+      date: `${format(waterPortion.date, "kk")}:${format(
+        waterPortion.date,
+        "mm"
+      )}`,
     },
     validationSchema: editWaterValidationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      dispatch(
+        apiEditWaterPortion({
+          portionId: selectedWaterPortionId,
+          formData: values,
+        })
+      )
+        .unwrap()
+        .then(() => {
+          dispatch(closeAllModals());
+        });
     },
   });
 
@@ -66,10 +89,14 @@ const EditWaterModal = ({ toggleModal }) => {
         <div className="water-amount-time-container">
           <WaterGlass className="water-glass" />
           <span className="form-action-water-value glass-value-bold">
-            {waterAmount}ml
+            {waterPortion.waterAmount}ml
           </span>
-          <span className="time-value"> {date}</span>
+          <span className="time-value">
+            {format(waterPortion.date, "hh")}:{format(waterPortion.date, "mm")}{" "}
+            {format(waterPortion.date, "a")}
+          </span>
         </div>
+
         <div className="choose-water-value-container">
           <p className="choose-title">Correct entered data:</p>
           <p className="water-amount">Amount of water:</p>
