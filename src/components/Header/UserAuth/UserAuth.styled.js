@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
-export const StyledUserAuth = styled.button`
+export const StyledUserAuth = styled.div`
   position: relative;
   display: flex;
-  align-items: center;
   margin-left: auto;
-  gap: 8px;
-  display: flex;
-  align-items: center;
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
 
+  .dropdown-open-btn {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
   .auth-wrapper {
   }
   .name-user {
