@@ -17,13 +17,12 @@ export const fetchWater = createAsyncThunk(
       setToken(thunkAPI.getState().auth.token);
     }
     try {
-      //
       const data = await getWaterNotes();
       // return data.length ? data : [{ waterRecords: [], percentage: '0%' }];
       console.log(data, 'today');
       return Object.keys(data).length !== 0
         ? data
-        : { waterVolumeSum: '0', waterVolumes: [1, 2] };
+        : { waterVolumeSum: '0', waterVolumes: [] };
     } catch (error) {
       // toast.error(
       //   `Oops. Something goes wrong. Please try again!`

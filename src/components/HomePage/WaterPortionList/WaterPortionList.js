@@ -45,9 +45,6 @@ const WaterPortionsList = () => {
     dispatch(fetchWater());
   }, [dispatch]);
 
-  //   const dispatch = useDispatch();
-  //   const filteredcontacts = useSelector(selectVisibleContacts);
-
   const buttonStyle = {
     display: 'inline-flex',
     top: '25px',
@@ -63,12 +60,6 @@ const WaterPortionsList = () => {
     background: 'none',
     border: 'none',
   };
-
-  // const { date } = waterNotes;
-  // const myDate = new Date(date);
-  // const hours = myDate.getUTCHours(); // 13
-  // const minutes = myDate.getUTCMinutes(); // 30
-  // const formattedTime = `${hours}:${minutes}`; // '13:30'
 
   return (
     <PortionsList>

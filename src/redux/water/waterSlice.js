@@ -5,28 +5,7 @@ const waterSlice = createSlice({
   name: 'water',
   initialState: {
     percentage: '0%',
-    waterVolumes: [
-      [
-        {
-          _id: '65bd125ec5a945a46e78dadd',
-          waterAmount: 200,
-          date: '2024-02-02T12:30:42.667Z',
-          owner: '65bd0f94c5a945a46e78dad4',
-        },
-        {
-          _id: '65bd1288c5a945a46e78dae0',
-          waterAmount: 440,
-          date: '2024-02-02T13:30:24.013Z',
-          owner: '65bd0f94c5a945a46e78dad4',
-        },
-        {
-          _id: '65bd1293c5a945a46e78dae3',
-          waterAmount: 550,
-          date: '2024-02-02T14:30:35.952Z',
-          owner: '65bd0f94c5a945a46e78dad4',
-        },
-      ],
-    ],
+    waterVolumes: [],
     stats: [],
     isLoading: false,
     error: null,

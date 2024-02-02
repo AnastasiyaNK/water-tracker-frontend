@@ -5,15 +5,15 @@ export const authInstance = axios.create({
 });
 
 export const setToken = token => {
-  authInstance.defaults.headers.common.Authorization =`Bearer ${ token }`;
-};  
+  authInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
 export const requestRegister = async formData => {
   const { data } = await authInstance.post('user/register', formData);
   setToken(data.token);
   return data;
 };
-export const requestLogin = async formData => {  
+export const requestLogin = async formData => {
   const { data } = await authInstance.post('user/login', formData);
   setToken(data.token);
   return data;
