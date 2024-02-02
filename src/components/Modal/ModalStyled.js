@@ -14,7 +14,7 @@ export const StyledModalBackdrop = styled.div`
   overflow: hidden;
   z-index: 10;
 
-  /* //--- settings modal window styles for tel tab and desk--\\
+  //*--- settings modal window styles for tel tab and desk--\\
   .settings-modal {
     position: relative;
     height: auto;
@@ -40,9 +40,9 @@ export const StyledModalBackdrop = styled.div`
       width: 280px;
     }
   }
-  //--- settings modal window styles for tel tab and desk---\\
+  //*--- settings modal window styles for tel tab and desk---\\
 
-  //!Must be used like dynamic class
+  //!Must be used like dynamic class\\
   /* .modal-wrapper {
     background-color: #fff;
     border-radius: 10px;
@@ -51,8 +51,9 @@ export const StyledModalBackdrop = styled.div`
     max-width: 704px;
     width: 100%;
   } */
+  //!Must be used like dynamic class\\
 
-  //--- daily norma modal window styles for tel tab and desk---\\
+  //*--- daily norma modal window styles for tel tab and desk---\\
   .daily-norma {
     position: relative;
     height: auto;
@@ -78,7 +79,7 @@ export const StyledModalBackdrop = styled.div`
       padding: 24px 12px;
     }
   }
-  //--- daily norma modal window styles for tel tab and desk---\\
+  //*--- daily norma modal window styles for tel tab and desk---\\
 
   .title {
     font-size: 26px;
@@ -124,5 +125,4 @@ export const StyledModalBackdrop = styled.div`
       stroke: #ff9d43;
     }
   }
-
 `;
