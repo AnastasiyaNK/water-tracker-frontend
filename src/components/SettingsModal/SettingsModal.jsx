@@ -7,11 +7,12 @@ import { ReactComponent as IconUpload } from "../../assets/icons/arrow-up-tray.s
 import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
 import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
 import { Modal } from "components";
-
-// ! DELETE test COMMENT
-const testLoadingUploadPhoto = true;
-const url = "123";
-//! DELETE test COMMENT
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectIsUserAvatarLoading,
+  selectUserAvatar,
+} from "../../redux/selectors";
+import { updateUserAvatar } from "../../redux/userSlice";
 
 const SettingsModal = ({ toggleModal }) => {
   const [privatPassword, setPrivatPassword] = useState({
@@ -19,6 +20,10 @@ const SettingsModal = ({ toggleModal }) => {
     newPassword: true,
     repeatedPassword: true,
   });
+
+  const dispatch = useDispatch();
+  const isAvatarLoading = useSelector(selectIsUserAvatarLoading);
+  const userAvatar = useSelector(selectUserAvatar);
 
   const validationSchema = yup.object().shape(
     {
@@ -61,6 +66,12 @@ const SettingsModal = ({ toggleModal }) => {
     ]
   );
 
+  const handleAvatarUpdate = async (event) => {
+    const newAvatarFile = event.target.files[0];
+
+    dispatch(updateUserAvatar(newAvatarFile));
+  };
+
   const handleSubmit = async (values) => {
     try {
       console.log(formik.values);
@@ -98,10 +109,10 @@ const SettingsModal = ({ toggleModal }) => {
         <p className="secondary-title upload-title">Your photo</p>
         <div className="upload-wrapper">
           <div className="img-box">
-            {testLoadingUploadPhoto ? (
+            {isAvatarLoading ? (
               <RotatingLines width="50" strokeColor="#407BFF" />
             ) : (
-              <img src={url} alt="avatar"></img>
+              <img src={userAvatar} alt="avatar"></img>
             )}
           </div>
           <label className="upload-lable">
@@ -110,6 +121,7 @@ const SettingsModal = ({ toggleModal }) => {
               type="file"
               accept="image/*"
               name="avatar"
+              onChange={handleAvatarUpdate}
             ></input>
             <div className="upload-btn">
               <IconUpload className="upload-svg" />
