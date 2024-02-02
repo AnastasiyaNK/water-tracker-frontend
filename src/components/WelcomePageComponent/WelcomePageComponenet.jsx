@@ -6,7 +6,7 @@ import {
   PersonalRateSettingImg,
 } from "./WelcomePage.styled";
 
-const WelcomePage = () => {
+const WelcomePageComponent = () => {
   const navigate = useNavigate();
 
   function TryClick() {
@@ -59,4 +59,4 @@ const WelcomePage = () => {
   );
 };
 
-export default WelcomePage;
+export default WelcomePageComponent;

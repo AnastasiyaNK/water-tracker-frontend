@@ -1,20 +1,53 @@
+import { PrivateRoute, RestrictedRoute } from "components";
 import SharedLayout from "components/SharedLayout/SharedLayout";
-import { HomePage, Main, SignInPage, SignUpPage } from "pages";
+import { ROUTE_PATH } from "constants/routes";
+import { HomePage, SignInPage, SignUpPage, WelcomePage } from "pages";
 
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div>
       <SharedLayout>
         <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/welcome" element={<Main />} />
+          <Route
+            path={ROUTE_PATH.index}
+            element={<Navigate to={ROUTE_PATH.welcome} replace />}
+          />
+          <Route
+            path={ROUTE_PATH.welcome}
+            element={
+              <RestrictedRoute>
+                <WelcomePage />
+              </RestrictedRoute>
+            }
+          />
 
-          <Route path="/signin" element={<SignInPage />} />
+          <Route
+            path={ROUTE_PATH.signup}
+            element={
+              <RestrictedRoute>
+                <SignUpPage />
+              </RestrictedRoute>
+            }
+          />
+          <Route
+            path={ROUTE_PATH.signin}
+            element={
+              <RestrictedRoute>
+                <SignInPage />
+              </RestrictedRoute>
+            }
+          />
 
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route
+            path={ROUTE_PATH.home}
+            element={
+              <PrivateRoute>
+                <HomePage />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </SharedLayout>
     </div>
