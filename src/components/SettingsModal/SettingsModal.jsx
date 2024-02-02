@@ -11,12 +11,16 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectIsUserAvatarLoading,
   selectUserAvatar,
+  selectUserName,
+  selectUserEmail,
+  selectUserGender,
 } from "../../redux/selectors";
-import { updateUserAvatar } from "../../redux/userSlice";
+import { updateUserAvatar, updateUserInfo } from "../../redux/userSlice";
+import { closeAllModals } from "../../redux/modalsReduser";
 
-const SettingsModal = ({ toggleModal }) => {
+const SettingsModal = () => {
   const [privatPassword, setPrivatPassword] = useState({
-    outdatedPassword: true,
+    currentPassword: true,
     newPassword: true,
     repeatedPassword: true,
   });
@@ -24,6 +28,9 @@ const SettingsModal = ({ toggleModal }) => {
   const dispatch = useDispatch();
   const isAvatarLoading = useSelector(selectIsUserAvatarLoading);
   const userAvatar = useSelector(selectUserAvatar);
+  const userName = useSelector(selectUserName);
+  const userEmail = useSelector(selectUserEmail);
+  const userGender = useSelector(selectUserGender);
 
   const validationSchema = yup.object().shape(
     {
@@ -32,7 +39,7 @@ const SettingsModal = ({ toggleModal }) => {
         .string()
         .required("Here must be your e-mail")
         .email("Invalid email"),
-      outdatedPassword: yup
+      currentPassword: yup
         .string()
         .min(8, "Invalid password (8-64 characters)")
         .max(64, "Invalid password (8-64 characters)")
@@ -45,36 +52,55 @@ const SettingsModal = ({ toggleModal }) => {
         .string()
         .min(8, "Invalid password (8-64 characters)")
         .max(64, "Invalid password (8-64 characters)")
-        .when(["outdatedPassword", "repeatedPassword"], {
-          is: (outdatedPassword, repeatedPassword) =>
-            outdatedPassword || repeatedPassword,
+        .when(["currentPassword", "repeatedPassword"], {
+          is: (currentPassword, repeatedPassword) =>
+            currentPassword || repeatedPassword,
           then: (schema) => schema.required("Enter a new password"),
         }),
       repeatedPassword: yup
         .string()
         .oneOf([yup.ref("newPassword")], "Passwords don't match")
-        .when(["outdatedPassword", "newPassword"], {
-          is: (outdatedPassword, newPassword) =>
-            outdatedPassword || newPassword,
+        .when(["currentPassword", "newPassword"], {
+          is: (currentPassword, newPassword) => currentPassword || newPassword,
           then: (schema) => schema.required("Confirm new password"),
         }),
     },
     [
       ["newPassword", "repeatedPassword"],
-      ["outdatedPassword", "repeatedPassword"],
-      ["outdatedPassword", "newPassword"],
+      ["currentPassword", "repeatedPassword"],
+      ["currentPassword", "newPassword"],
     ]
   );
 
   const handleAvatarUpdate = async (event) => {
     const newAvatarFile = event.target.files[0];
 
-    dispatch(updateUserAvatar(newAvatarFile));
+    await dispatch(updateUserAvatar(newAvatarFile));
   };
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async ({
+    name,
+    email,
+    gender,
+    currentPassword,
+    newPassword,
+  }) => {
     try {
-      console.log(formik.values);
+      if (newPassword === "") {
+        const newUserData = { name, email, gender };
+        console.log(newUserData);
+        dispatch(updateUserInfo(newUserData));
+      } else {
+        const newUserData = {
+          name,
+          email,
+          gender,
+          currentPassword,
+          newPassword,
+        };
+        dispatch(updateUserInfo(newUserData));
+      }
+      dispatch(closeAllModals());
     } catch (error) {
       console.error(error);
     }
@@ -82,9 +108,10 @@ const SettingsModal = ({ toggleModal }) => {
 
   const formik = useFormik({
     initialValues: {
-      name: "Ivan",
-      email: "Ivan@rasha.parasha",
-      outdatedPassword: "",
+      name: userName,
+      email: userEmail,
+      gender: userGender,
+      currentPassword: "",
       newPassword: "",
       repeatedPassword: "",
     },
@@ -100,11 +127,7 @@ const SettingsModal = ({ toggleModal }) => {
   };
 
   return (
-    <Modal
-      title="Setting"
-      styledClass="settings-modal"
-      toggleModal={toggleModal}
-    >
+    <Modal title="Setting" styledClass="settings-modal">
       <StyledSettingsModalForm onSubmit={formik.handleSubmit}>
         <p className="secondary-title upload-title">Your photo</p>
         <div className="upload-wrapper">
@@ -136,13 +159,25 @@ const SettingsModal = ({ toggleModal }) => {
             <div className="gender-wrapper">
               <div className="radio-btn-wrapper">
                 <label>
-                  <input type="radio" name="gender" value="female" />
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    checked={formik.values.gender === "female"}
+                    onChange={formik.handleChange}
+                  />
                   <span>Woman</span>
                 </label>
               </div>
               <div className="radio-btn-wrapper">
                 <label>
-                  <input type="radio" name="gender" value="male" />
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    checked={formik.values.gender === "male"}
+                    onChange={formik.handleChange}
+                  />
                   <span>Man</span>
                 </label>
               </div>
@@ -188,9 +223,9 @@ const SettingsModal = ({ toggleModal }) => {
             <div className="password-wrapper">
               <div
                 className="eye-btn"
-                onClick={() => onPasswordPrivacySetting("outdatedPassword")}
+                onClick={() => onPasswordPrivacySetting("currentPassword")}
               >
-                {privatPassword.outdatedPassword ? (
+                {privatPassword.currentPassword ? (
                   <IconClosedEye className="eye-icon" />
                 ) : (
                   <IconOpenedEye className="eye-icon" />
@@ -200,17 +235,17 @@ const SettingsModal = ({ toggleModal }) => {
               <label>
                 <input
                   className={`main-input ${
-                    formik.errors.outdatedPassword ? "error-input" : ""
+                    formik.errors.currentPassword ? "error-input" : ""
                   } `}
-                  type={privatPassword.outdatedPassword ? "password" : "text"}
-                  name="outdatedPassword"
-                  value={formik.values.outdatedPassword}
+                  type={privatPassword.currentPassword ? "password" : "text"}
+                  name="currentPassword"
+                  value={formik.values.currentPassword}
                   onChange={formik.handleChange}
                   placeholder="Password"
                 />
               </label>
-              {formik.errors.outdatedPassword && (
-                <div className="error">{formik.errors.outdatedPassword}</div>
+              {formik.errors.currentPassword && (
+                <div className="error">{formik.errors.currentPassword}</div>
               )}
             </div>
             <p className="password-subtitle">New Password:</p>

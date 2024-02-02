@@ -1,4 +1,6 @@
 export const selectUserName = (state) => state.auth.user.name;
+export const selectUserEmail = (state) => state.auth.user.email;
+export const selectUserGender = (state) => state.auth.user.gender;
 export const selectUserToken = (state) => state.auth.token;
 export const selectUserIsLoading = (state) => state.auth.isLoading;
 export const selectUserIsSignedIn = (state) => state.auth.isSignedIn;

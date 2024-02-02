@@ -1,4 +1,9 @@
-import { requestLogin, requestRegister, updateAvatar } from "services/api";
+import {
+  requestLogin,
+  requestRegister,
+  updateAvatar,
+  updateUser,
+} from "services/api";
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
@@ -35,6 +40,18 @@ export const updateUserAvatar = createAsyncThunk(
       formData.append("avatar", newAvatar);
       const data = await updateAvatar(formData);
       return data.avatarURL;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUserInfo = createAsyncThunk(
+  "user/updateInfo",
+  async (newUserInfo, thunkAPI) => {
+    try {
+      const data = await updateUser(newUserInfo);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -78,8 +95,13 @@ const userSlice = createSlice({
 
       // ------------ Update User Avatar ---------------------
       .addCase(updateUserAvatar.fulfilled, (state, action) => {
-        state.isLoading = true;
+        state.isLoading = false;
         state.user.avatarURL = action.payload;
+      })
+      // ------------ Update User Info ---------------------
+      .addCase(updateUserInfo.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = { ...state.user, ...action.payload };
       })
 
       .addMatcher(
