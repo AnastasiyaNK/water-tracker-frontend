@@ -61,19 +61,3 @@ export const deleteWater = createAsyncThunk(
     }
   }
 );
-
-// {
-//   "waterVolumeSum": 400,
-//   "waterVolumes": [
-//     {
-//       "_id": "65ba589cab96c7a17ee3fd",
-//       "waterAmount": 350,
-//       "date": "2024-01-31T12:30:02.593Z",
-//       "owner": "23fa589cab96c7a17ee3fd"
-//     }
-//   ]
-// }
-
-// if (Object.keys(myObject).length === 0) {
-//   console.log("Об'єкт порожній");
-// }
