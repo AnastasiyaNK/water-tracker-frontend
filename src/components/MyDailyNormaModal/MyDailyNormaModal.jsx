@@ -70,11 +70,7 @@ const MyDailyNormaModal = () => {
   };
 
   return (
-    <Modal
-      toggleModal={toggleModal}
-      title="My daily norma"
-      styledClass="settings-modal"
-    >
+    <Modal title="My daily norma" styledClass="daily-norma">
       <Form onSubmit={handleSave}>
         <TitleGender>
           <TitleGenderList>For girl:</TitleGenderList>
