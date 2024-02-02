@@ -64,7 +64,7 @@ export const StyledModalBackdrop = styled.div`
 
     @media (min-width: 1440px) {
       width: 592px;
-      padding: 32px 24px;
+      
     }
 
     @media (min-width: 768px) and (max-width: 1439px) {
