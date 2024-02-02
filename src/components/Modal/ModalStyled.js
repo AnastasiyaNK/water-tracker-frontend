@@ -124,6 +124,5 @@ export const StyledModalBackdrop = styled.div`
   }
 
 
-  
 
 `;
