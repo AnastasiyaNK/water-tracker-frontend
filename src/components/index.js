@@ -6,7 +6,7 @@ export { default as WaterPortionsList } from './HomePage/WaterPortionList/WaterP
 export { default as DaysList } from './HomePage/DaysList/DaysList.js';
 export { default as Day } from './HomePage/Day/Day';
 export { default as DayGeneralStats } from './HomePage/DayGeneralStats/DayGeneralStats';
-export { default as Paginate } from './HomePage/Paginate/Paginate';
+export { default as Calendar } from './HomePage/Calendar/Calendar';
 export { default as RangeBar } from './HomePage/RangeBar/RangeBar';
 export { default as AddWaterButton } from './HomePage/AddWatterButton/AddWatterButton';
 export { default as Header } from './Header/Header';
@@ -17,9 +17,8 @@ export { default as SettingsModal } from './SettingsModal/SettingsModal';
 
 export { default as WelcomePage } from './WelcomePage/WelcomePage';
 
+export { default as Modal } from './Modal/Modal';
+export { default as AddWaterModal } from './AddWaterModal/AddWaterModal';
 
-export { default as Modal } from "./Modal/Modal";
-export { default as AddWaterModal } from "./AddWaterModal/AddWaterModal";
-
-export { default as MyDailyNormaModal } from "./MyDailyNormaModal/MyDailyNormaModal";
-export { default as RestrictedRoute } from "./RestrictedRoute/RestrictedRoute";
+export { default as MyDailyNormaModal } from './MyDailyNormaModal/MyDailyNormaModal';
+export { default as RestrictedRoute } from './RestrictedRoute/RestrictedRoute';
