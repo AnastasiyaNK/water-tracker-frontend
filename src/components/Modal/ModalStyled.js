@@ -14,7 +14,7 @@ export const StyledModalBackdrop = styled.div`
   overflow: hidden;
   z-index: 10;
 
-  //--- settings modal window styles for tel tab and desk--\\
+  /* //--- settings modal window styles for tel tab and desk--\\
   .settings-modal {
     position: relative;
     height: auto;
@@ -51,7 +51,6 @@ export const StyledModalBackdrop = styled.div`
     max-width: 704px;
     width: 100%;
   } */
-  //!Must be used like dynamic class!\\
 
   //--- daily norma modal window styles for tel tab and desk---\\
   .daily-norma {
@@ -125,4 +124,5 @@ export const StyledModalBackdrop = styled.div`
       stroke: #ff9d43;
     }
   }
+
 `;
