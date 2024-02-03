@@ -6,9 +6,9 @@ import {
   RangeBar,
   SettingsModal,
   WaterTracker,
+  DailyNorma,
 } from "components";
 
-import { DailyNorma } from "components";
 import { Fon, DailyRangeStyle } from "./HomePage.styled.js";
 import { MyDailyNormaModal } from "components";
 import {
