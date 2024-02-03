@@ -9,16 +9,16 @@ const headerAxiosToken = axios.defaults.headers.common.Authorization;
 export const fetchWater = createAsyncThunk(
   'water/today',
   async (_, thunkAPI) => {
-    if (!headerAxiosToken) {
-      setToken(thunkAPI.getState().auth.token);
-    }
     try {
       const data = await getWaterNotes();
       // return data.length ? data : [{ waterRecords: [], percentage: '0%' }];
-      console.log(data, 'today');
+      console.log(data);
       return Object.keys(data).length !== 0
         ? data
-        : { waterVolumeSum: '0', waterVolumes: [] };
+        : {
+            waterVolumePercentage: '0%',
+            waterVolumes: [],
+          };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

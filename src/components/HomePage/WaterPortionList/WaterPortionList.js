@@ -29,13 +29,13 @@ import {
 
 import { fetchWater } from '../../../redux/water/waterOperations';
 
-const waterportions = [
-  { id: 'id-1', ml: '250', time: '7.00' },
-  { id: 'id-2', ml: '200', time: '8.00' },
-  { id: 'id-3', ml: '200', time: '10.00' },
-  { id: 'id-4', ml: '175', time: '11.30' },
-  { id: 'id-5', ml: '250', time: '12.00' },
-];
+// const waterportions = [
+//   { id: 'id-1', ml: '250', time: '7.00' },
+//   { id: 'id-2', ml: '200', time: '8.00' },
+//   { id: 'id-3', ml: '200', time: '10.00' },
+//   { id: 'id-4', ml: '175', time: '11.30' },
+//   { id: 'id-5', ml: '250', time: '12.00' },
+// ];
 
 const WaterPortionsList = () => {
   const waterNotes = useSelector(selectNotes);
@@ -60,17 +60,17 @@ const WaterPortionsList = () => {
     background: 'none',
     border: 'none',
   };
-
+  console.log(waterNotes);
   return (
     <PortionsList>
       <ScrollableDiv>
         <Portions>
-          {waterportions.map(item => (
-            <Portion key={item.id}>
+          {waterNotes.map(item => (
+            <Portion key={item._id}>
               <Inform>
                 <Glass />
-                <Ml>{item.ml} ml</Ml>
-                <Time>{item.time}AM</Time>
+                <Ml>{String(item.waterAmount)} ml</Ml>
+                <Time>{7.0}AM</Time>
               </Inform>
               <Edit>
                 <Button>

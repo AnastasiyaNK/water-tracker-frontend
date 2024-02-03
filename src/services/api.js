@@ -11,11 +11,18 @@ export const setToken = token => {
 export const requestRegister = async formData => {
   const { data } = await authInstance.post('user/register', formData);
   setToken(data.token);
+
+  const headerAxiosToken = axios.defaults.headers.common.Authorization;
+  console.log(headerAxiosToken, 'headerAxiosToken');
+  console.log(data.token, 'data.token');
   return data;
 };
 export const requestLogin = async formData => {
   const { data } = await authInstance.post('user/login', formData);
   setToken(data.token);
+
+  const headerAxiosToken = axios.defaults.headers.common.Authorization;
+  console.log(headerAxiosToken);
   return data;
 };
 
@@ -39,14 +46,12 @@ export const getWaterNotes = async () => {
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split('T')[0];
 
-  const { data } = await axios.get(
-    'https://water-tracker-backend-0wax.onrender.com/api/water/today',
-    {
-      params: {
-        date: formattedDate,
-      },
-    }
-  );
+  const { data } = await authInstance.get('/water/today', {
+    params: {
+      date: formattedDate,
+    },
+  });
+
   return data;
 };
 

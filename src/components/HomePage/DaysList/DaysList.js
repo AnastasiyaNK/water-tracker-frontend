@@ -49,13 +49,13 @@ const days = [
 ];
 
 const DaysList = () => {
-  const waterNotes = useSelector(selectNotes);
-  const dispatch = useDispatch();
-  console.log(waterNotes, 'waterNotes');
+  // const waterNotes = useSelector(selectNotes);
+  // const dispatch = useDispatch();
+  // console.log(waterNotes, 'waterNotes');
 
-  useEffect(() => {
-    dispatch(fetchWater());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchWater());
+  // }, [dispatch]);
 
   return (
     <div>

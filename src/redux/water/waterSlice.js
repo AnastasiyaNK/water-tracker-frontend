@@ -17,12 +17,11 @@ const waterSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchWater.fulfilled, (state, { payload }) => {
-        // let percentage = parseInt(payload[0].percentage);
-        // percentage = percentage > 100 ? 100 : percentage;
-        // state.percentage = percentage;
+        let percentage = parseInt(payload.waterVolumePercentage);
+        percentage = percentage > 100 ? 100 : percentage;
+        state.percentage = percentage;
         state.waterVolumes = payload.waterVolumes;
         state.isLoading = false;
-        console.log(state.waterVolumes, 'state.waterVolumes ');
       })
       .addCase(fetchWater.rejected, (state, { payload }) => {
         rejectError(state, payload);
