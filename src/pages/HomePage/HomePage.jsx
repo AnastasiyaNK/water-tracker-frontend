@@ -12,13 +12,14 @@ import { Fon, DailyRangeStyle } from "./HomePage.styled.js";
 import { MyDailyNormaModal } from "components";
 import {
   selectSettingsModal,
-  selectDailyNormaModal,
   selectAddWaterModal,
   selectEditWaterModal,
+  selectDailyNormaModal,
 } from "../../redux/modalsSelectors.js";
 import { useDispatch, useSelector } from "react-redux";
 import EditWaterModal from "components/EditWaterModal/EditWaterModal.jsx";
 import { apiGetTodayWaterPortions } from "../../redux/water/waterSlice.js";
+import { selectDailyNormaModal } from "../../redux/selectors.js";
 
 const HomePage = () => {
   const isSettingsModalOpen = useSelector(selectSettingsModal);
