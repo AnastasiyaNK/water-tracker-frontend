@@ -2,6 +2,7 @@ import React from "react";
 
 import {
   AddWaterModal,
+  LogoutModal,
   RangeBar,
   SettingsModal,
   WaterTracker,
@@ -15,6 +16,7 @@ import {
   selectDailyNormaModal,
   selectAddWaterModal,
   selectEditWaterModal,
+  selectLogoutModal,
 } from "../../redux/selectors.js";
 import { useSelector } from "react-redux";
 import ModalButton from "components/ModalButton/ModalButton.jsx";
@@ -26,6 +28,7 @@ const HomePage = () => {
   const isDailyNormaModalOpen = useSelector(selectDailyNormaModal);
   const isAddWaterModalOpen = useSelector(selectAddWaterModal);
   const isEditWaterModalOpen = useSelector(selectEditWaterModal);
+  const isLogoutModalOpen = useSelector(selectLogoutModal);
 
   return (
     <Fon>
@@ -42,6 +45,7 @@ const HomePage = () => {
       {isEditWaterModalOpen && <EditWaterModal />}
       {isSettingsModalOpen && <SettingsModal />}
       {isDailyNormaModalOpen && <MyDailyNormaModal />}
+      {isLogoutModalOpen && <LogoutModal />}
     </Fon>
   );
 };
