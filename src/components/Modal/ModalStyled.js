@@ -126,6 +126,8 @@ export const StyledModalBackdrop = styled.div`
     }
   }
 
+  /* -----------LogoutModal--------------- */
+
   .logout-modal {
     position: relative;
     height: auto;
@@ -133,19 +135,17 @@ export const StyledModalBackdrop = styled.div`
     overflow-y: auto;
     background-color: #ffffff;
     color: black;
-    padding: 32px 12px;
+    padding: 32px 24px;
     border-radius: 10px;
     font-size: 18px;
     line-height: 1.1;
 
     @media (min-width: 1440px) {
       width: 592px;
-      padding: 32px 24px;
     }
 
     @media (min-width: 768px) and (max-width: 1439px) {
-      width: 704px;
-      padding: 32px 24px;
+      width: 592px;
     }
     @media (min-width: 320px) and (max-width: 767px) {
       width: 280px;
