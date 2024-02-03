@@ -4,8 +4,6 @@ export const TodayBox = styled.div`
   display: flex;
   gap: 16px;
   flex-direction: column;
-  /* width: 534px;
-  height: 260px; */
   color: var(--Primery-Color-Black, #2f2f2f);
   font-family: Roboto;
   font-size: 26px;
@@ -15,7 +13,7 @@ export const TodayBox = styled.div`
 
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
-    width: 256px;
+    /* width: 256px; */
     gap: 16px;
   }
 

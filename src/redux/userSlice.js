@@ -1,6 +1,7 @@
 import {
   requestLogin,
   requestRegister,
+  requestlogout,
   updateAvatar,
   updateUser,
 } from "services/api";
@@ -23,7 +24,6 @@ export const apiUserLogin = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const userData = await requestLogin(formData);
-      console.log(userData);
       return userData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -53,6 +53,18 @@ export const updateUserInfo = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logoutUser = createAsyncThunk(
+  "user/logout",
+  async (_, thunkApi) => {
+    try {
+      await requestlogout();
+      return;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -101,6 +113,10 @@ const userSlice = createSlice({
       .addCase(updateUserInfo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = { ...state.user, ...action.payload };
+        // ------------ Logout User ---------------------
+      })
+      .addCase(logoutUser.fulfilled, (state, action) => {
+        return INITIAL_STATE;
       })
 
       .addMatcher(

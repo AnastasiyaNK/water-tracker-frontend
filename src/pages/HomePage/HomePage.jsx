@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { format } from "date-fns";
 import {
   AddWaterModal,
+  LogoutModal,
   RangeBar,
   SettingsModal,
   WaterTracker,
+  DailyNorma,
 } from "components";
 
-import { DailyNorma } from "components";
 import { Fon, DailyRangeStyle } from "./HomePage.styled.js";
 import { MyDailyNormaModal } from "components";
 import {
@@ -15,8 +16,10 @@ import {
   selectDailyNormaModal,
   selectAddWaterModal,
   selectEditWaterModal,
-} from "../../redux/modalsSelectors.js";
+  selectLogoutModal,
+} from "../../redux/selectors.js";
 import { useDispatch, useSelector } from "react-redux";
+
 import EditWaterModal from "components/EditWaterModal/EditWaterModal.jsx";
 import { apiGetTodayWaterPortions } from "../../redux/water/waterSlice.js";
 
@@ -34,6 +37,7 @@ const HomePage = () => {
     )}-${format(new Date(), "dd")}`;
     dispatch(apiGetTodayWaterPortions(date));
   }, [dispatch]);
+  const isLogoutModalOpen = useSelector(selectLogoutModal);
 
   return (
     <Fon>
@@ -47,6 +51,7 @@ const HomePage = () => {
       {isEditWaterModalOpen && <EditWaterModal />}
       {isSettingsModalOpen && <SettingsModal />}
       {isDailyNormaModalOpen && <MyDailyNormaModal />}
+      {isLogoutModalOpen && <LogoutModal />}
     </Fon>
   );
 };
