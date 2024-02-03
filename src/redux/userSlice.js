@@ -3,6 +3,7 @@ import {
   requestRegister,
   updateAvatar,
   updateUser,
+  setMyDailyNorma,
 } from "services/api";
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -57,6 +58,18 @@ export const updateUserInfo = createAsyncThunk(
   }
 );
 
+export const updateMyDailyNorma= createAsyncThunk(
+  "user/dailyNorma",
+  async (newDailyNorma, thunkAPI) => {
+    try {
+      const data = await setMyDailyNorma(newDailyNorma);
+      return data.dailyNorma;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 const INITIAL_STATE = {
   user: {
     id: null,
@@ -101,6 +114,11 @@ const userSlice = createSlice({
       .addCase(updateUserInfo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = { ...state.user, ...action.payload };
+      })
+      // ------------ Update My Daily Norma ---------------------
+      .addCase(updateMyDailyNorma.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user.dailyNorma = action.payload;
       })
 
       .addMatcher(
