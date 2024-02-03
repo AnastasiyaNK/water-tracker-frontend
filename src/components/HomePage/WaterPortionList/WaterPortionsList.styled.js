@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const Portion = styled.div`
-  width: 254px;
+  width: 256px;
   display: flex;
+  gap: 65px;
   padding: 6px 0;
   align-items: baseline;
   border-bottom: 1px solid #d7e3ff;
@@ -10,30 +11,44 @@ export const Portion = styled.div`
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
     align-items: baseline;
-    width: 254px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
+    width: 646px;
+    gap: 417px;
     align-items: center;
     padding: 12px 0;
   }
 
   @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 768px) and (min-resolution: 192dpi) {
+    width: 646px;
+    gap: 417px;
     align-items: center;
     padding: 12px 0;
   }
 
   @media screen and (min-width: 1440px) {
+    width: 544px;
+    gap: 330px;
     align-items: center;
     padding: 12px 0;
   }
 
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
+    width: 544px;
+    gap: 330px;
     align-items: center;
     padding: 12px 0;
   }
+`;
+export const Inform = styled.div`
+  display: flex;
+  width: ;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
 `;
 
 export const Ml = styled.div`
@@ -83,46 +98,41 @@ export const Time = styled.div`
 export const Edit = styled.div`
   display: flex;
   gap: 16px;
-  margin-left: 38px;
 
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
     display: flex;
     gap: 16px;
-    margin-left: 38px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     display: flex;
     gap: 18px;
-    margin-left: 360px;
   }
 
   @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 768px) and (min-resolution: 192dpi) {
     display: flex;
     gap: 18px;
-    margin-left: 360px;
   }
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     display: flex;
     gap: 18px;
-    margin-left: 278px;
   }
 
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
     display: flex;
     gap: 18px;
-    margin-left: 278px;
   }
 `;
 
 export const PortionsList = styled.div`
-  width: 254px;
+  /* width: 254px; */
   display: flex;
+  gap: 10px;
   padding: 0;
   flex-direction: column;
 
@@ -144,22 +154,24 @@ export const PortionsList = styled.div`
 
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
-    width: 254px;
   }
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    width: 646px;
+    display: flex;
+    gap: 10px;
     height: 276px;
     padding: 0 32px 0 0;
   }
   @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 768px) and (min-resolution: 192dpi) {
     padding: 0 32px 0 0;
-    width: 646px;
+    display: flex;
+    gap: 10px;
     height: 276px;
     padding: 0 32px 0 0;
   }
   @media screen and (min-width: 1440px) {
-    width: 544px;
+    display: flex;
+    gap: 15px;
     height: 260px;
     padding: 0 32px 0 0;
     padding: 0;
@@ -167,6 +179,8 @@ export const PortionsList = styled.div`
 
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
+    display: flex;
+    gap: 15px;
     padding: 0;
   }
 `;

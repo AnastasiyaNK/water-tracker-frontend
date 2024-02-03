@@ -1,4 +1,3 @@
-// import react from 'react';
 import { DataStyle, Data, Box } from './DayGeneralStats.stayled';
 
 const DayGeneralStats = ({ item }) => {
