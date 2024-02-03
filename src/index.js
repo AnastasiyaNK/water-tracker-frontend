@@ -6,18 +6,19 @@ import { Provider } from "react-redux";
 // import { store, persistor } from './redux/store';
 import { store } from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
+// import { PersistGate } from "redux-persist/integration/react";
+
 // import { PersistGate } from 'redux-persist/integration/react';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      {/* <PersistGate loading={null} persistor={persistor}> */}
-      {/* TODO: fix basename */}
-      <BrowserRouter basename="/water-tracker-frontend">
+    <BrowserRouter basename="/water-tracker-frontend">
+      <Provider store={store}>
+        {/* <PersistGate persistor={persistor}> */}
         <App />
-      </BrowserRouter>
-      {/* </PersistGate> */}
-    </Provider>
+        {/* </PersistGate> */}
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );

@@ -12,7 +12,6 @@ export const apiUserRegister = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const userData = await requestRegister(formData);
-      // alert('User successfully created, please sign in!');
       return userData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

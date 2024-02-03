@@ -25,15 +25,6 @@ const Header = () => {
             <UserLogo className="user-logo" />
           </Link>
         )}
-
-        {/* {isSignedIn ? (
-          <UserAuth />
-        ) : (
-          <Link to="/signin" className="user-wrapper">
-            <p className="user-name">Sign in</p>
-            <UserLogo className="user-logo" />
-          </Link>
-        )} */}
       </StyledHeader>
     </StyledMainContainer>
   );
