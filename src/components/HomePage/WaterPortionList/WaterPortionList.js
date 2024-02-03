@@ -21,7 +21,7 @@ import { ReactComponent as Bucket } from '../../../assets/icons/bucket.svg';
 
 import { selectNotes } from '../../../redux/selectors.js';
 
-import { fetchWater } from '../../../redux/water/waterOperations';
+import { fetchWater, deleteWater } from '../../../redux/water/waterOperations';
 
 const WaterPortionsList = () => {
   const waterNotes = useSelector(selectNotes);
@@ -61,7 +61,12 @@ const WaterPortionsList = () => {
                 <Button>
                   <Pencil />
                 </Button>
-                <Button>
+                <></>
+                <Button
+                  onClick={() => {
+                    dispatch(deleteWater(item._id));
+                  }}
+                >
                   <Bucket />
                 </Button>
               </Edit>

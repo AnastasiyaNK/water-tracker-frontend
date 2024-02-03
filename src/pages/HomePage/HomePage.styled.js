@@ -48,6 +48,7 @@ export const Fon = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    min-width: 1216px;
     background-image: url(${imgFon}), url(${imgBotle});
     background-position: center, left 65px;
     display: flex;
@@ -72,6 +73,7 @@ export const DailyRangeStyle = styled.div`
   flex-direction: column;
   gap: 232px;
   padding: 0px 20px 0px 20px;
+  z-index: 2;
 
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
