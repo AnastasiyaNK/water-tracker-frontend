@@ -50,6 +50,13 @@ export const requestDeleteWaterData = async (portionId) => {
   return data;
 };
 
+export const updateAvatar = async (formData) => {
+  return null;
+};
+
+export const updateUser = async (formData) => {
+  return null;
+};
 /*----------------Запити по воді(за день, за місяць, видалення нотаток за день)------------------------*/
 
 export const getWaterNotes = async () => {
