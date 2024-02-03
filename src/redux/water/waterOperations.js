@@ -1,10 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import {
-  getWaterNotes,
-  getWaterStats,
-  deleteWaterNote,
-} from 'services/apiWater.js';
+import { getWaterNotes, getWaterStats, deleteWaterNote } from 'services/api.js';
 import { setToken } from 'services/api';
 import axios from 'axios';
 
@@ -24,9 +20,6 @@ export const fetchWater = createAsyncThunk(
         ? data
         : { waterVolumeSum: '0', waterVolumes: [] };
     } catch (error) {
-      // toast.error(
-      //   `Oops. Something goes wrong. Please try again!`
-      // );
       return thunkAPI.rejectWithValue(error.message);
     }
   }

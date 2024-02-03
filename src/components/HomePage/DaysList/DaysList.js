@@ -48,34 +48,6 @@ const days = [
   { id: 'id-31', number: '31', percent: '150' },
 ];
 
-// const obgMonth = {
-//   '2024-02-15': {
-//     date: '15, January',
-//     portions: 1,
-//     waterVolumePercentage: 15,
-//     dailyNorma: 1,
-//   },
-//   '2024-02-21': {
-//     date: '21, January',
-//     portions: 2,
-//     waterVolumePercentage: 50,
-//     dailyNorma: 1,
-//   },
-//   '2024-02-22': {
-//     date: '22, January',
-//     portions: 1,
-//     waterVolumePercentage: 45,
-//     dailyNorma: 1,
-//   },
-//   '2024-02-23': {
-//     date: '23, January',
-//     portions: 2,
-//     waterVolumePercentage: 27,
-//     dailyNorma: 1,
-//   },
-// };
-// // console.log(obgMonth['2024-02-23']);
-
 const DaysList = () => {
   const waterNotes = useSelector(selectNotes);
   const dispatch = useDispatch();
