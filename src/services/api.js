@@ -21,7 +21,6 @@ export const requestLogin = async (formData) => {
 
 export const requestDayWaterData = async (date) => {
   const { data } = await authInstance.get(`water/today?date=${date}`);
-
   return data;
 };
 export const requestMonthWaterData = async (month, year) => {
