@@ -1,13 +1,15 @@
 import React from 'react';
-import { MonthBox, Title } from './Month.styled';
-import { DaysList } from 'components';
-// import {  Paginate } from 'components';
+import { MonthBox, TitleCalendar, Title } from './Month.styled';
+import { DaysList, Calendar } from 'components';
 
 const Month = () => {
   return (
     <MonthBox>
-      <Title>Month</Title>
-      {/* <Paginate /> */}
+      <TitleCalendar>
+        <Title>Month</Title>
+        <Calendar />
+      </TitleCalendar>
+
       <DaysList />
     </MonthBox>
   );

@@ -1,8 +1,16 @@
-// import { useSelector } from 'react-redux';
-// import { useDispatch } from 'react-redux';
-// import { deleteWaterPortion } from '../../redux/waterportions/operations';
-// import { selectVisibleContacts } from 'redux/contacts/selectors';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchWater } from '../../../redux/water/waterOperations';
 import { Day } from 'components';
+
+import {
+  // selectError,
+  // selectIsLoading,
+  selectNotes,
+  // selectPercentToday,
+  // selectPercentage,
+  // selectStats,
+} from '../../../redux/selectors.js';
 
 import { TableDays } from './DaysList.styled';
 
@@ -40,9 +48,42 @@ const days = [
   { id: 'id-31', number: '31', percent: '150' },
 ];
 
+// const obgMonth = {
+//   '2024-02-15': {
+//     date: '15, January',
+//     portions: 1,
+//     waterVolumePercentage: 15,
+//     dailyNorma: 1,
+//   },
+//   '2024-02-21': {
+//     date: '21, January',
+//     portions: 2,
+//     waterVolumePercentage: 50,
+//     dailyNorma: 1,
+//   },
+//   '2024-02-22': {
+//     date: '22, January',
+//     portions: 1,
+//     waterVolumePercentage: 45,
+//     dailyNorma: 1,
+//   },
+//   '2024-02-23': {
+//     date: '23, January',
+//     portions: 2,
+//     waterVolumePercentage: 27,
+//     dailyNorma: 1,
+//   },
+// };
+// // console.log(obgMonth['2024-02-23']);
+
 const DaysList = () => {
-  //   const dispatch = useDispatch();
-  //   const filteredcontacts = useSelector(selectVisibleContacts);
+  const waterNotes = useSelector(selectNotes);
+  const dispatch = useDispatch();
+  console.log(waterNotes, 'waterNotes');
+
+  useEffect(() => {
+    dispatch(fetchWater());
+  }, [dispatch]);
 
   return (
     <div>

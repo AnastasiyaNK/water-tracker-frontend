@@ -7,25 +7,32 @@ import imgFonTab from '../../assets/images/bubble-home-tab.png';
 import imgBotleTab from '../../assets/images/bottle-home-tab.png';
 
 export const Fon = styled.div`
-  background-image: url(${imgFonMobile}), url(${imgBotleMobile});
+  width: 100%;
+  padding: 8px 0;
   display: flex;
   flex-direction: column;
   margin-top: 24px;
+  align-items: center;
   gap: 40px;
+  background-image: url(${imgFonMobile}), url(${imgBotleMobile});
   background-repeat: no-repeat;
-  background-position: top, 35px 65px;
+  background-position: center, center 65px;
+
+  @media (min-width: 320px) and (max-width: 767px) {
+    min-width: 280px;
+  }
 
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
     background-image: url(${imgFonMobile}), url(${imgBotleMobile});
-    background-position: top, 35px 65px;
+    background-position: center, center 80px;
     display: flex;
     flex-direction: column;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     background-image: url(${imgFonTab}), url(${imgBotleTab});
-    background-position: top, 120px 0px;
+    background-position: center, center 30px;
     display: flex;
     flex-direction: column;
   }
@@ -33,6 +40,7 @@ export const Fon = styled.div`
   @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 768px) and (min-resolution: 192dpi) {
     background-image: url(${imgFonTab}), url(${imgBotleTab});
+    background-position: center, center 30px;
     display: flex;
     flex-direction: column;
     margin-top: 22px;
@@ -41,6 +49,7 @@ export const Fon = styled.div`
 
   @media screen and (min-width: 1440px) {
     background-image: url(${imgFon}), url(${imgBotle});
+    background-position: center, left 65px;
     display: flex;
     flex-direction: row;
     margin-top: 22px;
@@ -50,6 +59,7 @@ export const Fon = styled.div`
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
     background-image: url(${imgFon}), url(${imgBotle});
+    background-position: center, left 65px;
     display: flex;
     flex-direction: row;
     margin-top: 22px;

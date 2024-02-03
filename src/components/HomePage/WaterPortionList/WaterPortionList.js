@@ -1,7 +1,6 @@
-// import { useSelector } from 'react-redux';
-// import { useDispatch } from 'react-redux';
-// import { deleteWaterPortion } from '../../redux/waterportions/operations';
-// import { selectVisibleContacts } from 'redux/contacts/selectors';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
 import AddWaterButton from '../AddWatterButton/AddWatterButton';
 
 import {
@@ -13,10 +12,22 @@ import {
   ScrollableDiv,
   Button,
   Portions,
+  Inform,
 } from './WaterPortionsList.styled';
 import { ReactComponent as Glass } from '../../../assets/icons/glass-desc.svg';
 import { ReactComponent as Pencil } from '../../../assets/icons/pencil-square.svg';
 import { ReactComponent as Bucket } from '../../../assets/icons/bucket.svg';
+
+import {
+  // selectError,
+  // selectIsLoading,
+  selectNotes,
+  // selectPercentToday,
+  // selectPercentage,
+  // selectStats,
+} from '../../../redux/selectors.js';
+
+import { fetchWater } from '../../../redux/water/waterOperations';
 
 const waterportions = [
   { id: 'id-1', ml: '250', time: '7.00' },
@@ -27,8 +38,12 @@ const waterportions = [
 ];
 
 const WaterPortionsList = () => {
-  //   const dispatch = useDispatch();
-  //   const filteredcontacts = useSelector(selectVisibleContacts);
+  const waterNotes = useSelector(selectNotes);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchWater());
+  }, [dispatch]);
 
   const buttonStyle = {
     display: 'inline-flex',
@@ -52,9 +67,11 @@ const WaterPortionsList = () => {
         <Portions>
           {waterportions.map(item => (
             <Portion key={item.id}>
-              <Glass />
-              <Ml>{item.ml}ml</Ml>
-              <Time>{item.time}AM</Time>
+              <Inform>
+                <Glass />
+                <Ml>{item.ml} ml</Ml>
+                <Time>{item.time}AM</Time>
+              </Inform>
               <Edit>
                 <Button>
                   <Pencil />
@@ -63,9 +80,6 @@ const WaterPortionsList = () => {
                   <Bucket />
                 </Button>
               </Edit>
-              {/* <Button onClick={() => dispatch(deleteContact(item.id))}>
-              Delete
-            </Button> */}
             </Portion>
           ))}
         </Portions>
