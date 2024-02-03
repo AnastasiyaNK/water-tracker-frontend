@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import AddWaterButton from '../AddWatterButton/AddWatterButton';
+import { getLocaleTime } from '../../../helpers/getLocaleTime';
 
 import {
   Ml,
@@ -18,24 +19,9 @@ import { ReactComponent as Glass } from '../../../assets/icons/glass-desc.svg';
 import { ReactComponent as Pencil } from '../../../assets/icons/pencil-square.svg';
 import { ReactComponent as Bucket } from '../../../assets/icons/bucket.svg';
 
-import {
-  // selectError,
-  // selectIsLoading,
-  selectNotes,
-  // selectPercentToday,
-  // selectPercentage,
-  // selectStats,
-} from '../../../redux/selectors.js';
+import { selectNotes } from '../../../redux/selectors.js';
 
 import { fetchWater } from '../../../redux/water/waterOperations';
-
-// const waterportions = [
-//   { id: 'id-1', ml: '250', time: '7.00' },
-//   { id: 'id-2', ml: '200', time: '8.00' },
-//   { id: 'id-3', ml: '200', time: '10.00' },
-//   { id: 'id-4', ml: '175', time: '11.30' },
-//   { id: 'id-5', ml: '250', time: '12.00' },
-// ];
 
 const WaterPortionsList = () => {
   const waterNotes = useSelector(selectNotes);
@@ -60,7 +46,6 @@ const WaterPortionsList = () => {
     background: 'none',
     border: 'none',
   };
-  console.log(waterNotes);
   return (
     <PortionsList>
       <ScrollableDiv>
@@ -69,8 +54,8 @@ const WaterPortionsList = () => {
             <Portion key={item._id}>
               <Inform>
                 <Glass />
-                <Ml>{String(item.waterAmount)} ml</Ml>
-                <Time>{7.0}AM</Time>
+                <Ml>{String(item.waterAmount)}ml</Ml>
+                <Time>{getLocaleTime(item.date)}AM</Time>
               </Inform>
               <Edit>
                 <Button>

@@ -5,7 +5,6 @@ export { default as DailyNorma } from './HomePage/DailyNorma/DailyNorma';
 export { default as WaterPortionsList } from './HomePage/WaterPortionList/WaterPortionList';
 export { default as DaysList } from './HomePage/DaysList/DaysList.js';
 export { default as Day } from './HomePage/Day/Day';
-export { default as Calendar } from './HomePage/Calendar/Calendar';
 export { default as DayGeneralStats } from './HomePage/DayGeneralStats/DayGeneralStats';
 export { default as RangeBar } from './HomePage/RangeBar/RangeBar';
 export { default as AddWaterButton } from './HomePage/AddWatterButton/AddWatterButton';

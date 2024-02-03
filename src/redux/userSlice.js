@@ -3,12 +3,12 @@ import {
   requestRegister,
   updateAvatar,
   updateUser,
-} from "services/api";
+} from 'services/api';
 
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const apiUserRegister = createAsyncThunk(
-  "user/register",
+  'user/register',
   async (formData, thunkApi) => {
     try {
       const userData = await requestRegister(formData);
@@ -20,11 +20,10 @@ export const apiUserRegister = createAsyncThunk(
   }
 );
 export const apiUserLogin = createAsyncThunk(
-  "user/login",
+  'user/login',
   async (formData, thunkApi) => {
     try {
       const userData = await requestLogin(formData);
-      console.log(userData);
       return userData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -33,11 +32,11 @@ export const apiUserLogin = createAsyncThunk(
 );
 
 export const updateUserAvatar = createAsyncThunk(
-  "user/updateAvatar",
+  'user/updateAvatar',
   async (newAvatar, thunkAPI) => {
     try {
       const formData = new FormData();
-      formData.append("avatar", newAvatar);
+      formData.append('avatar', newAvatar);
       const data = await updateAvatar(formData);
       return data.avatarURL;
     } catch (error) {
@@ -47,7 +46,7 @@ export const updateUserAvatar = createAsyncThunk(
 );
 
 export const updateUserInfo = createAsyncThunk(
-  "user/updateInfo",
+  'user/updateInfo',
   async (newUserInfo, thunkAPI) => {
     try {
       const data = await updateUser(newUserInfo);
@@ -75,10 +74,10 @@ const INITIAL_STATE = {
 };
 
 const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState: INITIAL_STATE,
 
-  extraReducers: (builder) =>
+  extraReducers: builder =>
     builder
       // ------------ Register User ----------------------
       .addCase(apiUserRegister.fulfilled, (state, action) => {
@@ -105,14 +104,14 @@ const userSlice = createSlice({
       })
 
       .addMatcher(
-        (action) => action.type.endsWith("/pending"),
+        action => action.type.endsWith('/pending'),
         (state, action) => {
           state.isLoading = true;
           state.error = null;
         }
       )
       .addMatcher(
-        (action) => action.type.endsWith("/rejected"),
+        action => action.type.endsWith('/rejected'),
         (state, action) => {
           state.isLoading = false;
           state.error = action.payload;

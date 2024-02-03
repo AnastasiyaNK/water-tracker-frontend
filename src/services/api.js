@@ -11,18 +11,12 @@ export const setToken = token => {
 export const requestRegister = async formData => {
   const { data } = await authInstance.post('user/register', formData);
   setToken(data.token);
-
-  const headerAxiosToken = axios.defaults.headers.common.Authorization;
-  console.log(headerAxiosToken, 'headerAxiosToken');
-  console.log(data.token, 'data.token');
   return data;
 };
+
 export const requestLogin = async formData => {
   const { data } = await authInstance.post('user/login', formData);
   setToken(data.token);
-
-  const headerAxiosToken = axios.defaults.headers.common.Authorization;
-  console.log(headerAxiosToken);
   return data;
 };
 
@@ -56,11 +50,11 @@ export const getWaterNotes = async () => {
 };
 
 export const getWaterStats = async month => {
-  const { data } = await axios.get(`/water/${month}`);
+  const { data } = await authInstance.get(`/water/month?${month}`);
   return data;
 };
 
 export const deleteWaterNote = async id => {
-  const { data } = await axios.delete(`/water/delete/${id}`);
+  const { data } = await authInstance.delete(`/water/delete/${id}`);
   return data;
 };

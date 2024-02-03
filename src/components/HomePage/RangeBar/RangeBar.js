@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import {
-  // selectError,
-  // selectIsLoading,
-  // selectNotes,
-  // selectPercentToday,
-  selectPercent,
-  // selectStats,
-} from '../../../redux/selectors.js';
+import { selectPercent } from '../../../redux/selectors.js';
 import { fetchWater } from '../../../redux/water/waterOperations';
 
 import { Range } from 'react-range';
@@ -21,11 +14,10 @@ import {
   RangeAdd,
   RangeStyle,
 } from './RangeBar.styled';
-// import { selectPercent } from 'redux/selectors';
 
 const RangeBar = () => {
   const percents = useSelector(selectPercent);
-  const [values, setValues] = useState([percents]);
+  const [values, setValues] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -95,7 +87,7 @@ const RangeBar = () => {
                   borderRadius: '4px',
                 }}
               >
-                {values[props.key]}%{/* {percents} */}
+                {/* {values[props.key]}% */}
               </div>
             </div>
           )}

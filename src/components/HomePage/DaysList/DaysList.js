@@ -1,18 +1,16 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchWater } from '../../../redux/water/waterOperations';
+import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { fetchStats } from '../../../redux/water/waterOperations';
 import { Day } from 'components';
+import { getName } from '../../../helpers/getName';
+import svgIcons from '../../../assets/icons/set-icons.svg';
 
 import {
-  // selectError,
-  // selectIsLoading,
-  selectNotes,
-  // selectPercentToday,
-  // selectPercentage,
-  // selectStats,
-} from '../../../redux/selectors.js';
-
-import { TableDays } from './DaysList.styled';
+  TableDays,
+  ButtonArrow,
+  DaysListHeader,
+  Title,
+} from './DaysList.styled';
 
 const days = [
   { id: 'id-1', number: '1', percent: '150' },
@@ -47,18 +45,57 @@ const days = [
   { id: 'id-30', number: '30', percent: '150' },
   { id: 'id-31', number: '31', percent: '150' },
 ];
+const currentDate = new Date();
 
 const DaysList = () => {
-  // const waterNotes = useSelector(selectNotes);
-  // const dispatch = useDispatch();
-  // console.log(waterNotes, 'waterNotes');
+  const [month, setMonth] = useState(currentDate.getMonth());
+  const [year, setYear] = useState(currentDate.getFullYear());
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchWater());
-  // }, [dispatch]);
+  const monthName = getName(month);
 
+  useEffect(() => {
+    dispatch(fetchStats(`year=${year}&month=${month + 1}`));
+  }, [dispatch, year, month]);
+
+  const previousMonth = () => {
+    if (month === 0) {
+      setYear(prevYear => prevYear - 1);
+      setMonth(11);
+    } else {
+      setMonth(prevMonth => prevMonth - 1);
+    }
+  };
+
+  const nextMonth = () => {
+    if (month === 11) {
+      setYear(prevYear => prevYear + 1);
+      setMonth(0);
+    } else {
+      setMonth(prevMonth => prevMonth + 1);
+    }
+  };
   return (
     <div>
+      <DaysListHeader>
+        <Title>Month</Title>
+        <div>
+          <ButtonArrow onClick={previousMonth}>
+            <svg height="14" width="14" data-arrow="right">
+              <use href={`${svgIcons}#icon-arrow`}></use>
+            </svg>
+          </ButtonArrow>
+          <p>{`${monthName}, ${year}`}</p>
+          <ButtonArrow
+            onClick={nextMonth}
+            disabled={currentDate < new Date(year, month + 1)}
+          >
+            <svg height="14" width="14" data-arrow="left">
+              <use href={`${svgIcons}#icon-arrow`}></use>
+            </svg>
+          </ButtonArrow>
+        </div>
+      </DaysListHeader>
       <TableDays>
         {days.map(item => (
           <div key={item.id}>
