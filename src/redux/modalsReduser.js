@@ -8,13 +8,12 @@ const INITIAL_STATE = {
     isEditModalOpen: false,
     isLogoutModalOpen: false,
   },
+  selectedWaterPortionId: null,
 };
 
 const modalsSlice = createSlice({
   name: "modals",
-  // Початковий стан редюсера слайсу
   initialState: INITIAL_STATE,
-  // Об'єкт редюсерів
   reducers: {
     setSettingsModal(state, action) {
       state.modals.isSettingsModalOpen = action.payload;
@@ -26,9 +25,10 @@ const modalsSlice = createSlice({
       state.modals.isAddWaterModalOpen = action.payload;
     },
     setEditModal(state, action) {
-      state.modals.isEditModalOpen = action.payload;
+      state.modals.isEditModalOpen = action.payload.isOpenModal;
+      state.selectedWaterPortionId = action.payload.waterPortionId;
     },
-    closeAllModals(state, action) {
+    closeAllModals(state) {
       state.modals.isSettingsModalOpen = false;
       state.modals.isDailyNormaModalOpen = false;
       state.modals.isAddWaterModalOpen = false;
@@ -41,7 +41,6 @@ const modalsSlice = createSlice({
   },
 });
 
-// Генератори екшенів
 export const {
   setSettingsModal,
   setDailyNormaModal,
@@ -50,5 +49,4 @@ export const {
   closeAllModals,
   setLogoutModal,
 } = modalsSlice.actions;
-// Редюсер слайсу
 export const modalsReducer = modalsSlice.reducer;

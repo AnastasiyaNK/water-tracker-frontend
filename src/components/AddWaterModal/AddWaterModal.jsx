@@ -1,10 +1,14 @@
 import { Modal } from "components";
 import React, { useState } from "react";
+import { format } from "date-fns";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { StyledWaterForm } from "./AddWaterModal.styled";
 import { ReactComponent as IconMinus } from "../../assets/icons/minus-small.svg";
 import { ReactComponent as IconPlus } from "../../assets/icons/plus-small.svg";
+import { useDispatch } from "react-redux";
+import { apiAddWaterPortion } from "../../redux/water/waterSlice";
+import { closeAllModals } from "../../redux/modalsReduser";
 
 const WATER_AMOUNT_DIFFERENCE = 20;
 
@@ -21,7 +25,7 @@ const addWaterValidationSchema = Yup.object({
 });
 
 const AddWaterModal = () => {
-  const currentDate = new Date();
+  const dispatch = useDispatch();
   const [localWaterAmount, setLocalWaterAmount] = useState(250);
   const {
     handleChange,
@@ -32,11 +36,15 @@ const AddWaterModal = () => {
   } = useFormik({
     initialValues: {
       waterAmount: "250",
-      date: `${currentDate.getHours()}:${currentDate.getMinutes()}`,
+      date: `${format(new Date(), "kk")}:${format(new Date(), "mm")}`,
     },
     validationSchema: addWaterValidationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      dispatch(apiAddWaterPortion(values))
+        .unwrap()
+        .then(() => {
+          dispatch(closeAllModals());
+        });
     },
   });
 

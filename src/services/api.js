@@ -20,17 +20,33 @@ export const requestLogin = async (formData) => {
   return data;
 };
 
-export const updateAvatar = async (formData) => {
-  const { data } = await authInstance.patch("user/avatar", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+export const requestDayWaterData = async (date) => {
+  const { data } = await authInstance.get(`water/today?date=${date}`);
   return data;
 };
+export const requestMonthWaterData = async (month, year) => {
+  const { data } = await authInstance.get(
+    `water/month?month=${month}&year=${year}`
+  );
 
-export const updateUser = async (formData) => {
-  const { data } = await authInstance.patch("user/update", formData);
+  return data;
+};
+export const requestAddWaterData = async (formData) => {
+  const { data } = await authInstance.post("water", formData);
+
+  return data;
+};
+export const requestEditWaterData = async (portionId, formData) => {
+  const { data } = await authInstance.put(
+    `water/update/${portionId}`,
+    formData
+  );
+
+  return data;
+};
+export const requestDeleteWaterData = async (portionId) => {
+  const { data } = await authInstance.delete(`water/${portionId}`);
+
   return data;
 };
 
