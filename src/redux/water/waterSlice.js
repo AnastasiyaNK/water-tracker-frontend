@@ -125,9 +125,4 @@ const waterSlice = createSlice({
       ),
 });
 
-function rejectError(state, payload) {
-  state.isLoading = false;
-  state.error = payload;
-}
-
 export const waterReducer = waterSlice.reducer;

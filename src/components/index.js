@@ -1,4 +1,5 @@
 export { default as WaterTracker } from "./HomePage/WaterTracker/WaterTracker";
+export { default as SharedLayout } from "./SharedLayout/SharedLayout";
 export { default as Today } from "./HomePage/Today/Today";
 export { default as Month } from "./HomePage/Month/Month";
 export { default as DailyNorma } from "./HomePage/DailyNorma/DailyNorma";
