@@ -4,7 +4,7 @@ import { StyledModalBackdrop } from "./ModalStyled";
 import { useDispatch } from "react-redux";
 import { closeAllModals } from "../../redux/modalsReduser";
 
-const Modal = ({ children, title }) => {
+const Modal = ({ children, title, styledClass }) => {
   const dispatch = useDispatch();
 
   const handleOverlayClick = (event) => {
@@ -31,7 +31,7 @@ const Modal = ({ children, title }) => {
 
   return (
     <StyledModalBackdrop onClick={handleOverlayClick}>
-      <div className="modal-wrapper">
+      <div className={styledClass}>
         <h2 className="title">{title}</h2>
         <button
           className="close-btn"

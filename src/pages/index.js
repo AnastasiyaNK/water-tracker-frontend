@@ -1,4 +1,4 @@
 export { default as HomePage } from "./HomePage/HomePage";
-export { default as Main } from "./Main/Main";
-export { default as SignInPage } from "./SigninPage/SignInPage";
+export { default as WelcomePage } from "./WelcomePage/WelcomePage";
+export { default as SignInPage } from "./SignInPage/SignInPage";
 export { default as SignUpPage } from "./SignUnPage/SignUnPage";
