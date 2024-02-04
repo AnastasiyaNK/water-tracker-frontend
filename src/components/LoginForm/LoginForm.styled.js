@@ -14,10 +14,7 @@ export const StyledRegisterContainer = styled.div`
     justify-content: flex-start;
     flex-direction: row-reverse;
   }
-
-
   }
-
 `;
 
 export const StyledRegisterForm = styled.form`
@@ -34,7 +31,6 @@ export const StyledRegisterForm = styled.form`
     font-weight: 500;
     line-height: 1.3;
   }
-
   .label-text {
     margin-top: 16px;
     color: #2f2f2f;
@@ -43,13 +39,9 @@ export const StyledRegisterForm = styled.form`
     font-weight: 400;
     line-height: 1.33;
   }
-
-
   .label {
     margin-top: 16px;
   }
-
-
   .input {
     margin-top: 8px;
     border-radius: 6px;
@@ -59,7 +51,7 @@ export const StyledRegisterForm = styled.form`
     display: flex;
     padding: 12px 10px;
     width: 100%;
-  flex-direction: column;
+    flex-direction: column;
     align-items: flex-start;
     gap: 10px;
     outline: none;
