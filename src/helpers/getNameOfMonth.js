@@ -1,4 +1,4 @@
-export const getName = month => {
+export const getNameOfMonth = month => {
   const months = [
     'January',
     'February',

@@ -18,9 +18,9 @@ import { ReactComponent as Xmark } from '../../../assets/icons/outline-desc.svg'
  * @param {PopoverProps} props.popoverProps
  */
 
-const Day = ({ buttonProps, popoverProps, item }) => {
+const Day = ({ buttonProps, popoverProps, item, index, monthName }) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const { number, percent } = item;
+  const { waterVolumePercentage } = item;
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -46,13 +46,13 @@ const Day = ({ buttonProps, popoverProps, item }) => {
           minHeight: '34px',
           padding: '0px',
           border: '1px solid',
-          borderColor: percent === '100' ? 'white' : 'orange',
+          borderColor: waterVolumePercentage === 100 ? 'white' : 'orange',
         }}
         {...buttonProps}
       >
-        <DayNumber>{number}</DayNumber>
+        <DayNumber>{index + 1}</DayNumber>
       </Button>
-      <Percent>{percent}%</Percent>
+      <Percent>{waterVolumePercentage}%</Percent>
       <Popover
         id={id}
         open={open}
@@ -81,7 +81,7 @@ const Day = ({ buttonProps, popoverProps, item }) => {
           <ButtonXmark onClick={handleClose}>
             <Xmark />
           </ButtonXmark>
-          <DayGeneralStats item={item} />
+          <DayGeneralStats item={item} index={index} monthName={monthName} />
         </Box>
       </Popover>
     </div>
