@@ -24,7 +24,11 @@ export const StyledHeader = styled.header`
     font-weight: 400;
     line-height: 1/25;
   }
-  .user-logo {
+  &:hover,
+  &:focus {
+    & p {
+      color: #ff9d43;
+    }
   }
 
   @media (min-width: 320px) and (max-width: 767px) {

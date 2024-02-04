@@ -37,7 +37,7 @@ const Modal = ({ children, title, styledClass }) => {
           className="close-btn"
           type="button"
           onClick={() => {
-            dispatch(closeAllModals(false));
+            dispatch(closeAllModals());
           }}
         >
           <IconClose className="close-btn-svg" />

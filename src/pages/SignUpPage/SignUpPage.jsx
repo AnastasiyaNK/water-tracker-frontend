@@ -1,6 +1,6 @@
 import RegisterForm from "components/RegisterForm/RegisterForm";
 import React from "react";
-import { StyledWrapperPng } from "./SignUnPage.styled";
+import { StyledWrapperPng } from "./SignUpPage.styled";
 import { StyledMainContainer } from "../../styled";
 
 const SignUpPage = () => {
