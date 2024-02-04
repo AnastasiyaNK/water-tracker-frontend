@@ -7,9 +7,7 @@ const SignInPage = () => {
   return (
     <StyledMainContainer>
       <StyledLoginPage>
-        <div className="block-right">
           <LoginForm />
-        </div>
       </StyledLoginPage>
     </StyledMainContainer>
   );
