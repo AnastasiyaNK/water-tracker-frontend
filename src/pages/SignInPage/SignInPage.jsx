@@ -4,7 +4,7 @@ import { LoginForm } from "components";
 import { StyledLoginPage } from "./SignInPage.styled";
 
 const SignInPage = () => {
- return (
+  return (
     <StyledMainContainer>
       <StyledLoginPage>
         <div className="block-right">
@@ -13,4 +13,5 @@ const SignInPage = () => {
       </StyledLoginPage>
     </StyledMainContainer>
   );
+};
 export default SignInPage;

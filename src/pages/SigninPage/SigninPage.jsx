@@ -14,5 +14,4 @@ const SignInPage = () => {
     </StyledMainContainer>
   );
 };
-
 export default SignInPage;
