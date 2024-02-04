@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/userSlice";
 import { closeAllModals } from "../../redux/modalsReduser";
 
-const LogoutModal = ({ isOpen, onClose }) => {
+const LogoutModal = () => {
   const dispatch = useDispatch();
 
   return (
