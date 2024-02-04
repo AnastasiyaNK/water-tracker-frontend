@@ -34,6 +34,10 @@ export const updateUser = async (formData) => {
   return data;
 };
 
+export const setMyDailyNorma = async (formData) => {
+  const { data } = await authInstance.patch("user/dailyNorma", formData);
+};
+
 export const requestDayWaterData = async (date) => {
   const { data } = await authInstance.get(`water/today?date=${date}`);
   return data;

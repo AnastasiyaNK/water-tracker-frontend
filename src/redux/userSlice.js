@@ -4,6 +4,7 @@ import {
   requestlogout,
   updateAvatar,
   updateUser,
+  setMyDailyNorma,
 } from "services/api";
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -51,6 +52,18 @@ export const updateUserInfo = createAsyncThunk(
     try {
       const data = await updateUser(newUserInfo);
       return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateMyDailyNorma = createAsyncThunk(
+  "user/dailyNorma",
+  async (newDailyNorma, thunkAPI) => {
+    try {
+      const data = await setMyDailyNorma(newDailyNorma);
+      return data.dailyNorma;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -117,6 +130,11 @@ const userSlice = createSlice({
       })
       .addCase(logoutUser.fulfilled, (state, action) => {
         return INITIAL_STATE;
+      })
+      // ------------ Update My Daily Norma ---------------------
+      .addCase(updateMyDailyNorma.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user.dailyNorma = action.payload;
       })
 
       .addMatcher(
