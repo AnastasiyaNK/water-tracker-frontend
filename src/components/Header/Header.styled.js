@@ -24,12 +24,18 @@ export const StyledHeader = styled.header`
     font-weight: 400;
     line-height: 1/25;
   }
-  &:hover,
+
+  .user-name:hover,
+  .user-name:focus {
+    color: #ff9d43;
+  }
+
+  /* &:hover,
   &:focus {
     & p {
       color: #ff9d43;
     }
-  }
+  } */
 
   @media (min-width: 320px) and (max-width: 767px) {
     min-width: 280px;
