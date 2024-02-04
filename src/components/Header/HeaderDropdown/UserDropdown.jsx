@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Button, ModalWrapper, ModalOverlay } from "./UserDropdown.styled";
-import Icons from "assets/icons/cog-6-tooth.svg";
-import Icon from "assets/icons/arrow-right-on-rectangle.svg";
+import { ReactComponent as SettingsIcon } from "assets/icons/cog-6-tooth.svg";
+import { ReactComponent as LogOutIcon } from "assets/icons/arrow-right-on-rectangle.svg";
 import { useDispatch } from "react-redux";
 import { setLogoutModal, setSettingsModal } from "../../../redux/modalsReduser";
 
@@ -34,7 +34,7 @@ export const UserDropdown = ({ isOpen, onClose }) => {
             onClose();
           }}
         >
-          <img src={Icons} alt="Setting" />
+          <SettingsIcon className="settings-icon" />
           <p>Setting</p>
         </Button>
         <Button
@@ -44,7 +44,7 @@ export const UserDropdown = ({ isOpen, onClose }) => {
             onClose();
           }}
         >
-          <img src={Icon} alt="Setting" />
+          <LogOutIcon className="logout-icon" />
           <p>Log out</p>
         </Button>
       </ModalWrapper>

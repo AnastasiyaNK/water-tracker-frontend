@@ -22,12 +22,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 import EditWaterModal from "components/EditWaterModal/EditWaterModal.jsx";
 import { apiGetTodayWaterPortions } from "../../redux/water/waterSlice.js";
+import { closeAllModals } from "../../redux/modalsReduser.js";
 
 const HomePage = () => {
   const isSettingsModalOpen = useSelector(selectSettingsModal);
   const isDailyNormaModalOpen = useSelector(selectDailyNormaModal);
   const isAddWaterModalOpen = useSelector(selectAddWaterModal);
   const isEditWaterModalOpen = useSelector(selectEditWaterModal);
+  const isLogoutModalOpen = useSelector(selectLogoutModal);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,8 +38,10 @@ const HomePage = () => {
       "mm"
     )}-${format(new Date(), "dd")}`;
     dispatch(apiGetTodayWaterPortions(date));
+    return () => {
+      dispatch(closeAllModals());
+    };
   }, [dispatch]);
-  const isLogoutModalOpen = useSelector(selectLogoutModal);
 
   return (
     <Fon>

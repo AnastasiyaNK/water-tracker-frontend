@@ -105,9 +105,16 @@ const userSlice = createSlice({
       })
 
       // ------------ Update User Avatar ---------------------
+      .addCase(updateUserAvatar.pending, (state) => {
+        state.isAvatarLoading = true;
+      })
       .addCase(updateUserAvatar.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user.avatarURL = action.payload;
+        state.isAvatarLoading = false;
+      })
+      .addCase(updateUserAvatar.rejected, (state) => {
+        state.isAvatarLoading = false;
       })
       // ------------ Update User Info ---------------------
       .addCase(updateUserInfo.fulfilled, (state, action) => {
