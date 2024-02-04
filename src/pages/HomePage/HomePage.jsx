@@ -24,8 +24,6 @@ import EditWaterModal from "components/EditWaterModal/EditWaterModal.jsx";
 import { apiGetTodayWaterPortions } from "../../redux/water/waterSlice.js";
 import { closeAllModals } from "../../redux/modalsReduser.js";
 
-
-
 const HomePage = () => {
   const isSettingsModalOpen = useSelector(selectSettingsModal);
   const isDailyNormaModalOpen = useSelector(selectDailyNormaModal);
@@ -44,7 +42,6 @@ const HomePage = () => {
       dispatch(closeAllModals());
     };
   }, [dispatch]);
-
 
   return (
     <Fon>

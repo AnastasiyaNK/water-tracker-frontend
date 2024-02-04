@@ -40,18 +40,30 @@ export const StyledModalBackdrop = styled.div`
       width: 280px;
     }
   }
+
   //*--- settings modal window styles for tel tab and desk---\\
 
-  //!Must be used like dynamic class\\
-  /* .modal-wrapper {
+  .modal-wrapper {
     background-color: #fff;
     border-radius: 10px;
     padding: 32px 24px;
     position: relative;
     max-width: 704px;
     width: 100%;
-  } */
-  //!Must be used like dynamic class\\
+
+    @media (min-width: 1440px) {
+      width: 1008px;
+      padding: 32px 24px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1439px) {
+      width: 704px;
+      padding: 32px 24px;
+    }
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 280px;
+    }
+  }
 
   //*--- daily norma modal window styles for tel tab and desk---\\
   .daily-norma {
