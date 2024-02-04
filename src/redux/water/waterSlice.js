@@ -101,7 +101,6 @@ const waterSlice = createSlice({
       })
       .addCase(apiEditWaterPortion.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isLoading = false;
         state.todayWaterData.waterVolumes =
           state.todayWaterData.waterVolumes.map((portion) =>
             portion._id === action.payload._id

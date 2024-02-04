@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { selectPercent } from "../../../redux/selectors.js";
+import { fetchWater } from "../../../redux/water/waterOperations";
 
 import { Range } from "react-range";
 // import { AddWaterButton } from "components";
@@ -13,7 +17,14 @@ import {
 import ModalButton from "components/ModalButton/ModalButton";
 
 const RangeBar = () => {
-  const [values, setValues] = useState([50]);
+  const percents = useSelector(selectPercent);
+  const [values, setValues] = useState([]);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchWater());
+  }, [dispatch]);
 
   const handleChange = (newValues) => {
     setValues(newValues);
@@ -49,8 +60,7 @@ const RangeBar = () => {
               {...props}
               style={{
                 ...props.style,
-                background:
-                  "linear-gradient( to right, #9EBBFF 50%, #D7E3FF 25%)",
+                background: `linear-gradient( to right, #9EBBFF ${percents}%, #D7E3FF ${percents}%)`,
               }}
             >
               {children}
@@ -78,7 +88,7 @@ const RangeBar = () => {
                   borderRadius: "4px",
                 }}
               >
-                {values[props.key]}%
+                {/* {values[props.key]}% */}
               </div>
             </div>
           )}

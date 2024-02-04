@@ -133,7 +133,7 @@ const SettingsModal = () => {
         <div className="upload-wrapper">
           <div className="img-box">
             {isAvatarLoading ? (
-              <RotatingLines width="50" strokeColor="#407BFF" />
+              <RotatingLines width="60" strokeColor="#9EBBFF" />
             ) : (
               <img src={userAvatar} alt="avatar"></img>
             )}

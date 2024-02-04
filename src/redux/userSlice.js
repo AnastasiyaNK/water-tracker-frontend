@@ -1,8 +1,10 @@
 import {
   requestLogin,
   requestRegister,
+  requestlogout,
   updateAvatar,
   updateUser,
+  setMyDailyNorma,
 } from "services/api";
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -23,7 +25,6 @@ export const apiUserLogin = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const userData = await requestLogin(formData);
-      console.log(userData);
       return userData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -53,6 +54,30 @@ export const updateUserInfo = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateMyDailyNorma = createAsyncThunk(
+  "user/dailyNorma",
+  async (newDailyNorma, thunkAPI) => {
+    try {
+      const data = await setMyDailyNorma(newDailyNorma);
+      return data.dailyNorma;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logoutUser = createAsyncThunk(
+  "user/logout",
+  async (_, thunkApi) => {
+    try {
+      await requestlogout();
+      return;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -93,14 +118,30 @@ const userSlice = createSlice({
       })
 
       // ------------ Update User Avatar ---------------------
+      .addCase(updateUserAvatar.pending, (state) => {
+        state.isAvatarLoading = true;
+      })
       .addCase(updateUserAvatar.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user.avatarURL = action.payload;
+        state.isAvatarLoading = false;
+      })
+      .addCase(updateUserAvatar.rejected, (state) => {
+        state.isAvatarLoading = false;
       })
       // ------------ Update User Info ---------------------
       .addCase(updateUserInfo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = { ...state.user, ...action.payload };
+        // ------------ Logout User ---------------------
+      })
+      .addCase(logoutUser.fulfilled, (state, action) => {
+        return INITIAL_STATE;
+      })
+      // ------------ Update My Daily Norma ---------------------
+      .addCase(updateMyDailyNorma.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user.dailyNorma = action.payload;
       })
 
       .addMatcher(

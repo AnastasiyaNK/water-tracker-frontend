@@ -36,23 +36,26 @@ export const Button = styled.button`
   background-color: #ffffff;
   cursor: pointer;
 
+  & svg {
+    path {
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      stroke: #407bff;
+    }
+    width: 16px;
+    height: 16px;
+  }
+
   &:hover,
   &:focus {
     & svg {
-      fill: #ff9d43;
+      path {
+        stroke: #ff9d43;
+      }
     }
+
     & p {
       color: #ff9d43;
     }
-  }
-
-  & svg {
-    fill: #407bff;
-    transition: fill 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  & img {
-    max-width: none;
   }
 
   & p {
