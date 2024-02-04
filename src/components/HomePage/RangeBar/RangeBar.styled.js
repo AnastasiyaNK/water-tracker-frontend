@@ -32,6 +32,7 @@ export const RangBar = styled.div`
 `;
 
 export const Title = styled.div`
+  margin-left: 0;
   margin-bottom: 8px;
   color: var(--Primery-Color-Blue, #407bff);
   text-align: center;
@@ -121,36 +122,38 @@ export const RangeAdd = styled.div`
   }
 `;
 
-export const RangeStyle = styled.div`
+export const RangeBarLine = styled.div`
+  position: relative;
   height: 8px;
-  width: 256px;
-  background-color: #ddd;
-  border-radius: 4px;
+  background-color: #d7e3ff;
+  width: calc(100% - 24px);
+  border-radius: 10px;
+  margin: 0 auto;
 
-  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
-    (max-width: 767px) and (min-resolution: 192dpi) {
-    width: 256px;
+  @media screen and (min-width: 768px) {
+    width: calc(100% - 31px);
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    height: 8px;
-    width: 325px;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: ${({ $percentage }) => `calc(${$percentage}%)`};
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    background-color: #ffffff;
+    border: 1px solid #407bff;
+    border-radius: 100%;
   }
 
-  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 768px) and (min-resolution: 192dpi) {
-    height: 8px;
-    width: 325px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    height: 8px;
-    width: 360px;
-  }
-
-  @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 1440px) and (min-resolution: 192dpi) {
-    height: 8px;
-    width: 360px;
+  &::before {
+    content: '';
+    position: absolute;
+    width: ${({ $percentage }) => `${$percentage}%`};
+    height: 100%;
+    background: #9ebbff;
+    border-radius: 10px;
+    z-index: 0;
   }
 `;

@@ -24,7 +24,7 @@ export const fetchStats = createAsyncThunk(
   async (month, { rejectWithValue, getState }) => {
     try {
       const data = await getWaterStats(month);
-      return data;
+      return Object.values(data);
     } catch (error) {
       toast.error(`Oops. Something goes wrong. Please try again!`);
       return rejectWithValue(error.message);

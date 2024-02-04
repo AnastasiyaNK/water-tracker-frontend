@@ -1,20 +1,24 @@
 import { DataStyle, Data, Box } from './DayGeneralStats.stayled';
 
-const DayGeneralStats = ({ item }) => {
-  const { percent, number } = item;
+const DayGeneralStats = ({ item, index, monthName }) => {
+  const { waterVolumePercentage, dailyNorma, portions } = item;
+  console.log(monthName, 'monthName');
   return (
     <Box>
       <Data>
-        <DataStyle>{number}, Month</DataStyle>
+        <DataStyle>
+          {index + 1}, {monthName}
+        </DataStyle>
       </Data>
       <Data>
-        Daily norma: <DataStyle>1.5L</DataStyle>
+        Daily norma: <DataStyle>{dailyNorma}</DataStyle>
       </Data>
       <Data>
-        Fulfillment of the daily norm: <DataStyle>{percent}</DataStyle>
+        Fulfillment of the daily norm:{' '}
+        <DataStyle>{waterVolumePercentage}%</DataStyle>
       </Data>
       <Data>
-        How many servings of water:<DataStyle> 6</DataStyle>
+        How many servings of water:<DataStyle> {portions}</DataStyle>
       </Data>
     </Box>
   );

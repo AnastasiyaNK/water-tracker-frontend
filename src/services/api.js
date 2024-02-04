@@ -93,7 +93,7 @@ export const getWaterStats = async (month) => {
 };
 
 export const deleteWaterNote = async (id) => {
-  const { data } = await authInstance.delete(`/water/delete/${id}`);
+  const { data } = await authInstance.delete(`/water/${id}`);
   return data;
 };
 
