@@ -1,6 +1,7 @@
 import {
   requestLogin,
   requestRegister,
+  requestlogout,
   updateAvatar,
   updateUser,
   setMyDailyNorma,
@@ -24,7 +25,6 @@ export const apiUserLogin = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const userData = await requestLogin(formData);
-      console.log(userData);
       return userData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -58,7 +58,7 @@ export const updateUserInfo = createAsyncThunk(
   }
 );
 
-export const updateMyDailyNorma= createAsyncThunk(
+export const updateMyDailyNorma = createAsyncThunk(
   "user/dailyNorma",
   async (newDailyNorma, thunkAPI) => {
     try {
@@ -66,6 +66,18 @@ export const updateMyDailyNorma= createAsyncThunk(
       return data.dailyNorma;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logoutUser = createAsyncThunk(
+  "user/logout",
+  async (_, thunkApi) => {
+    try {
+      await requestlogout();
+      return;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -114,6 +126,10 @@ const userSlice = createSlice({
       .addCase(updateUserInfo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = { ...state.user, ...action.payload };
+        // ------------ Logout User ---------------------
+      })
+      .addCase(logoutUser.fulfilled, (state, action) => {
+        return INITIAL_STATE;
       })
       // ------------ Update My Daily Norma ---------------------
       .addCase(updateMyDailyNorma.fulfilled, (state, action) => {

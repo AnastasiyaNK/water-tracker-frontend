@@ -12,7 +12,7 @@ const ModalButton = () => {
           className="open-modal-btn"
           onClick={() => dispatch(setAddWaterModal(true))}
         >
-          Add Water
+          + Add Water
         </button>
       </div>
     </StyledModalButton>

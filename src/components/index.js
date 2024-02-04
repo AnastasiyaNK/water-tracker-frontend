@@ -1,4 +1,5 @@
 export { default as WaterTracker } from "./HomePage/WaterTracker/WaterTracker";
+export { default as SharedLayout } from "./SharedLayout/SharedLayout";
 export { default as Today } from "./HomePage/Today/Today";
 export { default as Month } from "./HomePage/Month/Month";
 export { default as DailyNorma } from "./HomePage/DailyNorma/DailyNorma";
@@ -6,7 +7,6 @@ export { default as WaterPortionsList } from "./HomePage/WaterPortionList/WaterP
 export { default as DaysList } from "./HomePage/DaysList/DaysList.js";
 export { default as Day } from "./HomePage/Day/Day";
 export { default as DayGeneralStats } from "./HomePage/DayGeneralStats/DayGeneralStats";
-export { default as Paginate } from "./HomePage/Paginate/Paginate";
 export { default as RangeBar } from "./HomePage/RangeBar/RangeBar";
 export { default as AddWaterButton } from "./HomePage/AddWatterButton/AddWatterButton";
 export { default as Header } from "./Header/Header";
@@ -23,3 +23,4 @@ export { default as AddWaterModal } from "./AddWaterModal/AddWaterModal";
 export { default as MyDailyNormaModal } from "./MyDailyNormaModal/MyDailyNormaModal";
 export { default as RestrictedRoute } from "./RestrictedRoute/RestrictedRoute";
 export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
+export { default as LogoutModal } from "./LogoutModal/LogoutModal";
