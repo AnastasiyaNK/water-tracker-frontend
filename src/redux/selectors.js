@@ -29,3 +29,6 @@ export const selectWaterVolumeSum = (state) => state.water.waterVolumeSum;
 
 export const selectLogoutModal = (state) =>
   state.modals.modals.isLogoutModalOpen;
+
+export const selectSelectedWaterPortionId = (state) =>
+  state.modals.selectedWaterPortionId;
