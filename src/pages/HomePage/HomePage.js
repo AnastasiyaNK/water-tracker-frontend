@@ -29,8 +29,8 @@ const HomePage = () => {
 
   return (
     <Fon>
-      <ModalButton />
-      <ModalButton2 />
+      {/* <ModalButton />
+      <ModalButton2 /> */}
       <DailyRangeStyle>
         <DailyNorma />
         <RangeBar />

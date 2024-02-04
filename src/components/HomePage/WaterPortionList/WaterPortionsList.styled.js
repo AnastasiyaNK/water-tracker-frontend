@@ -45,7 +45,6 @@ export const Portion = styled.div`
 `;
 export const Inform = styled.div`
   display: flex;
-  width: ;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;

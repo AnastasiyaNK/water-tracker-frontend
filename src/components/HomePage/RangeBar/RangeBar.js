@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { selectPercent } from '../../../redux/selectors.js';
 import { fetchWater } from '../../../redux/water/waterOperations';
-
-import { Range } from 'react-range';
 import { AddWaterButton } from 'components';
 import {
   RangBar,
@@ -12,22 +9,21 @@ import {
   Percent,
   Percents,
   RangeAdd,
-  RangeStyle,
+  RangeBarLine,
 } from './RangeBar.styled';
 
 const RangeBar = () => {
-  const percents = useSelector(selectPercent);
-  const [values, setValues] = useState([]);
-
+  const percentage = useSelector(selectPercent);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchWater());
-  }, [dispatch]);
+  useEffect(
+    () => {
+      dispatch(fetchWater());
+    },
+    [dispatch],
+    percentage
+  );
 
-  const handleChange = newValues => {
-    setValues(newValues);
-  };
   const buttonStyle = {
     width: '280px',
     height: '36px',
@@ -48,50 +44,7 @@ const RangeBar = () => {
     <RangeAdd>
       <RangBar>
         <Title>Today</Title>
-        <Range
-          values={values}
-          step={1}
-          min={0}
-          max={100}
-          onChange={handleChange}
-          renderTrack={({ props, children }) => (
-            <RangeStyle
-              {...props}
-              style={{
-                ...props.style,
-                background: `linear-gradient( to right, #9EBBFF ${percents}%, #D7E3FF ${percents}%)`,
-              }}
-            >
-              {children}
-            </RangeStyle>
-          )}
-          renderThumb={({ props }) => (
-            <div
-              {...props}
-              style={{
-                ...props.style,
-                height: '16px',
-                width: '16px',
-                backgroundColor: '#D1E3FF',
-                borderRadius: '50%',
-                borderColor: 'red',
-              }}
-            >
-              <div
-                style={{
-                  position: 'static',
-                  marginTop: '10px',
-                  marginLeft: '-10px',
-                  color: '#407bff',
-                  padding: '4px',
-                  borderRadius: '4px',
-                }}
-              >
-                {/* {values[props.key]}% */}
-              </div>
-            </div>
-          )}
-        />
+        <RangeBarLine $percentage={percentage}></RangeBarLine>
         <Percents>
           <Percent>0%</Percent>
           <Percent>100%</Percent>
