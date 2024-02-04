@@ -65,8 +65,8 @@ const AddWaterModal = () => {
     setFieldValue("waterAmount", number <= 0 ? "0" : number.toString());
   };
   return (
-    <Modal title="Add water">
-      <StyledWaterForm onSubmit={handleSubmit} className="add-water-container">
+    <Modal styledClass="modal-wrapper" title="Add water">
+      <StyledWaterForm onSubmit={handleSubmit}>
         <div className="choose-water-value-container">
           <p className="choose-title">Choose a value:</p>
           <p className="water-amount">Amount of water:</p>

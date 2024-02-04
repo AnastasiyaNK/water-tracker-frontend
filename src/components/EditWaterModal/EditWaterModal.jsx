@@ -9,7 +9,7 @@ import { ReactComponent as IconMinus } from "../../assets/icons/minus-small.svg"
 import { ReactComponent as IconPlus } from "../../assets/icons/plus-small.svg";
 import { ReactComponent as WaterGlass } from "../../assets/icons/glass-desc 4.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSelectedWaterPortionId } from "../../redux/modalsSelectors";
+import { selectSelectedWaterPortionId } from "../../redux/selectors";
 import { selectTodayWaterData } from "../../redux/water/waterSlice.selectors";
 import { apiEditWaterPortion } from "../../redux/water/waterSlice";
 import { closeAllModals } from "../../redux/modalsReduser";
@@ -84,7 +84,7 @@ const EditWaterModal = ({ toggleModal }) => {
   };
 
   return (
-    <Modal title="Edit the entered amount of water" toggleModal={toggleModal}>
+    <Modal title="Edit the entered amount of water" styledClass="modal-wrapper">
       <StyledWaterForm onSubmit={handleSubmit} className="add-water-container">
         <div className="water-amount-time-container">
           <WaterGlass className="water-glass" />

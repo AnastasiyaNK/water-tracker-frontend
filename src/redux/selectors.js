@@ -18,3 +18,6 @@ export const selectEditWaterModal = (state) =>
   state.modals.modals.isEditModalOpen;
 
 export const selectIsUserAvatarLoading = (state) => state.auth.isAvatarLoading;
+
+export const selectSelectedWaterPortionId = (state) =>
+  state.modals.selectedWaterPortionId;
