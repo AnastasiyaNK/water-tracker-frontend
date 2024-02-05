@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { apiUserRegister } from "../../redux/userSlice";
 import { StyledLoginForm } from "./RegisterForm.styled";
+import GoogleButton from "../GoogleAuth/GoogleAuth"
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -66,9 +67,10 @@ const RegisterForm = () => {
       {formik.values.password !== formik.values.repeatPassword && (
         <div>Your Passwords must match</div>
       )}
-      <button className="butten" type="submit">
+      <button className="button" type="submit">
         Sign Up
       </button>
+      <GoogleButton/>
 
       <Link to="/signin" className="link">
         Sign In

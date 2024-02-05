@@ -7,6 +7,7 @@ import {
   StyledRegisterContainer,
   StyledRegisterForm,
 } from "./LoginForm.styled";
+import GoogleButton from "../GoogleAuth/GoogleAuth"
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const LoginForm = () => {
         <button className="button" type="submit">
           Sign In
         </button>
+         <GoogleButton/>
         <Link to="/signup" className="link">
           Sign Up
         </Link>

@@ -82,7 +82,7 @@ export const StyledLoginForm = styled.form`
   }
 
   
-  .butten {
+  .button {
     margin-top: 16px;
     display: flex;
     padding: 10px 30px;
