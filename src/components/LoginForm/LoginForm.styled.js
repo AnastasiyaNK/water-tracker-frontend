@@ -7,17 +7,13 @@ export const StyledRegisterContainer = styled.div`
   height: 100%;
   align-items: center;
   @media screen and (min-width: 768px) {
-      position: relative;
-    }
+    position: relative;
+  }
   @media screen and (min-width: 1440px) {
     display: flex;
     justify-content: flex-start;
     flex-direction: row-reverse;
   }
-
-
-  }
-
 `;
 
 export const StyledRegisterForm = styled.form`
@@ -44,11 +40,9 @@ export const StyledRegisterForm = styled.form`
     line-height: 1.33;
   }
 
-
   .label {
     margin-top: 16px;
   }
-
 
   .input {
     margin-top: 8px;
@@ -59,7 +53,7 @@ export const StyledRegisterForm = styled.form`
     display: flex;
     padding: 12px 10px;
     width: 100%;
-  flex-direction: column;
+    flex-direction: column;
     align-items: flex-start;
     gap: 10px;
     outline: none;
@@ -69,21 +63,21 @@ export const StyledRegisterForm = styled.form`
       font-size: 16px;
       font-weight: 400;
       line-height: 1.23;
-    } 
+    }
     &:active,
     &:focus,
     &:hover {
-    color: #407bff;
-  }
-  
-  @media screen and (min-width: 768px) {
-    width: 336px;
-    height: 44px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 384px;
-    height: 44px;
-  }
+      color: #407bff;
+    }
+
+    @media screen and (min-width: 768px) {
+      width: 336px;
+      height: 44px;
+    }
+    @media screen and (min-width: 1440px) {
+      width: 384px;
+      height: 44px;
+    }
   }
   .button {
     font-family: "Roboto", sans-serif;
@@ -117,17 +111,15 @@ export const StyledRegisterForm = styled.form`
     }
 
     @media screen and (min-width: 768px) {
-    width: 336px;
-    height: 44px;
+      width: 336px;
+      height: 44px;
     }
 
-     @media screen and (min-width: 1440px) {
-    width: 384px;
-    height: 44px;
+    @media screen and (min-width: 1440px) {
+      width: 384px;
+      height: 44px;
+    }
   }
-  }
-
-
 
   .link {
     margin-top: 16px;

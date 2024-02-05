@@ -4,7 +4,7 @@
 // import { selectVisibleContacts } from 'redux/contacts/selectors';
 import AddWaterButton from "../AddWatterButton/AddWatterButton";
 import { format } from "date-fns";
-import {  deleteWater } from '../../../redux/water/waterOperations';
+import { deleteWater } from "../../../redux/water/waterOperations";
 
 import {
   Ml,
@@ -21,13 +21,13 @@ import { ReactComponent as Pencil } from "../../../assets/icons/pencil-square.sv
 import { ReactComponent as Bucket } from "../../../assets/icons/bucket.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setEditModal } from "../../../redux/modalsReduser";
-import { selectTodayWaterData } from "../../../redux/water/waterSlice.selectors";
-import { selectNotes } from '../../../redux/selectors';
+// import { selectTodayWaterData } from "../../../redux/water/waterSlice.selectors";
+import { selectNotes } from "../../../redux/selectors";
 
 const WaterPortionsList = () => {
   const dispatch = useDispatch();
   // const todayWaterData = useSelector(selectTodayWaterData);
-  const waterPortions = useSelector(selectNotes)
+  const waterPortions = useSelector(selectNotes);
 
   const buttonStyle = {
     display: "inline-flex",
@@ -45,7 +45,7 @@ const WaterPortionsList = () => {
     border: "none",
   };
   // const waterPortions = todayWaterData?.waterVolumes;
-  
+
   return (
     <PortionsList>
       <ScrollableDiv>
@@ -71,14 +71,15 @@ const WaterPortionsList = () => {
                 >
                   <Pencil />
                 </Button>
-                <Button  onClick={() => {
+                <Button
+                  onClick={() => {
                     dispatch(deleteWater(item._id));
                   }}
                 >
                   <Bucket />
                 </Button>
               </Edit>
-              </Portion>
+            </Portion>
           ))}
         </Portions>
       </ScrollableDiv>
