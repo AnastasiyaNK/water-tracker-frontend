@@ -6,7 +6,6 @@ const INITIAL_STATE = {
     isDailyNormaModalOpen: false,
     isAddWaterModalOpen: false,
     isEditModalOpen: false,
-    isLogoutModalOpen: false,
   },
   selectedWaterPortionId: null,
 };
@@ -33,10 +32,6 @@ const modalsSlice = createSlice({
       state.modals.isDailyNormaModalOpen = false;
       state.modals.isAddWaterModalOpen = false;
       state.modals.isEditModalOpen = false;
-      state.modals.isLogoutModalOpen = false;
-    },
-    setLogoutModal(state, action) {
-      state.modals.isLogoutModalOpen = action.payload;
     },
   },
 });
@@ -47,6 +42,5 @@ export const {
   setAddWaterModal,
   setEditModal,
   closeAllModals,
-  setLogoutModal,
 } = modalsSlice.actions;
 export const modalsReducer = modalsSlice.reducer;

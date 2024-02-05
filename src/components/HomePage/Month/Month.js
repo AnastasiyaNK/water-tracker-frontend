@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MonthBox } from './Month.styled';
 import { DaysList } from 'components';
 

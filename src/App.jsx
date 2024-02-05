@@ -1,4 +1,5 @@
-import { PrivateRoute, RestrictedRoute, SharedLayout } from "components";
+import { PrivateRoute, RestrictedRoute } from "components";
+import SharedLayout from "components/SharedLayout/SharedLayout";
 import { ROUTE_PATH } from "constants/routes";
 import { HomePage, SignInPage, SignUpPage, WelcomePage } from "pages";
 

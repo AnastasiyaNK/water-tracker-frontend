@@ -1,7 +1,4 @@
-
-
-import { configureStore } from "@reduxjs/toolkit";
-
+import { configureStore } from '@reduxjs/toolkit';
 
 import {
   persistStore,
@@ -21,6 +18,7 @@ import { waterReducer } from './water/waterSlice';
 const persistConfig = {
   key: 'user',
   whitelist: ['token'],
+
   storage,
 };
 

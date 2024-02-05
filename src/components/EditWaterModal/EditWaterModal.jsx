@@ -13,6 +13,7 @@ import { selectSelectedWaterPortionId } from "../../redux/selectors";
 import { selectTodayWaterData } from "../../redux/water/waterSlice.selectors";
 import { apiEditWaterPortion } from "../../redux/water/waterSlice";
 import { closeAllModals } from "../../redux/modalsReduser";
+import { selectNotes } from '../../redux/selectors';
 
 const WATER_AMOUNT_DIFFERENCE = 20;
 
@@ -28,11 +29,12 @@ const editWaterValidationSchema = Yup.object({
     .required("Required"),
 });
 
-const EditWaterModal = ({ toggleModal }) => {
+const EditWaterModal = () => {
   const dispatch = useDispatch();
   const selectedWaterPortionId = useSelector(selectSelectedWaterPortionId);
-  const waterData = useSelector(selectTodayWaterData);
-  const waterPortion = waterData?.waterVolumes.find(
+  // const waterData = useSelector(selectTodayWaterData);
+  const waterVolumes = useSelector(selectNotes)
+  const waterPortion = waterVolumes.find(
     (portion) => portion._id === selectedWaterPortionId
   );
   const [localWaterAmount, setLocalWaterAmount] = useState(250);

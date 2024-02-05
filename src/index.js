@@ -4,9 +4,9 @@ import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 // import { store, persistor } from './redux/store';
-import { store } from "./redux/store";
+import { persistor, store } from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
-// import { PersistGate } from "redux-persist/integration/react";
+import { PersistGate } from "redux-persist/integration/react";
 
 // import { PersistGate } from 'redux-persist/integration/react';
 
@@ -15,9 +15,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter basename="/water-tracker-frontend">
       <Provider store={store}>
-        {/* <PersistGate persistor={persistor}> */}
-        <App />
-        {/* </PersistGate> */}
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

@@ -3,13 +3,15 @@ import BottleSing from "assets/images/bottle-sign-in-desk.png";
 import BubbleFon from "assets/images/bubble-desktop.png";
 
 export const StyledLoginPage = styled.div`
-  height: 90vh;
-background-image: url(${BottleSing}), url(${BubbleFon});
-  @media screen and (min-width: 768px) {
-    height: 92vh;
-    background-image: url(${BottleSing}), url(${BubbleFon});
-  }
-  
+  padding: 12px 0px;
+  background: #fff;
+  max-width: 1440px;
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(${BottleSing}), url(${BubbleFon});
 
   .block-right {
     position: relativ;

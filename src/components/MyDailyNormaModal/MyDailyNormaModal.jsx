@@ -18,10 +18,7 @@ import {
   SettingsSubmitBtn,
 } from "./MyDailyNormaModal.styled";
 
-import { useDispatch } from "react-redux";
-import { setDailyNormaModal } from "../../redux/modalsReduser"
 import Modal from "../Modal/Modal";
-import { updateMyDailyNorma } from "../../redux/userSlice";
 
 const MyDailyNormaModal = () => {
   const [gender, setGender] = useState("female");
@@ -29,9 +26,6 @@ const MyDailyNormaModal = () => {
   const [hours, setHours] = useState("");
   const [yourAmountWater, setYourAmountWater] = useState("");
   const [dailyNorma, setDailyNorma] = useState(2);
-
-  const dispatch = useDispatch();
-
 
   useEffect(() => {
     if (weight > 0) {
@@ -62,17 +56,17 @@ const MyDailyNormaModal = () => {
     setYourAmountWater(parseFloat(e.target.value));
   };
 
-  const handleSave = async (e) => {
+  const handleSave = (e) => {
     e.preventDefault();
 
     const data = {
+      gender,
+      weight,
+      hours,
       dailyNorma: yourAmountWater > 0 ? yourAmountWater : dailyNorma,
     };
 
-    await dispatch(updateMyDailyNorma(data));
-
-    dispatch(setDailyNormaModal(false))
-
+    console.log("SavedData", data);
   };
 
   return (
