@@ -25,3 +25,4 @@ export { default as MyDailyNormaModal } from "./MyDailyNormaModal/MyDailyNormaMo
 export { default as RestrictedRoute } from "./RestrictedRoute/RestrictedRoute";
 export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
 export { default as LogoutModal } from "./LogoutModal/LogoutModal";
+export { default as DeleteModal } from "./DeleteModal/DeleteModal";
