@@ -1,34 +1,41 @@
 import styled from "styled-components";
 
-export const StyledRegisterContainer = styled.div`
+export const StyledLoginContainer = styled.div`
   position: relative;
   display: flex;
-  justify-content: end;
+  justify-content: center;
   height: 100%;
-  align-items: center;
+  margin-top: 40px;
+
   @media screen and (min-width: 768px) {
-    position: relative;
-  }
-  @media screen and (min-width: 1440px) {
-    display: flex;
     justify-content: flex-start;
-    flex-direction: row-reverse;
+  }
+
+  @media screen and (min-width: 1440px) {
+    justify-content: end;
+    align-items: center;
   }
 `;
 
-export const StyledRegisterForm = styled.form`
-  max-width: 384px;
+export const StyledLoginForm = styled.form`
+  max-width: 280px;
   display: flex;
   flex-direction: column;
-  padding: 5px;
   width: 100%;
-  margin-right: 90px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 336px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 384px;
+    margin-right: 90px;
+  }
 
   .title {
     color: #2f2f2f;
     font-size: 26px;
     font-weight: 500;
-    line-height: 1.3;
+    line-height: 1.23;
   }
 
   .label-text {
@@ -43,7 +50,24 @@ export const StyledRegisterForm = styled.form`
   .label {
     margin-top: 16px;
   }
+  .icon-wrapper {
+    position: relative;
+    max-width: 392px;
+  }
+  .eye-icon {
+    position: absolute;
+    top: 20px;
+    right: 10px;
 
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+
+    path {
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      stroke: #407bff;
+    }
+  }
   .input {
     margin-top: 8px;
     border-radius: 6px;
@@ -93,7 +117,6 @@ export const StyledRegisterForm = styled.form`
     font-size: 18px;
     font-weight: 500;
     line-height: 1.33;
-    width: 280px;
     height: 36px;
     transition: box-shadow 0.3s ease;
     background-color: #407bff;
@@ -128,5 +151,13 @@ export const StyledRegisterForm = styled.form`
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
+  }
+  .google-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .text-google {
   }
 `;
