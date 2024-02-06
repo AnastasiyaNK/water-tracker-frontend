@@ -40,7 +40,7 @@ const MyDailyNormaModal = () => {
           ? weight * 0.03 + hours * 0.4
           : weight * 0.04 + hours * 0.6;
 
-      setDailyNorma(dailyNorma);
+      setDailyNorma(Math.round(dailyNorma).toFixed(1));
     } else {
       setDailyNorma(2);
     }
