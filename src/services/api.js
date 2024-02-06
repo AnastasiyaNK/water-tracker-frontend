@@ -19,6 +19,11 @@ export const requestLogin = async (formData) => {
   setToken(data.token);
   return data;
 };
+export const requestUserCurrent = async () => {
+  const { data } = await authInstance.get("user/");
+
+  return data;
+};
 
 export const updateAvatar = async (formData) => {
   const { data } = await authInstance.patch("user/avatar", formData, {

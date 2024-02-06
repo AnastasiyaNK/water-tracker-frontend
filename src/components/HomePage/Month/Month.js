@@ -1,6 +1,6 @@
-import React from 'react';
-import { MonthBox } from './Month.styled';
-import { DaysList } from 'components';
+import React from "react";
+import { MonthBox } from "./Month.styled";
+import { DaysList } from "components";
 
 const Month = () => {
   return (

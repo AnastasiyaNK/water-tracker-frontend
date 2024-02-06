@@ -5,6 +5,8 @@ import {
   updateAvatar,
   updateUser,
   setMyDailyNorma,
+  setToken,
+  requestUserCurrent,
 } from "services/api";
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -81,6 +83,33 @@ export const logoutUser = createAsyncThunk(
     }
   }
 );
+// ------------ Update Refresh ---------------------
+export const usersCurrentThunk = createAsyncThunk(
+  "user/usersCurrent",
+  async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    console.log(state);
+    setToken(state.user.token);
+
+    try {
+      const respons = await requestUserCurrent();
+      console.log(respons.data);
+
+      return respons;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  },
+  {
+    condition: (_, thunkApi) => {
+      const state = thunkApi.getState();
+      const token = state.user.token;
+      if (!token) return false;
+
+      return true;
+    },
+  }
+);
 
 const INITIAL_STATE = {
   user: {
@@ -115,6 +144,12 @@ const userSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isSignedIn = true;
+      })
+      // ------------ Update Refresh ---------------------
+      .addCase(usersCurrentThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSignedIn = true;
+        state.user = action.payload;
       })
 
       // ------------ Update User Avatar ---------------------

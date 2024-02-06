@@ -10,6 +10,7 @@ export const StyledLoginContainer = styled.div`
   @media screen and (min-width: 768px) {
     justify-content: flex-start;
   }
+
   @media screen and (min-width: 1440px) {
     justify-content: end;
     align-items: center;
@@ -133,10 +134,12 @@ export const StyledLoginForm = styled.form`
     }
 
     @media screen and (min-width: 768px) {
+      width: 336px;
       height: 44px;
     }
 
     @media screen and (min-width: 1440px) {
+      width: 384px;
       height: 44px;
     }
   }
