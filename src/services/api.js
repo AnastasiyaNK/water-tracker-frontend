@@ -20,7 +20,7 @@ export const requestLogin = async (formData) => {
   return data;
 };
 export const requestUserCurrent = async () => {
-  const { data } = await authInstance.get("user/");
+  const { data } = await authInstance.get("user");
 
   return data;
 };
