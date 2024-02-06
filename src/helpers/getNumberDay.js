@@ -1,4 +1,4 @@
-export const getNumberDay = dateString => {
-  const parts = dateString.split(', ');
-  return parseInt(parts[0]);
+export const getNumberDay = (dateString) => {
+  const parts = dateString?.split(", ");
+  return parseInt(parts?.[0] ?? 0);
 };
