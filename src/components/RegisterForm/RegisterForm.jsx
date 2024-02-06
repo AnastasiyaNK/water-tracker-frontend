@@ -1,14 +1,24 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { apiUserRegister } from "../../redux/userSlice";
 import { StyledLoginForm } from "./RegisterForm.styled";
-import GoogleButton from "../GoogleAuth/GoogleAuth"
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+
+    if (token) {
+       console.log(token)
+       navigate("/home"); 
+    }
+ }, [navigate]);
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -70,7 +80,9 @@ const RegisterForm = () => {
       <button className="button" type="submit">
         Sign Up
       </button>
-      <GoogleButton/>
+      <a className="button" href="https://water-tracker-backend-0wax.onrender.com/api/user/google">
+        Google Auth
+      </a>
 
       <Link to="/signin" className="link">
         Sign In
