@@ -41,7 +41,8 @@ export const StyledModalBackdrop = styled.div`
     }
   }
 
-  //*--- settings modal window styles for tel tab and desk---\\
+  ////////////////////////////////////////////////////////////////////////
+  //*--- settings add edit modals window styles for tel tab and desk---\\
 
   .modal-wrapper {
     background-color: #fff;
@@ -52,7 +53,7 @@ export const StyledModalBackdrop = styled.div`
     width: 100%;
 
     @media (min-width: 1440px) {
-      width: 1008px;
+      width: 592px;
       padding: 32px 24px;
     }
 
@@ -64,6 +65,8 @@ export const StyledModalBackdrop = styled.div`
       width: 280px;
     }
   }
+
+  /////////////////////////////////////////////////////////////////
 
   //*--- daily norma modal window styles for tel tab and desk---\\
   .daily-norma {
