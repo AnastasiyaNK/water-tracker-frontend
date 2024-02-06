@@ -9,7 +9,7 @@ const LogoutModal = () => {
   const dispatch = useDispatch();
 
   return (
-    <Modal title="Lod out" styledClass="logout-modal">
+    <Modal title="Log out" styledClass="logout-modal">
       <StyledLogoutModal>
         <p className="text">Do you really want to leave?</p>
         <div className="wrapper-btn">

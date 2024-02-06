@@ -10,14 +10,17 @@ import {
 } from "services/api";
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { toastFulfild, toastRejected } from "helpers/UserNotification";
 
 export const apiUserRegister = createAsyncThunk(
   "user/register",
   async (formData, thunkApi) => {
     try {
       const userData = await requestRegister(formData);
+      toastFulfild("User has been successfully created, please Sign In!");
       return userData;
     } catch (error) {
+      toastRejected("User has been successfully created, please Sign In!");
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -27,8 +30,10 @@ export const apiUserLogin = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const userData = await requestLogin(formData);
+      toastFulfild("You have successfully logged into your account!");
       return userData;
     } catch (error) {
+      toastRejected("Something went wrong, please try again later!");
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -41,8 +46,10 @@ export const updateUserAvatar = createAsyncThunk(
       const formData = new FormData();
       formData.append("avatar", newAvatar);
       const data = await updateAvatar(formData);
+      toastFulfild("Your avatar has been successfully updated!");
       return data.avatarURL;
     } catch (error) {
+      toastRejected("Something went wrong, please try again later!");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -53,8 +60,10 @@ export const updateUserInfo = createAsyncThunk(
   async (newUserInfo, thunkAPI) => {
     try {
       const data = await updateUser(newUserInfo);
+      toastFulfild("Your data has been successfully updated!");
       return data;
     } catch (error) {
+      toastRejected("Something went wrong, please try again later!");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -85,25 +94,22 @@ export const logoutUser = createAsyncThunk(
 );
 // ------------ Update Refresh ---------------------
 export const usersCurrentThunk = createAsyncThunk(
-  "user/usersCurrent",
-  async (_, thunkApi) => {
-    const state = thunkApi.getState();
-    console.log(state);
-    setToken(state.user.token);
+  "user/refresh",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
 
     try {
+      setToken(state.auth.token);
       const respons = await requestUserCurrent();
-      console.log(respons.data);
-
       return respons;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
   {
-    condition: (_, thunkApi) => {
-      const state = thunkApi.getState();
-      const token = state.user.token;
+    condition: (_, thunkAPI) => {
+      const state = thunkAPI.getState();
+      const token = state.auth.token;
       if (!token) return false;
 
       return true;
@@ -146,6 +152,7 @@ const userSlice = createSlice({
         state.isSignedIn = true;
       })
       // ------------ Update Refresh ---------------------
+
       .addCase(usersCurrentThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSignedIn = true;
