@@ -4,7 +4,6 @@
 // import { selectVisibleContacts } from 'redux/contacts/selectors';
 import AddWaterButton from "../AddWatterButton/AddWatterButton";
 import { format } from "date-fns";
-import { apiDeleteWaterPortion } from "../../../redux/water/waterSlice";
 
 import {
   Ml,
@@ -20,7 +19,7 @@ import { ReactComponent as Glass } from "../../../assets/icons/glass-desc.svg";
 import { ReactComponent as Pencil } from "../../../assets/icons/pencil-square.svg";
 import { ReactComponent as Bucket } from "../../../assets/icons/bucket.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { setEditModal } from "../../../redux/modalsReduser";
+import { setDeleteModal, setEditModal } from "../../../redux/modalsReduser";
 // import { selectTodayWaterData } from "../../../redux/water/waterSlice.selectors";
 import { selectNotes } from "../../../redux/selectors";
 
@@ -73,7 +72,9 @@ const WaterPortionsList = () => {
                 </Button>
                 <Button
                   onClick={() => {
-                    dispatch(apiDeleteWaterPortion(item._id));
+                    dispatch(
+                      setDeleteModal({ isOpen: true, portionId: item._id })
+                    );
                   }}
                 >
                   <Bucket />

@@ -52,6 +52,7 @@ const LoginForm = () => {
             onChange={formik.handleChange}
             value={formik.values.email}
           />
+          {formik.errors.email ? <div>{formik.errors.email}</div> : null}
 
           <label className="label">
             <span className="label-text">Enter your password</span>
@@ -66,6 +67,9 @@ const LoginForm = () => {
               value={formik.values.password}
             />
             <IconClosedEye className="eye-icon" />
+            {formik.errors.password ? (
+              <div>{formik.errors.password}</div>
+            ) : null}
           </div>
           <button className="button" type="submit">
             Sign In

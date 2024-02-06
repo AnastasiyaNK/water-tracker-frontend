@@ -28,8 +28,7 @@ const DaysList = () => {
   const monthName = getNameOfMonth(month);
   const numberOfdays = getDaysInMonth(month, year);
   const monthArray = createMonthArray(numberOfdays, monthName);
-  console.log(month, year);
-  console.log(monthArray);
+
   const monthStats = monthArray?.map((item) => {
     const statsItem = Object.values(stats).find(
       (i) => getNumberDay(i.date) === getNumberDay(item.date)

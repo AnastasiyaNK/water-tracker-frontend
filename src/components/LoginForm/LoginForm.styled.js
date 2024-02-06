@@ -5,7 +5,7 @@ export const StyledLoginContainer = styled.div`
   display: flex;
   justify-content: center;
   height: 100%;
-  margin-top: 40px;
+  padding-top: 40px;
 
   @media screen and (min-width: 768px) {
     justify-content: flex-start;
