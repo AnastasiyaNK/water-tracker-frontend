@@ -1,9 +1,5 @@
-// import { useSelector } from 'react-redux';
-// import { useDispatch } from 'react-redux';
-// import { deleteWaterPortion } from '../../redux/waterportions/operations';
-// import { selectVisibleContacts } from 'redux/contacts/selectors';
 import AddWaterButton from "../AddWatterButton/AddWatterButton";
-// import { format } from "date-fns";
+import { format } from "date-fns";
 
 import {
   Ml,
@@ -14,19 +10,19 @@ import {
   ScrollableDiv,
   Button,
   Portions,
+  Motivation,
 } from "./WaterPortionsList.styled";
 import { ReactComponent as Glass } from "../../../assets/icons/glass-desc.svg";
 import { ReactComponent as Pencil } from "../../../assets/icons/pencil-square.svg";
 import { ReactComponent as Bucket } from "../../../assets/icons/bucket.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setDeleteModal, setEditModal } from "../../../redux/modalsReduser";
-// import { selectTodayWaterData } from "../../../redux/water/waterSlice.selectors";
 import { selectNotes } from "../../../redux/selectors";
 import { getLocaleTime } from "helpers/getLocaleTime";
 
+
 const WaterPortionsList = () => {
   const dispatch = useDispatch();
-  // const todayWaterData = useSelector(selectTodayWaterData);
   const waterPortions = useSelector(selectNotes);
 
   const buttonStyle = {
@@ -44,20 +40,20 @@ const WaterPortionsList = () => {
     background: "none",
     border: "none",
   };
-  // const waterPortions = todayWaterData?.waterVolumes;
 
   return (
     <PortionsList>
       <ScrollableDiv>
-        <Portions>
-          {waterPortions?.map((item) => (
+        <Portions> {
+          waterPortions?.map((item) => (
             <Portion key={item._id}>
               <Glass />
               <Ml>{item.waterAmount}ml</Ml>
               <Time>
                 {getLocaleTime(item.date)}
-                {/* {format(item.date, "hh")}:{format(item.date, "mm")}{" "}
-                {format(item.date, "a")} */}
+                 {/* {format(item.date, "HH")}:{format(item.date, "mm")}{" "}
+                {format(item.date, "a")}  */}
+                
               </Time>
               <Edit>
                 <Button
