@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/water-tracker-frontend/static/css/main.88421739.css",
-    "main.js": "/water-tracker-frontend/static/js/main.20e2b409.js",
+    "main.js": "/water-tracker-frontend/static/js/main.541182e9.js",
     "static/media/bottle-sign-in-desk.png": "/water-tracker-frontend/static/media/bottle-sign-in-desk.ae104bfd8b47eb232ca0.png",
     "static/media/set-icons.svg": "/water-tracker-frontend/static/media/set-icons.c887209d8d1cd0a5c5dce5dda8ebbb15.svg",
     "static/media/botle-home-desc.png": "/water-tracker-frontend/static/media/botle-home-desc.e43c581374137248fa9f.png",
@@ -34,10 +34,10 @@
     "static/media/plus-small.svg": "/water-tracker-frontend/static/media/plus-small.4cf348660ec6c7267facce897f3cda93.svg",
     "static/media/close.svg": "/water-tracker-frontend/static/media/close.4bacbe008227ed7c2336095722a26803.svg",
     "main.88421739.css.map": "/water-tracker-frontend/static/css/main.88421739.css.map",
-    "main.20e2b409.js.map": "/water-tracker-frontend/static/js/main.20e2b409.js.map"
+    "main.541182e9.js.map": "/water-tracker-frontend/static/js/main.541182e9.js.map"
   },
   "entrypoints": [
     "static/css/main.88421739.css",
-    "static/js/main.20e2b409.js"
+    "static/js/main.541182e9.js"
   ]
 }
