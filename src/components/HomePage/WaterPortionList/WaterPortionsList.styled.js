@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Portion = styled.div`
-  width: 254px;
+  /* width: 254px; */
   display: flex;
   padding: 6px 0;
   align-items: baseline;
@@ -10,16 +10,18 @@ export const Portion = styled.div`
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
     align-items: baseline;
-    width: 254px;
+    /* width: 254px; */
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
+    width: 690px;
     align-items: center;
     padding: 12px 0;
   }
 
   @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 768px) and (min-resolution: 192dpi) {
+    width: 690px;
     align-items: center;
     padding: 12px 0;
   }
@@ -95,28 +97,28 @@ export const Edit = styled.div`
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     display: flex;
     gap: 18px;
-    margin-left: 360px;
+    margin-left: 420px;
   }
 
   @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 768px) and (min-resolution: 192dpi) {
     display: flex;
     gap: 18px;
-    margin-left: 360px;
+    margin-left: 420px;
   }
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     display: flex;
     gap: 18px;
-    margin-left: 278px;
+    margin-left: 340px;
   }
 
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
     display: flex;
     gap: 18px;
-    margin-left: 278px;
+    margin-left: 340px;
   }
 `;
 

@@ -46,7 +46,7 @@ const Day = ({ buttonProps, popoverProps, item, index, monthName }) => {
           minHeight: '34px',
           padding: '0px',
           border: '1px solid',
-          borderColor: waterVolumePercentage === 100 ? 'white' : 'orange',
+          borderColor: waterVolumePercentage >= 100 ? 'white' : 'orange',
         }}
         {...buttonProps}
       >
