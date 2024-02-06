@@ -44,8 +44,16 @@ export const setMyDailyNorma = async (formData) => {
   return data;
 };
 
-export const requestDayWaterData = async (date) => {
-  const { data } = await authInstance.get(`water/today?date=${date}`);
+export const requestDayWaterData = async () => {
+  const currentDate = new Date();
+  const formattedDate = currentDate.toISOString().split("T")[0];
+
+  const { data } = await authInstance.get("/water/today", {
+    params: {
+      date: formattedDate,
+    },
+  });
+
   return data;
 };
 
@@ -92,8 +100,10 @@ export const getWaterNotes = async () => {
   return data;
 };
 
-export const getWaterStats = async (month) => {
-  const { data } = await authInstance.get(`/water/month?${month}`);
+export const getWaterStats = async (month, year) => {
+  const { data } = await authInstance.get(
+    `/water/month?month=${month}&year=${year}`
+  );
   return data;
 };
 
