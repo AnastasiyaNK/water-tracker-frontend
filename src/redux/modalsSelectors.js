@@ -12,3 +12,9 @@ export const selectEditWaterModal = (state) =>
 
 export const selectSelectedWaterPortionId = (state) =>
   state.modals.selectedWaterPortionId;
+
+export const selectDeletingWaterPortionId = (state) =>
+  state.modals.deletingWaterPortionId;
+
+export const selectDeleteWaterModal = (state) =>
+  state.modals.modals.isDeleteModalOpen;

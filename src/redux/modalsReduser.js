@@ -7,8 +7,10 @@ const INITIAL_STATE = {
     isAddWaterModalOpen: false,
     isEditModalOpen: false,
     isLogoutModalOpen: false,
+    isDeleteModalOpen: false,
   },
   selectedWaterPortionId: null,
+  deletingWaterPortionId: null,
 };
 
 const modalsSlice = createSlice({
@@ -28,15 +30,20 @@ const modalsSlice = createSlice({
       state.modals.isEditModalOpen = action.payload.isOpenModal;
       state.selectedWaterPortionId = action.payload.waterPortionId;
     },
+    setLogoutModal(state, action) {
+      state.modals.isLogoutModalOpen = action.payload;
+    },
+    setDeleteModal(state, action) {
+      state.modals.isDeleteModalOpen = action.payload.isOpen;
+      state.deletingWaterPortionId = action.payload.portionId;
+    },
     closeAllModals(state) {
       state.modals.isSettingsModalOpen = false;
       state.modals.isDailyNormaModalOpen = false;
       state.modals.isAddWaterModalOpen = false;
       state.modals.isEditModalOpen = false;
       state.modals.isLogoutModalOpen = false;
-    },
-    setLogoutModal(state, action) {
-      state.modals.isLogoutModalOpen = action.payload;
+      state.modals.isDeleteModalOpen = false;
     },
   },
 });
@@ -48,5 +55,6 @@ export const {
   setEditModal,
   closeAllModals,
   setLogoutModal,
+  setDeleteModal,
 } = modalsSlice.actions;
 export const modalsReducer = modalsSlice.reducer;

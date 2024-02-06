@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { format } from "date-fns";
 
@@ -9,27 +8,27 @@ import {
   SettingsModal,
   WaterTracker,
   MyDailyNormaModal,
-   DailyNorma
-} from 'components';
+  DailyNorma,
+} from "components";
 
-import { Fon, DailyRangeStyle } from './HomePage.styled.js';
+import { Fon, DailyRangeStyle } from "./HomePage.styled.js";
 
 import {
   selectSettingsModal,
   selectDailyNormaModal,
   selectAddWaterModal,
   selectEditWaterModal,
-   selectLogoutModal,
-} from '../../redux/selectors.js';
+  selectLogoutModal,
+} from "../../redux/selectors.js";
 
-import EditWaterModal from 'components/EditWaterModal/EditWaterModal.jsx';
-
+import EditWaterModal from "components/EditWaterModal/EditWaterModal.jsx";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import { apiGetTodayWaterPortions } from "../../redux/water/waterSlice.js";
 import { closeAllModals } from "../../redux/modalsReduser.js";
-
+import { selectDeleteWaterModal } from "../../redux/modalsSelectors.js";
+import DeleteModal from "components/DeleteModal/DeleteModal.jsx";
 
 const HomePage = () => {
   const isSettingsModalOpen = useSelector(selectSettingsModal);
@@ -37,6 +36,7 @@ const HomePage = () => {
   const isAddWaterModalOpen = useSelector(selectAddWaterModal);
   const isEditWaterModalOpen = useSelector(selectEditWaterModal);
   const isLogoutModalOpen = useSelector(selectLogoutModal);
+  const isDeleteModalOpen = useSelector(selectDeleteWaterModal);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,7 +52,6 @@ const HomePage = () => {
 
   return (
     <Fon>
-
       <DailyRangeStyle>
         <DailyNorma />
         <RangeBar />
@@ -64,6 +63,7 @@ const HomePage = () => {
       {isSettingsModalOpen && <SettingsModal />}
       {isDailyNormaModalOpen && <MyDailyNormaModal />}
       {isLogoutModalOpen && <LogoutModal />}
+      {isDeleteModalOpen && <DeleteModal />}
     </Fon>
   );
 };
