@@ -89,7 +89,12 @@ const LoginForm = () => {
           <button className="button" type="submit">
             <div className="google-wrapper">
               <IconGoogle />
-              <span className="text-google">Sign in wiht Google</span>
+              <a
+                className="text-google"
+                href="https://water-tracker-backend-0wax.onrender.com/api/user/google"
+              >
+                Sign in wiht Google
+              </a>
             </div>
           </button>
           <Link to="/signup" className="link">

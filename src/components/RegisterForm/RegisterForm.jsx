@@ -68,17 +68,11 @@ const RegisterForm = () => {
           <label className="label">
             <span className="label-text">Enter your email</span>
           </label>
-          {/* 
+
           {formik.values.password !== formik.values.repeatPassword && (
             <div>Your Passwords must match</div>
           )}
 
-          <a
-            className="button"
-            href="https://water-tracker-backend-0wax.onrender.com/api/user/google"
-          >
-            Google Auth
-          </a> */}
           <input
             className="input"
             name="email"
@@ -151,6 +145,12 @@ const RegisterForm = () => {
           <button className="button" type="submit">
             Sign Up
           </button>
+          <a
+            className="button"
+            href="https://water-tracker-backend-0wax.onrender.com/api/user/google"
+          >
+            Google Auth
+          </a>
 
           <Link to="/signin" className="link">
             Sign In
