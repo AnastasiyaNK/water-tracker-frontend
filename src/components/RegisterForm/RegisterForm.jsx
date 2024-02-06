@@ -25,7 +25,7 @@ const RegisterForm = () => {
       navigate("/home");
     }
   }, [navigate]);
-  const signinSchema = Yup.object().shape({
+  const signinSchema = Yup.object({
     email: Yup.string()
       .required("Here must be your e-mail")
       .email("Invalid email"),

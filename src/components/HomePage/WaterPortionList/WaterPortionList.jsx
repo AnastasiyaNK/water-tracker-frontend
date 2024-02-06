@@ -4,7 +4,7 @@
 // import { selectVisibleContacts } from 'redux/contacts/selectors';
 import AddWaterButton from "../AddWatterButton/AddWatterButton";
 import { format } from "date-fns";
-import { deleteWater } from "../../../redux/water/waterOperations";
+import { apiDeleteWaterPortion } from "../../../redux/water/waterSlice";
 
 import {
   Ml,
@@ -73,7 +73,7 @@ const WaterPortionsList = () => {
                 </Button>
                 <Button
                   onClick={() => {
-                    dispatch(deleteWater(item._id));
+                    dispatch(apiDeleteWaterPortion(item._id));
                   }}
                 >
                   <Bucket />

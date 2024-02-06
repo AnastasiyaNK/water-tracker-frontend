@@ -13,7 +13,7 @@ import { selectSelectedWaterPortionId } from "../../redux/selectors";
 // import { selectTodayWaterData } from "../../redux/water/waterSlice.selectors";
 import { apiEditWaterPortion } from "../../redux/water/waterSlice";
 import { closeAllModals } from "../../redux/modalsReduser";
-import { selectNotes } from '../../redux/selectors';
+import { selectNotes } from "../../redux/selectors";
 
 const WATER_AMOUNT_DIFFERENCE = 20;
 
@@ -33,11 +33,14 @@ const EditWaterModal = () => {
   const dispatch = useDispatch();
   const selectedWaterPortionId = useSelector(selectSelectedWaterPortionId);
   // const waterData = useSelector(selectTodayWaterData);
-  const waterVolumes = useSelector(selectNotes)
+  const waterVolumes = useSelector(selectNotes);
   const waterPortion = waterVolumes.find(
     (portion) => portion._id === selectedWaterPortionId
   );
-  const [localWaterAmount, setLocalWaterAmount] = useState(250);
+
+  const [localWaterAmount, setLocalWaterAmount] = useState(
+    waterPortion.waterAmount
+  );
   const {
     handleChange,
     handleSubmit,
@@ -46,7 +49,7 @@ const EditWaterModal = () => {
     setFieldValue,
   } = useFormik({
     initialValues: {
-      waterAmount: "250",
+      waterAmount: waterPortion.waterAmount.toString(),
       date: `${format(waterPortion.date, "kk")}:${format(
         waterPortion.date,
         "mm"

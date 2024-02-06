@@ -1,8 +1,7 @@
-import { DataStyle, Data, Box } from './DayGeneralStats.stayled';
+import { DataStyle, Data, Box } from "./DayGeneralStats.stayled";
 
 const DayGeneralStats = ({ item, index, monthName }) => {
   const { waterVolumePercentage, dailyNorma, portions } = item;
-  console.log(monthName, 'monthName');
   return (
     <Box>
       <Data>
@@ -14,7 +13,7 @@ const DayGeneralStats = ({ item, index, monthName }) => {
         Daily norma: <DataStyle>{dailyNorma}</DataStyle>
       </Data>
       <Data>
-        Fulfillment of the daily norm:{' '}
+        Fulfillment of the daily norm:{" "}
         <DataStyle>{waterVolumePercentage}%</DataStyle>
       </Data>
       <Data>

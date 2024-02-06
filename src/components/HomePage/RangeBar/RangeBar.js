@@ -1,9 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { selectPercent } from '../../../redux/selectors.js';
-import { fetchWater } from '../../../redux/water/waterOperations';
-// import { AddWaterButton } from 'components';
-import './styles.css';
+import { selectPercent } from "../../../redux/selectors";
+import "./styles.css";
 
 import {
   RangBar,
@@ -12,21 +8,18 @@ import {
   Percents,
   RangeAdd,
   RangeBarLine,
-} from './RangeBar.styled';
+} from "./RangeBar.styled";
 
-import ModalButton from 'components/ModalButton/ModalButton';
+import ModalButton from "components/ModalButton/ModalButton";
+import { useSelector } from "react-redux";
 
 const RangeBar = () => {
   const percentage = useSelector(selectPercent);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(
-    () => {
-      dispatch(fetchWater());
-    },
-    [dispatch],
-    percentage
-  );
+  // useEffect(() => {
+  //   dispatch(apiGetTodayWaterPortions());
+  // }, [dispatch, percentage]);
 
   return (
     <RangeAdd>

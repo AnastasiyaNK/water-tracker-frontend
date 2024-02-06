@@ -1,18 +1,19 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   requestAddWaterData,
   requestDayWaterData,
   requestDeleteWaterData,
   requestEditWaterData,
   requestMonthWaterData,
-} from 'services/api';
-import { deleteWater, fetchStats, fetchWater } from './waterOperations';
+} from "services/api";
+
+import { format } from "date-fns";
 
 export const apiGetTodayWaterPortions = createAsyncThunk(
-  'water/apiGetTodayWaterPortions',
-  async (date, thunkAPI) => {
+  "water/apiGetTodayWaterPortions",
+  async (_, thunkAPI) => {
     try {
-      const response = await requestDayWaterData(date);
+      const response = await requestDayWaterData();
       return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -20,11 +21,19 @@ export const apiGetTodayWaterPortions = createAsyncThunk(
   }
 );
 export const apiGetMonthWaterPortions = createAsyncThunk(
-  'water/apiGetMonthWaterPortions',
+  "water/apiGetMonthWaterPortions",
   async ({ month, year }, thunkAPI) => {
     try {
-      const response = await requestMonthWaterData(month, year);
-      return response;
+      const data = await requestMonthWaterData(month, year);
+
+      thunkAPI.dispatch(apiGetTodayWaterPortions());
+
+      return Object.keys(data).length !== 0
+        ? data
+        : {
+            waterVolumePercentage: "0%",
+            waterVolumes: [],
+          };
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -32,10 +41,16 @@ export const apiGetMonthWaterPortions = createAsyncThunk(
 );
 
 export const apiAddWaterPortion = createAsyncThunk(
-  'water/addWaterPortion',
+  "water/addWaterPortion",
   async (formData, thunkAPI) => {
     try {
       const response = await requestAddWaterData(formData);
+      thunkAPI.dispatch(
+        apiGetMonthWaterPortions({
+          month: format(new Date(), "LL"),
+          year: format(new Date(), "yyyy"),
+        })
+      );
       return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -43,10 +58,17 @@ export const apiAddWaterPortion = createAsyncThunk(
   }
 );
 export const apiEditWaterPortion = createAsyncThunk(
-  'water/apiEditWaterPortion',
+  "water/apiEditWaterPortion",
   async ({ portionId, formData }, thunkAPI) => {
     try {
       const response = await requestEditWaterData(portionId, formData);
+      thunkAPI.dispatch(
+        apiGetMonthWaterPortions({
+          month: format(new Date(), "LL"),
+          year: format(new Date(), "yyyy"),
+        })
+      );
+
       return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -55,11 +77,16 @@ export const apiEditWaterPortion = createAsyncThunk(
 );
 
 export const apiDeleteWaterPortion = createAsyncThunk(
-  'water/deleteWaterPortion',
+  "water/deleteWaterPortion",
   async (portionId, thunkAPI) => {
     try {
       await requestDeleteWaterData(portionId);
-
+      thunkAPI.dispatch(
+        apiGetMonthWaterPortions({
+          month: format(new Date(), "LL"),
+          year: format(new Date(), "yyyy"),
+        })
+      );
       return portionId;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -79,9 +106,9 @@ const INITIAL_STATE = {
 };
 
 const waterSlice = createSlice({
-  name: 'water',
+  name: "water",
   initialState: INITIAL_STATE,
-  extraReducers: builder =>
+  extraReducers: (builder) =>
     builder
 
       // .addCase(apiGetTodayWaterPortions.fulfilled, (state, action) => {
@@ -110,75 +137,72 @@ const waterSlice = createSlice({
       .addCase(apiDeleteWaterPortion.fulfilled, (state, action) => {
         state.isLoading = false;
         state.waterVolumes = state.waterVolumes.filter(
-          portion => portion._id !== action.payload
+          (portion) => portion._id !== action.payload
         );
       })
       .addCase(apiEditWaterPortion.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoading = false;
-        state.waterVolumes = state.waterVolumes.map(portion =>
+        state.waterVolumes = state.waterVolumes.map((portion) =>
           portion._id === action.payload._id
             ? { ...portion, ...action.payload }
             : portion
         );
       })
       /// Fetch
-      .addCase(fetchWater.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(fetchWater.fulfilled, (state, { payload }) => {
-        let percentage = parseInt(payload.waterVolumePercentage);
-        percentage = percentage > 100 ? 100 : percentage;
-        state.percentage = percentage;
-        state.waterVolumes = payload.waterVolumes;
-        state.isLoading = false;
-      })
-      .addCase(fetchWater.rejected, (state, { payload }) => {
-        rejectError(state, payload);
-      })
+      // .addCase(fetchWaterToday.pending, (state) => {
+      //   state.isLoading = true;
+      // })
+      // .addCase(fetchWaterToday.fulfilled, (state, { payload }) => {
+      //   let percentage = parseInt(payload.waterVolumePercentage);
+      //   percentage = percentage > 100 ? 100 : percentage;
+      //   state.percentage = percentage;
+      //   state.waterVolumes = payload.waterVolumes;
+      //   state.isLoading = false;
+      // })
+      // .addCase(fetchWaterToday.rejected, (state, { payload }) => {
+      //   rejectError(state, payload);
+      // })
 
-      .addCase(deleteWater.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(deleteWater.fulfilled, (state, { payload }) => {
-        state.waterVolumes = state.waterVolumes.filter(
-          waterVolumes => waterVolumes._id !== payload
-        );
-        state.isLoading = false;
-      })
-      .addCase(deleteWater.rejected, (state, { payload }) => {
-        rejectError(state, payload);
-      })
-      /// get statistic data for month
-      .addCase(fetchStats.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(fetchStats.fulfilled, (state, { payload }) => {
-        state.stats = payload;
-        console.log(state.stats, 'state.stats');
-        state.isLoading = false;
-      })
-      .addCase(fetchStats.rejected, (state, { payload }) => {
-        rejectError(state, payload);
-      })
+      // .addCase(deleteWater.pending, (state) => {
+      //   state.isLoading = true;
+      // })
+      // .addCase(deleteWater.fulfilled, (state, { payload }) => {
+      //   state.waterVolumes = state.waterVolumes.filter(
+      //     (waterVolumes) => waterVolumes._id !== payload
+      //   );
+      //   state.isLoading = false;
+      // })
+      // .addCase(deleteWater.rejected, (state, { payload }) => {
+      //   rejectError(state, payload);
+      // })
+      // /// get statistic data for month
+      // .addCase(fetchStats.pending, (state) => {
+      //   state.isLoading = true;
+      // })
+      // .addCase(fetchStats.fulfilled, (state, { payload }) => {
+      //   state.stats = payload;
+      //   console.log(state.stats, "state.stats");
+      //   state.isLoading = false;
+      // })
+      // .addCase(fetchStats.rejected, (state, { payload }) => {
+      //   rejectError(state, payload);
+      // })
 
       .addMatcher(
-        action => action.type.endsWith('/pending'),
+        (action) => action.type.endsWith("/pending"),
         (state, action) => {
           state.isLoading = true;
           state.error = null;
         }
       )
       .addMatcher(
-        action => action.type.endsWith('/rejected'),
+        (action) => action.type.endsWith("/rejected"),
         (state, action) => {
           state.isLoading = false;
           state.error = action.payload;
         }
       ),
 });
-function rejectError(state, payload) {
-  state.isLoading = false;
-  state.error = payload;
-}
+
 export const waterReducer = waterSlice.reducer;
