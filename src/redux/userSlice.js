@@ -39,6 +39,20 @@ export const apiUserLogin = createAsyncThunk(
   }
 );
 
+export const usersGoogleAuth = createAsyncThunk(
+  "user/google",
+  async (token, thunkAPI) => {
+    try {
+      setToken(token);
+      const respons = await requestUserCurrent();
+      toastFulfild("You have successfully logged into your account!");
+      return respons;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const updateUserAvatar = createAsyncThunk(
   "user/updateAvatar",
   async (newAvatar, thunkAPI) => {
@@ -143,6 +157,12 @@ const userSlice = createSlice({
       .addCase(apiUserRegister.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user.email = action.payload.user;
+      })
+      .addCase(usersGoogleAuth.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSignedIn = true;
+        state.user = action.payload;
+        state.token = action.payload.token;
       })
       // ------------ Login User ----------------------
       .addCase(apiUserLogin.fulfilled, (state, action) => {
