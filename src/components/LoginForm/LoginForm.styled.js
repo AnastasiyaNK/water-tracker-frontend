@@ -108,7 +108,6 @@ export const StyledLoginForm = styled.form`
     border-radius: 10px;
     background: #407bff;
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-    padding: 10px 30px;
     border: none;
     margin-top: 16px;
 
@@ -145,7 +144,6 @@ export const StyledLoginForm = styled.form`
   }
 
   .link {
-    margin-top: 16px;
     color: #407bff;
 
     font-size: 16px;
@@ -157,7 +155,44 @@ export const StyledLoginForm = styled.form`
     align-items: center;
     justify-content: center;
     gap: 10px;
+
+    & svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    & a {
+      background: linear-gradient(
+        90deg,
+        rgba(228, 234, 235, 1) 22%,
+        rgba(253, 29, 29, 1) 65%,
+        rgba(252, 176, 69, 1) 79%
+      );
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
   }
-  .text-google {
+
+  .lower-buttons-wrapper {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .resend-verify {
+    width: 132px;
+    background-color: transparent;
+    color: #407bff;
+    border: none;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+
+    @media (min-width: 768px) {
+      width: 217px;
+    }
   }
 `;

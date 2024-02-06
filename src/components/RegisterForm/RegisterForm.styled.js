@@ -141,6 +141,30 @@ export const StyledRegisterForm = styled.form`
     }
   }
 
+  .google-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    & svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    & a {
+      background: linear-gradient(
+        90deg,
+        rgba(228, 234, 235, 1) 22%,
+        rgba(253, 29, 29, 1) 65%,
+        rgba(252, 176, 69, 1) 79%
+      );
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+  }
+
   .link {
     margin-top: 16px;
     color: #407bff;

@@ -7,6 +7,7 @@ import {
   setMyDailyNorma,
   setToken,
   requestUserCurrent,
+  requestVeryfyEmail,
 } from "services/api";
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -48,6 +49,21 @@ export const usersGoogleAuth = createAsyncThunk(
       toastFulfild("You have successfully logged into your account!");
       return respons;
     } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resendVerifyEmail = createAsyncThunk(
+  "user/verify",
+  async (email, thunkAPI) => {
+    await requestVeryfyEmail(email);
+    toastFulfild(
+      "The verification email has been resent. Please check your e-mail."
+    );
+    try {
+    } catch (error) {
+      toastRejected("Something went wrong. Try again!");
       return thunkAPI.rejectWithValue(error.message);
     }
   }

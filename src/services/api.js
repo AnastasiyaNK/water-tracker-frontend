@@ -14,14 +14,19 @@ export const requestRegister = async (formData) => {
   return data;
 };
 
+export const requestVeryfyEmail = async (email) => {
+  const data = await authInstance.post("user/verify", email);
+  return data;
+};
+
 export const requestLogin = async (formData) => {
   const { data } = await authInstance.post("user/login", formData);
   setToken(data.token);
   return data;
 };
+
 export const requestUserCurrent = async () => {
   const { data } = await authInstance.get("user");
-
   return data;
 };
 
