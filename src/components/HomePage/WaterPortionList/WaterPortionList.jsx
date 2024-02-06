@@ -3,7 +3,7 @@
 // import { deleteWaterPortion } from '../../redux/waterportions/operations';
 // import { selectVisibleContacts } from 'redux/contacts/selectors';
 import AddWaterButton from "../AddWatterButton/AddWatterButton";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 
 import {
   Ml,
@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDeleteModal, setEditModal } from "../../../redux/modalsReduser";
 // import { selectTodayWaterData } from "../../../redux/water/waterSlice.selectors";
 import { selectNotes } from "../../../redux/selectors";
+import { getLocaleTime } from "helpers/getLocaleTime";
 
 const WaterPortionsList = () => {
   const dispatch = useDispatch();
@@ -54,8 +55,9 @@ const WaterPortionsList = () => {
               <Glass />
               <Ml>{item.waterAmount}ml</Ml>
               <Time>
-                {format(item.date, "hh")}:{format(item.date, "mm")}{" "}
-                {format(item.date, "a")}
+                {getLocaleTime(item.date)}
+                {/* {format(item.date, "hh")}:{format(item.date, "mm")}{" "}
+                {format(item.date, "a")} */}
               </Time>
               <Edit>
                 <Button

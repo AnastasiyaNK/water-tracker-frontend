@@ -19,7 +19,7 @@ export const WelcomeContainer = styled.div`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    width: 768px;
+    width: 706px;
     padding-top: 40px;
     min-height: calc(100vh - 88px);
   }
