@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
+import React, { useEffect } from "react";
 import * as Yup from "yup";
-import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { apiUserRegister } from "../../redux/userSlice";
@@ -16,6 +16,15 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+
+    if (token) {
+      console.log(token);
+      navigate("/home");
+    }
+  }, [navigate]);
   const signinSchema = Yup.object().shape({
     email: Yup.string()
       .required("Here must be your e-mail")
@@ -58,6 +67,16 @@ const RegisterForm = () => {
             <span className="label-text">Enter your email</span>
           </label>
 
+          {formik.values.password !== formik.values.repeatPassword && (
+            <div>Your Passwords must match</div>
+          )}
+
+          <a
+            className="button"
+            href="https://water-tracker-backend-0wax.onrender.com/api/user/google"
+          >
+            Google Auth
+          </a>
           <input
             className="input"
             name="email"
