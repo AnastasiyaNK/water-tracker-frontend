@@ -22,7 +22,7 @@ export const StyledHeader = styled.header`
 
     font-size: 16px;
     font-weight: 400;
-    line-height: 1/25;
+    line-height: 1.25;
   }
 
   .user-name:hover,
@@ -42,10 +42,11 @@ export const StyledHeader = styled.header`
   }
 
   @media (min-width: 768px) and (max-width: 1439px) {
-    padding: 16px 32px 0px 32px;
+    padding-top: 16px;
   }
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1216px) and (min-width: 1440px) {
     padding: 12px 0;
+    min-width: 1216px;
   }
 `;
