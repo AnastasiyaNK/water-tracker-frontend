@@ -1,17 +1,18 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { apiUserLogin } from "../../redux/userSlice";
 import { StyledLoginContainer, StyledLoginForm } from "./LoginForm.styled";
 import { StyledMainContainer } from "styled";
-// import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
+import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
 import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
 import { ReactComponent as IconGoogle } from "../../assets/icons/icons8-google.svg";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const [visiblePassword, setVisiblePassword] = useState(false);
 
   const signinSchema = Yup.object().shape({
     email: Yup.string()
@@ -60,13 +61,24 @@ const LoginForm = () => {
           <div className="icon-wrapper">
             <input
               className="input"
-              type="password"
+              type={visiblePassword ? "text" : "password"}
               name="password"
               placeholder="Password"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
-            <IconClosedEye className="eye-icon" />
+            {visiblePassword ? (
+              <IconClosedEye
+                onClick={() => setVisiblePassword(false)}
+                className="eye-icon"
+              />
+            ) : (
+              <IconOpenedEye
+                onClick={() => setVisiblePassword(true)}
+                className="eye-icon"
+              />
+            )}
+
             {formik.errors.password ? (
               <div>{formik.errors.password}</div>
             ) : null}
