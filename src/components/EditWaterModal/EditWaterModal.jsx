@@ -3,6 +3,7 @@ import { StyledWaterForm } from "components/EditWaterModal/EditWaterModal.styled
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import { format } from "date-fns";
+import { getLocaleTime } from "../../helpers/getLocaleTime";
 import * as Yup from "yup";
 
 import { ReactComponent as IconMinus } from "../../assets/icons/minus-small.svg";
@@ -50,10 +51,12 @@ const EditWaterModal = () => {
   } = useFormik({
     initialValues: {
       waterAmount: waterPortion.waterAmount.toString(),
-      date: `${format(waterPortion.date, "kk")}:${format(
-        waterPortion.date,
-        "mm"
-      )}`,
+      // date: `${format(waterPortion.date, "kk")}:${format(
+      //   waterPortion.date,
+      //   "mm"
+      // )}`,
+       date: `${getLocaleTime(waterPortion.date)
+      }`,
     },
     validationSchema: editWaterValidationSchema,
     onSubmit: (values) => {

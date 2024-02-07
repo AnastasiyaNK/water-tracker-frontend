@@ -57,6 +57,7 @@ const WaterPortionsList = () => {
                     {getLocaleTime(item.date)}
                     {/* {format(item.date, "HH")}:{format(item.date, "mm")}{" "}
                 {format(item.date, "a")}  */}
+                    
                   </Time>
                   <Edit>
                     <Button
