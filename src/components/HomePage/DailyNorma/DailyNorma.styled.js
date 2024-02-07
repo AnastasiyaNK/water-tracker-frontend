@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const DailyNormaBox = styled.div`
   width: 164px;
@@ -65,6 +65,6 @@ export const Edit = styled.div`
   font-style: normal;
   font-weight: 400;
 
-  line-height: 20px; 
-
+  line-height: 20px;
+  cursor: pointer;
 `;
