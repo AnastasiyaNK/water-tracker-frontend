@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDeleteModal, setEditModal } from "../../../redux/modalsReduser";
 import { selectNotes } from "../../../redux/selectors";
 
-import { format } from "date-fns";
+import { getLocaleTime } from "helpers/getLocaleTime";
 
 const WaterPortionsList = () => {
   const dispatch = useDispatch();
@@ -55,8 +55,9 @@ const WaterPortionsList = () => {
                   <Glass />
                   <Ml>{item.waterAmount}ml</Ml>
                   <Time>
-                    {format(item.date, "hh")}:{format(item.date, "mm")}
-                    {format(item.date, "a")}
+                    {getLocaleTime(item.date)}
+                    {/* {format(item.date, "HH")}:{format(item.date, "mm")}{" "}
+                {format(item.date, "a")}  */}
                   </Time>
                   <Edit>
                     <Button
