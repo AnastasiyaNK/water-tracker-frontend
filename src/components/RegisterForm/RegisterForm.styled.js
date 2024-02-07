@@ -102,6 +102,12 @@ export const StyledRegisterForm = styled.form`
       height: 44px;
     }
   }
+
+  .error {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #ef5050;
+  }
   .button {
     font-family: "Roboto", sans-serif;
     border-radius: 10px;
