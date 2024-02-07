@@ -17,6 +17,7 @@ import { ReactComponent as Bucket } from "../../../assets/icons/bucket.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setDeleteModal, setEditModal } from "../../../redux/modalsReduser";
 import { selectNotes } from "../../../redux/selectors";
+
 import { getLocaleTime } from "helpers/getLocaleTime";
 
 const WaterPortionsList = () => {
@@ -57,7 +58,6 @@ const WaterPortionsList = () => {
                     {getLocaleTime(item.date)}
                     {/* {format(item.date, "HH")}:{format(item.date, "mm")}{" "}
                 {format(item.date, "a")}  */}
-                    
                   </Time>
                   <Edit>
                     <Button

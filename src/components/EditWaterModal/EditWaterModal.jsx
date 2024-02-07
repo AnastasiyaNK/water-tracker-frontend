@@ -55,8 +55,7 @@ const EditWaterModal = () => {
       //   waterPortion.date,
       //   "mm"
       // )}`,
-       date: `${getLocaleTime(waterPortion.date)
-      }`,
+      date: `${getLocaleTime(waterPortion.date)}`,
     },
     validationSchema: editWaterValidationSchema,
     onSubmit: (values) => {
