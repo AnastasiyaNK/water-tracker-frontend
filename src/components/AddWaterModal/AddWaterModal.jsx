@@ -36,7 +36,7 @@ const AddWaterModal = () => {
   } = useFormik({
     initialValues: {
       waterAmount: "250",
-      date: `${format(new Date(), "kk")}:${format(new Date(), "mm")}`,
+      date: `${format(new Date(), "HH")}:${format(new Date(), "mm")}`,
     },
     validationSchema: addWaterValidationSchema,
     onSubmit: (values) => {
