@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
-import * as Yup from "yup";
+import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { apiUserLogin, resendVerifyEmail } from "../../redux/userSlice";
@@ -16,15 +16,16 @@ const LoginForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const email = useSelector(selectUserEmail);
 
-  const signinSchema = Yup.object().shape({
-    email: Yup.string()
+  const signinSchema = yup.object().shape({
+    email: yup
+      .string()
       .required("Here must be your e-mail")
       .email("Invalid email"),
 
-    password: Yup.string()
+    password: yup
+      .string()
       .min(8, "Invalid password (8-64 characters)")
-      .max(64, "Invalid password (8-64 characters)")
-      .required("Required"),
+      .max(64, "Invalid password (8-64 characters)"),
   });
 
   const formik = useFormik({
@@ -32,7 +33,7 @@ const LoginForm = () => {
       email: "",
       password: "",
     },
-    signinSchema,
+    validationSchema: signinSchema,
     onSubmit: (values) => {
       const formData = { email: values.email, password: values.password };
       dispatch(apiUserLogin(formData));
@@ -55,8 +56,9 @@ const LoginForm = () => {
             onChange={formik.handleChange}
             value={formik.values.email}
           />
-          {formik.errors.email ? <div>{formik.errors.email}</div> : null}
-
+          {formik.errors.email && (
+            <div className="error">{formik.errors.email}</div>
+          )}
           <label className="label">
             <span className="label-text">Enter your password</span>
           </label>
@@ -81,9 +83,9 @@ const LoginForm = () => {
               />
             )}
 
-            {formik.errors.password ? (
-              <div>{formik.errors.password}</div>
-            ) : null}
+            {formik.errors.password && (
+              <div className="error">{formik.errors.password}</div>
+            )}
           </div>
           <button className="button" type="submit">
             Sign In

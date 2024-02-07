@@ -50,6 +50,12 @@ export const StyledLoginForm = styled.form`
   .label {
     margin-top: 16px;
   }
+
+  .error {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #ef5050;
+  }
   .icon-wrapper {
     position: relative;
     max-width: 392px;
