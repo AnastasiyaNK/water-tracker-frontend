@@ -44,3 +44,7 @@ export const Box = styled.div`
     padding: 16px 24px;
   }
 `;
+// export const DataBtnStyle = styled`
+// display: flex;
+// flex-direction: row;
+// `;

@@ -11,7 +11,7 @@ export const Fon = styled.div`
   padding: 8px 0;
   display: flex;
   flex-direction: column;
-  margin-top: 24px;
+  justify-content: space-evenly;
   align-items: center;
   gap: 40px;
   background-image: url(${imgFonMobile}), url(${imgBotleMobile});
@@ -20,6 +20,7 @@ export const Fon = styled.div`
 
   @media (min-width: 320px) and (max-width: 767px) {
     min-width: 280px;
+    gap: 40px;
   }
 
   @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
@@ -35,6 +36,7 @@ export const Fon = styled.div`
     background-position: center, center 30px;
     display: flex;
     flex-direction: column;
+    gap: 40px;
   }
 
   @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
@@ -43,27 +45,30 @@ export const Fon = styled.div`
     background-position: center, center 30px;
     display: flex;
     flex-direction: column;
-    margin-top: 22px;
-    gap: 32px;
+
+    gap: 40px;
   }
 
   @media screen and (min-width: 1440px) {
-    min-width: 1216px;
+    width: 1216px;
+    margin: 0 auto;
     background-image: url(${imgFon}), url(${imgBotle});
-    background-position: center, left 65px;
+    background-position: center, -85px 45px;
     display: flex;
     flex-direction: row;
-    margin-top: 22px;
+
     gap: 32px;
   }
 
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
+    width: 1216px;
+    margin: 0 auto;
     background-image: url(${imgFon}), url(${imgBotle});
-    background-position: center, left 65px;
+    background-position: center, -85px 45px;
     display: flex;
     flex-direction: row;
-    margin-top: 22px;
+
     gap: 32px;
   }
 `;
@@ -92,12 +97,16 @@ export const DailyRangeStyle = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    padding-top: 24px;
-    padding: 74px 30px 74px 40px;
+    width: 592px;
+    height: 680px;
+    padding: 32px 0;
     gap: 474px;
   }
 
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
+    width: 592px;
+    height: 680px;
+    padding: 32px 0;
   }
 `;

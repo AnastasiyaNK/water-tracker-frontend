@@ -109,6 +109,7 @@ export const RangeAdd = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    width: 592px;
     flex-direction: row;
     display: flex;
     gap: 23px;
@@ -116,6 +117,7 @@ export const RangeAdd = styled.div`
 
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
+    width: 592px;
     flex-direction: row;
     display: flex;
     gap: 23px;
@@ -131,6 +133,10 @@ export const RangeBarLine = styled.div`
   margin: 0 auto;
 
   @media screen and (min-width: 768px) {
+    width: calc(100% - 31px);
+  }
+
+  @media screen and (min-width: 1440px) {
     width: calc(100% - 31px);
   }
 
