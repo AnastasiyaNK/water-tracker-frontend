@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
   requestAddWaterData,
   requestDayWaterData,
@@ -142,7 +142,6 @@ const waterSlice = createSlice({
       })
       .addCase(apiEditWaterPortion.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isLoading = false;
         state.waterVolumes = state.waterVolumes.map((portion) =>
           portion._id === action.payload._id
             ? { ...portion, ...action.payload }
@@ -189,18 +188,44 @@ const waterSlice = createSlice({
       //   rejectError(state, payload);
       // })
 
+      // .addMatcher(
+      //   (action) => action.type.endsWith("/pending"),
+      //   (state, action) => {
+      //     state.isLoading = true;
+      //     state.error = null;
+      //   }
+      // )
+      // .addMatcher(
+      //   (action) => action.type.endsWith("/rejected"),
+      //   (state, action) => {
+      //     state.isLoading = false;
+      //     state.error = action.payload;
+      //   }
+      // ),
       .addMatcher(
-        (action) => action.type.endsWith("/pending"),
-        (state, action) => {
+        isAnyOf(
+          apiGetTodayWaterPortions.pending,
+          apiGetMonthWaterPortions.pending,
+          apiAddWaterPortion.pending,
+          apiDeleteWaterPortion.pending,
+          apiEditWaterPortion.pending
+        ),
+        (state) => {
           state.isLoading = true;
           state.error = null;
         }
       )
       .addMatcher(
-        (action) => action.type.endsWith("/rejected"),
-        (state, action) => {
+        isAnyOf(
+          apiGetTodayWaterPortions.rejected,
+          apiGetMonthWaterPortions.rejected,
+          apiAddWaterPortion.rejected,
+          apiDeleteWaterPortion.rejected,
+          apiEditWaterPortion.rejected
+        ),
+        (state) => {
           state.isLoading = false;
-          state.error = action.payload;
+          state.error = null;
         }
       ),
 });

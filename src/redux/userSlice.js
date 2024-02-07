@@ -10,7 +10,7 @@ import {
   requestVeryfyEmail,
 } from "services/api";
 
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { toastFulfild, toastRejected } from "helpers/UserNotification";
 
 export const apiUserRegister = createAsyncThunk(
@@ -172,6 +172,7 @@ const userSlice = createSlice({
 
   extraReducers: (builder) =>
     builder
+
       // ------------ Register User ----------------------
       .addCase(apiUserRegister.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -183,6 +184,7 @@ const userSlice = createSlice({
         state.user = action.payload;
         state.token = action.payload.token;
       })
+
       // ------------ Login User ----------------------
       .addCase(apiUserLogin.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -190,8 +192,8 @@ const userSlice = createSlice({
         state.token = action.payload.token;
         state.isSignedIn = true;
       })
-      // ------------ Update Refresh ---------------------
 
+      // ------------ Update Refresh ---------------------
       .addCase(usersCurrentThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSignedIn = true;
@@ -210,10 +212,12 @@ const userSlice = createSlice({
       .addCase(updateUserAvatar.rejected, (state) => {
         state.isAvatarLoading = false;
       })
+
       // ------------ Update User Info ---------------------
       .addCase(updateUserInfo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = { ...state.user, ...action.payload };
+
         // ------------ Logout User ---------------------
       })
       .addCase(logoutUser.fulfilled, (state, action) => {
@@ -226,18 +230,47 @@ const userSlice = createSlice({
       })
 
       .addMatcher(
-        (action) => action.type.endsWith("/pending"),
-        (state, action) => {
+        isAnyOf(
+          apiUserRegister.pending,
+          usersGoogleAuth.pending,
+          apiUserLogin.pending,
+          usersCurrentThunk.pending,
+          updateUserInfo.pending,
+          updateMyDailyNorma.pending
+        ),
+        (state) => {
           state.isLoading = true;
           state.error = null;
         }
       )
       .addMatcher(
-        (action) => action.type.endsWith("/rejected"),
-        (state, action) => {
+        isAnyOf(
+          apiUserRegister.rejected,
+          usersGoogleAuth.rejected,
+          apiUserLogin.rejected,
+          usersCurrentThunk.rejected,
+          updateUserInfo.rejected,
+          updateMyDailyNorma.rejected
+        ),
+        (state) => {
           state.isLoading = false;
-          state.error = action.payload;
+          state.error = null;
         }
       ),
+
+  // .addMatcher(
+  //   (action) => action.type.endsWith("/pending"),
+  //   (state, action) => {
+  //     state.isLoading = true;
+  //     state.error = null;
+  //   }
+  // )
+  // .addMatcher(
+  //   (action) => action.type.endsWith("/rejected"),
+  //   (state, action) => {
+  //     state.isLoading = false;
+  //     state.error = action.payload;
+  //   }
+  // ),
 });
 export const userReducer = userSlice.reducer;
