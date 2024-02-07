@@ -43,17 +43,17 @@ const WaterPortionsList = () => {
 
   return (
     <PortionsList>
-      <ScrollableDiv>
-        <Portions> {
-          waterPortions?.map((item) => (
+      <div>{waterPortions.length === 0 ? (<Motivation ><div className="motivation">Start your day - just add water</div> </Motivation>) :
+     ( <ScrollableDiv> 
+        <Portions>
+         {waterPortions?.map((item) => (
             <Portion key={item._id}>
               <Glass />
               <Ml>{item.waterAmount}ml</Ml>
               <Time>
                 {getLocaleTime(item.date)}
-                 {/* {format(item.date, "HH")}:{format(item.date, "mm")}{" "}
+                {/* {format(item.date, "HH")}:{format(item.date, "mm")}{" "}
                 {format(item.date, "a")}  */}
-                
               </Time>
               <Edit>
                 <Button
@@ -78,10 +78,11 @@ const WaterPortionsList = () => {
                   <Bucket />
                 </Button>
               </Edit>
-            </Portion>
-          ))}
+            </Portion>)
+          )}
         </Portions>
-      </ScrollableDiv>
+        </ScrollableDiv>)}
+        </div>
       <>
         <AddWaterButton style={buttonStyle} />
       </>

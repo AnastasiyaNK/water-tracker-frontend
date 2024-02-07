@@ -27,6 +27,7 @@ export const Portion = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    width: 544px;
     align-items: center;
     padding: 12px 0;
   }
@@ -34,6 +35,7 @@ export const Portion = styled.div`
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
     align-items: center;
+    width: 544px;
     padding: 12px 0;
   }
 `;
@@ -170,6 +172,10 @@ export const PortionsList = styled.div`
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
     padding: 0;
+    width: 544px;
+    height: 260px;
+    padding: 0 32px 0 0;
+    padding: 0;
   }
 `;
 
@@ -192,11 +198,13 @@ export const Portions = styled.div`
   }
   @media screen and (min-width: 1440px) {
     height: 156px;
+    width: 544px;
   }
 
   @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 1440px) and (min-resolution: 192dpi) {
     height: 156px;
+    width: 544px;
   }
 `;
 
@@ -211,6 +219,64 @@ export const Button = styled.button`
   border: none;
   background: none;
 `;
-export const Motivation = styled`
 
+export const Motivation = styled.div`
+  .motivation {
+    display: flex;
+    justify-content: center;
+    height: 136px;
+    color: var(--Primery-Color-Blue, #407bff);
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
+      (max-width: 767px) and (min-resolution: 192dpi) {
+      height: 136px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      height: 156px;
+      width: 690px;
+      color: var(--Primery-Color-Blue, #407bff);
+      font-family: Roboto;
+      font-size: 35px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+    }
+    @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+      (min-width: 768px) and (min-resolution: 192dpi) {
+      height: 156px;
+      width: 690px;
+      color: var(--Primery-Color-Blue, #407bff);
+      font-family: Roboto;
+      font-size: 35px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+    }
+    @media screen and (min-width: 1440px) {
+      width: 544px;
+      height: 180px;
+      color: var(--Primery-Color-Blue, #407bff);
+      font-family: Roboto;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+    }
+
+    @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
+      (min-width: 1440px) and (min-resolution: 192dpi) {
+      width: 544px;
+      height: 180px;
+      color: var(--Primery-Color-Blue, #407bff);
+      font-family: Roboto;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+    }
+  }
 `;
