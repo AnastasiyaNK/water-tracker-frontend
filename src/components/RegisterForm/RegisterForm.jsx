@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
-import * as Yup from "yup";
+import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { apiUserRegister } from "../../redux/userSlice";
@@ -28,19 +28,29 @@ const RegisterForm = () => {
       navigate("/home");
     }
   }, [navigate]);
-  const signinSchema = Yup.object({
-    email: Yup.string()
-      .required("Here must be your e-mail")
-      .email("Invalid email"),
+  const signinSchema = yup.object().shape(
+    {
+      email: yup
+        .string()
+        .required("Here must be your e-mail")
+        .email("Invalid email"),
 
-    password: Yup.string()
-      .min(8, "Invalid password (8-64 characters)")
-      .max(64, "Invalid password (8-64 characters)")
-      .required("Required"),
-    repeatedPassword: Yup.string()
-      .oneOf([Yup.ref("newPassword")], "Passwords don't match")
-      .required("Required"),
-  });
+      password: yup
+        .string()
+        .min(8, "Invalid password (8-64 characters)")
+        .max(64, "Invalid password (8-64 characters)")
+        .when(["repeatPassword"], {
+          is: (repeatPassword) => repeatPassword,
+          then: (schema) => schema.required("You must enter the password"),
+        }),
+      repeatPassword: yup
+        .string()
+        .min(8, "Invalid password (8-64 characters)")
+        .max(64, "Invalid password (8-64 characters)")
+        .oneOf([yup.ref("password")], "Passwords don't match"),
+    },
+    [["password"], ["repeatPassword"]]
+  );
 
   const formik = useFormik({
     initialValues: {
@@ -48,7 +58,7 @@ const RegisterForm = () => {
       password: "",
       repeatPassword: "",
     },
-    signinSchema,
+    validationSchema: signinSchema,
     onSubmit: (values) => {
       if (values.password === values.repeatPassword) {
         const formData = { email: values.email, password: values.password };
@@ -70,10 +80,6 @@ const RegisterForm = () => {
             <span className="label-text">Enter your email</span>
           </label>
 
-          {formik.values.password !== formik.values.repeatPassword && (
-            <div>Your Passwords must match</div>
-          )}
-
           <input
             className="input"
             name="email"
@@ -82,7 +88,9 @@ const RegisterForm = () => {
             onChange={formik.handleChange}
             value={formik.values.email}
           />
-          {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+          {formik.errors.email && (
+            <div className="error">{formik.errors.email}</div>
+          )}
 
           <label className="label">
             <span className="label-text">Enter your password</span>
@@ -107,9 +115,9 @@ const RegisterForm = () => {
                 className="eye-icon"
               />
             )}
-            {formik.errors.password ? (
-              <div>{formik.errors.password}</div>
-            ) : null}
+            {formik.errors.password && (
+              <div className="error">{formik.errors.password}</div>
+            )}
           </div>
 
           <label className="label">
@@ -135,14 +143,11 @@ const RegisterForm = () => {
                 className="eye-icon"
               />
             )}
-            {formik.errors.repeatPassword ? (
-              <div>{formik.errors.repeatPassword}</div>
-            ) : null}
           </div>
-
-          {formik.values.password !== formik.values.repeatPassword && (
-            <div>Your Passwords must match</div>
+          {formik.errors.repeatPassword && (
+            <div className="error">{formik.errors.repeatPassword}</div>
           )}
+
           <button className="button" type="submit">
             Sign Up
           </button>
