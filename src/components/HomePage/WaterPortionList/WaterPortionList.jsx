@@ -1,5 +1,4 @@
 import AddWaterButton from "../AddWatterButton/AddWatterButton";
-import { format } from "date-fns";
 
 import {
   Ml,
@@ -19,7 +18,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDeleteModal, setEditModal } from "../../../redux/modalsReduser";
 import { selectNotes } from "../../../redux/selectors";
 import { getLocaleTime } from "helpers/getLocaleTime";
-
 
 const WaterPortionsList = () => {
   const dispatch = useDispatch();
@@ -43,46 +41,52 @@ const WaterPortionsList = () => {
 
   return (
     <PortionsList>
-      <div>{waterPortions.length === 0 ? (<Motivation ><div className="motivation">Start your day - just add water</div> </Motivation>) :
-     ( <ScrollableDiv> 
-        <Portions>
-         {waterPortions?.map((item) => (
-            <Portion key={item._id}>
-              <Glass />
-              <Ml>{item.waterAmount}ml</Ml>
-              <Time>
-                {getLocaleTime(item.date)}
-                {/* {format(item.date, "HH")}:{format(item.date, "mm")}{" "}
+      <div>
+        {waterPortions.length === 0 ? (
+          <Motivation>
+            <div className="motivation">Start your day - just add water</div>{" "}
+          </Motivation>
+        ) : (
+          <ScrollableDiv>
+            <Portions>
+              {waterPortions?.map((item) => (
+                <Portion key={item._id}>
+                  <Glass />
+                  <Ml>{item.waterAmount}ml</Ml>
+                  <Time>
+                    {getLocaleTime(item.date)}
+                    {/* {format(item.date, "HH")}:{format(item.date, "mm")}{" "}
                 {format(item.date, "a")}  */}
-              </Time>
-              <Edit>
-                <Button
-                  onClick={() =>
-                    dispatch(
-                      setEditModal({
-                        isOpenModal: true,
-                        waterPortionId: item._id,
-                      })
-                    )
-                  }
-                >
-                  <Pencil />
-                </Button>
-                <Button
-                  onClick={() => {
-                    dispatch(
-                      setDeleteModal({ isOpen: true, portionId: item._id })
-                    );
-                  }}
-                >
-                  <Bucket />
-                </Button>
-              </Edit>
-            </Portion>)
-          )}
-        </Portions>
-        </ScrollableDiv>)}
-        </div>
+                  </Time>
+                  <Edit>
+                    <Button
+                      onClick={() =>
+                        dispatch(
+                          setEditModal({
+                            isOpenModal: true,
+                            waterPortionId: item._id,
+                          })
+                        )
+                      }
+                    >
+                      <Pencil />
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        dispatch(
+                          setDeleteModal({ isOpen: true, portionId: item._id })
+                        );
+                      }}
+                    >
+                      <Bucket />
+                    </Button>
+                  </Edit>
+                </Portion>
+              ))}
+            </Portions>
+          </ScrollableDiv>
+        )}
+      </div>
       <>
         <AddWaterButton style={buttonStyle} />
       </>

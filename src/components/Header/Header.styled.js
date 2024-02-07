@@ -30,13 +30,6 @@ export const StyledHeader = styled.header`
     color: #ff9d43;
   }
 
-  /* &:hover,
-  &:focus {
-    & p {
-      color: #ff9d43;
-    }
-  } */
-
   @media (min-width: 320px) and (max-width: 767px) {
     min-width: 280px;
   }
