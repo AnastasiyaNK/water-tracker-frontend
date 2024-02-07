@@ -57,7 +57,6 @@ const AddWaterModal = () => {
 
   const handleAddWaterAmount = () => {
     const number = Number.parseInt(waterAmount) + WATER_AMOUNT_DIFFERENCE;
-    console.log(waterAmount, number);
     setFieldValue("waterAmount", number.toString());
   };
   const handleReduceWaterAmount = () => {

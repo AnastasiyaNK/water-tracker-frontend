@@ -66,5 +66,11 @@ export const Edit = styled.div`
   font-weight: 400;
 
   line-height: 20px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: #ff9d43;
+  }
 `;
