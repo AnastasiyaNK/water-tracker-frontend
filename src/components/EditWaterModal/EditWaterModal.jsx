@@ -10,7 +10,7 @@ import { ReactComponent as IconPlus } from "../../assets/icons/plus-small.svg";
 import { ReactComponent as WaterGlass } from "../../assets/icons/glass-desc 4.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSelectedWaterPortionId } from "../../redux/selectors";
-// import { selectTodayWaterData } from "../../redux/water/waterSlice.selectors";
+
 import { apiEditWaterPortion } from "../../redux/water/waterSlice";
 import { closeAllModals } from "../../redux/modalsReduser";
 import { selectNotes } from "../../redux/selectors";
@@ -32,7 +32,7 @@ const editWaterValidationSchema = Yup.object({
 const EditWaterModal = () => {
   const dispatch = useDispatch();
   const selectedWaterPortionId = useSelector(selectSelectedWaterPortionId);
-  // const waterData = useSelector(selectTodayWaterData);
+
   const waterVolumes = useSelector(selectNotes);
   const waterPortion = waterVolumes.find(
     (portion) => portion._id === selectedWaterPortionId
@@ -79,7 +79,7 @@ const EditWaterModal = () => {
 
   const handleEditWaterAmount = () => {
     const number = Number.parseInt(waterAmount) + WATER_AMOUNT_DIFFERENCE;
-    console.log(waterAmount, number);
+
     setFieldValue("waterAmount", number.toString());
   };
 
