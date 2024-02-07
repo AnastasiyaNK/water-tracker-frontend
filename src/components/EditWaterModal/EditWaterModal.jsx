@@ -50,7 +50,7 @@ const EditWaterModal = () => {
   } = useFormik({
     initialValues: {
       waterAmount: waterPortion.waterAmount.toString(),
-      date: `${format(waterPortion.date, "kk")}:${format(
+      date: `${format(waterPortion.date, "HH")}:${format(
         waterPortion.date,
         "mm"
       )}`,
