@@ -11,6 +11,7 @@ import {
 import { StyledMainContainer } from "styled";
 import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
 import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
+import { ReactComponent as IconGoogle } from "../../assets/icons/icons8-google.svg";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -145,12 +146,23 @@ const RegisterForm = () => {
           <button className="button" type="submit">
             Sign Up
           </button>
-          <a
+          <button className="button" type="submit">
+            <div className="google-wrapper">
+              <IconGoogle className="google-icon" />
+              <a
+                className="text-google"
+                href="https://water-tracker-backend-0wax.onrender.com/api/user/google"
+              >
+                Sign in wiht Google
+              </a>
+            </div>
+          </button>
+          {/* <a
             className="button"
             href="https://water-tracker-backend-0wax.onrender.com/api/user/google"
           >
             Google Auth
-          </a>
+          </a> */}
 
           <Link to="/signin" className="link">
             Sign In

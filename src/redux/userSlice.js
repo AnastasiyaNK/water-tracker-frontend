@@ -7,6 +7,7 @@ import {
   setMyDailyNorma,
   setToken,
   requestUserCurrent,
+  requestVeryfyEmail,
 } from "services/api";
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -17,10 +18,10 @@ export const apiUserRegister = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const userData = await requestRegister(formData);
-      toastFulfild("User has been successfully created, please Sign In!");
+      toastFulfild("User successfully created! Please confirm your e-mail.");
       return userData;
     } catch (error) {
-      toastRejected("User has been successfully created, please Sign In!");
+      toastRejected("Something went wrong, please try again later!");
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -48,6 +49,21 @@ export const usersGoogleAuth = createAsyncThunk(
       toastFulfild("You have successfully logged into your account!");
       return respons;
     } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resendVerifyEmail = createAsyncThunk(
+  "user/verify",
+  async (email, thunkAPI) => {
+    await requestVeryfyEmail(email);
+    toastFulfild(
+      "The verification email has been resent. Please check your e-mail."
+    );
+    try {
+    } catch (error) {
+      toastRejected("Something went wrong. Try again!");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -88,8 +104,10 @@ export const updateMyDailyNorma = createAsyncThunk(
   async (newDailyNorma, thunkAPI) => {
     try {
       const data = await setMyDailyNorma(newDailyNorma);
+      toastFulfild("Your daily water allowance has been successfully updated!");
       return data.dailyNorma;
     } catch (error) {
+      toastRejected("Something went wrong, please try again later!");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -102,6 +120,7 @@ export const logoutUser = createAsyncThunk(
       await requestlogout();
       return;
     } catch (error) {
+      toastRejected("Something went wrong, please try again later!");
       return thunkApi.rejectWithValue(error.message);
     }
   }

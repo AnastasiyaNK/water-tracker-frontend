@@ -7,14 +7,15 @@ import { usersGoogleAuth } from "../../redux/userSlice";
 
 const Main = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get("token");
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get("token");
 
-    if (token) {
-      dispatch(usersGoogleAuth(token));
+  useEffect(() => {
+    if (!token) {
+      return;
     }
-  }, [dispatch]);
+    dispatch(usersGoogleAuth(token));
+  }, [dispatch, token]);
 
   return (
     <WelcomeContainer>

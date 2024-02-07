@@ -1,18 +1,20 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { apiUserLogin } from "../../redux/userSlice";
+import { apiUserLogin, resendVerifyEmail } from "../../redux/userSlice";
 import { StyledLoginContainer, StyledLoginForm } from "./LoginForm.styled";
 import { StyledMainContainer } from "styled";
 import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
 import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
 import { ReactComponent as IconGoogle } from "../../assets/icons/icons8-google.svg";
+import { selectUserEmail } from "../../redux/selectors";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const [visiblePassword, setVisiblePassword] = useState(false);
+  const email = useSelector(selectUserEmail);
 
   const signinSchema = Yup.object().shape({
     email: Yup.string()
@@ -88,7 +90,7 @@ const LoginForm = () => {
           </button>
           <button className="button" type="submit">
             <div className="google-wrapper">
-              <IconGoogle />
+              <IconGoogle className="google-icon" />
               <a
                 className="text-google"
                 href="https://water-tracker-backend-0wax.onrender.com/api/user/google"
@@ -97,9 +99,20 @@ const LoginForm = () => {
               </a>
             </div>
           </button>
-          <Link to="/signup" className="link">
-            Sign Up
-          </Link>
+          <div className="lower-buttons-wrapper">
+            <Link to="/signup" className="link">
+              Sign Up
+            </Link>
+            <button
+              className="resend-verify"
+              type="button"
+              onClick={() => {
+                dispatch(resendVerifyEmail(email));
+              }}
+            >
+              Send verification email again
+            </button>
+          </div>
         </StyledLoginForm>
       </StyledLoginContainer>
     </StyledMainContainer>
