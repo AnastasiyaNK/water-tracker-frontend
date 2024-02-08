@@ -1,5 +1,5 @@
-import { selectPercent } from '../../../redux/selectors';
-import './styles.css';
+import { selectPercent } from "../../../redux/water/waterSelectors";
+import "./styles.css";
 
 import {
   RangBar,
@@ -8,10 +8,10 @@ import {
   Percents,
   RangeAdd,
   RangeBarLine,
-} from './RangeBar.styled';
+} from "./RangeBar.styled";
 
-import ModalButton from 'components/ModalButton/ModalButton';
-import { useSelector } from 'react-redux';
+import ModalButton from "components/ModalButton/ModalButton";
+import { useSelector } from "react-redux";
 
 const RangeBar = () => {
   const percentage = useSelector(selectPercent);

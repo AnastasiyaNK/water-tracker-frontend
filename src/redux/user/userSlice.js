@@ -8,10 +8,10 @@ import {
   setToken,
   requestUserCurrent,
   requestVeryfyEmail,
-} from "services/api";
+} from "services/api/api";
 
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { toastFulfild, toastRejected } from "helpers/UserNotification";
+import { toastFulfild, toastRejected } from "services/UserNotification";
 
 export const apiUserRegister = createAsyncThunk(
   "user/register",

@@ -1,6 +1,5 @@
-import React from 'react';
-import { TodayBox, TodayStile } from './Today.styled';
-import { WaterPortionsList } from 'components';
+import { TodayBox, TodayStile } from "./Today.styled";
+import { WaterPortionsList } from "components";
 
 const Today = () => {
   return (

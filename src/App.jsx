@@ -4,9 +4,9 @@ import { Suspense, lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Navigate, Route, Routes } from "react-router-dom";
-import { usersCurrentThunk } from "./redux/userSlice";
-import { selectUserIsLoading } from "./redux/selectors";
-import { selectWaterIsLoading } from "./redux/water/waterSlice.selectors";
+import { usersCurrentThunk } from "./redux/user/userSlice";
+import { selectUserIsLoading } from "./redux/user/userSelectors";
+import { selectWaterIsLoading } from "./redux/water/waterSelectors";
 import Loader from "components/Loader/Loader";
 
 const WelcomePage = lazy(() => import("./pages/WelcomePage/WelcomePage"));

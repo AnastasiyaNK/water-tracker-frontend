@@ -5,7 +5,7 @@ import {
   requestDeleteWaterData,
   requestEditWaterData,
   requestMonthWaterData,
-} from "services/api";
+} from "services/api/api";
 
 import { format } from "date-fns";
 

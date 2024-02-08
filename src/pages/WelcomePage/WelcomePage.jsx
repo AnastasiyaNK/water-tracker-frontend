@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { WelcomeContainer } from "./WelcomePage.styled";
 import { WelcomePageComponenet } from "components";
 import { useDispatch } from "react-redux";
-import { usersGoogleAuth } from "../../redux/userSlice";
+import { usersGoogleAuth } from "../../redux/user/userSlice";
 
 const Main = () => {
   const dispatch = useDispatch();

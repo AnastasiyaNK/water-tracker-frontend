@@ -1,14 +1,15 @@
 import { useFormik } from "formik";
-import React, { useEffect, useState } from "react";
-import * as yup from "yup";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { apiUserRegister } from "../../redux/userSlice";
+import * as yup from "yup";
+import { apiUserRegister } from "../../redux/user/userSlice";
+import { StyledMainContainer } from "styled";
 import {
   StyledRegisterContainer,
   StyledRegisterForm,
 } from "./RegisterForm.styled";
-import { StyledMainContainer } from "styled";
+
 import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
 import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
 import { ReactComponent as IconGoogle } from "../../assets/icons/icons8-google.svg";

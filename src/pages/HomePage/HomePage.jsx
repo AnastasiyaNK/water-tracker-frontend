@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
 
 import {
@@ -9,9 +10,9 @@ import {
   WaterTracker,
   MyDailyNormaModal,
   DailyNorma,
+  EditWaterModal,
+  DeleteModal,
 } from "components";
-
-import { Fon, DailyRangeStyle } from "./HomePage.styled.js";
 
 import {
   selectSettingsModal,
@@ -19,16 +20,12 @@ import {
   selectAddWaterModal,
   selectEditWaterModal,
   selectLogoutModal,
-} from "../../redux/selectors.js";
-
-import EditWaterModal from "components/EditWaterModal/EditWaterModal.jsx";
-
-import { useDispatch, useSelector } from "react-redux";
+  selectDeleteWaterModal,
+} from "../../redux/modal/modalsSelectors";
 
 import { apiGetTodayWaterPortions } from "../../redux/water/waterSlice.js";
-import { closeAllModals } from "../../redux/modalsReduser.js";
-import { selectDeleteWaterModal } from "../../redux/modalsSelectors.js";
-import DeleteModal from "components/DeleteModal/DeleteModal.jsx";
+import { closeAllModals } from "../../redux/modal/modalsReduser.js";
+import { Fon, DailyRangeStyle } from "./HomePage.styled.js";
 
 const HomePage = () => {
   const isSettingsModalOpen = useSelector(selectSettingsModal);

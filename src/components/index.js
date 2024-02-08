@@ -1,28 +1,29 @@
-export { default as WaterTracker } from "./HomePage/WaterTracker/WaterTracker";
-export { default as Today } from "./HomePage/Today/Today";
-export { default as Month } from "./HomePage/Month/Month";
+export { default as AddWaterModal } from "./AddWaterModal/AddWaterModal";
+export { default as DeleteModal } from "./DeleteModal/DeleteModal";
+export { default as EditWaterModal } from "./EditWaterModal/EditWaterModal";
+export { default as Header } from "./Header/Header";
+export { default as UserDropdown } from "./Header/HeaderDropdown/UserDropdown";
+export { default as UserAuth } from "./Header/UserAuth/UserAuth";
+export { default as AddWaterButton } from "./HomePage/AddWatterButton/AddWatterButton";
 export { default as DailyNorma } from "./HomePage/DailyNorma/DailyNorma";
-export { default as WaterPortionsList } from "./HomePage/WaterPortionList/WaterPortionList";
-export { default as DaysList } from "./HomePage/DaysList/DaysList";
 export { default as Day } from "./HomePage/Day/Day";
 export { default as DayGeneralStats } from "./HomePage/DayGeneralStats/DayGeneralStats";
+export { default as DaysList } from "./HomePage/DaysList/DaysList";
+export { default as Month } from "./HomePage/Month/Month";
 export { default as RangeBar } from "./HomePage/RangeBar/RangeBar";
-export { default as AddWaterButton } from "./HomePage/AddWatterButton/AddWatterButton";
-export { default as Header } from "./Header/Header";
+export { default as Today } from "./HomePage/Today/Today";
+export { default as WaterPortionsList } from "./HomePage/WaterPortionList/WaterPortionList";
+export { default as WaterTracker } from "./HomePage/WaterTracker/WaterTracker";
+export { default as Loader } from "./Loader/Loader";
 export { default as LoginForm } from "./LoginForm/LoginForm";
-export { default as RegisterForm } from "./RegisterForm/RegisterForm";
-
-export { default as SharedLayout } from "./SharedLayout/SharedLayout";
-
-export { default as SettingsModal } from "./SettingsModal/SettingsModal";
-
-export { default as WelcomePageComponenet } from "./WelcomePageComponent/WelcomePageComponenet";
-
-export { default as Modal } from "./Modal/Modal";
-export { default as AddWaterModal } from "./AddWaterModal/AddWaterModal";
-
-export { default as MyDailyNormaModal } from "./MyDailyNormaModal/MyDailyNormaModal";
-export { default as RestrictedRoute } from "./RestrictedRoute/RestrictedRoute";
-export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
 export { default as LogoutModal } from "./LogoutModal/LogoutModal";
-export { default as DeleteModal } from "./DeleteModal/DeleteModal";
+export { default as Modal } from "./Modal/Modal";
+export { default as ModalButton } from "./ModalButton/ModalButton";
+export { default as ModalButton2 } from "./ModalButton2/ModalButton2";
+export { default as MyDailyNormaModal } from "./MyDailyNormaModal/MyDailyNormaModal";
+export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
+export { default as RegisterForm } from "./RegisterForm/RegisterForm";
+export { default as RestrictedRoute } from "./RestrictedRoute/RestrictedRoute";
+export { default as SettingsModal } from "./SettingsModal/SettingsModal";
+export { default as SharedLayout } from "./SharedLayout/SharedLayout";
+export { default as WelcomePageComponenet } from "./WelcomePageComponent/WelcomePageComponenet";

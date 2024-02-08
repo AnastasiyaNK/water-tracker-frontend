@@ -1,9 +1,12 @@
 import { ReactComponent as DropUp } from "assets/icons/chevron-double-up.svg";
+import { UserDropdown } from "../../index";
 import { StyledUserAuth } from "./UserAuth.styled";
-import { useSelector } from "react-redux";
-import { selectUserAvatar, selectUserName } from "../../../redux/selectors";
-import { UserDropdown } from "../HeaderDropdown/UserDropdown";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import {
+  selectUserAvatar,
+  selectUserName,
+} from "../../../redux/user/userSelectors";
 
 const UserAuth = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

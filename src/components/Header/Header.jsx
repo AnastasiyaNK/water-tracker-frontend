@@ -1,12 +1,12 @@
-import { ReactComponent as MainLogo } from "assets/icons/logo-water.svg";
-import { ReactComponent as UserLogo } from "assets/icons/user.svg";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import UserAuth from "./UserAuth/UserAuth";
 import { StyledHeader } from "./Header.styled";
 import { StyledMainContainer } from "../../styled";
+import { selectUserIsSignedIn } from "../../redux/user/userSelectors";
 
-import { useSelector } from "react-redux";
-import { selectUserIsSignedIn } from "../../redux/selectors";
-import UserAuth from "./UserAuth/UserAuth";
+import { ReactComponent as MainLogo } from "assets/icons/logo-water.svg";
+import { ReactComponent as UserLogo } from "assets/icons/user.svg";
 
 const Header = () => {
   const isSignedIn = useSelector(selectUserIsSignedIn);

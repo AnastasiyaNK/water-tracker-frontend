@@ -1,15 +1,16 @@
 import { useFormik } from "formik";
-import React, { useState } from "react";
-import * as yup from "yup";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { apiUserLogin, resendVerifyEmail } from "../../redux/userSlice";
+import * as yup from "yup";
+import { apiUserLogin, resendVerifyEmail } from "../../redux/user/userSlice";
+import { selectUserEmail } from "../../redux/user/userSelectors";
 import { StyledLoginContainer, StyledLoginForm } from "./LoginForm.styled";
 import { StyledMainContainer } from "styled";
+
 import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
 import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
 import { ReactComponent as IconGoogle } from "../../assets/icons/icons8-google.svg";
-import { selectUserEmail } from "../../redux/selectors";
 
 const LoginForm = () => {
   const dispatch = useDispatch();

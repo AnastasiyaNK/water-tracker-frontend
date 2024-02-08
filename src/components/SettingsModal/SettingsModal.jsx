@@ -1,22 +1,24 @@
-import { StyledSettingsModalForm } from "./SettingsModule.styled";
-import { RotatingLines } from "react-loader-spinner";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { ReactComponent as IconUpload } from "../../assets/icons/arrow-up-tray.svg";
-import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
-import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
 import { Modal } from "components";
-import { useDispatch, useSelector } from "react-redux";
+import { StyledSettingsModalForm } from "./SettingsModule.styled";
+import { RotatingLines } from "react-loader-spinner";
 import {
   selectIsUserAvatarLoading,
   selectUserAvatar,
   selectUserName,
   selectUserEmail,
   selectUserGender,
-} from "../../redux/selectors";
-import { updateUserAvatar, updateUserInfo } from "../../redux/userSlice";
-import { closeAllModals } from "../../redux/modalsReduser";
+} from "../../redux/user/userSelectors";
+import { updateUserAvatar, updateUserInfo } from "../../redux/user/userSlice";
+import { closeAllModals } from "../../redux/modal/modalsReduser";
+import { toastRejected } from "services/UserNotification";
+
+import { ReactComponent as IconUpload } from "../../assets/icons/arrow-up-tray.svg";
+import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
+import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
 
 const SettingsModal = () => {
   const [privatPassword, setPrivatPassword] = useState({
@@ -88,7 +90,6 @@ const SettingsModal = () => {
     try {
       if (newPassword === "") {
         const newUserData = { name, email, gender };
-        console.log(newUserData);
         dispatch(updateUserInfo(newUserData));
       } else {
         const newUserData = {
@@ -102,7 +103,7 @@ const SettingsModal = () => {
       }
       dispatch(closeAllModals());
     } catch (error) {
-      console.error(error);
+      toastRejected("Something went wrong, please try again later!");
     }
   };
 

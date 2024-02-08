@@ -1,9 +1,8 @@
 import { Modal } from "components";
-import React from "react";
 import { StyledLogoutModal } from "./LogoutModal.styled";
 import { useDispatch } from "react-redux";
-import { logoutUser } from "../../redux/userSlice";
-import { closeAllModals } from "../../redux/modalsReduser";
+import { logoutUser } from "../../redux/user/userSlice";
+import { closeAllModals } from "../../redux/modal/modalsReduser";
 
 const LogoutModal = () => {
   const dispatch = useDispatch();
