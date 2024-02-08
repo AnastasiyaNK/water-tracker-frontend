@@ -2,7 +2,6 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import * as yup from "yup";
 import { apiUserLogin, resendVerifyEmail } from "../../redux/user/userSlice";
 import { selectUserEmail } from "../../redux/user/userSelectors";
 import { StyledLoginContainer, StyledLoginForm } from "./LoginForm.styled";
@@ -11,30 +10,19 @@ import { StyledMainContainer } from "styled";
 import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
 import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
 import { ReactComponent as IconGoogle } from "../../assets/icons/icons8-google.svg";
+import { signInSchema } from "services/schemes/signInSchema";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const [visiblePassword, setVisiblePassword] = useState(false);
   const email = useSelector(selectUserEmail);
 
-  const signinSchema = yup.object().shape({
-    email: yup
-      .string()
-      .required("Here must be your e-mail")
-      .email("Invalid email"),
-
-    password: yup
-      .string()
-      .min(8, "Invalid password (8-64 characters)")
-      .max(64, "Invalid password (8-64 characters)"),
-  });
-
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    validationSchema: signinSchema,
+    validationSchema: signInSchema,
     onSubmit: (values) => {
       const formData = { email: values.email, password: values.password };
       dispatch(apiUserLogin(formData));

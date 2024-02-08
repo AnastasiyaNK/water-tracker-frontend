@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useFormik } from "formik";
-import * as yup from "yup";
 import { Modal } from "components";
 import { StyledSettingsModalForm } from "./SettingsModule.styled";
 import { RotatingLines } from "react-loader-spinner";
@@ -15,6 +14,7 @@ import {
 import { updateUserAvatar, updateUserInfo } from "../../redux/user/userSlice";
 import { closeAllModals } from "../../redux/modal/modalsReduser";
 import { toastRejected } from "services/UserNotification";
+import { settingsModalSchema } from "services/schemes/settingsSchema";
 
 import { ReactComponent as IconUpload } from "../../assets/icons/arrow-up-tray.svg";
 import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
@@ -33,46 +33,6 @@ const SettingsModal = () => {
   const userName = useSelector(selectUserName);
   const userEmail = useSelector(selectUserEmail);
   const userGender = useSelector(selectUserGender);
-
-  const validationSchema = yup.object().shape(
-    {
-      name: yup.string().max(32, "That's a very long name"),
-      email: yup
-        .string()
-        .required("Here must be your e-mail")
-        .email("Invalid email"),
-      currentPassword: yup
-        .string()
-        .min(8, "Invalid password (8-64 characters)")
-        .max(64, "Invalid password (8-64 characters)")
-        .when(["newPassword", "repeatedPassword"], {
-          is: (newPassword, repeatedPassword) =>
-            newPassword || repeatedPassword,
-          then: (schema) => schema.required("You must enter your old password"),
-        }),
-      newPassword: yup
-        .string()
-        .min(8, "Invalid password (8-64 characters)")
-        .max(64, "Invalid password (8-64 characters)")
-        .when(["currentPassword", "repeatedPassword"], {
-          is: (currentPassword, repeatedPassword) =>
-            currentPassword || repeatedPassword,
-          then: (schema) => schema.required("Enter a new password"),
-        }),
-      repeatedPassword: yup
-        .string()
-        .oneOf([yup.ref("newPassword")], "Passwords don't match")
-        .when(["currentPassword", "newPassword"], {
-          is: (currentPassword, newPassword) => currentPassword || newPassword,
-          then: (schema) => schema.required("Confirm new password"),
-        }),
-    },
-    [
-      ["newPassword", "repeatedPassword"],
-      ["currentPassword", "repeatedPassword"],
-      ["currentPassword", "newPassword"],
-    ]
-  );
 
   const handleAvatarUpdate = async (event) => {
     const newAvatarFile = event.target.files[0];
@@ -116,7 +76,7 @@ const SettingsModal = () => {
       newPassword: "",
       repeatedPassword: "",
     },
-    validationSchema,
+    validationSchema: settingsModalSchema,
     onSubmit: handleSubmit,
   });
 

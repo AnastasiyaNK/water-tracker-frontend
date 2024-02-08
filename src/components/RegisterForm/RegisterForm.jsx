@@ -2,7 +2,6 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import * as yup from "yup";
 import { apiUserRegister } from "../../redux/user/userSlice";
 import { StyledMainContainer } from "styled";
 import {
@@ -13,6 +12,7 @@ import {
 import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
 import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
 import { ReactComponent as IconGoogle } from "../../assets/icons/icons8-google.svg";
+import { signUpSchema } from "services/schemes/signUpSchema";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -29,29 +29,6 @@ const RegisterForm = () => {
       navigate("/home");
     }
   }, [navigate]);
-  const signinSchema = yup.object().shape(
-    {
-      email: yup
-        .string()
-        .required("Here must be your e-mail")
-        .email("Invalid email"),
-
-      password: yup
-        .string()
-        .min(8, "Invalid password (8-64 characters)")
-        .max(64, "Invalid password (8-64 characters)")
-        .when(["repeatPassword"], {
-          is: (repeatPassword) => repeatPassword,
-          then: (schema) => schema.required("You must enter the password"),
-        }),
-      repeatPassword: yup
-        .string()
-        .min(8, "Invalid password (8-64 characters)")
-        .max(64, "Invalid password (8-64 characters)")
-        .oneOf([yup.ref("password")], "Passwords don't match"),
-    },
-    [["password"], ["repeatPassword"]]
-  );
 
   const formik = useFormik({
     initialValues: {
@@ -59,7 +36,7 @@ const RegisterForm = () => {
       password: "",
       repeatPassword: "",
     },
-    validationSchema: signinSchema,
+    validationSchema: signUpSchema,
     onSubmit: (values) => {
       if (values.password === values.repeatPassword) {
         const formData = { email: values.email, password: values.password };

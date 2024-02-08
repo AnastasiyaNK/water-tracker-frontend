@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { format } from "date-fns";
-import * as Yup from "yup";
 import { Modal } from "components";
 import { StyledWaterForm } from "components/EditWaterModal/EditWaterModal.styled";
 import { selectSelectedWaterPortionId } from "../../redux/modal/modalsSelectors";
@@ -14,20 +13,9 @@ import { closeAllModals } from "../../redux/modal/modalsReduser";
 import { ReactComponent as IconMinus } from "../../assets/icons/minus-small.svg";
 import { ReactComponent as IconPlus } from "../../assets/icons/plus-small.svg";
 import { ReactComponent as WaterGlass } from "../../assets/icons/glass-desc 4.svg";
+import { editWaterSchema } from "services/schemes/editWaterSchema";
 
 const WATER_AMOUNT_DIFFERENCE = 20;
-
-const editWaterValidationSchema = Yup.object({
-  waterAmount: Yup.string()
-    .max(15, "Must be 15 characters or less")
-    .matches(/\d{2,}/g)
-    .required("Required"),
-  date: Yup.string()
-    .matches(/^(\d{2}:\d{2})$/, {
-      message: "Entered date must match following format hh:mm (10:25)",
-    })
-    .required("Required"),
-});
 
 const EditWaterModal = () => {
   const dispatch = useDispatch();
@@ -56,7 +44,7 @@ const EditWaterModal = () => {
       // )}`,
       date: `${getLocaleTime(waterPortion.date)}`,
     },
-    validationSchema: editWaterValidationSchema,
+    validationSchema: editWaterSchema,
     onSubmit: (values) => {
       dispatch(
         apiEditWaterPortion({
