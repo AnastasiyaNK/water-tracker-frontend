@@ -1,14 +1,10 @@
-import React from 'react';
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { selectUserDailyNorma } from "../../../redux/user/userSelectors.js";
+import { setDailyNormaModal } from "../../../redux/modal/modalsReduser.js";
+import { DailyNormaBox, EditWater, Edit, Water } from "./DailyNorma.styled";
 
-import { useSelector } from 'react-redux';
-
-import { selectUserDailyNorma } from '../../../redux/selectors.js';
-
-import { DailyNormaBox, EditWater, Edit, Water } from './DailyNorma.styled';
-import { useDispatch } from 'react-redux';
-import { setDailyNormaModal } from '../../../redux/modalsReduser';
-
-const DailyNorma = ({ toggleModal }) => {
+const DailyNorma = () => {
   const dispatch = useDispatch(setDailyNormaModal);
   const myDailyNorma = useSelector(selectUserDailyNorma);
 

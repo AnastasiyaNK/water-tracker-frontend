@@ -1,7 +1,6 @@
 import { StyledModalButton2 } from "components/ModalButton2/ModalButton2.styled";
-import React from "react";
 import { useDispatch } from "react-redux";
-import { setEditModal } from "../../redux/modalsReduser";
+import { setEditModal } from "../../redux/modal/modalsReduser";
 
 const ModalButton2 = () => {
   const dispatch = useDispatch();

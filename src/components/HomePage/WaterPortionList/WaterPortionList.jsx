@@ -1,5 +1,11 @@
-import AddWaterButton from "../AddWatterButton/AddWatterButton";
-
+import { useDispatch, useSelector } from "react-redux";
+import { AddWaterButton } from "../../index";
+import { selectNotes } from "../../../redux/water/waterSelectors";
+import { getLocaleTime } from "services/getLocaleTime";
+import {
+  setDeleteModal,
+  setEditModal,
+} from "../../../redux/modal/modalsReduser";
 import {
   Ml,
   Portion,
@@ -11,14 +17,10 @@ import {
   Portions,
   Motivation,
 } from "./WaterPortionsList.styled";
+
 import { ReactComponent as Glass } from "../../../assets/icons/glass-desc.svg";
 import { ReactComponent as Pencil } from "../../../assets/icons/pencil-square.svg";
 import { ReactComponent as Bucket } from "../../../assets/icons/bucket.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { setDeleteModal, setEditModal } from "../../../redux/modalsReduser";
-import { selectNotes } from "../../../redux/selectors";
-
-import { getLocaleTime } from "helpers/getLocaleTime";
 
 const WaterPortionsList = () => {
   const dispatch = useDispatch();

@@ -19,8 +19,8 @@ import { ReactComponent as Glass } from "../../../assets/icons/glass-desc.svg";
 import { ReactComponent as Pencil } from "../../../assets/icons/pencil-square.svg";
 import { ReactComponent as Bucket } from "../../../assets/icons/bucket.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { setEditModal } from "../../../redux/modalsReduser";
-import { selectTodayWaterData } from "../../../redux/water/waterSlice.selectors";
+import { setEditModal } from "../../../redux/modal/modalsReduser";
+import { selectTodayWaterData } from "../../../redux/water/waterSelectors";
 
 // const waterportions = [
 //   { id: "id-1", ml: "250", time: "7.00" },

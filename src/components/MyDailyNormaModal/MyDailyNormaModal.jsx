@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import Modal from "../Modal/Modal";
 import {
   Form,
   TitleGender,
@@ -18,10 +20,8 @@ import {
   SettingsSubmitBtn,
 } from "./MyDailyNormaModal.styled";
 
-import { useDispatch } from "react-redux";
-import { setDailyNormaModal } from "../../redux/modalsReduser"
-import Modal from "../Modal/Modal";
-import { updateMyDailyNorma } from "../../redux/userSlice";
+import { setDailyNormaModal } from "../../redux/modal/modalsReduser";
+import { updateMyDailyNorma } from "../../redux/user/userSlice";
 
 const MyDailyNormaModal = () => {
   const [gender, setGender] = useState("female");
@@ -31,7 +31,6 @@ const MyDailyNormaModal = () => {
   const [dailyNorma, setDailyNorma] = useState(2);
 
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     if (weight > 0) {
@@ -71,8 +70,7 @@ const MyDailyNormaModal = () => {
 
     await dispatch(updateMyDailyNorma(data));
 
-    dispatch(setDailyNormaModal(false))
-
+    dispatch(setDailyNormaModal(false));
   };
 
   return (

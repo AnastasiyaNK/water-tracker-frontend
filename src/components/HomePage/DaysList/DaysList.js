@@ -1,20 +1,20 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { selectStats } from '../../../redux/selectors';
-import { apiGetMonthWaterPortions } from '../../../redux/water/waterSlice';
-import { Day } from 'components';
-import { getNameOfMonth } from '../../../helpers/getNameOfMonth';
-import { getDaysInMonth } from '../../../helpers/getDaysInMonth';
-import { getNumberDay } from '../../../helpers/getNumberDay';
-import { createMonthArray } from '../../../helpers/createMonthArray';
-import svgIcons from '../../../assets/icons/set-icons.svg';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { selectStats } from "../../../redux/water/waterSelectors";
+import { apiGetMonthWaterPortions } from "../../../redux/water/waterSlice";
+import { Day } from "components";
+import { getNameOfMonth } from "../../../services/getNameOfMonth";
+import { getDaysInMonth } from "../../../services/getDaysInMonth";
+import { getNumberDay } from "../../../services/getNumberDay";
+import { createMonthArray } from "../../../services/createMonthArray";
+import svgIcons from "../../../assets/icons/set-icons.svg";
 
 import {
   TableDays,
   ButtonArrow,
   DaysListHeader,
   Title,
-} from './DaysList.styled';
+} from "./DaysList.styled";
 
 const currentDate = new Date();
 
@@ -28,9 +28,9 @@ const DaysList = () => {
   const numberOfdays = getDaysInMonth(month, year);
   const monthArray = createMonthArray(numberOfdays, monthName);
 
-  const monthStats = monthArray?.map(item => {
+  const monthStats = monthArray?.map((item) => {
     const statsItem = Object.values(stats).find(
-      i => getNumberDay(i.date) === getNumberDay(item.date)
+      (i) => getNumberDay(i.date) === getNumberDay(item.date)
     );
     return statsItem || item;
   });
@@ -41,19 +41,19 @@ const DaysList = () => {
 
   const previousMonth = () => {
     if (month === 0) {
-      setYear(prevYear => prevYear - 1);
+      setYear((prevYear) => prevYear - 1);
       setMonth(11);
     } else {
-      setMonth(prevMonth => prevMonth - 1);
+      setMonth((prevMonth) => prevMonth - 1);
     }
   };
 
   const nextMonth = () => {
     if (month === 11) {
-      setYear(prevYear => prevYear + 1);
+      setYear((prevYear) => prevYear + 1);
       setMonth(0);
     } else {
-      setMonth(prevMonth => prevMonth + 1);
+      setMonth((prevMonth) => prevMonth + 1);
     }
   };
 

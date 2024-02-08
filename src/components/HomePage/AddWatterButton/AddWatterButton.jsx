@@ -1,6 +1,5 @@
-import React from "react";
 import { useDispatch } from "react-redux";
-import { setAddWaterModal } from "../../../redux/modalsReduser";
+import { setAddWaterModal } from "../../../redux/modal/modalsReduser";
 
 const AddWaterButton = (props) => {
   const dispatch = useDispatch();

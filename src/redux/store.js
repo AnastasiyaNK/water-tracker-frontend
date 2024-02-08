@@ -1,7 +1,4 @@
-
-
 import { configureStore } from "@reduxjs/toolkit";
-
 
 import {
   persistStore,
@@ -12,15 +9,15 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { userReducer } from './userSlice';
-import { modalsReducer } from './modalsReduser';
-import { waterReducer } from './water/waterSlice';
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { userReducer } from "./user/userSlice";
+import { modalsReducer } from "./modal/modalsReduser";
+import { waterReducer } from "./water/waterSlice";
 
 const persistConfig = {
-  key: 'user',
-  whitelist: ['token'],
+  key: "user",
+  whitelist: ["token"],
   storage,
 };
 
@@ -30,7 +27,7 @@ export const store = configureStore({
     modals: modalsReducer,
     water: waterReducer,
   },
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { ReactComponent as IconClose } from "../../assets/icons/close.svg";
 import { StyledModalBackdrop } from "./ModalStyled";
 import { useDispatch } from "react-redux";
-import { closeAllModals } from "../../redux/modalsReduser";
+import { closeAllModals } from "../../redux/modal/modalsReduser";
+import { ReactComponent as IconClose } from "../../assets/icons/close.svg";
 
 const Modal = ({ children, title, styledClass }) => {
   const dispatch = useDispatch();

@@ -1,10 +1,9 @@
 import { Modal } from "components";
-import React from "react";
 import { StyledDeleteModal } from "./DeleteModal.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { closeAllModals } from "../../redux/modalsReduser";
+import { closeAllModals } from "../../redux/modal/modalsReduser";
 import { apiDeleteWaterPortion } from "../../redux/water/waterSlice";
-import { selectDeletingWaterPortionId } from "../../redux/modalsSelectors";
+import { selectDeletingWaterPortionId } from "../../redux/modal/modalsSelectors";
 
 const DeleteModal = () => {
   const deletingModalWaterId = useSelector(selectDeletingWaterPortionId);
