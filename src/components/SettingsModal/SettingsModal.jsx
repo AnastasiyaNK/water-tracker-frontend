@@ -148,34 +148,38 @@ const SettingsModal = () => {
             <label>
               <input
                 className={`main-input ${
-                  formik.errors.name ? "error-input" : ""
+                  formik.errors.name && formik.touched.name ? "error-input" : ""
                 } `}
                 type="text"
                 name="name"
                 value={formik.values.name}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 placeholder="name"
               />
             </label>
-            {formik.errors.name && (
+            {formik.errors.name && formik.touched.name ? (
               <div className="error">{formik.errors.name}</div>
-            )}
+            ) : null}
             <p className="secondary-title email-title">E-mail</p>
             <label>
               <input
                 className={`main-input ${
-                  formik.errors.email ? "error-input" : ""
+                  formik.errors.email && formik.touched.email
+                    ? "error-input"
+                    : ""
                 } `}
                 type="email"
                 name="email"
                 value={formik.values.email}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 placeholder="e-mail"
               />
             </label>
-            {formik.errors.email && (
+            {formik.errors.email && formik.touched.email ? (
               <div className="error">{formik.errors.email}</div>
-            )}
+            ) : null}
           </div>
 
           <div className="rigthside-wrapper">
@@ -196,18 +200,23 @@ const SettingsModal = () => {
               <label>
                 <input
                   className={`main-input ${
-                    formik.errors.currentPassword ? "error-input" : ""
+                    formik.errors.currentPassword &&
+                    formik.touched.currentPassword
+                      ? "error-input"
+                      : ""
                   } `}
                   type={privatPassword.currentPassword ? "password" : "text"}
                   name="currentPassword"
                   value={formik.values.currentPassword}
                   onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                   placeholder="Password"
                 />
               </label>
-              {formik.errors.currentPassword && (
+              {formik.errors.currentPassword &&
+              formik.touched.currentPassword ? (
                 <div className="error">{formik.errors.currentPassword}</div>
-              )}
+              ) : null}
             </div>
             <p className="password-subtitle">New Password:</p>
             <div className="password-wrapper">
@@ -224,18 +233,21 @@ const SettingsModal = () => {
               <label>
                 <input
                   className={`main-input ${
-                    formik.errors.newPassword ? "error-input" : ""
+                    formik.errors.newPassword && formik.touched.newPassword
+                      ? "error-input"
+                      : ""
                   } `}
                   type={privatPassword.newPassword ? "password" : "text"}
                   name="newPassword"
                   value={formik.values.newPassword}
                   onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                   placeholder="Password"
                 />
               </label>
-              {formik.errors.newPassword && (
+              {formik.errors.newPassword && formik.touched.newPassword ? (
                 <div className="error">{formik.errors.newPassword}</div>
-              )}
+              ) : null}
             </div>
             <p className="password-subtitle">Repeat new password:</p>
             <div className="password-wrapper">
@@ -252,18 +264,23 @@ const SettingsModal = () => {
               <label>
                 <input
                   className={`main-input ${
-                    formik.errors.repeatedPassword ? "error-input" : ""
+                    formik.errors.repeatedPassword &&
+                    formik.touched.repeatedPassword
+                      ? "error-input"
+                      : ""
                   } `}
                   type={privatPassword.repeatedPassword ? "password" : "text"}
                   name="repeatedPassword"
                   value={formik.values.repeatedPassword}
                   onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                   placeholder="Password"
                 />
               </label>
-              {formik.errors.repeatedPassword && (
+              {formik.errors.repeatedPassword &&
+              formik.touched.repeatedPassword ? (
                 <div className="error">{formik.errors.repeatedPassword}</div>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
