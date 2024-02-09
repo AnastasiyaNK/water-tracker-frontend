@@ -6,7 +6,10 @@ export const settingsModalSchema = yup.object().shape(
     email: yup
       .string()
       .required("Here must be your e-mail")
-      .email("Invalid email"),
+      .matches(
+        /\w{0}[0-9a-zA-Zа-яА-Я]+@\w{0}[a-zA-Zа-яА-Я]+\.\w{0}[a-zA-Zа-яА-Я]/,
+        { message: "Invalid email" }
+      ),
     currentPassword: yup
       .string()
       .min(8, "Invalid password (8-64 characters)")
