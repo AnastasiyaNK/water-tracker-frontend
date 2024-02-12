@@ -25,6 +25,16 @@ export const requestLogin = async (formData) => {
   return data;
 };
 
+export const getLinkToUpdatePass = async (email) => {
+  const data = await authInstance.post("user/forgot-password", email);
+  return data;
+};
+
+export const requestResetPassword = async (userData) => {
+  const data = await authInstance.patch("user/forgot-password", userData);
+  return data;
+};
+
 export const requestUserCurrent = async () => {
   const { data } = await authInstance.get("user");
   return data;

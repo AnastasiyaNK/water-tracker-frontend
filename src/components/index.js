@@ -1,6 +1,7 @@
 export { default as AddWaterModal } from "./AddWaterModal/AddWaterModal";
 export { default as DeleteModal } from "./DeleteModal/DeleteModal";
 export { default as EditWaterModal } from "./EditWaterModal/EditWaterModal";
+export { default as EmailForm } from "./EmailForm/EmailForm";
 export { default as Header } from "./Header/Header";
 export { default as UserDropdown } from "./Header/HeaderDropdown/UserDropdown";
 export { default as UserAuth } from "./Header/UserAuth/UserAuth";
@@ -23,6 +24,7 @@ export { default as ModalButton2 } from "./ModalButton2/ModalButton2";
 export { default as MyDailyNormaModal } from "./MyDailyNormaModal/MyDailyNormaModal";
 export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
 export { default as RegisterForm } from "./RegisterForm/RegisterForm";
+export { default as ResetPasswordForm } from "./ResetPasswordForm/ResetPasswordForm";
 export { default as RestrictedRoute } from "./RestrictedRoute/RestrictedRoute";
 export { default as SettingsModal } from "./SettingsModal/SettingsModal";
 export { default as SharedLayout } from "./SharedLayout/SharedLayout";
