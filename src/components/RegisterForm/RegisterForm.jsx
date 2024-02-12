@@ -25,7 +25,6 @@ const RegisterForm = () => {
     const token = urlParams.get("token");
 
     if (token) {
-      console.log(token);
       navigate("/home");
     }
   }, [navigate]);

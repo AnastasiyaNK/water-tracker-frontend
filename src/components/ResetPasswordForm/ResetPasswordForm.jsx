@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { selectUserEmail } from "../../redux/user/userSelectors";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { resetUserPassword } from "../../redux/user/userSlice";
 
 const ResetPasswordForm = () => {
@@ -13,7 +12,9 @@ const ResetPasswordForm = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userEmail = useSelector(selectUserEmail);
+  const [searchParams] = useSearchParams();
+  const userEmail = searchParams.get("email");
+  console.log(userEmail);
 
   const formik = useFormik({
     initialValues: {
@@ -43,7 +44,7 @@ const ResetPasswordForm = () => {
   //   };
 
   return (
-    <>
+    <form onSubmit={formik.handleSubmit}>
       <label htmlFor="newPassword">Enter your new password</label>
       <input
         className={`main-input ${
@@ -71,7 +72,8 @@ const ResetPasswordForm = () => {
         onBlur={handleBlur}
         placeholder="Password"
       />
-    </>
+      <button type="submit">Submit</button>
+    </form>
   );
 };
 

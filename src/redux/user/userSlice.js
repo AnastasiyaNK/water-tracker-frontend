@@ -231,7 +231,7 @@ const userSlice = createSlice({
         state.user.email = action.payload.user;
       })
 
-      .addCase(requestResetPassword.fulfilled, (state, action) => {
+      .addCase(resetUserPassword.fulfilled, (state, action) => {
         state.isLoading = false;
       })
 
