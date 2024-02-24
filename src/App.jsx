@@ -1,12 +1,10 @@
 import { PrivateRoute, RestrictedRoute, SharedLayout } from "components";
 import { ROUTE_PATH } from "constants/routes";
 import { Suspense, lazy, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { Navigate, Route, Routes } from "react-router-dom";
 import { usersCurrentThunk } from "./redux/user/userSlice";
-import { selectUserIsLoading } from "./redux/user/userSelectors";
-import { selectWaterIsLoading } from "./redux/water/waterSelectors";
 import Loader from "components/Loader/Loader";
 
 const WelcomePage = lazy(() => import("./pages/WelcomePage/WelcomePage"));
@@ -20,79 +18,72 @@ const ForgotPassPage = lazy(() =>
 
 function App() {
   const dispatch = useDispatch();
-  const isLoadingUser = useSelector(selectUserIsLoading);
-  const isLoadingWater = useSelector(selectWaterIsLoading);
 
   useEffect(() => {
     dispatch(usersCurrentThunk());
   }, [dispatch]);
 
   return (
-    <div>
-      <SharedLayout>
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            <Route
-              path={ROUTE_PATH.index}
-              element={<Navigate to={ROUTE_PATH.welcome} replace />}
-            />
-            <Route
-              path={ROUTE_PATH.welcome}
-              element={
-                <RestrictedRoute>
-                  <WelcomePage />
-                </RestrictedRoute>
-              }
-            />
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path={ROUTE_PATH.index} element={<SharedLayout />}>
+          <Route index element={<Navigate to={ROUTE_PATH.welcome} replace />} />
+          <Route
+            path={ROUTE_PATH.welcome}
+            element={
+              <RestrictedRoute>
+                <WelcomePage />
+              </RestrictedRoute>
+            }
+          />
 
-            <Route
-              path={ROUTE_PATH.signup}
-              element={
-                <RestrictedRoute>
-                  <SignUpPage />
-                </RestrictedRoute>
-              }
-            />
-            <Route
-              path={ROUTE_PATH.signin}
-              element={
-                <RestrictedRoute>
-                  <SignInPage />
-                </RestrictedRoute>
-              }
-            />
+          <Route
+            path={ROUTE_PATH.signup}
+            element={
+              <RestrictedRoute>
+                <SignUpPage />
+              </RestrictedRoute>
+            }
+          />
+          <Route
+            path={ROUTE_PATH.signin}
+            element={
+              <RestrictedRoute>
+                <SignInPage />
+              </RestrictedRoute>
+            }
+          />
 
-            <Route
-              path={ROUTE_PATH.forgotpassword}
-              element={
-                <RestrictedRoute>
-                  <ForgotPassPage />
-                </RestrictedRoute>
-              }
-            />
+          <Route
+            path={ROUTE_PATH.forgotpassword}
+            element={
+              <RestrictedRoute>
+                <ForgotPassPage />
+              </RestrictedRoute>
+            }
+          />
 
-            <Route
-              path={ROUTE_PATH.newpassword}
-              element={
-                <RestrictedRoute>
-                  <NewPassPage />
-                </RestrictedRoute>
-              }
-            />
+          <Route
+            path={ROUTE_PATH.newpassword}
+            element={
+              <RestrictedRoute>
+                <NewPassPage />
+              </RestrictedRoute>
+            }
+          />
 
-            <Route
-              path={ROUTE_PATH.home}
-              element={
-                <PrivateRoute>
-                  <HomePage />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
-        </Suspense>
-      </SharedLayout>
-      {isLoadingUser || isLoadingWater ? <Loader /> : null}
-    </div>
+          <Route
+            path={ROUTE_PATH.home}
+            element={
+              <PrivateRoute>
+                <HomePage />
+              </PrivateRoute>
+            }
+          />
+          <Route path="*" element={<Navigate to={ROUTE_PATH.index} />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 
