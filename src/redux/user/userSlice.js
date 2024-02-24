@@ -91,9 +91,9 @@ export const resetUserPassword = createAsyncThunk(
   "user/resetPassword",
   async (formData, thunkApi) => {
     try {
-      const userData = await requestResetPassword(formData);
+      await requestResetPassword(formData);
       toastFulfild("Password has been successfully changed!");
-      return userData;
+      // return userData;
     } catch (error) {
       toastRejected("Something went wrong, please try again later!");
       return thunkApi.rejectWithValue(error.message);

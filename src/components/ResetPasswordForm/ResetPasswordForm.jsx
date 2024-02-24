@@ -14,16 +14,14 @@ const ResetPasswordForm = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const userEmail = searchParams.get("email");
-  console.log(userEmail);
 
   const formik = useFormik({
     initialValues: {
-      email: userEmail,
       newPassword: "",
       repeatedPassword: "",
     },
-    onSubmit: (email, newPassword) => {
-      const userData = { email, newPassword };
+    onSubmit: ({ newPassword }) => {
+      const userData = { email: userEmail, password: newPassword };
       dispatch(resetUserPassword(userData))
         .unwrap()
         .then(() => {

@@ -31,7 +31,7 @@ export const getLinkToUpdatePass = async (email) => {
 };
 
 export const requestResetPassword = async (userData) => {
-  const data = await authInstance.patch("user/forgot-password", userData);
+  const data = await authInstance.patch("user/change-password", userData);
   return data;
 };
 
