@@ -11,22 +11,24 @@ import { ReactComponent as UserLogo } from "assets/icons/user.svg";
 const Header = () => {
   const isSignedIn = useSelector(selectUserIsSignedIn);
   return (
-    <StyledMainContainer>
-      <StyledHeader>
-        <NavLink to="/welcome" className="link-logo">
-          <MainLogo className="main-logo" />
-        </NavLink>
+    <StyledHeader>
+      <StyledMainContainer>
+        <nav>
+          <NavLink to="/welcome" className="link-logo">
+            <MainLogo className="main-logo" />
+          </NavLink>
 
-        {isSignedIn ? (
-          <UserAuth />
-        ) : (
-          <Link to="/signin" className="user-wrapper">
-            <p className="user-name">Sign in</p>
-            <UserLogo className="user-logo" />
-          </Link>
-        )}
-      </StyledHeader>
-    </StyledMainContainer>
+          {isSignedIn ? (
+            <UserAuth />
+          ) : (
+            <Link to="/signin" className="user-wrapper">
+              <span className="user-name">Sign in</span>
+              <UserLogo className="user-logo" />
+            </Link>
+          )}
+        </nav>
+      </StyledMainContainer>
+    </StyledHeader>
   );
 };
 

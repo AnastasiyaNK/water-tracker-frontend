@@ -1,4 +1,4 @@
-import { ReactComponent as DropUp } from "assets/icons/chevron-double-up.svg";
+import { ReactComponent as IconDropUp } from "assets/icons/chevron-double-up.svg";
 import { UserDropdown } from "../../index";
 import { StyledUserAuth } from "./UserAuth.styled";
 import { useState } from "react";
@@ -27,7 +27,7 @@ const UserAuth = () => {
         <span className="name-user">{userName}</span>
         <img className="avatar-user" src={userAvatar} alt={userName} />
         <span className="auth-btn">
-          <DropUp className="auth-icon" />
+          <IconDropUp className="auth-icon" />
         </span>
       </button>
       <UserDropdown onClose={onClose} isOpen={isDropdownOpen} />

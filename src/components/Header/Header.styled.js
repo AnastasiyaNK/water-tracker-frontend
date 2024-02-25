@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  display: flex;
   width: 100%;
   padding: 8px 0;
-  align-items: center;
 
-  .link-logo {
+  nav {
+    display: flex;
   }
-  .main-logo {
-  }
+
   .user-wrapper {
     display: flex;
     align-items: center;
@@ -30,7 +28,7 @@ export const StyledHeader = styled.header`
     color: #ff9d43;
   }
 
-  @media (min-width: 320px) and (max-width: 767px) {
+  /* @media (min-width: 320px) and (max-width: 767px) {
     min-width: 280px;
   }
 
@@ -41,5 +39,5 @@ export const StyledHeader = styled.header`
   @media (min-width: 1216px) and (min-width: 1440px) {
     padding: 12px 0;
     min-width: 1216px;
-  }
+  } */
 `;
