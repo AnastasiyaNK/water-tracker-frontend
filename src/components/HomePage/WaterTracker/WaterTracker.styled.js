@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const WaterStatistic = styled.div`
   width: 280px;
-  height: 836px;
+  /* height: 836px; */
   padding: 24px 8px;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ export const WaterStatistic = styled.div`
     align-items: flex-start;
     width: 704px;
     padding: 32px 24px;
-    height: 688px;
+    /* height: 688px; */
     gap: 24px;
     border-radius: 10px;
     background: var(--Secondary-color-2, #ecf2ff);
@@ -54,7 +54,7 @@ export const WaterStatistic = styled.div`
     display: flex;
     width: 592px;
     padding: 32px 24px;
-    height: 680px;
+    /* height: 680px; */
     gap: 24px;
     border-radius: 10px;
     background: var(--Secondary-color-2, #ecf2ff);

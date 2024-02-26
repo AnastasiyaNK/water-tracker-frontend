@@ -1,13 +1,22 @@
-import styled from 'styled-components';
-import imgFon from '../../assets/images/bubble-desktop.png';
-import imgBotle from '../../assets/images/botle-home-desc.png';
-import imgFonMobile from '../../assets/images/bubble-home-mob.png';
-import imgBotleMobile from '../../assets/images/bottle-home-mob.png';
-import imgFonTab from '../../assets/images/bubble-home-tab.png';
-import imgBotleTab from '../../assets/images/bottle-home-tab.png';
+import styled from "styled-components";
+import imgFon from "../../assets/images/bubble-desktop.png";
+import imgBotle from "../../assets/images/botle-home-desc.png";
+import imgFonMobile from "../../assets/images/bubble-home-mob.png";
+import imgBotleMobile from "../../assets/images/bottle-home-mob.png";
+import imgFonTab from "../../assets/images/bubble-home-tab.png";
+import imgBotleTab from "../../assets/images/bottle-home-tab.png";
 
 export const Fon = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /* width: 100%;
   padding: 8px 0;
   display: flex;
   flex-direction: column;
@@ -70,17 +79,17 @@ export const Fon = styled.div`
     flex-direction: row;
 
     gap: 32px;
-  }
+  } */
 `;
 
 export const DailyRangeStyle = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   gap: 232px;
   padding: 0px 20px 0px 20px;
-  z-index: 2;
+  z-index: 2; */
 
-  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
+  /* @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
     padding-top: 0px;
   }
@@ -108,5 +117,5 @@ export const DailyRangeStyle = styled.div`
     width: 592px;
     height: 680px;
     padding: 32px 0;
-  }
+  } */
 `;

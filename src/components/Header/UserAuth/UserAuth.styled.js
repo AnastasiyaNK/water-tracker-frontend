@@ -9,12 +9,12 @@ export const StyledUserAuth = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
+    padding: 0;
     border: none;
     background-color: inherit;
     cursor: pointer;
   }
-  .auth-wrapper {
-  }
+
   .name-user {
     color: #2f2f2f;
     text-align: right;

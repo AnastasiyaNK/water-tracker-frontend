@@ -26,6 +26,7 @@ import {
 import { apiGetTodayWaterPortions } from "../../redux/water/waterSlice.js";
 import { closeAllModals } from "../../redux/modal/modalsReduser.js";
 import { Fon, DailyRangeStyle } from "./HomePage.styled.js";
+import { StyledMainContainer } from "styled";
 
 const HomePage = () => {
   const isSettingsModalOpen = useSelector(selectSettingsModal);
@@ -48,20 +49,22 @@ const HomePage = () => {
   }, [dispatch]);
 
   return (
-    <Fon>
-      <DailyRangeStyle>
-        <DailyNorma />
-        <RangeBar />
-      </DailyRangeStyle>
+    <StyledMainContainer className="home-container">
+      <Fon>
+        <DailyRangeStyle>
+          <DailyNorma />
+          <RangeBar />
+        </DailyRangeStyle>
 
-      <WaterTracker />
-      {isAddWaterModalOpen && <AddWaterModal />}
-      {isEditWaterModalOpen && <EditWaterModal />}
-      {isSettingsModalOpen && <SettingsModal />}
-      {isDailyNormaModalOpen && <MyDailyNormaModal />}
-      {isLogoutModalOpen && <LogoutModal />}
-      {isDeleteModalOpen && <DeleteModal />}
-    </Fon>
+        <WaterTracker />
+        {isAddWaterModalOpen && <AddWaterModal />}
+        {isEditWaterModalOpen && <EditWaterModal />}
+        {isSettingsModalOpen && <SettingsModal />}
+        {isDailyNormaModalOpen && <MyDailyNormaModal />}
+        {isLogoutModalOpen && <LogoutModal />}
+        {isDeleteModalOpen && <DeleteModal />}
+      </Fon>
+    </StyledMainContainer>
   );
 };
 

@@ -1,19 +1,30 @@
 import styled from "styled-components";
 
 export const DailyNormaBox = styled.div`
-  width: 164px;
+  width: 165px;
   height: 74px;
-  left: 74px;
-  top: 100px;
-  display: inline-flex;
   padding: 8px 20px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
   border-radius: 10px;
-  border: 1px solid var(--Secondary-color-2, #ecf2ff);
-  background: var(--Primery-Color-White, #fff);
+  border: 1px solid var(--lightGreySecondary);
+  background: var(--whitePrimari);
   box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
+  margin-bottom: 232px;
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    margin-bottom: 326px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 466px;
+  }
+
+  p {
+    margin-bottom: 12px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.3;
+    color: #2f2f2f;
+  }
 `;
 
 export const EditWater = styled.div`
@@ -24,7 +35,7 @@ export const EditWater = styled.div`
 export const Water = styled.div`
   width: 50px;
   height: 22px;
-  color: var(--Primery-Color-Blue, #407bff);
+  color: var(--accentPrimari);
   font-family: Roboto;
   font-size: 22px;
   font-style: normal;

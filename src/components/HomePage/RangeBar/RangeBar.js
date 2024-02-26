@@ -19,12 +19,14 @@ const RangeBar = () => {
     <RangeAdd>
       <RangBar>
         <Title>Today</Title>
-        <RangeBarLine $percentage={percentage}></RangeBarLine>
+        <RangeBarLine $percentage={percentage} />
         <Percents>
           <Percent>0%</Percent>
+          <Percent className="percent-bold">50%</Percent>
           <Percent>100%</Percent>
         </Percents>
       </RangBar>
+
       <ModalButton className="myButton" />
     </RangeAdd>
   );
