@@ -1,19 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const TodayBox = styled.div`
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
-  /* width: 534px;
-  height: 260px; */
-  color: var(--Primery-Color-Black, #2f2f2f);
-  font-family: Roboto;
+  margin-bottom: 24px;
   font-size: 26px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 32px;
+  line-height: 1.23;
+  color: var(--blackPrimari, #2f2f2f);
 
-  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
+  /* @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
     width: 256px;
     gap: 16px;
@@ -43,9 +37,9 @@ export const TodayBox = styled.div`
     width: 544px;
     height: 260px;
     gap: 24px;
-  }
+  } */
 `;
 
 export const TodayStile = styled.p`
-  width: 72px;
+  margin-bottom: 16px;
 `;
