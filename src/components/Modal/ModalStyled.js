@@ -27,6 +27,10 @@ export const StyledModalBackdrop = styled.div`
     font-size: 18px;
     line-height: 1.1;
 
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
     @media (min-width: 1440px) {
       width: 1008px;
       padding: 32px 24px;

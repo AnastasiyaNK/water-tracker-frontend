@@ -90,32 +90,30 @@ scrollbar {
 ::-webkit-scrollbar-track,
 scrollbar-track {
   background-color: var(--lightBlueSecondary);
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb,
 scrollbar-thumb {
   background-color: var(--blueSecondary);
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:active,
 scrollbar-thumb:active {
-  background-color: var(--accentPrimari);
+  background-color: var(--blueSecondary);
 }
 
 scrollbar-thumb {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 10px;
+  border-radius: 10px;
 }
 
 scrollbar-track {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 10px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-corner {
-  background-color: var(--secondary-light-blue);
+  background-color: var(--lightBlueSecondary);
 }

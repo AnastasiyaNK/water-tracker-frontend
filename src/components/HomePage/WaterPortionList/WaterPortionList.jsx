@@ -12,15 +12,13 @@ import {
   Time,
   Edit,
   PortionsList,
-  // ScrollableDiv,
   Button,
   Portions,
-  // Motivation,
 } from "./WaterPortionsList.styled";
 
-import { ReactComponent as Glass } from "../../../assets/icons/glass-desc.svg";
-import { ReactComponent as Pencil } from "../../../assets/icons/pencil-square.svg";
-import { ReactComponent as Bucket } from "../../../assets/icons/bucket.svg";
+import { ReactComponent as IconGlass } from "../../../assets/icons/glass.svg";
+import { ReactComponent as IconPencil } from "../../../assets/icons/pencil-square.svg";
+import { ReactComponent as IconBasket } from "../../../assets/icons/basket.svg";
 
 const WaterPortionsList = () => {
   const dispatch = useDispatch();
@@ -35,8 +33,8 @@ const WaterPortionsList = () => {
           <Portions>
             {waterPortions?.map((item) => (
               <Portion key={item._id}>
-                <Glass />
-                <Ml>{item.waterAmount}ml</Ml>
+                <IconGlass className="icon-glass" />
+                <Ml>{`${item.waterAmount} ml`} </Ml>
                 <Time>
                   {getLocaleTime(item.date)}
                   {/* {format(item.date, "HH")}:{format(item.date, "mm")}{" "}
@@ -53,7 +51,7 @@ const WaterPortionsList = () => {
                       )
                     }
                   >
-                    <Pencil />
+                    <IconPencil />
                   </Button>
                   <Button
                     onClick={() => {
@@ -62,7 +60,7 @@ const WaterPortionsList = () => {
                       );
                     }}
                   >
-                    <Bucket />
+                    <IconBasket />
                   </Button>
                 </Edit>
               </Portion>

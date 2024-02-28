@@ -9,55 +9,18 @@ export const PortionsList = styled.div`
   height: 212px;
   overflow-y: auto;
   overflow-x: hidden;
-  /* display: flex;
-  padding: 0;
-  flex-direction: column; */
 
-  /* @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
-    (max-width: 767px) and (min-resolution: 192dpi) {
-    width: 254px;
-  } */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     width: 656px;
   }
-  /* @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 768px) and (min-resolution: 192dpi) {
-    padding: 0 32px 0 0;
-    width: 690px;
-    height: 276px;
-    padding: 0 32px 0 0;
-  } */
+
   @media screen and (min-width: 1440px) {
     width: 544px;
-    /* height: 260px;
-    padding: 0 32px 0 0;
-    padding: 0; */
   }
-
-  /* @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 1440px) and (min-resolution: 192dpi) {
-    padding: 0;
-    width: 544px;
-    height: 260px;
-    padding: 0 32px 0 0;
-    padding: 0;
-  } */
-
-  //---Стилізація скроллбара--/////
-  /* * {
-    scrollbar-width: thin;
-    scrollbar-color: #9ebbff #d7e3ff;
-  }
-  *::-webkit-scrollbar {
-    width: 1px;
-  }
-  *::-webkit-scrollbar-track {
-    background-color: #f5f5f5;
-  }
-  *::-webkit-scrollbar-thumb {
-    width: 10px;
-    background-color: red;
-  } */
 
   .motivation {
     text-align: center;
@@ -65,231 +28,72 @@ export const PortionsList = styled.div`
     color: var(--accentPrimari);
   }
 `;
+
+export const Portions = styled.ul`
+  li {
+    padding-bottom: 12px;
+  }
+
+  li:not(:first-child) {
+    padding-top: 12px;
+  }
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+`;
+
 export const Portion = styled.li`
-  /* width: 254px; */
   display: flex;
-  padding: 6px 0;
-  align-items: baseline;
-  border-bottom: 1px solid #d7e3ff;
+  align-items: center;
+  border-bottom: 1px solid var(--lightBlueSecondary);
 
-  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
-    (max-width: 767px) and (min-resolution: 192dpi) {
-    align-items: baseline;
-    /* width: 254px; */
-  }
+  .icon-glass {
+    width: 26px;
+    height: 26px;
+    margin-right: 12px;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    width: 690px;
-    align-items: center;
-    padding: 12px 0;
-  }
-
-  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 768px) and (min-resolution: 192dpi) {
-    width: 690px;
-    align-items: center;
-    padding: 12px 0;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 544px;
-    align-items: center;
-    padding: 12px 0;
-  }
-
-  @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 1440px) and (min-resolution: 192dpi) {
-    align-items: center;
-    width: 544px;
-    padding: 12px 0;
+    @media screen and (min-width: 768px) {
+      width: 36px;
+      height: 36px;
+    }
   }
 `;
 
-export const Ml = styled.div`
-  margin-left: 10px;
-  color: var(--Primery-Color-Blue, #407bff);
-  font-family: Roboto;
+export const Ml = styled.span`
+  color: var(--accentPrimari);
   font-size: 18px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 1.33;
+  margin-right: 12px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 24px;
+  }
 `;
 
-export const Time = styled.div`
-  width: 24px;
-  margin-left: 12px;
-  color: var(--Primery-Color-Black, #2f2f2f);
-  font-family: Roboto;
+export const Time = styled.span`
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 24px;
-
-  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
-    (max-width: 767px) and (min-resolution: 192dpi) {
-    margin-left: 12px;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    margin-left: 16px;
-  }
-
-  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 768px) and (min-resolution: 192dpi) {
-    margin-left: 16px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    margin-left: 16px;
-  }
-
-  @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 1440px) and (min-resolution: 192dpi) {
-    margin-left: 16px;
-  }
+  line-height: 2;
+  color: var(--blackPrimari);
 `;
 
 export const Edit = styled.div`
-  display: flex;
-  gap: 16px;
-  margin-left: 60px;
+  margin-left: auto;
+  margin-right: 4px;
 
-  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
-    (max-width: 767px) and (min-resolution: 192dpi) {
-    margin-left: 60px;
-    display: flex;
-    gap: 16px;
+  button:first-child {
+    margin-right: 18px;
   }
-
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    display: flex;
-    gap: 18px;
-    margin-left: 455px;
-  }
-
-  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 768px) and (min-resolution: 192dpi) {
-    display: flex;
-    gap: 18px;
-    margin-left: 455px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    flex-direction: row;
-    display: flex;
-    gap: 18px;
-    margin-left: 340px;
-  }
-
-  @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 1440px) and (min-resolution: 192dpi) {
-    display: flex;
-    gap: 18px;
-    margin-left: 340px;
-  }
-`;
-
-export const Portions = styled.ul`
-  /* height: 136px;
-  margin-bottom: 12px;
-
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
-    (max-width: 767px) and (min-resolution: 192dpi) {
-    height: 136px;
-  }
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    height: 156px;
-    width: 690px;
-  }
-  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 768px) and (min-resolution: 192dpi) {
-    height: 156px;
-    width: 690px;
-  }
-  @media screen and (min-width: 1440px) {
-    height: 156px;
-    width: 544px;
-  }
-
-  @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 1440px) and (min-resolution: 192dpi) {
-    height: 156px;
-    width: 544px;
-  } */
-`;
-
-export const ScrollableDiv = styled.div`
-  /* overflow-y: scroll;
-  overflow-x: hidden; */
 `;
 
 export const Button = styled.button`
-  width: 16px;
-  height: 16px;
+  padding: 0;
   border: none;
-  background: none;
+  background-color: transparent;
+
+  & svg {
+    width: 16px;
+    height: 16px;
+  }
 `;
-
-// export const Motivation = styled.div`
-//   .motivation {
-//     display: flex;
-//     justify-content: center;
-//     height: 136px;
-//     color: var(--Primery-Color-Blue, #407bff);
-//     font-family: Roboto;
-//     font-size: 20px;
-//     font-style: normal;
-//     font-weight: 500;
-//     line-height: 24px;
-//     @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
-//       (max-width: 767px) and (min-resolution: 192dpi) {
-//       height: 136px;
-//     }
-//     @media screen and (min-width: 768px) and (max-width: 1439px) {
-//       height: 156px;
-//       width: 690px;
-//       color: var(--Primery-Color-Blue, #407bff);
-//       font-family: Roboto;
-//       font-size: 35px;
-//       font-style: normal;
-//       font-weight: 500;
-//       line-height: 24px;
-//     }
-//     @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-//       (min-width: 768px) and (min-resolution: 192dpi) {
-//       height: 156px;
-//       width: 690px;
-//       color: var(--Primery-Color-Blue, #407bff);
-//       font-family: Roboto;
-//       font-size: 35px;
-//       font-style: normal;
-//       font-weight: 500;
-//       line-height: 24px;
-//     }
-//     @media screen and (min-width: 1440px) {
-//       width: 544px;
-//       height: 180px;
-//       color: var(--Primery-Color-Blue, #407bff);
-//       font-family: Roboto;
-//       font-size: 30px;
-//       font-style: normal;
-//       font-weight: 500;
-//       line-height: 24px;
-//     }
-
-//     @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
-//       (min-width: 1440px) and (min-resolution: 192dpi) {
-//       width: 544px;
-//       height: 180px;
-//       color: var(--Primery-Color-Blue, #407bff);
-//       font-family: Roboto;
-//       font-size: 30px;
-//       font-style: normal;
-//       font-weight: 500;
-//       line-height: 24px;
-//     }
-//   }
-// `;
