@@ -1,9 +1,40 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
+export const StyledDayItemWrapper = styled.li`
+  width: calc((100% - 104px) / 5);
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    width: calc((100% - 306px) / 10);
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: calc((100% - 198px) / 10);
+  }
+
+  button {
+    min-width: 32px;
+    min-height: 32px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.29;
+    color: var(--blackPrimari);
+    background: #fff;
+    border-radius: 50%;
+    padding: 0px;
+
+    @media screen and (min-width: 768px) {
+      min-width: 34px;
+      min-height: 34px;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+  }
+`;
 
 export const DayNumber = styled.div`
   color: var(--Primery-Color-Black, #2f2f2f);
-  text-align: center;
-  font-family: Roboto;
+  /* text-align: center;
+  font-family: Roboto; */
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

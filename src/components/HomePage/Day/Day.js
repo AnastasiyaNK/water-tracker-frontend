@@ -1,10 +1,14 @@
-import { DayNumber, Percent, ButtonXmark } from "./Day.styled";
+import {
+  StyledDayItemWrapper,
+  DayNumber,
+  Percent,
+  ButtonXmark,
+} from "./Day.styled";
 import { useState } from "react";
 import Popover from "@mui/material/Popover";
 import Box from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import DayGeneralStats from "../DayGeneralStats/DayGeneralStats";
-
 import { ReactComponent as Xmark } from "../../../assets/icons/outline-desc.svg";
 
 /**
@@ -34,23 +38,20 @@ const Day = ({ buttonProps, popoverProps, item, index, monthName }) => {
   const id = open ? "simple-popover" : undefined;
 
   return (
-    <div>
+    <StyledDayItemWrapper>
       <Button
+        className="day-btn"
         aria-describedby={id}
         variant="contained"
         onClick={handleClick}
         style={{
-          background: "white",
-          borderRadius: "50%",
-          minWidth: "34px",
-          minHeight: "34px",
-          padding: "0px",
-          border: "1px solid",
-          borderColor: waterVolumePercentage >= 100 ? "white" : "orange",
+          border: waterVolumePercentage >= 100 ? "none" : "1px solid",
+          borderColor: waterVolumePercentage >= 100 ? "transparent" : "#ff9d43",
         }}
-        {...buttonProps}
+        // {...buttonProps}
       >
-        <DayNumber>{index + 1}</DayNumber>
+        {index + 1}
+        {/* <DayNumber>{index + 1}</DayNumber> */}
       </Button>
       <Percent>{waterVolumePercentage}%</Percent>
       <Popover
@@ -66,7 +67,7 @@ const Day = ({ buttonProps, popoverProps, item, index, monthName }) => {
           vertical: "bottom",
           horizontal: "right",
         }}
-        {...popoverProps}
+        // {...popoverProps}
       >
         <Box
           sx={{ p: 2 }}
@@ -84,7 +85,7 @@ const Day = ({ buttonProps, popoverProps, item, index, monthName }) => {
           <DayGeneralStats item={item} index={index} monthName={monthName} />
         </Box>
       </Popover>
-    </div>
+    </StyledDayItemWrapper>
   );
 };
 

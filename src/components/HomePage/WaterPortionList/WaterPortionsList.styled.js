@@ -62,7 +62,6 @@ export const Portion = styled.li`
 export const Ml = styled.span`
   color: var(--accentPrimari);
   font-size: 18px;
-  font-weight: 400;
   line-height: 1.33;
   margin-right: 12px;
 
@@ -73,7 +72,6 @@ export const Ml = styled.span`
 
 export const Time = styled.span`
   font-size: 12px;
-  font-weight: 400;
   line-height: 2;
   color: var(--blackPrimari);
 `;

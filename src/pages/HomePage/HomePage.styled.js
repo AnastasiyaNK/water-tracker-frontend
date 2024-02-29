@@ -6,7 +6,7 @@ import imgBotleMobile from "../../assets/images/bottle-home-mob.png";
 import imgFonTab from "../../assets/images/bubble-home-tab.png";
 import imgBotleTab from "../../assets/images/bottle-home-tab.png";
 
-export const Fon = styled.div`
+export const StyledHomePageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

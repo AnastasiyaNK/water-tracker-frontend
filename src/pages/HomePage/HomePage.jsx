@@ -25,7 +25,7 @@ import {
 
 import { apiGetTodayWaterPortions } from "../../redux/water/waterSlice.js";
 import { closeAllModals } from "../../redux/modal/modalsReduser.js";
-import { Fon, DailyRangeStyle } from "./HomePage.styled.js";
+import { StyledHomePageWrapper, DailyRangeStyle } from "./HomePage.styled.js";
 import { StyledMainContainer } from "styled";
 
 const HomePage = () => {
@@ -50,7 +50,7 @@ const HomePage = () => {
 
   return (
     <StyledMainContainer className="home-container">
-      <Fon>
+      <StyledHomePageWrapper>
         <DailyRangeStyle>
           <DailyNorma />
           <RangeBar />
@@ -63,7 +63,7 @@ const HomePage = () => {
         {isDailyNormaModalOpen && <MyDailyNormaModal />}
         {isLogoutModalOpen && <LogoutModal />}
         {isDeleteModalOpen && <DeleteModal />}
-      </Fon>
+      </StyledHomePageWrapper>
     </StyledMainContainer>
   );
 };
