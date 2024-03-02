@@ -19,7 +19,6 @@ export { default as LoginForm } from "./LoginForm/LoginForm";
 export { default as LogoutModal } from "./LogoutModal/LogoutModal";
 export { default as Modal } from "./Modal/Modal";
 export { default as ModalButton } from "./ModalButton/ModalButton";
-export { default as ModalButton2 } from "./ModalButton2/ModalButton2";
 export { default as MyDailyNormaModal } from "./MyDailyNormaModal/MyDailyNormaModal";
 export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
 export { default as RegisterForm } from "./RegisterForm/RegisterForm";

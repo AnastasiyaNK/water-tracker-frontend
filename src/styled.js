@@ -21,6 +21,7 @@ export const StyledMainContainer = styled.div`
 
   &.home-container {
     padding-top: 24px;
+    padding-bottom: 40px;
 
     @media (min-width: 768px) and (max-width: 1439px) {
       padding-top: 40px;
