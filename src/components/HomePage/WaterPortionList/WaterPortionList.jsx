@@ -35,11 +35,7 @@ const WaterPortionsList = () => {
               <Portion key={item._id}>
                 <IconGlass className="icon-glass" />
                 <Ml>{`${item.waterAmount} ml`} </Ml>
-                <Time>
-                  {getLocaleTime(item.date)}
-                  {/* {format(item.date, "HH")}:{format(item.date, "mm")}{" "}
-                {format(item.date, "a")}  */}
-                </Time>
+                <Time>{getLocaleTime(item.date)}</Time>
                 <Edit>
                   <Button
                     onClick={() =>

@@ -1,12 +1,11 @@
-import { Today } from "components";
-import { Month } from "components";
+import { DaysList, Today } from "components";
 import { WaterStatistic } from "./WaterTracker.styled";
 
 const WaterTracker = () => {
   return (
     <WaterStatistic>
       <Today />
-      <Month />
+      <DaysList />
     </WaterStatistic>
   );
 };

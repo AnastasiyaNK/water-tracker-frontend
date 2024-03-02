@@ -1,28 +1,16 @@
+import { useState } from "react";
 import {
   StyledDayItemWrapper,
-  DayNumber,
   Percent,
   ButtonXmark,
+  StyledDayBtn,
 } from "./Day.styled";
-import { useState } from "react";
 import Popover from "@mui/material/Popover";
 import Box from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import DayGeneralStats from "../DayGeneralStats/DayGeneralStats";
 import { ReactComponent as Xmark } from "../../../assets/icons/outline-desc.svg";
 
-/**
- * @typedef {import('@mui/material/Popover').PopoverProps} PopoverProps
- * @typedef {import('@mui/material/Button').ButtonProps} ButtonProps
- */
-
-/**
- * @param {Object} props
- * @param {ButtonProps} props.buttonProps
- * @param {PopoverProps} props.popoverProps
- */
-
-const Day = ({ buttonProps, popoverProps, item, index, monthName }) => {
+const Day = ({ item, index, monthName }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const { waterVolumePercentage } = item;
 
@@ -39,8 +27,7 @@ const Day = ({ buttonProps, popoverProps, item, index, monthName }) => {
 
   return (
     <StyledDayItemWrapper>
-      <Button
-        className="day-btn"
+      <StyledDayBtn
         aria-describedby={id}
         variant="contained"
         onClick={handleClick}
@@ -48,11 +35,9 @@ const Day = ({ buttonProps, popoverProps, item, index, monthName }) => {
           border: waterVolumePercentage >= 100 ? "none" : "1px solid",
           borderColor: waterVolumePercentage >= 100 ? "transparent" : "#ff9d43",
         }}
-        // {...buttonProps}
       >
         {index + 1}
-        {/* <DayNumber>{index + 1}</DayNumber> */}
-      </Button>
+      </StyledDayBtn>
       <Percent>{waterVolumePercentage}%</Percent>
       <Popover
         id={id}
@@ -67,7 +52,6 @@ const Day = ({ buttonProps, popoverProps, item, index, monthName }) => {
           vertical: "bottom",
           horizontal: "right",
         }}
-        // {...popoverProps}
       >
         <Box
           sx={{ p: 2 }}

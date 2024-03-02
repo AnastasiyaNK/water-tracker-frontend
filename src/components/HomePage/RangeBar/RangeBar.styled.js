@@ -18,32 +18,10 @@ export const RangeAdd = styled.div`
   @media screen and (min-width: 1440px) {
     gap: 23px;
   }
-  /* justify-content: space-between; */
-  /* align-items: center; */
-  /* gap: 16px; */
 
-  /* @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
-    (max-width: 767px) and (min-resolution: 192dpi) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-  } */
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     justify-content: center;
-    /* flex-direction: row; */
-    /* display: flex; */
-    /* gap: 12px; */
   }
-
-  /* @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 768px) and (min-resolution: 192dpi) {
-    justify-content: center;
-    flex-direction: row;
-    display: flex;
-    gap: 12px;
-  } */
 
   @media screen and (min-width: 1440px) {
     width: 592px;
@@ -51,46 +29,9 @@ export const RangeAdd = styled.div`
     display: flex;
     gap: 23px;
   }
-
-  /* @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 1440px) and (min-resolution: 192dpi) {
-    width: 592px;
-    flex-direction: row;
-    display: flex;
-    gap: 23px;
-  } */
 `;
 
-export const RangBar = styled.div`
-  /* height: 90px;
-  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
-    (max-width: 767px) and (min-resolution: 192dpi) {
-    width: 280px;
-    height: 82px;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    width: 356px;
-    height: 90px;
-  }
-
-  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 768px) and (min-resolution: 192dpi) {
-    width: 356px;
-    height: 90px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 391px;
-    height: 90px;
-  }
-
-  @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 1440px) and (min-resolution: 192dpi) {
-    width: 391px;
-    height: 90px;
-  } */
-`;
+export const RangBar = styled.div``;
 
 export const Title = styled.p`
   margin-bottom: 8px;
@@ -98,29 +39,9 @@ export const Title = styled.p`
   line-height: 1.33;
   color: var(--accentPrimari);
 
-  /* @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
-    (max-width: 767px) and (min-resolution: 192dpi) {
-    margin-bottom: 19px;
-    margin-left: 0;
-  } */
-
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     margin-bottom: 16px;
   }
-
-  /* @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 768px) and (min-resolution: 192dpi) {
-    text-align: left;
-  } */
-
-  /* @media screen and (min-width: 1440px) {
-    margin-bottom: 19px;
-  } */
-
-  /* @media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 1440px) and (min-resolution: 192dpi) {
-    margin-bottom: 19px;
-  } */
 `;
 
 export const Percents = styled.div`

@@ -7,7 +7,6 @@ import { getNameOfMonth } from "../../../services/getNameOfMonth";
 import { getDaysInMonth } from "../../../services/getDaysInMonth";
 import { getNumberDay } from "../../../services/getNumberDay";
 import { createMonthArray } from "../../../services/createMonthArray";
-// import svgIcons from "../../../assets/icons/set-icons.svg";
 import { ReactComponent as IconArrowLeft } from "../../../assets/icons/arrow-left.svg";
 import { ReactComponent as IconArrowRight } from "../../../assets/icons/arrow-rigth.svg";
 
@@ -79,9 +78,7 @@ const DaysList = () => {
       </DaysListHeader>
       <TableDays>
         {monthStats.map((item, index) => (
-          // <div key={index}>
           <Day key={index} item={item} index={index} monthName={monthName} />
-          // </div>
         ))}
       </TableDays>
     </>
