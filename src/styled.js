@@ -19,15 +19,30 @@ export const StyledMainContainer = styled.div`
     padding: 0 15px;
   }
 
+  &.welcome-container {
+    min-height: 100vh;
+    padding-top: 24px;
+    padding-bottom: 40px;
+
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      padding-top: 40px;
+      padding-bottom: 50px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      padding-top: 80px;
+    }
+  }
+
   &.home-container {
     padding-top: 24px;
     padding-bottom: 40px;
 
-    @media (min-width: 768px) and (max-width: 1439px) {
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
       padding-top: 40px;
     }
 
-    @media (min-width: 1440px) {
+    @media screen and (min-width: 1440px) {
       padding-top: 20px;
     }
   }

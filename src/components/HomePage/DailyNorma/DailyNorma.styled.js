@@ -8,15 +8,6 @@ export const DailyNormaBox = styled.div`
   border: 1px solid var(--lightGreySecondary);
   background: var(--whitePrimari);
   box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
-  margin-bottom: 232px;
-
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    margin-bottom: 326px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 466px;
-  }
 
   p {
     margin-bottom: 12px;

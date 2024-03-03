@@ -25,7 +25,11 @@ import {
 
 import { apiGetTodayWaterPortions } from "../../redux/water/waterSlice.js";
 import { closeAllModals } from "../../redux/modal/modalsReduser.js";
-import { StyledHomePageWrapper, DailyRangeStyle } from "./HomePage.styled.js";
+import {
+  StyledHomePageWrapper,
+  DailyRangeStyle,
+  DailyNormaWrapper,
+} from "./HomePage.styled.js";
 import { StyledMainContainer } from "styled";
 
 const HomePage = () => {
@@ -52,7 +56,9 @@ const HomePage = () => {
     <StyledMainContainer className="home-container">
       <StyledHomePageWrapper>
         <DailyRangeStyle>
-          <DailyNorma />
+          <DailyNormaWrapper className="dayli-norma-wrapper">
+            <DailyNorma />
+          </DailyNormaWrapper>
           <RangeBar />
         </DailyRangeStyle>
 
