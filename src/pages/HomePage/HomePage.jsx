@@ -47,7 +47,11 @@ const HomePage = () => {
       "mm"
     )}-${format(new Date(), "dd")}`;
     dispatch(apiGetTodayWaterPortions(date));
+    const main = document.getElementsByTagName("main")[0];
+    main.classList.add("homepage-backgroud");
+
     return () => {
+      main.classList.remove("homepage-backgroud");
       dispatch(closeAllModals());
     };
   }, [dispatch]);

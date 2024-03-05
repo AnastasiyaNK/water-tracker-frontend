@@ -1,14 +1,17 @@
-import React from "react";
-
+import { useEffect } from "react";
 import { LoginForm } from "components";
-import { StyledLoginPage } from "./SignInPage.styled";
 
 const SignInPage = () => {
-  return (
-    <StyledLoginPage>
-      <LoginForm />
-    </StyledLoginPage>
-  );
+  useEffect(() => {
+    const main = document.getElementsByTagName("main")[0];
+    main.classList.add("register-backgroud");
+
+    return () => {
+      main.classList.remove("register-backgroud");
+    };
+  }, []);
+
+  return <LoginForm />;
 };
 
 export default SignInPage;

@@ -20,7 +20,7 @@ export const StyledMainContainer = styled.div`
   }
 
   &.welcome-container {
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
     padding-top: 24px;
     padding-bottom: 40px;
 
@@ -31,6 +31,21 @@ export const StyledMainContainer = styled.div`
 
     @media screen and (min-width: 1440px) {
       padding-top: 80px;
+    }
+  }
+
+  &.register-container {
+    min-height: calc(100vh - 60px);
+    padding-top: 24px;
+
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      padding-top: 40px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
     }
   }
 

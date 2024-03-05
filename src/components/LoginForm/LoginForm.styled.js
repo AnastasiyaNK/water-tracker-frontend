@@ -1,22 +1,5 @@
 import styled from "styled-components";
 
-export const StyledLoginContainer = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  padding-top: 40px;
-
-  @media screen and (min-width: 768px) {
-    justify-content: flex-start;
-  }
-
-  @media screen and (min-width: 1440px) {
-    justify-content: end;
-    align-items: center;
-  }
-`;
-
 export const StyledLoginForm = styled.form`
   max-width: 280px;
   display: flex;

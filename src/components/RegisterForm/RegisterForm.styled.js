@@ -1,21 +1,5 @@
 import styled from "styled-components";
 
-export const StyledRegisterContainer = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  margin-top: 40px;
-
-  @media screen and (min-width: 768px) {
-    justify-content: flex-start;
-  }
-  @media screen and (min-width: 1440px) {
-    justify-content: end;
-    align-items: center;
-  }
-`;
-
 export const StyledRegisterForm = styled.form`
   max-width: 280px;
   display: flex;
@@ -109,11 +93,9 @@ export const StyledRegisterForm = styled.form`
     color: #ef5050;
   }
   .button {
-    font-family: "Roboto", sans-serif;
     border-radius: 10px;
     background: #407bff;
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-    padding: 10px 30px;
     border: none;
     margin-top: 16px;
 
@@ -139,10 +121,12 @@ export const StyledRegisterForm = styled.form`
     }
 
     @media screen and (min-width: 768px) {
+      width: 336px;
       height: 44px;
     }
 
     @media screen and (min-width: 1440px) {
+      width: 384px;
       height: 44px;
     }
   }

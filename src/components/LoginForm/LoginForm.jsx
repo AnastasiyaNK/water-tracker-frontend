@@ -29,83 +29,81 @@ const LoginForm = () => {
     },
   });
   return (
-    <StyledMainContainer>
-      <StyledLoginContainer>
-        <StyledLoginForm onSubmit={formik.handleSubmit}>
-          <h2 className="title">Sign In</h2>
-          <label className="label">
-            <span className="label-text">Enter your email</span>
-          </label>
+    <StyledMainContainer className="register-container">
+      <StyledLoginForm onSubmit={formik.handleSubmit}>
+        <h2 className="title">Sign In</h2>
+        <label className="label">
+          <span className="label-text">Enter your email</span>
+        </label>
 
+        <input
+          className="input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+        />
+        {formik.errors.email && (
+          <div className="error">{formik.errors.email}</div>
+        )}
+        <label className="label">
+          <span className="label-text">Enter your password</span>
+        </label>
+        <div className="icon-wrapper">
           <input
             className="input"
-            type="email"
-            name="email"
-            placeholder="Email"
+            type={visiblePassword ? "text" : "password"}
+            name="password"
+            placeholder="Password"
             onChange={formik.handleChange}
-            value={formik.values.email}
+            value={formik.values.password}
           />
-          {formik.errors.email && (
-            <div className="error">{formik.errors.email}</div>
-          )}
-          <label className="label">
-            <span className="label-text">Enter your password</span>
-          </label>
-          <div className="icon-wrapper">
-            <input
-              className="input"
-              type={visiblePassword ? "text" : "password"}
-              name="password"
-              placeholder="Password"
-              onChange={formik.handleChange}
-              value={formik.values.password}
+          {visiblePassword ? (
+            <IconClosedEye
+              onClick={() => setVisiblePassword(false)}
+              className="eye-icon"
             />
-            {visiblePassword ? (
-              <IconClosedEye
-                onClick={() => setVisiblePassword(false)}
-                className="eye-icon"
-              />
-            ) : (
-              <IconOpenedEye
-                onClick={() => setVisiblePassword(true)}
-                className="eye-icon"
-              />
-            )}
+          ) : (
+            <IconOpenedEye
+              onClick={() => setVisiblePassword(true)}
+              className="eye-icon"
+            />
+          )}
 
-            {formik.errors.password && (
-              <div className="error">{formik.errors.password}</div>
-            )}
-          </div>
-          <button className="button" type="submit">
-            Sign In
-          </button>
-          <button className="button" type="submit">
-            <div className="google-wrapper">
-              <IconGoogle className="google-icon" />
-              <a
-                className="text-google"
-                href="https://water-tracker-backend-0wax.onrender.com/api/user/google"
-              >
-                Sign in wiht Google
-              </a>
-            </div>
-          </button>
-          <div className="lower-buttons-wrapper">
-            <Link to="/signup" className="link">
-              Sign Up
-            </Link>
-            <button
-              className="resend-verify"
-              type="button"
-              onClick={() => {
-                dispatch(resendVerifyEmail(email));
-              }}
+          {formik.errors.password && (
+            <div className="error">{formik.errors.password}</div>
+          )}
+        </div>
+        <button className="button" type="submit">
+          Sign In
+        </button>
+        <button className="button" type="submit">
+          <div className="google-wrapper">
+            <IconGoogle className="google-icon" />
+            <a
+              className="text-google"
+              href="https://water-tracker-backend-0wax.onrender.com/api/user/google"
             >
-              Send verification email again
-            </button>
+              Sign in wiht Google
+            </a>
           </div>
-        </StyledLoginForm>
-      </StyledLoginContainer>
+        </button>
+        <div className="lower-buttons-wrapper">
+          <Link to="/signup" className="link">
+            Sign Up
+          </Link>
+          <button
+            className="resend-verify"
+            type="button"
+            onClick={() => {
+              dispatch(resendVerifyEmail(email));
+            }}
+          >
+            Send verification email again
+          </button>
+        </div>
+      </StyledLoginForm>
     </StyledMainContainer>
   );
 };
