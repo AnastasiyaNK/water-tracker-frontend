@@ -4,4 +4,6 @@ export const ROUTE_PATH = {
   welcome: "/welcome",
   home: "/home",
   index: "/",
+  forgotpassword: "/forgotpassword",
+  newpassword: "/newpassword",
 };

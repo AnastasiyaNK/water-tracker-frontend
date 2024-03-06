@@ -4,48 +4,47 @@ import { ReactComponent as SettingsIconSvg } from "../../assets/icons/wrench-scr
 import { ReactComponent as StatisticsIconSvg } from "../../assets/icons/presentation-chart-bar.svg";
 
 export const WelcomeContainer = styled.div`
-  width: 320px;
-  min-height: calc(100vh - 80px);
-  padding: 0 20px 40px 20px;
-  margin: 0 auto;
-  background-size: cover;
+  /* width: 320px; */
+  /* min-height: calc(100vh - 80px); */
+  /* padding: 0 20px 40px 20px; */
+  /* margin: 0 auto; */
+  /* background-size: cover;
   background-size: 100%;
   background-position: center bottom;
-  background-repeat: no-repeat;
-  padding-top: 24px;
+  background-repeat: no-repeat; */
+  /* padding-top: 24px; */
 
-  @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
+  /* @media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
     (max-width: 767px) and (min-resolution: 192dpi) {
-  }
-
+  } */
+  /* 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     width: 706px;
     padding-top: 40px;
     min-height: calc(100vh - 88px);
-  }
+  } */
 
-  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+  /* @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
     (min-width: 768px) and (min-resolution: 192dpi) {
-  }
+  } */
 
   @media screen and (min-width: 1440px) {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
     gap: 81px;
-    width: 1440px;
-    padding-top: 40px;
-    min-height: calc(100vh - 80px);
+    /* width: 1440px; */
+    /* padding-top: 40px; */
+    /* min-height: calc(100vh - 80px); */
   }
 
   .containerBenefits {
-    margin-bottom: 40px;
-
-    @media only screen and (min-width: 767px) and (max-width: 1439px) {
-      margin-bottom: 60px;
+    @media only screen and (max-width: 767px) {
+      margin-bottom: 40px;
     }
 
-    @media only screen and (min-width: 1440px) {
-      margin-bottom: 185px;
+    @media only screen and (min-width: 768px) and (max-width: 1439px) {
+      margin-bottom: 60px;
     }
   }
 
@@ -70,6 +69,10 @@ export const WelcomeContainer = styled.div`
     line-height: calc(30 / 24);
     text-align: left;
     margin-bottom: 24px;
+
+    @media screen and (max-width: 767px) {
+      width: 197px;
+    }
 
     @media only screen and (min-width: 768px) {
       font-size: 26px;
@@ -168,9 +171,9 @@ export const WelcomeContainer = styled.div`
       max-width: 494px;
     }
 
-    @media screen and (min-width: 1440px) {
+    /* @media screen and (min-width: 1440px) {
       margin-top: 34px;
-    }
+    } */
   }
 
   .drinkInfoTitle {
@@ -203,19 +206,30 @@ export const WelcomeContainer = styled.div`
 `;
 
 export const HabitDriveImg = styled(CalendarIconSvg)`
-  @media only screen and (max-width: 767px) {
-    height: 32px;
+  width: 32px;
+  height: 32px;
+  @media screen and (min-width: 768px) {
+    width: 40px;
+    height: 40px;
   }
 `;
 
 export const ViewStatisticsImg = styled(StatisticsIconSvg)`
-  @media only screen and (max-width: 767px) {
-    height: 32px;
+  width: 32px;
+  height: 32px;
+
+  @media screen and (min-width: 768px) {
+    width: 40px;
+    height: 40px;
   }
 `;
 
 export const PersonalRateSettingImg = styled(SettingsIconSvg)`
-  @media only screen and (max-width: 767px) {
-    height: 32px;
+  width: 32px;
+  height: 32px;
+
+  @media screen and (min-width: 768px) {
+    width: 40px;
+    height: 40px;
   }
 `;

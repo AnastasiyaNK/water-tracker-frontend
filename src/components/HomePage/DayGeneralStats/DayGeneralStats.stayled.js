@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const DataStyle = styled.span`
   color: var(--Primery-Color-Blue, #407bff);
@@ -44,7 +44,3 @@ export const Box = styled.div`
     padding: 16px 24px;
   }
 `;
-// export const DataBtnStyle = styled`
-// display: flex;
-// flex-direction: row;
-// `;

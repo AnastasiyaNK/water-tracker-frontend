@@ -31,7 +31,7 @@ const Modal = ({ children, title, styledClass }) => {
 
   return (
     <StyledModalBackdrop onClick={handleOverlayClick}>
-      <div className={styledClass}>
+      <div className={`${styledClass} scrollbarr-settings`}>
         <h2 className="title">{title}</h2>
         <button
           className="close-btn"

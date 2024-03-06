@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
-export const StyledRegisterForm = styled.form`
+export const StyledResetPassForm = styled.form`
   max-width: 280px;
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 24px;
+  }
 
   @media screen and (min-width: 768px) {
     max-width: 336px;
@@ -14,49 +18,26 @@ export const StyledRegisterForm = styled.form`
     margin-right: 90px;
   }
 
-  .title {
-    color: #2f2f2f;
-    font-size: 26px;
-    font-weight: 500;
-    line-height: 1.23;
-  }
-
-  .label-text {
-    margin-top: 16px;
-    color: #2f2f2f;
-    position: relative;
+  .password-subtitle {
+    margin-bottom: 8px;
     font-size: 18px;
-    font-weight: 400;
     line-height: 1.33;
+    color: var(--blackPrimari);
   }
 
-  .label {
-    margin-top: 16px;
-  }
-  .icon-wrapper {
+  .password-wrapper {
     position: relative;
-    max-width: 392px;
   }
-  .eye-icon {
-    position: absolute;
-    top: 20px;
-    right: 10px;
 
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-
-    path {
-      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      stroke: #407bff;
-    }
-  }
-  .input {
-    margin-top: 8px;
-    border-radius: 6px;
-    border: 1px solid #d7e3ff;
-    background: #fff;
+  .main-input {
     padding: 12px 10px;
+
+    font-size: 16px;
+    line-height: 1.25;
+    border: 1px solid #d7e3ff;
+    border-radius: 6px;
+    color: #407bff;
+    background: #fff;
     display: flex;
     padding: 12px 10px;
     width: 100%;
@@ -67,14 +48,10 @@ export const StyledRegisterForm = styled.form`
 
     &::placeholder {
       color: #9ebbff;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.23;
     }
     &:active,
-    &:focus,
-    &:hover {
-      color: #407bff;
+    &:focus {
+      outline: 1px solid #9ebbff;
     }
 
     @media screen and (min-width: 768px) {
@@ -87,11 +64,45 @@ export const StyledRegisterForm = styled.form`
     }
   }
 
+  .first-pass-wrapper {
+    margin-bottom: 16px;
+  }
+
+  .eye-icon {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+
+    path {
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      stroke: #407bff;
+    }
+  }
+
+  .error-input {
+    border: 1px solid #ef5050;
+    color: #ef5050;
+    outline: 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #ef5050;
+    }
+  }
+
   .error {
     margin-top: 4px;
     font-size: 14px;
     color: #ef5050;
   }
+
   .button {
     border-radius: 10px;
     background: #407bff;
@@ -121,46 +132,11 @@ export const StyledRegisterForm = styled.form`
     }
 
     @media screen and (min-width: 768px) {
-      width: 336px;
       height: 44px;
     }
 
     @media screen and (min-width: 1440px) {
-      width: 384px;
       height: 44px;
     }
-  }
-
-  .google-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    & svg {
-      width: 25px;
-      height: 25px;
-    }
-
-    & a {
-      background: linear-gradient(
-        90deg,
-        rgba(228, 234, 235, 1) 22%,
-        rgba(253, 29, 29, 1) 65%,
-        rgba(252, 176, 69, 1) 79%
-      );
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-decoration: none;
-    }
-  }
-
-  .link {
-    margin-top: 16px;
-    color: #407bff;
-
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.25;
   }
 `;

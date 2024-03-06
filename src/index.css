@@ -22,6 +22,12 @@ code {
     monospace;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 p,
 h1,
 h2,
@@ -31,10 +37,20 @@ h5,
 h6 {
   margin: 0;
 }
-ul {
-  padding-left: 0;
+
+ol,
+ul,
+li {
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
 button {
   cursor: pointer;
 }
@@ -46,11 +62,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
 .list {
   list-style: none;
@@ -59,9 +70,50 @@ img {
 .link {
   text-decoration: none;
 }
+
 .conteiner {
   width: 100%;
   padding-left: 15px;
   padding-right: 15px;
   margin: 0 auto;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar,
+scrollbar {
+  width: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+::-webkit-scrollbar-track,
+scrollbar-track {
+  background-color: var(--lightBlueSecondary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb,
+scrollbar-thumb {
+  background-color: var(--blueSecondary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:active,
+scrollbar-thumb:active {
+  background-color: var(--blueSecondary);
+}
+
+scrollbar-thumb {
+  border-radius: 10px;
+  border-radius: 10px;
+}
+
+scrollbar-track {
+  border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: var(--lightBlueSecondary);
 }

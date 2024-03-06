@@ -3,12 +3,10 @@ import { WaterPortionsList } from "components";
 
 const Today = () => {
   return (
-    <>
-      <TodayBox>
-        <TodayStile>Today</TodayStile>
-        <WaterPortionsList />
-      </TodayBox>
-    </>
+    <TodayBox>
+      <TodayStile>Today</TodayStile>
+      <WaterPortionsList />
+    </TodayBox>
   );
 };
 

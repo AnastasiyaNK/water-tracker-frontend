@@ -8,6 +8,8 @@ import {
   setToken,
   requestUserCurrent,
   requestVeryfyEmail,
+  getLinkToUpdatePass,
+  requestResetPassword,
 } from "services/api/api";
 
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
@@ -65,6 +67,36 @@ export const resendVerifyEmail = createAsyncThunk(
     } catch (error) {
       toastRejected("Something went wrong. Try again!");
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getLinkToChangePass = createAsyncThunk(
+  "user/forgotPassword",
+  async (formData, thunkApi) => {
+    try {
+      const userData = await getLinkToUpdatePass(formData);
+      toastFulfild(
+        "A letter with more details has been sent to your email, please check it out!"
+      );
+      return userData;
+    } catch (error) {
+      toastRejected("Something went wrong, please try again later!");
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resetUserPassword = createAsyncThunk(
+  "user/resetPassword",
+  async (formData, thunkApi) => {
+    try {
+      await requestResetPassword(formData);
+      toastFulfild("Password has been successfully changed!");
+      // return userData;
+    } catch (error) {
+      toastRejected("Something went wrong, please try again later!");
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -193,6 +225,16 @@ const userSlice = createSlice({
         state.isSignedIn = true;
       })
 
+      //--------------Reset User password----------------
+      .addCase(getLinkToChangePass.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user.email = action.payload.user;
+      })
+
+      .addCase(resetUserPassword.fulfilled, (state, action) => {
+        state.isLoading = false;
+      })
+
       // ------------ Update Refresh ---------------------
       .addCase(usersCurrentThunk.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -236,7 +278,9 @@ const userSlice = createSlice({
           apiUserLogin.pending,
           usersCurrentThunk.pending,
           updateUserInfo.pending,
-          updateMyDailyNorma.pending
+          updateMyDailyNorma.pending,
+          getLinkToChangePass.pending,
+          resetUserPassword.pending
         ),
         (state) => {
           state.isLoading = true;
@@ -250,27 +294,14 @@ const userSlice = createSlice({
           apiUserLogin.rejected,
           usersCurrentThunk.rejected,
           updateUserInfo.rejected,
-          updateMyDailyNorma.rejected
+          updateMyDailyNorma.rejected,
+          getLinkToChangePass.rejected,
+          resetUserPassword.rejected
         ),
         (state) => {
           state.isLoading = false;
           state.error = null;
         }
       ),
-
-  // .addMatcher(
-  //   (action) => action.type.endsWith("/pending"),
-  //   (state, action) => {
-  //     state.isLoading = true;
-  //     state.error = null;
-  //   }
-  // )
-  // .addMatcher(
-  //   (action) => action.type.endsWith("/rejected"),
-  //   (state, action) => {
-  //     state.isLoading = false;
-  //     state.error = action.payload;
-  //   }
-  // ),
 });
 export const userReducer = userSlice.reducer;

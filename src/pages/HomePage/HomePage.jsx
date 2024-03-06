@@ -25,7 +25,12 @@ import {
 
 import { apiGetTodayWaterPortions } from "../../redux/water/waterSlice.js";
 import { closeAllModals } from "../../redux/modal/modalsReduser.js";
-import { Fon, DailyRangeStyle } from "./HomePage.styled.js";
+import {
+  StyledHomePageWrapper,
+  DailyRangeStyle,
+  DailyNormaWrapper,
+} from "./HomePage.styled.js";
+import { StyledMainContainer } from "styled";
 
 const HomePage = () => {
   const isSettingsModalOpen = useSelector(selectSettingsModal);
@@ -42,26 +47,34 @@ const HomePage = () => {
       "mm"
     )}-${format(new Date(), "dd")}`;
     dispatch(apiGetTodayWaterPortions(date));
+    const main = document.getElementsByTagName("main")[0];
+    main.classList.add("homepage-backgroud");
+
     return () => {
+      main.classList.remove("homepage-backgroud");
       dispatch(closeAllModals());
     };
   }, [dispatch]);
 
   return (
-    <Fon>
-      <DailyRangeStyle>
-        <DailyNorma />
-        <RangeBar />
-      </DailyRangeStyle>
+    <StyledMainContainer className="home-container">
+      <StyledHomePageWrapper>
+        <DailyRangeStyle>
+          <DailyNormaWrapper className="dayli-norma-wrapper">
+            <DailyNorma />
+          </DailyNormaWrapper>
+          <RangeBar />
+        </DailyRangeStyle>
 
-      <WaterTracker />
-      {isAddWaterModalOpen && <AddWaterModal />}
-      {isEditWaterModalOpen && <EditWaterModal />}
-      {isSettingsModalOpen && <SettingsModal />}
-      {isDailyNormaModalOpen && <MyDailyNormaModal />}
-      {isLogoutModalOpen && <LogoutModal />}
-      {isDeleteModalOpen && <DeleteModal />}
-    </Fon>
+        <WaterTracker />
+        {isAddWaterModalOpen && <AddWaterModal />}
+        {isEditWaterModalOpen && <EditWaterModal />}
+        {isSettingsModalOpen && <SettingsModal />}
+        {isDailyNormaModalOpen && <MyDailyNormaModal />}
+        {isLogoutModalOpen && <LogoutModal />}
+        {isDeleteModalOpen && <DeleteModal />}
+      </StyledHomePageWrapper>
+    </StyledMainContainer>
   );
 };
 

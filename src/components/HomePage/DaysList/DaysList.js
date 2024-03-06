@@ -7,13 +7,15 @@ import { getNameOfMonth } from "../../../services/getNameOfMonth";
 import { getDaysInMonth } from "../../../services/getDaysInMonth";
 import { getNumberDay } from "../../../services/getNumberDay";
 import { createMonthArray } from "../../../services/createMonthArray";
-import svgIcons from "../../../assets/icons/set-icons.svg";
+import { ReactComponent as IconArrowLeft } from "../../../assets/icons/arrow-left.svg";
+import { ReactComponent as IconArrowRight } from "../../../assets/icons/arrow-rigth.svg";
 
 import {
   TableDays,
   ButtonArrow,
   DaysListHeader,
   Title,
+  StyledBtnGroupWrapper,
 } from "./DaysList.styled";
 
 const currentDate = new Date();
@@ -58,34 +60,28 @@ const DaysList = () => {
   };
 
   return (
-    <div>
+    <>
       <DaysListHeader>
         <Title>Month</Title>
-        <div>
+        <StyledBtnGroupWrapper>
           <ButtonArrow onClick={previousMonth}>
-            <svg height="14" width="14" data-arrow="right">
-              <use href={`${svgIcons}#icon-arrow`}></use>
-            </svg>
+            <IconArrowLeft />
           </ButtonArrow>
-          <p>{`${monthName}, ${year}`}</p>
+          <span>{`${monthName}, ${year}`}</span>
           <ButtonArrow
             onClick={nextMonth}
             disabled={currentDate < new Date(year, month + 1)}
           >
-            <svg height="14" width="14" data-arrow="left">
-              <use href={`${svgIcons}#icon-arrow`}></use>
-            </svg>
+            <IconArrowRight />
           </ButtonArrow>
-        </div>
+        </StyledBtnGroupWrapper>
       </DaysListHeader>
       <TableDays>
         {monthStats.map((item, index) => (
-          <div key={index}>
-            <Day item={item} index={index} monthName={monthName} />
-          </div>
+          <Day key={index} item={item} index={index} monthName={monthName} />
         ))}
       </TableDays>
-    </div>
+    </>
   );
 };
 export default DaysList;

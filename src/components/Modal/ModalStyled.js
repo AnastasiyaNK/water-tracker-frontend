@@ -9,10 +9,8 @@ export const StyledModalBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
   background-color: rgba(0, 0, 0, 0.8);
   overflow: hidden;
-  z-index: 10;
 
   //*--- settings modal window styles for tel tab and desk--\\
   .settings-modal {
@@ -41,7 +39,6 @@ export const StyledModalBackdrop = styled.div`
     }
   }
 
-  ////////////////////////////////////////////////////////////////////////
   //*--- settings add edit modals window styles for tel tab and desk---\\
 
   .modal-wrapper {
@@ -65,8 +62,6 @@ export const StyledModalBackdrop = styled.div`
       width: 280px;
     }
   }
-
-  /////////////////////////////////////////////////////////////////
 
   //*--- daily norma modal window styles for tel tab and desk---\\
   .daily-norma {
@@ -141,7 +136,7 @@ export const StyledModalBackdrop = styled.div`
     }
   }
 
-  /* -----------LogoutModal--------------- */
+  //* -----------LogoutModal--------------- *\\
 
   .logout-modal {
     position: relative;
@@ -164,6 +159,14 @@ export const StyledModalBackdrop = styled.div`
     }
     @media (min-width: 320px) and (max-width: 767px) {
       width: 280px;
+    }
+  }
+
+  //* Modal window Scrollbar setting */
+
+  .scrollbarr-settings {
+    &::-webkit-scrollbar {
+      width: 0;
     }
   }
 `;

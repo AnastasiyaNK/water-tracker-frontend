@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
-export const StyledLoginForm = styled.form`
+export const StyledEmailForm = styled.form`
   max-width: 280px;
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 24px;
+  }
 
   @media screen and (min-width: 768px) {
     max-width: 336px;
@@ -21,7 +25,7 @@ export const StyledLoginForm = styled.form`
     line-height: 1.23;
   }
 
-  .label-text {
+  .text-info {
     margin-top: 16px;
     color: #2f2f2f;
     position: relative;
@@ -34,35 +38,16 @@ export const StyledLoginForm = styled.form`
     margin-top: 16px;
   }
 
-  .error {
-    margin-top: 4px;
-    font-size: 14px;
-    color: #ef5050;
-  }
-  .icon-wrapper {
-    position: relative;
-    max-width: 392px;
-  }
-  .eye-icon {
-    position: absolute;
-    top: 20px;
-    right: 10px;
-
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-
-    path {
-      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      stroke: #407bff;
-    }
-  }
-  .input {
+  .main-input {
     margin-top: 8px;
-    border-radius: 6px;
-    border: 1px solid #d7e3ff;
-    background: #fff;
     padding: 12px 10px;
+
+    font-size: 16px;
+    line-height: 1.25;
+    border: 1px solid #d7e3ff;
+    border-radius: 6px;
+    color: #407bff;
+    background: #fff;
     display: flex;
     padding: 12px 10px;
     width: 100%;
@@ -73,14 +58,10 @@ export const StyledLoginForm = styled.form`
 
     &::placeholder {
       color: #9ebbff;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.23;
     }
     &:active,
-    &:focus,
-    &:hover {
-      color: #407bff;
+    &:focus {
+      outline: 1px solid #9ebbff;
     }
 
     @media screen and (min-width: 768px) {
@@ -92,8 +73,28 @@ export const StyledLoginForm = styled.form`
       height: 44px;
     }
   }
+
+  .error-input {
+    border: 1px solid #ef5050;
+    color: #ef5050;
+    outline: 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #ef5050;
+    }
+  }
+
+  .error {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #ef5050;
+  }
+
   .button {
-    font-family: "Roboto", sans-serif;
     border-radius: 10px;
     background: #407bff;
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
@@ -122,70 +123,11 @@ export const StyledLoginForm = styled.form`
     }
 
     @media screen and (min-width: 768px) {
-      width: 336px;
       height: 44px;
     }
 
     @media screen and (min-width: 1440px) {
-      width: 384px;
       height: 44px;
-    }
-  }
-
-  .link {
-    color: #407bff;
-
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.25;
-  }
-  .google-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    & svg {
-      width: 25px;
-      height: 25px;
-    }
-
-    & a {
-      background: linear-gradient(
-        90deg,
-        rgba(228, 234, 235, 1) 22%,
-        rgba(253, 29, 29, 1) 65%,
-        rgba(252, 176, 69, 1) 79%
-      );
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-decoration: none;
-    }
-  }
-
-  .lower-buttons-wrapper {
-    margin-top: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-
-  .resend-verify {
-    width: 124px;
-    padding: 0;
-    margin-top: 16px;
-    text-align: left;
-
-    background-color: transparent;
-    color: #407bff;
-    border: none;
-
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.25;
-
-    @media (min-width: 768px) {
-      width: 217px;
     }
   }
 `;

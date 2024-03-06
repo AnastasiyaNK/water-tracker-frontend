@@ -5,8 +5,8 @@ const Loader = () => {
   return (
     <StyledLoaderBackdrop>
       <BallTriangle
-        height={100}
-        width={100}
+        height={80}
+        width={80}
         radius={5}
         color="#407BFF"
         ariaLabel="ball-triangle-loading"

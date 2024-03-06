@@ -1,13 +1,17 @@
 import RegisterForm from "components/RegisterForm/RegisterForm";
-import React from "react";
-import { StyledWrapperPng } from "./SignUpPage.styled";
+import { useEffect } from "react";
 
 const SignUpPage = () => {
-  return (
-    <StyledWrapperPng>
-      <RegisterForm />
-    </StyledWrapperPng>
-  );
+  useEffect(() => {
+    const main = document.getElementsByTagName("main")[0];
+    main.classList.add("register-backgroud");
+
+    return () => {
+      main.classList.remove("register-backgroud");
+    };
+  }, []);
+
+  return <RegisterForm />;
 };
 
 export default SignUpPage;

@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-
-import { WelcomeContainer } from "./WelcomePage.styled";
+import { useEffect } from "react";
 import { WelcomePageComponenet } from "components";
 import { useDispatch } from "react-redux";
 import { usersGoogleAuth } from "../../redux/user/userSlice";
+import { StyledMainContainer } from "styled";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -18,9 +17,9 @@ const Main = () => {
   }, [dispatch, token]);
 
   return (
-    <WelcomeContainer>
+    <StyledMainContainer className="welcome-container">
       <WelcomePageComponenet />
-    </WelcomeContainer>
+    </StyledMainContainer>
   );
 };
 
