@@ -171,7 +171,11 @@ export const StyledLoginForm = styled.form`
   }
 
   .resend-verify {
-    width: 132px;
+    width: 124px;
+    padding: 0;
+    margin-top: 16px;
+    text-align: left;
+
     background-color: transparent;
     color: #407bff;
     border: none;

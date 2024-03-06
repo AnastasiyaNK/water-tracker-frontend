@@ -1,25 +1,33 @@
 import styled from "styled-components";
 
 export const DailyNormaBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
   width: 165px;
   height: 74px;
-  padding: 8px 20px;
   border-radius: 10px;
   border: 1px solid var(--lightGreySecondary);
   background: var(--whitePrimari);
   box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
 
+  @media screen and (min-width: 768px) {
+    height: 76px;
+  }
+
   p {
     margin-bottom: 12px;
     font-weight: 500;
     font-size: 18px;
-    line-height: 1.3;
+    line-height: 1.33;
     color: #2f2f2f;
   }
 `;
 
 export const EditWater = styled.div`
   display: flex;
+  align-items: center;
   gap: 12px;
 `;
 

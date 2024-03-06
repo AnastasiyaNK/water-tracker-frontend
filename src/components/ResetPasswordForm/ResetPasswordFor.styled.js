@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledEmailForm = styled.form`
+export const StyledResetPassForm = styled.form`
   max-width: 280px;
   display: flex;
   flex-direction: column;
@@ -18,28 +18,18 @@ export const StyledEmailForm = styled.form`
     margin-right: 90px;
   }
 
-  .title {
-    color: #2f2f2f;
-    font-size: 26px;
-    font-weight: 500;
-    line-height: 1.23;
-  }
-
-  .text-info {
-    margin-top: 16px;
-    color: #2f2f2f;
-    position: relative;
+  .password-subtitle {
+    margin-bottom: 8px;
     font-size: 18px;
-    font-weight: 400;
     line-height: 1.33;
+    color: var(--blackPrimari);
   }
 
-  .label {
-    margin-top: 16px;
+  .password-wrapper {
+    position: relative;
   }
 
   .main-input {
-    margin-top: 8px;
     padding: 12px 10px;
 
     font-size: 16px;
@@ -71,6 +61,25 @@ export const StyledEmailForm = styled.form`
     @media screen and (min-width: 1440px) {
       width: 384px;
       height: 44px;
+    }
+  }
+
+  .first-pass-wrapper {
+    margin-bottom: 16px;
+  }
+
+  .eye-icon {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+
+    path {
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      stroke: #407bff;
     }
   }
 

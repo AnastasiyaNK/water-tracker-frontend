@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-
-// import { WelcomeContainer } from "./WelcomePage.styled";
+import { useEffect } from "react";
 import { WelcomePageComponenet } from "components";
 import { useDispatch } from "react-redux";
 import { usersGoogleAuth } from "../../redux/user/userSlice";

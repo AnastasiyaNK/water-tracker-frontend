@@ -27,17 +27,4 @@ export const StyledHeader = styled.header`
   .user-name:focus {
     color: #ff9d43;
   }
-
-  /* @media (min-width: 320px) and (max-width: 767px) {
-    min-width: 280px;
-  }
-
-  @media (min-width: 768px) and (max-width: 1439px) {
-    padding-top: 16px;
-  }
-
-  @media (min-width: 1216px) and (min-width: 1440px) {
-    padding: 12px 0;
-    min-width: 1216px;
-  } */
 `;

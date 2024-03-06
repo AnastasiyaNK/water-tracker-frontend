@@ -1,14 +1,21 @@
 import { EmailForm } from "components";
+import { useEffect } from "react";
 import { StyledMainContainer } from "styled";
-import { StyledForgotPassWrapper } from "./ForgotPassPage.styled";
 
 const ForgotPassPage = () => {
+  useEffect(() => {
+    const main = document.getElementsByTagName("main")[0];
+    main.classList.add("register-backgroud");
+
+    return () => {
+      main.classList.remove("register-backgroud");
+    };
+  }, []);
+
   return (
-    <StyledForgotPassWrapper>
-      <StyledMainContainer>
-        <EmailForm />
-      </StyledMainContainer>
-    </StyledForgotPassWrapper>
+    <StyledMainContainer className="register-container">
+      <EmailForm />
+    </StyledMainContainer>
   );
 };
 

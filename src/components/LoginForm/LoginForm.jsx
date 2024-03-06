@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { apiUserLogin, resendVerifyEmail } from "../../redux/user/userSlice";
 import { selectUserEmail } from "../../redux/user/userSelectors";
-import { StyledLoginContainer, StyledLoginForm } from "./LoginForm.styled";
+import { StyledLoginForm } from "./LoginForm.styled";
 import { StyledMainContainer } from "styled";
 
 import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
@@ -93,16 +93,20 @@ const LoginForm = () => {
           <Link to="/signup" className="link">
             Sign Up
           </Link>
-          <button
-            className="resend-verify"
-            type="button"
-            onClick={() => {
-              dispatch(resendVerifyEmail(email));
-            }}
-          >
-            Send verification email again
-          </button>
+
+          <Link to="/forgotpassword" className="link">
+            Forgot your password ?
+          </Link>
         </div>
+        <button
+          className="resend-verify"
+          type="button"
+          onClick={() => {
+            dispatch(resendVerifyEmail(email));
+          }}
+        >
+          Resend the verification email
+        </button>
       </StyledLoginForm>
     </StyledMainContainer>
   );

@@ -1,18 +1,9 @@
 import { styled } from "styled-components";
 
 export const StyledModalButton = styled.button`
-  //TODO: TEMPORARY HIDING !!!
-  /* .open-modal-btn {
-    visibility: hidden;
-  } */
-  //TODO: TEMPORARY HIDING !!!
-
   width: 280px;
   height: 36px;
-  /* left: 526px;
-  top: 825px; */
   display: inline-flex;
-  /* padding: 10px 30px; */
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -22,10 +13,6 @@ export const StyledModalButton = styled.button`
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   color: var(--whitePrimari, #fff);
 
-  /* @media (min-width: 320px) and (max-width: 767px) {
-      min-width: 280px;
-      height: 36px;
-    } */
   @media (min-width: 768px) and (max-width: 1220px) {
     width: 336px;
     height: 44px;
