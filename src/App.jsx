@@ -9,7 +9,7 @@ import Loader from "components/Loader/Loader";
 
 const WelcomePage = lazy(() => import("./pages/WelcomePage/WelcomePage"));
 const HomePage = lazy(() => import("pages/HomePage/HomePage"));
-// const SignInPage = lazy(() => import("pages/SignInPage/SignInPage"));
+const SignInPage = lazy(() => import("pages/SignInPage/SignInPage"));
 const SignUpPage = lazy(() => import("pages/SignUpPage/SignUpPage"));
 const NewPassPage = lazy(() => import("pages/NewPassPage/NewPassPage"));
 const ForgotPassPage = lazy(() =>
@@ -45,14 +45,14 @@ function App() {
               </RestrictedRoute>
             }
           />
-          {/* <Route
+          <Route
             path={ROUTE_PATH.signin}
             element={
               <RestrictedRoute>
                 <SignInPage />
               </RestrictedRoute>
             }
-          /> */}
+          />
 
           <Route
             path={ROUTE_PATH.forgotpassword}
