@@ -1,10 +1,9 @@
 {
   "files": {
     "main.css": "/water-tracker-frontend/static/css/main.cef6cab6.css",
-    "main.js": "/water-tracker-frontend/static/js/main.a13c10ed.js",
+    "main.js": "/water-tracker-frontend/static/js/main.04219830.js",
     "static/js/123.118c4994.chunk.js": "/water-tracker-frontend/static/js/123.118c4994.chunk.js",
     "static/js/310.dc9cdef9.chunk.js": "/water-tracker-frontend/static/js/310.dc9cdef9.chunk.js",
-    "static/js/75.d993cf3b.chunk.js": "/water-tracker-frontend/static/js/75.d993cf3b.chunk.js",
     "static/js/622.86467801.chunk.js": "/water-tracker-frontend/static/js/622.86467801.chunk.js",
     "static/js/23.4d15a431.chunk.js": "/water-tracker-frontend/static/js/23.4d15a431.chunk.js",
     "static/js/804.595e9735.chunk.js": "/water-tracker-frontend/static/js/804.595e9735.chunk.js",
@@ -44,16 +43,15 @@
     "static/media/close.svg": "/water-tracker-frontend/static/media/close.4bacbe008227ed7c2336095722a26803.svg",
     "static/media/plus-small.svg": "/water-tracker-frontend/static/media/plus-small.878f971fcc042b10ccaeb0adbca5128b.svg",
     "main.cef6cab6.css.map": "/water-tracker-frontend/static/css/main.cef6cab6.css.map",
-    "main.a13c10ed.js.map": "/water-tracker-frontend/static/js/main.a13c10ed.js.map",
+    "main.04219830.js.map": "/water-tracker-frontend/static/js/main.04219830.js.map",
     "123.118c4994.chunk.js.map": "/water-tracker-frontend/static/js/123.118c4994.chunk.js.map",
     "310.dc9cdef9.chunk.js.map": "/water-tracker-frontend/static/js/310.dc9cdef9.chunk.js.map",
-    "75.d993cf3b.chunk.js.map": "/water-tracker-frontend/static/js/75.d993cf3b.chunk.js.map",
     "622.86467801.chunk.js.map": "/water-tracker-frontend/static/js/622.86467801.chunk.js.map",
     "23.4d15a431.chunk.js.map": "/water-tracker-frontend/static/js/23.4d15a431.chunk.js.map",
     "804.595e9735.chunk.js.map": "/water-tracker-frontend/static/js/804.595e9735.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cef6cab6.css",
-    "static/js/main.a13c10ed.js"
+    "static/js/main.04219830.js"
   ]
 }
