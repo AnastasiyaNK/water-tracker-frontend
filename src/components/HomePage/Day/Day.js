@@ -29,7 +29,7 @@ const Day = ({ item, index, monthName }) => {
     <StyledDayItemWrapper>
       <StyledDayBtn
         aria-describedby={id}
-        variant="contained"
+       // variant="contained"
         onClick={handleClick}
         style={{
           border: waterVolumePercentage >= 100 ? "none" : "1px solid",

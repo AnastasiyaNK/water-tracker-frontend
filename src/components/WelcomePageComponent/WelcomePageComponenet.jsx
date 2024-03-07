@@ -1,24 +1,25 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   WelcomeContainer,
   HabitDriveImg,
   ViewStatisticsImg,
   PersonalRateSettingImg,
 } from "./WelcomePage.styled";
+import { useTranslation } from "react-i18next";
+import { ROUTE_PATH } from "constants/routes";
 
 const WelcomePageComponent = () => {
-  const navigate = useNavigate();
+  const { t } = useTranslation();
 
-  function TryClick() {
-    navigate("/signup");
-  }
+  
 
   return (
     <WelcomeContainer>
       <div className="containerBenefits">
-        <h2 className="welcomeTitle">Water consumption tracker</h2>
+       
+        <h1 className="welcomeTitle">{t("welcomePageTitle")}</h1>
         <p className="welcomeInfoTitle">Record daily water intake and track</p>
-        <h3 className="welcomeListTitle">Tracker Benefits</h3>
+        <h2 className="welcomeListTitle">Tracker Benefits</h2>
         <ul className="welcomeListContent">
           <li className="welcomeListItems">
             <HabitDriveImg />
@@ -33,9 +34,9 @@ const WelcomePageComponent = () => {
             <p>Personal rate setting</p>
           </li>
         </ul>
-        <button className="welcomeButton" type="button" onClick={TryClick}>
+        <Link to={ROUTE_PATH.signup} className="welcomeButton">
           Try tracker
-        </button>
+        </Link>
       </div>
       <div className="containerDrinkInfo">
         <p className="drinkInfoTitle">Why drink water</p>
