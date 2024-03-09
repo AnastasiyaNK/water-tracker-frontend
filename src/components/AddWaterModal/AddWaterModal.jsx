@@ -63,7 +63,7 @@ const AddWaterModal = () => {
               className="water-control-btn"
               type="button"
             >
-              <IconMinus className="svg-btn" />{" "}
+              <IconMinus className="svg-btn" />
             </button>
             <span className="water-amount-value">{waterAmount}ml</span>
             <button
@@ -71,7 +71,7 @@ const AddWaterModal = () => {
               className="water-control-btn"
               type="button"
             >
-              <IconPlus className="svg-btn" />{" "}
+              <IconPlus className="svg-btn" />
             </button>
           </div>
           <label className="input-group">
