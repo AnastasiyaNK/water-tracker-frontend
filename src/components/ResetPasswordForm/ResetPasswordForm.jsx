@@ -4,12 +4,17 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { resetUserPassword } from "../../redux/user/userSlice";
 import { StyledResetPassForm } from "./ResetPasswordFor.styled";
-import { newPasswordSchema } from "../../services/schemes/newPasswordSchema";
+import { newPasswordSchema, newPasswordSchemaUK } from "../../services/schemes/newPasswordSchema";
 
 import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
 import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
+import { useTranslation } from "react-i18next";
 
 const ResetPasswordForm = () => {
+  const { t, i18n } = useTranslation();
+    const localeSchema = { en: newPasswordSchema, uk: newPasswordSchemaUK };
+
+  
   const [privatPassword, setPrivatPassword] = useState({
     newPassword: true,
     repeatedPassword: true,
@@ -25,7 +30,7 @@ const ResetPasswordForm = () => {
       newPassword: "",
       repeatedPassword: "",
     },
-    validationSchema: newPasswordSchema,
+    validationSchema: localeSchema[i18n.language],
     onSubmit: ({ newPassword }) => {
       const userData = { email: userEmail, password: newPassword };
       dispatch(resetUserPassword(userData))
@@ -61,7 +66,7 @@ const ResetPasswordForm = () => {
             value={newPassword}
             onChange={handleChange}
             onBlur={handleBlur}
-            placeholder="Password"
+            placeholder={t("placeholderPassword")}
           />
         </label>
 
@@ -90,11 +95,11 @@ const ResetPasswordForm = () => {
                 : ""
             } `}
             type={privatPassword.repeatedPassword ? "password" : "text"}
-            name="repeatedPassword"
+            name={t("placeholderRepeatPassword")}
             value={repeatedPassword}
             onChange={handleChange}
             onBlur={handleBlur}
-            placeholder="Password"
+            placeholder={t("placeholderPassword")}
           />
         </label>
 

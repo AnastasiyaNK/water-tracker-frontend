@@ -8,7 +8,7 @@ export const DataStyle = styled.span`
   font-weight: 500;
   line-height: 24px;
 `;
-export const Data = styled.div`
+export const Data = styled.span`
   color: var(--Primery-Color-Black, #2f2f2f);
   font-family: Roboto;
   font-size: 16px;
@@ -16,7 +16,7 @@ export const Data = styled.div`
   font-weight: 400;
   line-height: 20px;
 `;
-export const Box = styled.div`
+export const Box = styled.span`
   display: flex;
   flex-direction: column;
   padding: 13px 24px;

@@ -27,4 +27,8 @@ export const StyledHeader = styled.header`
   .user-name:focus {
     color: #ff9d43;
   }
+
+  .select-wrapper{
+    margin-left: 15px;
+  }
 `;

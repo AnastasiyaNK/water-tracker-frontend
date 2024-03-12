@@ -18,3 +18,22 @@ export const newPasswordSchema = yup.object().shape(
   },
   [["password"], ["repeatPassword"]]
 );
+
+export const newPasswordSchemaUK = yup.object().shape(
+  {
+    newPassword: yup
+      .string()
+      .min(8, "Неприпустимий пароль (від 8 до 64 символів)")
+      .max(64, "Неприпустимий пароль (від 8 до 64 символів)")
+      .when(["repeatPassword"], {
+        is: (repeatPassword) => repeatPassword,
+        then: (schema) => schema.required("Ви повинні ввести пароль"),
+      }),
+    repeatedPassword: yup
+      .string()
+      .min(8, "Неприпустимий пароль (від 8 до 64 символів)")
+      .max(64, "Неприпустимий пароль (від 8 до 64 символів)")
+      .oneOf([yup.ref("newPassword")], "Паролі не співпадають"),
+  },
+  [["password"], ["repeatPassword"]]
+);

@@ -125,6 +125,7 @@ export const WelcomeContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
     gap: 15px;
     padding: 8px 30px;
     width: 280px;

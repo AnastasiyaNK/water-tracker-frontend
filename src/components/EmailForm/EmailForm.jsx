@@ -2,16 +2,19 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { getLinkToChangePass } from "../../redux/user/userSlice";
 import { StyledEmailForm } from "./EmailForm.styled";
-import { emailFormSchema } from "../../services/schemes/emailFormSchema";
+import { emailFormSchema, emailFormSchemaUK } from "../../services/schemes/emailFormSchema";
+import { useTranslation } from "react-i18next";
 
 const EmailForm = () => {
   const dispatch = useDispatch();
+  const { t,i18n } = useTranslation();
+  const localeSchema = { en: emailFormSchema, uk: emailFormSchemaUK };
 
   const formik = useFormik({
     initialValues: {
       email: "",
     },
-    validationSchema: emailFormSchema,
+    validationSchema: localeSchema[i18n.language],
     onSubmit: (email) => {
       dispatch(getLinkToChangePass(email));
     },
@@ -24,11 +27,8 @@ const EmailForm = () => {
 
   return (
     <StyledEmailForm onSubmit={formik.handleSubmit}>
-      <h2 className="title">Find your account</h2>
-      <p className="text-info">
-        To change your password, enter the email address that is associated with
-        your account.
-      </p>
+      <h2 className="title">{t("emailFormTitle")}</h2>
+      <p className="text-info">{t("emailFormText")}</p>
       <label className="label">
         <input
           className={`main-input ${
@@ -46,7 +46,7 @@ const EmailForm = () => {
         <div className="error">{errors.email}</div>
       ) : null}
       <button className="button" type="submit">
-        Submit
+        {t("submit")}
       </button>
     </StyledEmailForm>
   );

@@ -7,9 +7,11 @@ import {
   setLogoutModal,
   setSettingsModal,
 } from "../../../redux/modal/modalsReduser";
+import { useTranslation } from "react-i18next";
 
 const UserDropdown = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
+    const { t } = useTranslation();
 
   useEffect(() => {
     const close = (e) => {
@@ -38,7 +40,7 @@ const UserDropdown = ({ isOpen, onClose }) => {
           }}
         >
           <SettingsIcon className="settings-icon" />
-          <p>Setting</p>
+          <p>{t("setting")}</p>
         </Button>
         <Button
           type="button"
@@ -48,7 +50,7 @@ const UserDropdown = ({ isOpen, onClose }) => {
           }}
         >
           <LogOutIcon className="logout-icon" />
-          <p>Log out</p>
+          <p>{t("LogOut")}</p>
         </Button>
       </ModalWrapper>
     </>

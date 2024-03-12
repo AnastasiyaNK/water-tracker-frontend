@@ -23,3 +23,29 @@ export const signUpSchema = yup.object().shape(
   },
   [["password"], ["repeatPassword"]]
 );
+
+
+
+export const signUpSchemaUK = yup.object().shape(
+  {
+    email: yup
+      .string()
+      .required("Тут має бути ваша електронна пошта")
+      .email("Невалідна пошта"),
+
+    password: yup
+      .string()
+      .min(8, "Неприпустимий пароль (від 8 до 64 символів)")
+      .max(64, "Неприпустимий пароль (від 8 до 64 символів)")
+      .when(["repeatPassword"], {
+        is: (repeatPassword) => repeatPassword,
+        then: (schema) => schema.required("Ви повинні ввести пароль"),
+      }),
+    repeatPassword: yup
+      .string()
+      .min(8, "Неприпустимий пароль (від 8 до 64 символів)")
+      .max(64, "Неприпустимий пароль (від 8 до 64 символів)")
+      .oneOf([yup.ref("password")], "Паролі не співпадають"),
+  },
+  [["password"], ["repeatPassword"]]
+);

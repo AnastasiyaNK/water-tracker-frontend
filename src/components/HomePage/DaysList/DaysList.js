@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { format } from "date-fns";
+import enLocale from "date-fns/locale/en-US";
+import ukLocale from "date-fns/locale/uk";
 import { selectStats } from "../../../redux/water/waterSelectors";
 import { apiGetMonthWaterPortions } from "../../../redux/water/waterSlice";
 import { Day } from "components";
@@ -17,6 +20,7 @@ import {
   Title,
   StyledBtnGroupWrapper,
 } from "./DaysList.styled";
+import { useTranslation } from "react-i18next";
 
 const currentDate = new Date();
 
@@ -25,6 +29,7 @@ const DaysList = () => {
   const [month, setMonth] = useState(currentDate.getMonth());
   const [year, setYear] = useState(currentDate.getFullYear());
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
 
   const monthName = getNameOfMonth(month);
   const numberOfdays = getDaysInMonth(month, year);
@@ -62,12 +67,17 @@ const DaysList = () => {
   return (
     <>
       <DaysListHeader>
-        <Title>Month</Title>
+        <Title>{t("month")}</Title>
         <StyledBtnGroupWrapper>
           <ButtonArrow onClick={previousMonth}>
             <IconArrowLeft />
           </ButtonArrow>
-          <span>{`${monthName}, ${year}`}</span>
+          <span style={{ textTransform: "capitalize" }}>
+            {format(new Date(year, month, 1), "LLLL", {
+              locale: i18n.language === "uk" ? ukLocale : enLocale,
+            })}
+            , {year}
+          </span>
           <ButtonArrow
             onClick={nextMonth}
             disabled={currentDate < new Date(year, month + 1)}
@@ -77,9 +87,18 @@ const DaysList = () => {
         </StyledBtnGroupWrapper>
       </DaysListHeader>
       <TableDays>
-        {monthStats.map((item, index) => (
-          <Day key={index} item={item} index={index} monthName={monthName} />
-        ))}
+        {monthStats.map((item, index) => {
+          const localizedMonthName = format(new Date(year, month, index + 1), "LLLL", {
+            locale: i18n.language === "uk" ? ukLocale : enLocale,
+          });
+          return (
+            <Day
+              key={index}
+              item={item}
+              index={index}
+              monthName={localizedMonthName}
+            />
+          );})}
       </TableDays>
     </>
   );
