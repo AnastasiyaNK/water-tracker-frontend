@@ -4,15 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeAllModals } from "../../redux/modal/modalsReduser";
 import { apiDeleteWaterPortion } from "../../redux/water/waterSlice";
 import { selectDeletingWaterPortionId } from "../../redux/modal/modalsSelectors";
+import { useTranslation } from "react-i18next";
 
 const DeleteModal = () => {
   const deletingModalWaterId = useSelector(selectDeletingWaterPortionId);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   return (
-    <Modal title="Delete entry" styledClass="logout-modal">
+    <Modal title={t("deleteTitle")} styledClass="logout-modal">
       <StyledDeleteModal>
-        <p className="text">Do you really want to delete?</p>
+        <p className="text">{t("deleteQuestion")}</p>
         <div className="wrapper-btn">
           <button
             onClick={() => {
@@ -20,7 +22,7 @@ const DeleteModal = () => {
             }}
             className="cancel-btn"
           >
-            Cancel
+            {t("cancel")}
           </button>
           <button
             onClick={() => {
@@ -30,7 +32,7 @@ const DeleteModal = () => {
             }}
             className="logout-btn"
           >
-            Delete
+            {t("delete")}
           </button>
         </div>
       </StyledDeleteModal>

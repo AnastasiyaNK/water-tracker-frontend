@@ -14,11 +14,12 @@ import {
 import { updateUserAvatar, updateUserInfo } from "../../redux/user/userSlice";
 import { closeAllModals } from "../../redux/modal/modalsReduser";
 import { toastRejected } from "services/UserNotification";
-import { settingsModalSchema } from "services/schemes/settingsSchema";
+import { settingsModalSchema, settingsModalSchemaUK } from "services/schemes/settingsSchema";
 
 import { ReactComponent as IconUpload } from "../../assets/icons/arrow-up-tray.svg";
 import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
 import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
+import { useTranslation } from "react-i18next";
 
 const SettingsModal = () => {
   const [privatPassword, setPrivatPassword] = useState({
@@ -33,6 +34,9 @@ const SettingsModal = () => {
   const userName = useSelector(selectUserName);
   const userEmail = useSelector(selectUserEmail);
   const userGender = useSelector(selectUserGender);
+  
+  const { t, i18n } = useTranslation();
+  const localeSchema = { en: settingsModalSchema, uk: settingsModalSchemaUK };
 
   const handleAvatarUpdate = (event) => {
     const newAvatarFile = event.target.files[0];
@@ -103,7 +107,7 @@ const SettingsModal = () => {
       newPassword: "",
       repeatedPassword: "",
     },
-    validationSchema: settingsModalSchema,
+    validationSchema: localeSchema[i18n.language],
     onSubmit: handleSubmit,
   });
 
@@ -119,9 +123,9 @@ const SettingsModal = () => {
   const { errors, touched, handleChange, handleBlur } = formik;
 
   return (
-    <Modal title="Setting" styledClass="settings-modal">
+    <Modal title={t("settingsTitle")} styledClass="settings-modal">
       <StyledSettingsModalForm onSubmit={formik.handleSubmit}>
-        <p className="secondary-title upload-title">Your photo</p>
+        <p className="secondary-title upload-title">{t("settingsYourPhoto")}</p>
         <div className="upload-wrapper">
           <div className="img-box">
             {isAvatarLoading ? (
@@ -140,14 +144,16 @@ const SettingsModal = () => {
             ></input>
             <div className="upload-btn">
               <IconUpload className="upload-svg" />
-              <p className="upload-btn-text">Upload a photo</p>
+              <p className="upload-btn-text">{t("settingsUpload")}</p>
             </div>
           </label>
         </div>
 
         <div className="global-wrapper">
           <div className="leftside-wrapper">
-            <p className="secondary-title gender-title">Your gender identity</p>
+            <p className="secondary-title gender-title">
+              {t("settingsGender")}
+            </p>
             <div className="gender-wrapper">
               <div className="radio-btn-wrapper">
                 <label>
@@ -158,7 +164,7 @@ const SettingsModal = () => {
                     checked={gender === "female"}
                     onChange={handleChange}
                   />
-                  <span>Woman</span>
+                  <span>{t("settingsWomen")}</span>
                 </label>
               </div>
               <div className="radio-btn-wrapper">
@@ -170,12 +176,12 @@ const SettingsModal = () => {
                     checked={gender === "male"}
                     onChange={handleChange}
                   />
-                  <span>Man</span>
+                  <span>{t("settingsMan")}</span>
                 </label>
               </div>
             </div>
 
-            <p className="secondary-title">Your name</p>
+            <p className="secondary-title">{t("settingsName")}</p>
             <label>
               <input
                 className={`main-input ${
@@ -186,13 +192,13 @@ const SettingsModal = () => {
                 value={name}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                placeholder="name"
+                placeholder={t("placeholderName")}
               />
             </label>
             {errors.name && touched.name ? (
               <div className="error">{errors.name}</div>
             ) : null}
-            <p className="secondary-title email-title">E-mail</p>
+            <p className="secondary-title email-title">{t("settingsEmail")}</p>
             <label>
               <input
                 className={`main-input ${
@@ -203,7 +209,7 @@ const SettingsModal = () => {
                 value={email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                placeholder="e-mail"
+                placeholder={t("placeholderEmail")}
               />
             </label>
             {errors.email && touched.email ? (
@@ -212,8 +218,10 @@ const SettingsModal = () => {
           </div>
 
           <div className="rigthside-wrapper">
-            <p className="secondary-title password-title">Password</p>
-            <p className="password-subtitle">Outdated password:</p>
+            <p className="secondary-title password-title">
+              {t("settingsTutlePassword")}
+            </p>
+            <p className="password-subtitle">{t("settingsOutdatedPassword")}</p>
             <div className="password-wrapper">
               <div
                 className="eye-btn"
@@ -238,14 +246,14 @@ const SettingsModal = () => {
                   value={currentPassword}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Password"
+                  placeholder={t("placeholderPassword")}
                 />
               </label>
               {errors.currentPassword && touched.currentPassword ? (
                 <div className="error">{errors.currentPassword}</div>
               ) : null}
             </div>
-            <p className="password-subtitle">New Password:</p>
+            <p className="password-subtitle">{t("settingsNewPassword")}</p>
             <div className="password-wrapper">
               <div
                 className="eye-btn"
@@ -269,14 +277,16 @@ const SettingsModal = () => {
                   value={newPassword}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Password"
+                  placeholder={t("placeholderPassword")}
                 />
               </label>
               {errors.newPassword && touched.newPassword ? (
                 <div className="error">{errors.newPassword}</div>
               ) : null}
             </div>
-            <p className="password-subtitle">Repeat new password:</p>
+            <p className="password-subtitle">
+              {t("settingsNewRepeatPassword")}
+            </p>
             <div className="password-wrapper">
               <div
                 className="eye-btn"
@@ -300,7 +310,7 @@ const SettingsModal = () => {
                   value={repeatedPassword}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Password"
+                  placeholder={t("placeholderPassword")}
                 />
               </label>
               {errors.repeatedPassword && touched.repeatedPassword ? (
@@ -310,7 +320,7 @@ const SettingsModal = () => {
           </div>
         </div>
         <button className="settings-submit-btn" type="submit">
-          Save
+          {t("saveBtn")}
         </button>
       </StyledSettingsModalForm>
     </Modal>

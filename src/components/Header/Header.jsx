@@ -42,7 +42,7 @@ const Header = () => {
             <UserAuth />
           ) : (
             <Link to="/signin" className="user-wrapper">
-              <span className="user-name">{t("Sign in")}</span>
+              <span className="user-name">{t("signIn")}</span>
               <UserLogo className="user-logo" />
             </Link>
           )}

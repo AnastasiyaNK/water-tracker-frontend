@@ -10,9 +10,12 @@ import { StyledMainContainer } from "styled";
 import { ReactComponent as IconOpenedEye } from "../../assets/icons/eye.svg";
 import { ReactComponent as IconClosedEye } from "../../assets/icons/eye-slash.svg";
 import { ReactComponent as IconGoogle } from "../../assets/icons/icons8-google.svg";
-import { signInSchema } from "services/schemes/signInSchema";
+import { signInSchema, signInSchemaUK } from "services/schemes/signInSchema";
+import { useTranslation } from "react-i18next";
 
 const LoginForm = () => {
+  const { t, i18n } = useTranslation();
+  const localeSchema = { en: signInSchema, uk: signInSchemaUK };
   const dispatch = useDispatch();
   const [visiblePassword, setVisiblePassword] = useState(false);
   const email = useSelector(selectUserEmail);
@@ -22,7 +25,7 @@ const LoginForm = () => {
       email: "",
       password: "",
     },
-    validationSchema: signInSchema,
+    validationSchema: localeSchema[i18n.language],
     onSubmit: (values) => {
       const formData = { email: values.email, password: values.password };
       dispatch(apiUserLogin(formData));
@@ -31,16 +34,16 @@ const LoginForm = () => {
   return (
     <StyledMainContainer className="register-container">
       <StyledLoginForm onSubmit={formik.handleSubmit}>
-        <h2 className="title">Sign In</h2>
+        <h2 className="title">{t("loginTitle")}</h2>
         <label className="label">
-          <span className="label-text">Enter your email</span>
+          <span className="label-text">{t("email")}</span>
         </label>
 
         <input
           className="input"
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={t("placeholderEmail")}
           onChange={formik.handleChange}
           value={formik.values.email}
         />
@@ -48,14 +51,14 @@ const LoginForm = () => {
           <div className="error">{formik.errors.email}</div>
         )}
         <label className="label">
-          <span className="label-text">Enter your password</span>
+          <span className="label-text">{t("password")}</span>
         </label>
         <div className="icon-wrapper">
           <input
             className="input"
             type={visiblePassword ? "text" : "password"}
             name="password"
-            placeholder="Password"
+            placeholder={t("placeholderPassword")}
             onChange={formik.handleChange}
             value={formik.values.password}
           />
@@ -76,7 +79,7 @@ const LoginForm = () => {
           )}
         </div>
         <button className="button" type="submit">
-          Sign In
+          {t("loginBtn")}
         </button>
         <button className="button" type="submit">
           <div className="google-wrapper">
@@ -85,17 +88,17 @@ const LoginForm = () => {
               className="text-google"
               href="https://water-tracker-backend-0wax.onrender.com/api/user/google"
             >
-              Sign in wiht Google
+              {t("loginGoogle")}
             </a>
           </div>
         </button>
         <div className="lower-buttons-wrapper">
           <Link to="/signup" className="link">
-            Sign Up
+            {t("loginLinkSignUp")}
           </Link>
 
           <Link to="/forgotpassword" className="link">
-            Forgot your password ?
+            {t("loginLinkForgot")}
           </Link>
         </div>
         <button
@@ -105,7 +108,7 @@ const LoginForm = () => {
             dispatch(resendVerifyEmail(email));
           }}
         >
-          Resend the verification email
+          {t("loginLinkResend")}
         </button>
       </StyledLoginForm>
     </StyledMainContainer>

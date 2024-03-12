@@ -19,15 +19,17 @@ import {
 import { ReactComponent as IconGlass } from "../../../assets/icons/glass.svg";
 import { ReactComponent as IconPencil } from "../../../assets/icons/pencil-square.svg";
 import { ReactComponent as IconBasket } from "../../../assets/icons/basket.svg";
+import { useTranslation } from "react-i18next";
 
 const WaterPortionsList = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const waterPortions = useSelector(selectNotes);
 
   return (
     <PortionsList>
       {waterPortions.length === 0 ? (
-        <p className="motivation">Start your day - just add water</p>
+        <p className="motivation">{t("portionsText")}</p>
       ) : (
         <>
           <Portions>

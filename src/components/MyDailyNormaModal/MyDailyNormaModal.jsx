@@ -22,6 +22,7 @@ import {
 
 import { setDailyNormaModal } from "../../redux/modal/modalsReduser";
 import { updateMyDailyNorma } from "../../redux/user/userSlice";
+import { useTranslation } from "react-i18next";
 
 const MyDailyNormaModal = () => {
   const [gender, setGender] = useState("female");
@@ -31,6 +32,7 @@ const MyDailyNormaModal = () => {
   const [dailyNorma, setDailyNorma] = useState(2);
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (weight > 0) {
@@ -74,25 +76,22 @@ const MyDailyNormaModal = () => {
   };
 
   return (
-    <Modal title="My daily norma" styledClass="daily-norma">
+    <Modal title={t("modalDailyTitle")} styledClass="daily-norma">
       <Form onSubmit={handleSave}>
         <TitleGender>
-          <TitleGenderList>For girl:</TitleGenderList>
+          <TitleGenderList>{t("dailyGender1")}</TitleGenderList>
           <CalculatorWater>V=(M*0,03) + (T*0,4)</CalculatorWater>
-          <TitleGenderList>For man:</TitleGenderList>
+          <TitleGenderList>{t("dailyGender2")}</TitleGenderList>
           <CalculatorWater>V=(M*0,04) + (T*0,6)</CalculatorWater>
         </TitleGender>
         <TitleContent>
           <TitleContentWater>
-            <TitleText>*</TitleText> V is the volume of the water norm in liters
-            per day, M is your body weight, T is the time of active sports, or
-            another type of activity commensurate in terms of loads (in the
-            absence of these, you must set 0)
+            <TitleText>*</TitleText> {t("dailyText")}
           </TitleContentWater>
         </TitleContent>
 
         <div>
-          <SecondaryTitle>Calculate your rate:</SecondaryTitle>
+          <SecondaryTitle>{t("dailyCalculate")}</SecondaryTitle>
           <ListGender>
             <label>
               <input
@@ -102,7 +101,7 @@ const MyDailyNormaModal = () => {
                 checked={gender === "female"}
                 onChange={handleGenderChange}
               />
-              <GenderName>For woman</GenderName>
+              <GenderName>{t("dailyWoman")}</GenderName>
             </label>
             <label>
               <input
@@ -112,11 +111,11 @@ const MyDailyNormaModal = () => {
                 checked={gender === "male"}
                 onChange={handleGenderChange}
               />
-              <GenderName>For man</GenderName>
+              <GenderName>{t("dailyMan")}</GenderName>
             </label>
           </ListGender>
           <div>
-            <StatisticsCalculete>Your weight in kilograms:</StatisticsCalculete>
+            <StatisticsCalculete>{t("dailyKilograms")}</StatisticsCalculete>
             <label>
               <MainInput
                 type="number"
@@ -127,10 +126,7 @@ const MyDailyNormaModal = () => {
             </label>
           </div>
           <div>
-            <StatisticsCalculete>
-              The time of active participation in sports or other activities
-              with a high physical. load in hours:
-            </StatisticsCalculete>
+            <StatisticsCalculete>{t("calculeteTime")}</StatisticsCalculete>
             <label>
               <MainInput
                 type="number"
@@ -142,15 +138,15 @@ const MyDailyNormaModal = () => {
           </div>
           <div>
             <StatisticsCalculete>
-              The required amount of water in liters per day:{" "}
-              <StatisticsWatarDay>{dailyNorma} L</StatisticsWatarDay>
+              {t("calculeteDay")}{" "}
+              <StatisticsWatarDay>
+                {dailyNorma} {t("litr")}
+              </StatisticsWatarDay>
             </StatisticsCalculete>
           </div>
         </div>
         <div>
-          <SecondarySubtitle>
-            Write down how much water you will drink:
-          </SecondarySubtitle>
+          <SecondarySubtitle>{t("dailyWillDrink")}</SecondarySubtitle>
           <label>
             <MainInputBtn
               type="number"
@@ -160,7 +156,7 @@ const MyDailyNormaModal = () => {
             />
           </label>
         </div>
-        <SettingsSubmitBtn type="submit">Save</SettingsSubmitBtn>
+        <SettingsSubmitBtn type="submit">{t("saveBtn")}</SettingsSubmitBtn>
       </Form>
     </Modal>
   );

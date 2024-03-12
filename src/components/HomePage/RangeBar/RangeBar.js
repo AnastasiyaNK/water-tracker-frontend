@@ -12,13 +12,15 @@ import {
 
 import ModalButton from "components/ModalButton/ModalButton";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const RangeBar = () => {
+  const { t } = useTranslation();
   const percentage = useSelector(selectPercent);
   return (
     <RangeAdd>
       <RangBar>
-        <Title>Today</Title>
+        <Title>{t("today")}</Title>
         <RangeBarLine $percentage={percentage} />
         <Percents>
           <Percent>0%</Percent>

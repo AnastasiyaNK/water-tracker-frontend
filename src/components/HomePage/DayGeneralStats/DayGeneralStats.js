@@ -1,7 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import { DataStyle, Data, Box } from './DayGeneralStats.stayled';
 
 const DayGeneralStats = ({ item, index, monthName }) => {
   const { waterVolumePercentage, dailyNorma, portions } = item;
+  const { t } = useTranslation();
   return (
     <Box>
       <Data>
@@ -10,14 +12,14 @@ const DayGeneralStats = ({ item, index, monthName }) => {
         </DataStyle>
       </Data>
       <Data>
-        Daily norma: <DataStyle>{dailyNorma}</DataStyle>
+        {t("statsDay")}{" "} <DataStyle>{dailyNorma}</DataStyle>
       </Data>
       <Data>
-        Fulfillment of the daily norm:{' '}
-        <DataStyle>{waterVolumePercentage}%</DataStyle>
+        {t("statsDayNorm")}{" "} <DataStyle>{waterVolumePercentage}%</DataStyle>
       </Data>
       <Data>
-        How many servings of water:<DataStyle> {portions}</DataStyle>
+        {t("statsDayPortions")}{" "}
+        <DataStyle>{portions}</DataStyle>
       </Data>
     </Box>
   );

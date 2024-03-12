@@ -13,11 +13,14 @@ import { closeAllModals } from "../../redux/modal/modalsReduser";
 import { ReactComponent as IconMinus } from "../../assets/icons/minus-small.svg";
 import { ReactComponent as IconPlus } from "../../assets/icons/plus-small.svg";
 import { ReactComponent as WaterGlass } from "../../assets/icons/glass-desc 4.svg";
-import { editWaterSchema } from "services/schemes/editWaterSchema";
+import { editWaterSchema, editWaterSchemaUK } from "services/schemes/editWaterSchema";
+import { useTranslation } from "react-i18next";
 
 const WATER_AMOUNT_DIFFERENCE = 20;
 
 const EditWaterModal = () => {
+  const { t, i18n } = useTranslation();
+  const localeSchema = { en: editWaterSchema, uk: editWaterSchemaUK };
   const dispatch = useDispatch();
   const selectedWaterPortionId = useSelector(selectSelectedWaterPortionId);
 
@@ -44,7 +47,7 @@ const EditWaterModal = () => {
       // )}`,
       date: `${getLocaleTime(waterPortion.date)}`,
     },
-    validationSchema: editWaterSchema,
+    validationSchema: localeSchema[i18n.language],
     onSubmit: (values) => {
       dispatch(
         apiEditWaterPortion({
@@ -78,12 +81,13 @@ const EditWaterModal = () => {
   };
 
   return (
-    <Modal title="Edit the entered amount of water" styledClass="modal-wrapper">
+    <Modal title={t("editWaterTitle")} styledClass="modal-wrapper">
       <StyledWaterForm onSubmit={handleSubmit} className="add-water-container">
         <div className="water-amount-time-container">
           <WaterGlass className="water-glass" />
           <span className="form-action-water-value glass-value-bold">
-            {waterPortion.waterAmount}ml
+            {waterPortion.waterAmount}
+            {t("ml")}
           </span>
           <span className="time-value">
             {format(waterPortion.date, "hh")}:{format(waterPortion.date, "mm")}{" "}
@@ -92,8 +96,8 @@ const EditWaterModal = () => {
         </div>
 
         <div className="choose-water-value-container">
-          <p className="choose-title">Correct entered data:</p>
-          <p className="water-amount">Amount of water:</p>
+          <p className="choose-title">{t("editWaterCorrect")}</p>
+          <p className="water-amount">{t("waterAmount")}</p>
           <div className="water-controls-container">
             <button
               onClick={handleReduceWaterAmount}
@@ -103,7 +107,8 @@ const EditWaterModal = () => {
               <IconMinus className="svg-btn" />{" "}
             </button>
             <span className="water-amount-value-padding water-amount-value ">
-              {waterAmount}ml
+              {waterAmount}
+              {t("ml")}
             </span>
             <button
               onClick={handleEditWaterAmount}
@@ -114,7 +119,7 @@ const EditWaterModal = () => {
             </button>
           </div>
           <label className="input-group">
-            <span className="input-group-text">Recording time:</span>
+            <span className="input-group-text">{t("waterTime")}</span>
             <input
               value={date}
               onChange={handleChange}
@@ -125,9 +130,7 @@ const EditWaterModal = () => {
             {errors.date ? <div>{errors.date}</div> : null}
           </label>
           <label className="input-group">
-            <h3 className="input-group-text bold">
-              Enter the value of the water used:
-            </h3>{" "}
+            <h3 className="input-group-text bold">{t("waterEnter")}</h3>{" "}
             <input
               onBlur={handleBlur}
               value={localWaterAmount}
@@ -140,13 +143,16 @@ const EditWaterModal = () => {
             {errors.waterAmount ? <div>{errors.waterAmount}</div> : null}
           </label>
           <div className="form-action-container">
-            <span className="form-action-water-value">{waterAmount}ml</span>
+            <span className="form-action-water-value">
+              {waterAmount}
+              {t("ml")}
+            </span>
             <button
               disabled={Object.keys(errors).length > 0}
               type="submit"
               className="form-save-btn"
             >
-              Save
+              {t("saveBtn")}
             </button>
           </div>
         </div>
