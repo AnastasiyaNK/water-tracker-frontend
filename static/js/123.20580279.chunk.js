@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwater_tracker=self.webpackChunkwater_tracker||[]).push([[123],{3123:(e,a,r)=>{r.r(a),r.d(a,{default:()=>k});var c=r(2791),t=r(7487),s=r(4420),n=r(5821),w=r(7183),o=r(184);const k=()=>{const e=(0,s.I0)(),a=new URLSearchParams(window.location.search).get("token");return(0,c.useEffect)((()=>{a&&e((0,n.XV)(a))}),[e,a]),(0,o.jsx)(w.w,{className:"welcome-container",children:(0,o.jsx)(t.PS,{})})}}}]);
+//# sourceMappingURL=123.20580279.chunk.js.map
