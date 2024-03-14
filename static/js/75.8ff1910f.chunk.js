@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkwater_tracker=self.webpackChunkwater_tracker||[]).push([[75],{5075:(e,r,s)=>{s.r(r),s.d(r,{default:()=>u});var t=s(2791),a=s(7487),c=s(184);const u=()=>((0,t.useEffect)((()=>{const e=document.getElementsByTagName("main")[0];return e.classList.add("register-backgroud"),()=>{e.classList.remove("register-backgroud")}}),[]),(0,c.jsx)(a.U0,{}))}}]);
-//# sourceMappingURL=75.8ff1910f.chunk.js.map

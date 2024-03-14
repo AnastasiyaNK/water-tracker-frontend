@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwater_tracker=self.webpackChunkwater_tracker||[]).push([[804],{3804:(e,r,s)=>{s.r(r),s.d(r,{default:()=>u});var t=s(8888),a=s(2791),c=s(7183),n=s(184);const u=()=>((0,a.useEffect)((()=>{const e=document.getElementsByTagName("main")[0];return e.classList.add("register-backgroud"),()=>{e.classList.remove("register-backgroud")}}),[]),(0,n.jsx)(c.w,{className:"register-container",children:(0,n.jsx)(t._D,{})}))}}]);
+//# sourceMappingURL=804.f16691f3.chunk.js.map
