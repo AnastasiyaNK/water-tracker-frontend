@@ -12,6 +12,8 @@ export const ModalOverlay = styled.aside`
 
 export const ModalWrapper = styled.div`
   position: absolute;
+  width: ${({ $lng }) => ($lng === "en" ? "auto" : "100%")};
+  min-width: ${({ $lng }) => ($lng === "en" ? "auto" : "171px")} ;
   top: 100%;
   left: 100%;
   transform: translate(-100%, 0);
@@ -29,9 +31,11 @@ export const ModalWrapper = styled.div`
 
 export const Button = styled.button`
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   gap: 8px;
+  padding: 0;
+  width: 100%;
   border: none;
   background-color: #ffffff;
   cursor: pointer;

@@ -6,12 +6,12 @@ import { DailyNormaBox, EditWater, Edit, Water } from "./DailyNorma.styled";
 import { useTranslation } from "react-i18next";
 
 const DailyNorma = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch(setDailyNormaModal);
   const myDailyNorma = useSelector(selectUserDailyNorma);
 
   return (
-    <DailyNormaBox>
+    <DailyNormaBox $lng={i18n.language}>
       <p>{t("DailyNorma")}</p>
       <EditWater>
         <Water>{myDailyNorma}L</Water>

@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 
 const UserDropdown = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
-    const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const close = (e) => {
@@ -31,7 +31,7 @@ const UserDropdown = ({ isOpen, onClose }) => {
   return (
     <>
       <ModalOverlay onClick={onClose} />
-      <ModalWrapper onClick={(e) => e.stopPropagation()}>
+      <ModalWrapper $lng={i18n.language} onClick={(e) => e.stopPropagation()}>
         <Button
           type="button"
           onClick={() => {

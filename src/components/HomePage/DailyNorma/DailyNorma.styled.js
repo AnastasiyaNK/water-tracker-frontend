@@ -5,7 +5,8 @@ export const DailyNormaBox = styled.div`
   flex-direction: column;
   justify-content: center;
   padding-left: 20px;
-  width: 165px;
+  padding-right: 20px;
+  width: ${(props) => (props.$lng === "en" ? "165px" : "220px")};
   height: 74px;
   border-radius: 10px;
   border: 1px solid var(--lightGreySecondary);
